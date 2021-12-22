@@ -1,0 +1,18 @@
+
+Ajoutez cette section de configuration de la base de données : 
+ 
+ -> Dans le fichier de configuration : dossier_wildfly/standalone/configuration/standalone.xml
+ -> Dans la section <datasources>
+
+<datasource jndi-name="java:jboss/datasources/GalaxosDS" pool-name="GalaxosDSPool" enabled="true" use-java-context="true">
+    <connection-url>jdbc:mysql://localhost:3306/galaxos_db?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;serverTimezone=Europe/Paris</connection-url>
+    <driver>mysql</driver>
+    <pool>
+        <min-pool-size>10</min-pool-size>
+        <max-pool-size>20</max-pool-size>
+        <prefill>true</prefill>
+    </pool>
+    <security>
+        <user-name>root</user-name>
+    </security>
+</datasource>
