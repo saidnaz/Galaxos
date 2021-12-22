@@ -12,7 +12,7 @@
 		<driver>mysql</driver>
 		<security>
 			<user-name>root</user-name>
-			<password></password>
+			<password>rrrrr</password>
 		</security>
 	</datasource>
 </datasources>
