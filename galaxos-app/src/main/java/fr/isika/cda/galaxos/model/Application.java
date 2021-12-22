@@ -14,6 +14,7 @@ public class Application {
 	@Id
 	private UUID id = UUID.randomUUID();
 	private String appName = "Galaxos App";
+	private String test;
 
 	public UUID getId() {
 		return id;
