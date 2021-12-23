@@ -11,6 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -33,6 +34,9 @@ public class Adherent implements Serializable {
 	    
 	    @Column(name="Comptebloque", nullable=false)
 	    private boolean isAccountNotLocked = true;
+	    
+	    @ManyToOne
+		private Association association;
 
 	    
 	    public Adherent() {
@@ -73,7 +77,13 @@ public class Adherent implements Serializable {
 			this.isAccountNotLocked = isAccountNotLocked;
 		}
 		
-	    
+		public Association getAssociation() {
+			return association;
+		}
+
+		public void setAssociation(Association association) {
+			this.association = association;
+		}
 	   
 
 }
