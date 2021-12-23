@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -28,13 +27,11 @@ public class Message {
 	private String message;
 
 	@OneToOne
-	@Column(name = "Destinataire", nullable = false)
-	@JoinColumn(name = fk_destinataire)
+	@JoinColumn(name = "fk_destinataire")
 	private Adherent destinataire;
 
 	@OneToOne
-	@Column(name = "Expediteur", nullable = false)
-	@JoinColumn(name = fk_expediteur)
+	@JoinColumn(name = "fk_expediteur")
 	private Adherent expediteur;
 
 	
