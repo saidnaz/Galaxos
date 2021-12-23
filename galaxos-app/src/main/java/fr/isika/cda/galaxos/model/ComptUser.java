@@ -81,7 +81,7 @@ public class ComptUser {
 		return "ComptUser [email=" + email + ", mdp=" + mdp + ", isAccountValide=" + isAccountValide + "]";
 	}
 
-	
+	//TEST
 	
 	
 	
