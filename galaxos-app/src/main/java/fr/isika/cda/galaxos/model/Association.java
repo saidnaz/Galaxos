@@ -4,9 +4,11 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,7 +24,7 @@ public class Association {
 		
 		private int rnaNumber;
 		
-		private Adresse address;
+		//private Adresse address;
 		
 		private String email;
 		
@@ -31,8 +33,9 @@ public class Association {
 		private String description;
 		
 		private int phone;
-		@Column(nullable=false)
-		private Domain domain;
+		
+
+		
 		@Column(nullable=false)
 		private String logo;
 		
@@ -62,13 +65,6 @@ public class Association {
 			this.rnaNumber = rnaNumber;
 		}
 
-		public Adresse getAddress() {
-			return address;
-		}
-
-		public void setAddress(Adresse address) {
-			this.address = address;
-		}
 
 		public String getEmail() {
 			return email;
@@ -102,13 +98,6 @@ public class Association {
 			this.phone = phone;
 		}
 
-		public Domain getDomain() {
-			return domain;
-		}
-
-		public void setDomain(Domain domain) {
-			this.domain = domain;
-		}
 
 		public String getLogo() {
 			return logo;

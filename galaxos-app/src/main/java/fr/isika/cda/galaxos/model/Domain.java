@@ -1,6 +1,6 @@
 package fr.isika.cda.galaxos.model;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -22,10 +22,13 @@ public class Domain {
 	 @OneToMany(mappedBy ="domain")
 	 private List<Service> services;
 	 
-	 public List<Service> getServices() {
+	 
+	 @OneToMany(mappedBy ="domain")
+	 private List<Resource> resource;
+	 
+		public List<Service> getServices() {
 		return services;
 	}
-
 
 
 		public void setServices(List<Service> services) {

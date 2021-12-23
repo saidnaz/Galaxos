@@ -8,6 +8,7 @@ import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -35,8 +36,8 @@ public class Adherent implements Serializable {
 	    @Column(name="Comptebloque", nullable=false)
 	    private boolean isAccountNotLocked = true;
 	    
-	    @ManyToOne
-		private Association association;
+	    @ManyToOne(fetch=FetchType.EAGER)
+		private Association  association;
 
 	    
 	    public Adherent() {
