@@ -5,8 +5,6 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
 @Entity
 public class ComptUser {
@@ -20,14 +18,9 @@ public class ComptUser {
 	@Column(name = "CompteValide", nullable = false)
 	private boolean isAccountValide = true;
 
-	@Column(name = "CompteClose", nullable = false)
-	private boolean isAccountNotValide = true;
-
 	
 	//Vas rejoindre la column fkAdherant 
-	@OneToOne
-	@JoinColumn(name = "fkAdherent")
-	private Adherent adherent;
+	
 
 	
 	//GET & SET
@@ -47,21 +40,7 @@ public class ComptUser {
 		this.isAccountValide = isAccountValide;
 	}
 
-	public boolean isAccountNotValide() {
-		return isAccountNotValide;
-	}
-
-	public void setAccountNotValide(boolean isAccountNotValide) {
-		this.isAccountNotValide = isAccountNotValide;
-	}
-
-	public Adherent getAdherent() {
-		return adherent;
-	}
-
-	public void setAdherent(Adherent adherent) {
-		this.adherent = adherent;
-	}
+	
 
 	public String getEmail() {
 		return email;
@@ -93,14 +72,18 @@ public class ComptUser {
 	public ComptUser() {
 		super();
 	}
-
+	
 	
 	//Methode to string pour afficher
 	
 	@Override
 	public String toString() {
-		return "ComptUser [email=" + email + ", mdp=" + mdp + ", isAccountValide=" + isAccountValide
-				+ ", isAccountNotValide=" + isAccountNotValide + ", adherent=" + adherent + "]";
+		return "ComptUser [email=" + email + ", mdp=" + mdp + ", isAccountValide=" + isAccountValide + "]";
 	}
+
+	
+	
+	
+	
 
 }
