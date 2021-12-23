@@ -9,45 +9,54 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "type")
+// @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+// @DiscriminatorColumn(name = "type")
 public class Adherent implements Serializable {
 	    private static final long serialVersionUID = 1L;
 
 	    
 	    @Id
-	    private String email;
+		@GeneratedValue(strategy = GenerationType.AUTO)
+		private Long id;
 	    
-	    @Column(name="motdepasse", nullable=false)
-	    private String password;
+
+//	    @Enumerated(value = EnumType.STRING)
+//	    private Role role = Role.ROLE_USER;
 	    
-	    @Enumerated(value = EnumType.STRING)
-	    private Role role = Role.ROLE_USER;
+	    @OneToOne
+		@JoinColumn(name = "fkAdherent")
+		private ComptUser user;
 	    
-	    @Column(name="Comptevalide", nullable=false)
-	    private boolean isAccountNotExpired = true;
+	    @OneToOne
+		@JoinColumn(name = "fkProfil")
+		private Profil profil;
 	    
-	    @Column(name="Comptebloque", nullable=false)
-	    private boolean isAccountNotLocked = true;
+	    @OneToOne
+		@JoinColumn(name = "fkMessagerie")
+		private Messagerie messagerie;
+
 	    
-	    @ManyToOne(fetch=FetchType.EAGER)
-		private Association  association;
+
 
 	    
 	    public Adherent() {
-			super();
-			
 		}
+	    
 		@Override
 		public int hashCode() {
-			return Objects.hash(email);
+			return Objects.hash(id, user);
 		}
+		
 		@Override
 		public boolean equals(Object obj) {
 			if (this == obj)
@@ -57,34 +66,31 @@ public class Adherent implements Serializable {
 			if (getClass() != obj.getClass())
 				return false;
 			Adherent other = (Adherent) obj;
-			return Objects.equals(email, other.email);
-		}
-		public boolean isAccountNotExpired() {
-			return isAccountNotExpired;
-		}
-		public void setAccountNotExpired(boolean isAccountNotExpired) {
-			this.isAccountNotExpired = isAccountNotExpired;
-		}
-		public String getPassword() {
-			return password;
-		}
-		public void setPassword(String password) {
-			this.password = password;
-		}
-		public boolean isAccountNotLocked() {
-			return isAccountNotLocked;
-		}
-		public void setAccountNotLocked(boolean isAccountNotLocked) {
-			this.isAccountNotLocked = isAccountNotLocked;
-		}
-		
-		public Association getAssociation() {
-			return association;
+			return Objects.equals(id, other.id) && Objects.equals(user, other.user);
 		}
 
-		public void setAssociation(Association association) {
-			this.association = association;
-		}
+			@Override
+			public String toString() {
+				StringBuilder builder = new StringBuilder();
+				
+				builder.append("Profil [id=");
+				builder.append(id);
+				
+				builder.append(", user=");
+				builder.append(user);
+				
+				builder.append(", profil=");
+				builder.append(profil);
+				
+				builder.append(", messagerie=");
+				builder.append(messagerie);
+				
+				builder.append("]");
+				
+				return builder.toString();
+			}
+		
+		
 	   
 
 }
