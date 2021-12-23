@@ -18,13 +18,15 @@ public class Message {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long idMessage;
+	private Long id;
 
 	@Column(name = "Date", nullable = false)
 	private LocalDateTime date;
 
-	@Column(name = "Message", nullable = false)
-	private String message;
+	@Column(name = "Texte", nullable = false)
+	private String texte;
+	
+	
 
 	@OneToOne
 	@JoinColumn(name = "fk_destinataire")
@@ -34,17 +36,19 @@ public class Message {
 	@JoinColumn(name = "fk_expediteur")
 	private Adherent expediteur;
 
+
+
 	
 	public Long getIdMessage() {
-		return idMessage;
+		return id;
 	}
 
-	public String getMessage() {
-		return message;
+	public String getTexte() {
+		return texte;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
+	public void setTexte(String texte) {
+		this.texte = texte;
 	}
 
 	public Adherent getDestinataire() {
@@ -65,12 +69,25 @@ public class Message {
 	
 	@Override
 	public String toString() {
-		return "Message [idMessage=" + idMessage + ", date=" + date + ", message=" + message + "]";
+		StringBuilder builder = new StringBuilder();
+		
+		builder.append("Message [id=");
+		builder.append(id);
+		
+		builder.append(", date=");
+		builder.append(date);
+		
+		builder.append(", texte=");
+		builder.append(texte);
+		
+		builder.append("]");
+		
+		return builder.toString();
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(idMessage);
+		return Objects.hash(id, date);
 	}
 
 	@Override
@@ -82,11 +99,10 @@ public class Message {
 		if (getClass() != obj.getClass())
 			return false;
 		Message other = (Message) obj;
-		return Objects.equals(idMessage, other.idMessage);
+		return Objects.equals(id, other.id) && Objects.equals(date, other.date);
 	}
 
 	public Message() {
-		super();
 	}
 
 	

@@ -33,8 +33,10 @@ public class Adherent implements Serializable {
 //	    @Enumerated(value = EnumType.STRING)
 //	    private Role role = Role.ROLE_USER;
 	    
+	    private Role role;
+	    
 	    @OneToOne
-		@JoinColumn(name = "fkAdherent")
+		@JoinColumn(name = "fkUser")
 		private ComptUser user;
 	    
 	    @OneToOne
@@ -42,14 +44,32 @@ public class Adherent implements Serializable {
 		private Profil profil;
 	    
 	    @OneToOne
-		@JoinColumn(name = "fkMessagerie")
-		private Messagerie messagerie;
+		@JoinColumn(name = "fkDashboard")
+		private Dashboard board;
 
 	    
+	    public Long getId() {
+			return id;
+		}
 
+		public Role getRole() {
+			return role;
+		}
 
-	    
-	    public Adherent() {
+		public ComptUser getUser() {
+			return user;
+		}
+
+		public Profil getProfil() {
+			return profil;
+		}
+
+		public Dashboard getBoard() {
+			return board;
+		}
+		
+
+		public Adherent() {
 		}
 	    
 		@Override
@@ -82,8 +102,8 @@ public class Adherent implements Serializable {
 				builder.append(", profil=");
 				builder.append(profil);
 				
-				builder.append(", messagerie=");
-				builder.append(messagerie);
+				builder.append(", dashBoard=");
+				builder.append(board);
 				
 				builder.append("]");
 				
