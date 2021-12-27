@@ -1,125 +1,104 @@
 package fr.isika.cda.galaxos.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="associations")
+@Table(name = "Association")
 public class Association {
 
-		@Id
-		@GeneratedValue(strategy = GenerationType.AUTO)
-		private Long id;
-		
-		private String associationName;
-		
-		private int rnaNumber;
-		
-		//private Adresse address;
-		
-		private String email;
-		
-		private String password;
-		
-		private String description;
-		
-		private int phone;
-		
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-		
-		@Column(nullable=false)
-		private String logo;
-		
-		 @OneToMany(mappedBy ="association")
-		 private List<Adherent> adherents;
-		 
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
+	private Etat etat;
 
+	@OneToOne
+	@JoinColumn(name = "fk_ficheAssociation")
+	private FicheAssociation ficheAssociation;
 
-		public Association() {
-			super();
-			// TODO Auto-generated constructor stub
-		}
+	@ManyToOne
+	@JoinColumn(name = "fk_idDomain", nullable = false)
+	private Domain fk_idDomain;
 
-		public String getAssociationName() {
-			return associationName;
-		}
+	// @OneToMany(mappedBy = "association")
+	// private List<Role> roles;
 
-		public void setAssociationName(String associationName) {
-			this.associationName = associationName;
-		}
+	public enum Etat {
+		EN_COURS, VALIDE, BLOQUE, REJETE;
+	}
 
-		public int getRnaNumber() {
-			return rnaNumber;
-		}
+	// CONSTRUCTORS
 
-		public void setRnaNumber(int rnaNumber) {
-			this.rnaNumber = rnaNumber;
-		}
+	public Association(Long id, Etat etat, FicheAssociation ficheAssociation, Domain fk_idDomain) {
+		super();
+		this.id = id;
+		this.etat = etat;
+		this.ficheAssociation = ficheAssociation;
+		this.fk_idDomain = fk_idDomain;
+	}
 
+	public Association() {
+		super();
+	}
 
-		public String getEmail() {
-			return email;
-		}
+	// GETTERS & SETTERS
+	public Long getId() {
+		return id;
+	}
 
-		public void setEmail(String email) {
-			this.email = email;
-		}
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-		public String getPassword() {
-			return password;
-		}
+	public Etat getEtat() {
+		return etat;
+	}
 
-		public void setPassword(String password) {
-			this.password = password;
-		}
+	public void setEtat(Etat etat) {
+		this.etat = etat;
+	}
 
-		public String getDescription() {
-			return description;
-		}
+	public FicheAssociation getFicheAssociation() {
+		return ficheAssociation;
+	}
 
-		public void setDescription(String description) {
-			this.description = description;
-		}
+	public void setFicheAssociation(FicheAssociation ficheAssociation) {
+		this.ficheAssociation = ficheAssociation;
+	}
 
-		public int getPhone() {
-			return phone;
-		}
+	public Domain getFk_idDomain() {
+		return fk_idDomain;
+	}
 
-		public void setPhone(int phone) {
-			this.phone = phone;
-		}
+	public void setFk_idDomain(Domain fk_idDomain) {
+		this.fk_idDomain = fk_idDomain;
+	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Association [id=");
+		builder.append(id);
+		builder.append(", etat=");
+		builder.append(etat);
+		builder.append(", ficheAssociation=");
+		builder.append(ficheAssociation);
+		builder.append(", fk_idDomain=");
+		builder.append(fk_idDomain);
+		builder.append("]");
+		return builder.toString();
+	}
 
-		public String getLogo() {
-			return logo;
-		}
-
-		public void setLogo(String logo) {
-			this.logo = logo;
-		}
-
-		public List<Adherent> getAdherents() {
-			return adherents;
-		}
-
-		public void setAdherents(List<Adherent> adherents) {
-			this.adherents = adherents;
-		}
-
-		public Long getId() {
-			return id;
-		}
-		 
-		 
-		 
-		 
 }
