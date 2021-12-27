@@ -1,6 +1,6 @@
 package fr.isika.cda.galaxos.model;
 
-
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -15,27 +15,26 @@ public class Domain {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idDomain;
-	
-	@Column(name="NomDomaine", nullable=false)
+
+	@Column(name = "NomDomaine", nullable = false)
 	private String name;
-	
-	 @OneToMany(mappedBy ="domain")
-	 private List<Service> services;
-	 
-	 
-	 @OneToMany(mappedBy ="domain")
-	 private List<Resource> resource;
-	 
-		public List<Service> getServices() {
+
+	@OneToMany(mappedBy = "domain")
+	private List<Service> services;
+
+	@OneToMany(mappedBy = "domain")
+	private List<Resource> resource;
+
+	@OneToMany(mappedBy = "fk_idDomain")
+	private List<Association> associations = new ArrayList<>();
+
+	public List<Service> getServices() {
 		return services;
 	}
 
-
-		public void setServices(List<Service> services) {
-			this.services = services;
-		}
-
-
+	public void setServices(List<Service> services) {
+		this.services = services;
+	}
 
 	public Domain(String name, List<Service> services) {
 		super();
@@ -43,14 +42,10 @@ public class Domain {
 		this.services = services;
 	}
 
-
-
 	public Domain() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-
 
 	public String getName() {
 		return name;
@@ -63,6 +58,5 @@ public class Domain {
 	public Long getIdDomain() {
 		return idDomain;
 	}
-	
 
 }
