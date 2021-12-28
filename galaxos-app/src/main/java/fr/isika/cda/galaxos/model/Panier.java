@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
@@ -14,17 +15,40 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 
 
+@Entity
 public class Panier implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long idPanier;
+	
+    private LocalDate datePanier;
+    private Double prixTotal;
+	private boolean isValid;
+    private Integer quantiteTotale;
+	
+	
+	@Enumerated(EnumType.STRING)
+	private PaymentType typePaiement;
+
+	
+	
+	
+	@OneToMany(cascade = CascadeType.REMOVE,
+			fetch=FetchType.EAGER)
+	private List<Order_Line> orderlines ;
+	
+	@ManyToOne
+	@JoinColumn(name="FK_CONSUMER_ID")
+	Consumer consumer;
 	
 	public Panier(List<Order_Line> orderlines, Consumer consumer, LocalDate datePanier, PaymentType typePaiement,
 			Double prixTotal, boolean isValid, Integer quantiteTotale) {
@@ -50,17 +74,7 @@ public class Panier implements Serializable {
 				+ ", isValid=" + isValid + ", quantiteTotale=" + quantiteTotale + "]";
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long idPanier;
 	
-	@OneToMany(cascade = CascadeType.REMOVE,
-			fetch=FetchType.EAGER)
-	private List<Order_Line> orderlines ;
-	
-	@ManyToOne
-	@JoinColumn(name="FK_CONSUMER_ID")
-	Consumer consumer;
 	
 	public List<Order_Line> getOrderlines() {
 		return orderlines;
@@ -126,18 +140,7 @@ public class Panier implements Serializable {
 		return idPanier;
 	}
 
-	@Temporal(TemporalType.DATE)
-	private LocalDate datePanier;
 	
-	
-	
-	@Enumerated(EnumType.STRING)
-	private PaymentType typePaiement;
-
-	private Double prixTotal;
-	private boolean isValid;
-
-	private Integer quantiteTotale;
 	
 
 }
