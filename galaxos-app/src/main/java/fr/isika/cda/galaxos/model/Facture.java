@@ -1,4 +1,4 @@
-package fr.isika.cda.galaxos.app;
+package fr.isika.cda.galaxos.model;
 
 	import java.io.Serializable;
 
@@ -8,8 +8,6 @@ package fr.isika.cda.galaxos.app;
 	import javax.persistence.GenerationType;
 	import javax.persistence.Id;
 	import javax.persistence.OneToOne;
-
-import fr.isika.cda.galaxos.model.Panier;
 
 	@Entity
 	public class Facture implements Serializable{
