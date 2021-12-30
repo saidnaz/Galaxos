@@ -44,7 +44,7 @@ public class Domain {
 
 	public Domain() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public String getName() {
