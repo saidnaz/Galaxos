@@ -8,7 +8,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import fr.isika.cda.galaxos.model.Consumer;
-import fr.isika.cda.viewModel.ConsumerForm;
+import fr.isika.cda.galaxos.viewmodel.ConsumerForm;
 
 
 

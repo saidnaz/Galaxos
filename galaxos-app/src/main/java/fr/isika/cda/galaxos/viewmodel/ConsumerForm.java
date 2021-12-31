@@ -1,4 +1,4 @@
-package fr.isika.cda.viewModel;
+package fr.isika.cda.galaxos.viewmodel;
 
 import java.io.Serializable;
 
