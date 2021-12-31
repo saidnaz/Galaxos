@@ -3,7 +3,6 @@ package fr.isika.cda.galaxos.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,32 +12,31 @@ import javax.persistence.ManyToOne;
 
 
 
+
+
 @Entity
-public class Order_Line implements Serializable{
-	
+public class OrderLine implements Serializable{
+
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 6066098580527022857L;
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
-	private int order_Id;
-	
+	private int orderId;
+
 	@ManyToOne
 	@JoinColumn(name="FK_Command_ID")
-	Resource  resource;
-	
-	
-	private LocalDate dateLigneCommand;
-	 
-	public Resource getResource() {
-		return resource;
-	}
+	private Resource resource;
 
-	public void setResource(Resource resource) {
-		this.resource = resource;
-	}
+	private LocalDate dateLigneCommand;
+
+
+	  public Resource getResource() { return resource; }
+
+	  public void setResource(Resource resource) { this.resource = resource; }
+
 
 	public LocalDate getDateorderline() {
 		return dateLigneCommand;
@@ -56,36 +54,36 @@ public class Order_Line implements Serializable{
 		this.prix = prix;
 	}
 
-	public Order_Line(Resource resource, LocalDate dateorderline, Double prix, Integer quantité) {
+	public OrderLine(Resource resource, LocalDate dateorderline, Double prix, Integer quantite) {
 		super();
-		this.resource = resource;
+		this.resource =resource;
 		this.dateLigneCommand = dateorderline;
 		this.prix = prix;
-		this.quantité = quantité;
+		this.quantite = quantite;
 	}
 
-	public Order_Line() {
+	public OrderLine() {
 		super();
 	}
-	
-	public Integer getQuantité() {
-		return quantité;
+
+	public Integer getQuantite() {
+		return quantite;
 	}
 
-	public void setQuantité(Integer quantité) {
-		this.quantité = quantité;
+	public void setQuantité(Integer quantite) {
+		this.quantite = quantite;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
-	public int getOrder_Id() {
-		return order_Id;
+	public int getOrderId() {
+		return getOrderId();
 	}
 
 	private Double prix;
-	
-	private Integer quantité;
+
+	private Integer quantite;
 
 }
