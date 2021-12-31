@@ -1,6 +1,6 @@
 package fr.isika.cda.galaxos.model;
 
-public enum PaymentType {
+public enum TypePay {
 	
 	online,check
 
