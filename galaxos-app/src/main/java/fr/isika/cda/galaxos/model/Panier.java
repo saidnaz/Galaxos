@@ -15,8 +15,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
-
+import fr.isika.cda.galaxos.model.TypePay;
+import jdk.jfr.Timestamp;
 
 @Entity
 public class Panier implements Serializable {
@@ -30,27 +32,38 @@ public class Panier implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idPanier;
 	
+	@Transient
+	@ManyToOne
+	@JoinColumn(name="FK_PR_ID")
+	Resource  resource;
+	
+	@Timestamp
     private LocalDate datePanier;
     private Double prixTotal;
 	private boolean isValid;
     private Integer quantiteTotale;
+    
+    @Enumerated(EnumType.STRING)
+	private TypePay typePaiement;
 	
 	
-	@Enumerated(EnumType.STRING)
-	private PaymentType typePaiement;
+	public TypePay getTypePaiement() {
+		return typePaiement;
+	}
 
-	
-	
-	
+	public void setTypePaiement(TypePay typePaiement) {
+		this.typePaiement = typePaiement;
+	}
+
 	@OneToMany(cascade = CascadeType.REMOVE,
 			fetch=FetchType.EAGER)
-	private List<Order_Line> orderlines ;
+	private List<OrderLine> orderlines ;
 	
 	@ManyToOne
 	@JoinColumn(name="FK_CONSUMER_ID")
 	Consumer consumer;
 	
-	public Panier(List<Order_Line> orderlines, Consumer consumer, LocalDate datePanier, PaymentType typePaiement,
+	public Panier(List<OrderLine> orderlines, Consumer consumer, LocalDate datePanier, TypePay typePaiement,
 			Double prixTotal, boolean isValid, Integer quantiteTotale) {
 		super();
 		this.orderlines = orderlines;
@@ -76,11 +89,11 @@ public class Panier implements Serializable {
 
 	
 	
-	public List<Order_Line> getOrderlines() {
+	public List<OrderLine> getOrderlines() {
 		return orderlines;
 	}
 
-	public void setOrderlines(List<Order_Line> orderlines) {
+	public void setOrderlines(List<OrderLine> orderlines) {
 		this.orderlines = orderlines;
 	}
 
@@ -100,13 +113,9 @@ public class Panier implements Serializable {
 		this.datePanier = datePanier;
 	}
 
-	public PaymentType getTypePaiement() {
-		return typePaiement;
-	}
+	
 
-	public void setTypePaiement(PaymentType typePaiement) {
-		this.typePaiement = typePaiement;
-	}
+
 
 	public Double getPrixTotal() {
 		return prixTotal;

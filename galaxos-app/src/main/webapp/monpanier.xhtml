@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Galaxos panier</title>
+	<link rel="stylesheet" href="../ressources/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../ressources/css/stylePanier.css" />
+</h:head>
+<body>
+
+	<div class="container-fluid">
+		<h:form>
+			<div class="row">
+
+				<div class="cart-title mt-50">
+					<h2>Mon Panier</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 col-lg-8">
+					<div class="overflow-x: auto">
+
+						<table class="table table-responsive">
+							<thead>
+								<tr>
+									<th>Image</th>
+									<th>Ressource/Service</th>
+									<th>Prix</th>
+									<th>Quantité</th>
+									<th>Date</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><a href=""><img
+											src="../ressources//MyAvatar.png" alt="Ressource" /></a></td>
+									<td>
+										<h5>
+											<h:outputText value="" />
+										</h5>
+									</td>
+									<td><span><h:outputText value="" /></span></td>
+									<td><span><h:outputText value="" /></span></td>
+									<td><span><h:outputText value="" /></span></td>
+<td><span><h:outputText value="" /></span></td>
+								</tr>
+
+
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+
+
+				
+					<div class="col-12 col-lg-4 cart-summary">
+
+						<h5>Résumé de la commande</h5>
+
+						<ul>
+							<li><span>sous total:</span> <span>£<h:outputText
+										value="" /></span></li>
+
+							<li><span>totale:</span> <span>£<h:outputText
+										value="#" /></span></li>
+						</ul>
+<div class="box">
+
+						<h:commandButton class="btn-primary w-50" value="Ajouter au panier" />
+
+
+
+					</div>
+
+				</div>
+			</div>
+
+
+		</h:form>
+	</div>
+
+
+</body>
+</html>
