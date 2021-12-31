@@ -1,5 +1,7 @@
 package fr.isika.cda.galaxos.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Resource {
@@ -21,6 +24,8 @@ public class Resource {
 	private Domain domain;
 	
 	private String photo;
+	@OneToMany
+	private  List<OrderLine> orderlines;
 		
 	public Resource(String name, Domain domain, String photo) {
 		super();
