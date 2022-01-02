@@ -10,8 +10,6 @@ import javax.persistence.PersistenceContext;
 import fr.isika.cda.galaxos.model.Consumer;
 import fr.isika.cda.galaxos.viewmodel.ConsumerForm;
 
-
-
 @Stateless
 public class ConsumerRepository {
 	
@@ -19,34 +17,33 @@ public class ConsumerRepository {
 	private EntityManager entityManager;
 	public Consumer create(ConsumerForm consumerForm) {
 		
-		// On fait le mapping des attributs entre l'objet qui provient de la couche présentation
-		// dans l'entité qu'on va persister
-		Consumer consumerAccount = new Consumer();
+		Consumer consumer = new Consumer();
 
-		consumerAccount.setEmail(consumerForm.getEmail());
-		consumerAccount.setPassword(consumerForm.getPassword());
+		consumer.setEmail(consumerForm.getEmail());
+		consumer.setPassword(consumerForm.getPassword());
 		
+		entityManager.persist(consumer);
 		
-		entityManager.persist(consumerAccount);
-		
-		// On renvoie l'objet persisté à jour (avec l'identifiant affecté par hibernate automatiquement)
-		return consumerAccount;
+		return consumer;
 	}
 	
-	
-	
-	public Optional<Consumer> findByIdConsumer(final Long idemail) {
+	public Optional<Consumer> findByEmail(String email) {
 		try {
 			return Optional.ofNullable(
 					this.entityManager
-						.createNamedQuery("Consumer.findByIdConsumer", Consumer.class)
-						.setParameter("idemail_param", idemail)
+						.createNamedQuery("Consumer.findByEmail", Consumer.class)
+						.setParameter("email_param", email)
 						.getSingleResult()
 					);
 		} catch(NoResultException ex) {
-			System.out.println("Consumer.findByIdemail() - not found : " + idemail);
+			System.out.println("Consumer.findByemail() - not found : " + email);
 		}
 		return Optional.empty();
+	}
+
+	public Consumer findByIdConsumer(Long idUser) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

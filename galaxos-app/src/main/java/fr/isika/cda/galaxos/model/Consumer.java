@@ -6,9 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
+@NamedQuery(name = "Consumer.findByEmail", query = "SELECT cons FROM Consumer cons WHERE cons.email = :email_param")
 public class Consumer {
 	
 	@Id
