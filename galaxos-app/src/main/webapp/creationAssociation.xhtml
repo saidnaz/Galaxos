@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Création d'une association de service</title>
+</h:head>
+<body>
+	<h3>Créer une association de service</h3>
+	<hr />
+	<h:form id="createAssoForm">
+		<h:panelGrid columns="3">
+
+			<h:outputLabel value="Nom de l'asso: " />
+			<h:inputText id="nomAssoInput"
+				value="#{creationCompteAssociationBean.form.nom}" />
+			<h:messages for="nomAssoInput" />
+
+			<h:outputLabel value="Slogan : " />
+			<h:inputText id="sloganInput"
+				value="#{creationCompteAssociationBean.form.slogan}" />
+			<h:messages for="sloganInput" />
+
+			<h:outputLabel value="Logo : " />
+			<h:inputText id="logoInput"
+				value="#{creationCompteAssociationBean.form.logo}" />
+			<h:messages for="logoInput" />
+
+			<h:outputLabel value="RNA : " />
+			<h:inputText id="rnaNumberInput"
+				value="#{creationCompteAssociationBean.form.rnaNumber}" />
+			<h:messages for="rnaNumberInput" />
+
+			<h:outputLabel value="Description : " />
+			<h:inputSecret id="descriptionInput"
+				value="#{creationCompteAssociationBean.form.description}" />
+			<h:messages for="descriptionInput" />
+
+			<span></span>
+			<h:commandButton value="Créer l'association"
+				action="#{creationCompteAssociationBean.create()}" />
+		</h:panelGrid>
+
+	</h:form>
+
+</body>
+</html>

@@ -29,7 +29,7 @@ public class Association {
 	private FicheAssociation ficheAssociation;
 
 	@ManyToOne
-	@JoinColumn(name = "fk_idDomain", nullable = false)
+	@JoinColumn(name = "fk_idDomain", nullable = true)
 	private Domain fk_idDomain;
 
 	// @OneToMany(mappedBy = "association")
