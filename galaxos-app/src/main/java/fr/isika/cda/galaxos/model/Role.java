@@ -1,9 +1,22 @@
 package fr.isika.cda.galaxos.model;
 
-public enum Role   {
+import javax.persistence.*;
 
-	 ROLE_USER,
-	 ROLE_ADMIN;
+@Entity
+public abstract class Role {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
+	@ManyToOne
+	@JoinColumn()
+	private Adherent adherent;
+	
+	@OneToOne
+	@JoinColumn()
+	private Association association;
+	
 	
 	
 }
