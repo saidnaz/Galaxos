@@ -18,27 +18,30 @@ public class FicheAssociation {
 	@Column(nullable = false)
 	private String nom;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String logo;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String slogan;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String description;
 
 	@Column(nullable = false)
-	private int rnaNumber;
+	private String rnaNumber;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private int commission;
+	
+	@Column(nullable = false)
+	private String localisation;
 
 	// CONSTRCUTORS
 	public FicheAssociation() {
 		super();
 	}
 
-	public FicheAssociation(Long id, String nom, String logo, String slogan, String description, int rnaNumber,
+	public FicheAssociation(Long id, String nom, String logo, String slogan, String description, String rnaNumber,
 			int commission) {
 		super();
 		this.id = id;
@@ -91,11 +94,11 @@ public class FicheAssociation {
 		this.description = description;
 	}
 
-	public int getRnaNumber() {
+	public String getRnaNumber() {
 		return rnaNumber;
 	}
 
-	public void setRnaNumber(int rnaNumber) {
+	public void setRnaNumber(String rnaNumber) {
 		this.rnaNumber = rnaNumber;
 	}
 
@@ -105,6 +108,15 @@ public class FicheAssociation {
 
 	public void setCommission(int commission) {
 		this.commission = commission;
+	}
+	
+
+	public String getLocalisation() {
+		return localisation;
+	}
+
+	public void setLocalisation(String localisation) {
+		this.localisation = localisation;
 	}
 
 	@Override

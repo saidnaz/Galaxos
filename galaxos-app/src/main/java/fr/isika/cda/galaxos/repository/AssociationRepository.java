@@ -25,6 +25,7 @@ public class AssociationRepository {
 		ficheAsso.setNom(form.getNom());
 		ficheAsso.setRnaNumber(form.getRnaNumber());
 		ficheAsso.setSlogan(form.getSlogan());
+		ficheAsso.setLocalisation(form.getLocalisation());
 
 		asso.setEtat(Etat.EN_COURS);
 		asso.setFk_idDomain(null);

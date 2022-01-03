@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:pt="http://java.sun.com/jsf/passthrough"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 <h:head>
 	<title>Galaxos : la plateforme de tous les services</title>
@@ -121,7 +121,7 @@
 			<div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
 				<div class="card z-index-0">
 					<div class="card-header text-center pt-4">
-						<h5>Créer son association</h5>
+						<h5>Inscrire mon association</h5>
 					</div>
 					<div class="card-body">
 
@@ -148,7 +148,7 @@
 
 							<div class="mb-3">
 								<h:inputText id="rnaNumberInput" class="form-control"
-									placeholder="Numéro RNA" aria-label="RNA"
+									pt:placeholder="Numéro RNA" aria-label="RNA"
 									aria-describedby="password-addon"
 									value="#{creationCompteAssociationBean.form.rnaNumber}" />
 								<h:messages for="rnaNumberInput" />
@@ -161,6 +161,14 @@
 									<option value="2">Nature</option>
 									<option value="3">Sport</option>
 								</select>
+							</div>
+							
+							<div class="mb-3">
+								<h:inputText id="localisationInput" class="form-control"
+									pt:placeholder="Localisation" aria-label="RNA"
+									aria-describedby="password-addon"
+									value="#{creationCompteAssociationBean.form.localisation}" />
+								<h:messages for="localisationInput" />
 							</div>
 
 							<div class="form-check form-check-info text-left">

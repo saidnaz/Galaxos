@@ -18,14 +18,14 @@ public class AssociationCreationForm implements Serializable {
 
 	private String description;
 
-	private int rnaNumber;
+	private String rnaNumber;
 
 	private int commission;
 
 	private Domain fk_idDomain;
 
-	
-	
+	private String localisation;
+
 	public AssociationCreationForm() {
 	}
 
@@ -69,11 +69,11 @@ public class AssociationCreationForm implements Serializable {
 		this.description = description;
 	}
 
-	public int getRnaNumber() {
+	public String getRnaNumber() {
 		return rnaNumber;
 	}
 
-	public void setRnaNumber(int rnaNumber) {
+	public void setRnaNumber(String rnaNumber) {
 		this.rnaNumber = rnaNumber;
 	}
 
@@ -96,7 +96,13 @@ public class AssociationCreationForm implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
+
+	public String getLocalisation() {
+		return localisation;
+	}
+
+	public void setLocalisation(String localisation) {
+		this.localisation = localisation;
+	}
 
 }
