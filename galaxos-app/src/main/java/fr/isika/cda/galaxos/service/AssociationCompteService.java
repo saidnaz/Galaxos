@@ -1,10 +1,10 @@
-package fr.isika.cda.galaxos.services;
+package fr.isika.cda.galaxos.service;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import fr.isika.cda.galaxos.model.Association;
-import fr.isika.cda.galaxos.repositories.AssociationRepository;
+import fr.isika.cda.galaxos.repository.AssociationRepository;
 import fr.isika.cda.galaxos.viewmodel.AssociationCreationForm;
 
 @Stateless

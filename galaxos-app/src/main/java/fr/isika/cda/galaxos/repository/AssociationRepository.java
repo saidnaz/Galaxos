@@ -1,11 +1,10 @@
-package fr.isika.cda.galaxos.repositories;
+package fr.isika.cda.galaxos.repository;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.Association.Etat;
-import fr.isika.cda.galaxos.model.Domain;
 import fr.isika.cda.galaxos.model.FicheAssociation;
 import fr.isika.cda.galaxos.viewmodel.AssociationCreationForm;
 
@@ -30,7 +29,7 @@ public class AssociationRepository {
 		asso.setEtat(Etat.EN_COURS);
 		asso.setFk_idDomain(null);
 		asso.setFicheAssociation(ficheAsso);
-		
+
 		entityManager.persist(ficheAsso);
 		entityManager.persist(asso);
 
