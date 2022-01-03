@@ -5,9 +5,10 @@ import javax.persistence.*;
 import fr.isika.cda.galaxos.model.Association;
 
 @Entity
-@Table(name="clients")
 @Inheritance(strategy=InheritanceType.JOINED)
-@PrimaryKeyJoinColumn(name="id")
+/*@SecondaryTable(
+	    name = "clients",
+	    pkJoinColumns = @PrimaryKeyJoinColumn(name = "id"))*/
 public abstract class Client extends Role{
 	
 	@OneToOne(cascade = CascadeType.ALL)

@@ -15,7 +15,7 @@ public abstract class Role {
 	private Long id;
 	
 	@ManyToOne
-	@JoinColumn()
+	@JoinColumn(name="adherent_id")
 	private Adherent adherent;
 	
 	public Role() {}
