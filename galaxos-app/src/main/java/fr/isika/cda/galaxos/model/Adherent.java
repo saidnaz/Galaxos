@@ -1,22 +1,10 @@
 package fr.isika.cda.galaxos.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 import fr.isika.cda.galaxos.model.roles.Role;
 
@@ -35,7 +23,8 @@ public class Adherent implements Serializable {
 //	    @Enumerated(value = EnumType.STRING)
 //	    private Role role = Role.ROLE_USER;
 	    
-	    private Role role;
+	    @OneToMany @JoinColumn(name="adherent_id")
+	    private List<Role> roles;
 	    
 	    @OneToOne
 		@JoinColumn(name = "fkUser")
