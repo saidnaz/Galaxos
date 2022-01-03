@@ -39,12 +39,13 @@ public class Adherent implements Serializable {
 		private Dashboard board;
 
 	    
-	    public Long getId() {
-			return id;
+	  
+		public List<Role> getRoles() {
+			return roles;
 		}
 
-		public Role getRole() {
-			return role;
+		public void setRoles(Role role) {
+			this.roles.add(role);
 		}
 
 		public ComptUser getUser() {
