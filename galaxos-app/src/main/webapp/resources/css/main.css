@@ -124,8 +124,9 @@ body{
 }
 
 .main-button{
-    background-color: #706AC2;
-    border-radius:35px;
+    background-color: #706AC2!important;
+    border-radius:35px!important;
+    color:white!important;
 }
 
 .button-footer{
