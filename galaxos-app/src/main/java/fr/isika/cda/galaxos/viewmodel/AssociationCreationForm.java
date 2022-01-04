@@ -21,18 +21,11 @@ public class AssociationCreationForm implements Serializable {
 	@NotNull(message = "Ce champs doit être rempli")
 	private String nom;
 
-	private String logo;
-
-	private String slogan;
-
-	private String description;
 
 	@NotEmpty(message = "Ce champs doit être rempli")
 	@NotNull(message = "Ce champs doit être rempli")
 	@Pattern(regexp = "^[A-Z]{1}[0-9]{9}$", message = "Ce champs doit correspondre à un numéro RNA valide")
 	private String rnaNumber;
-
-	private int commission;
 
 	private Domain fk_idDomain;
 
@@ -60,44 +53,12 @@ public class AssociationCreationForm implements Serializable {
 		this.nom = nom;
 	}
 
-	public String getLogo() {
-		return logo;
-	}
-
-	public void setLogo(String logo) {
-		this.logo = logo;
-	}
-
-	public String getSlogan() {
-		return slogan;
-	}
-
-	public void setSlogan(String slogan) {
-		this.slogan = slogan;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public String getRnaNumber() {
 		return rnaNumber;
 	}
 
 	public void setRnaNumber(String rnaNumber) {
 		this.rnaNumber = rnaNumber;
-	}
-
-	public int getCommission() {
-		return commission;
-	}
-
-	public void setCommission(int commission) {
-		this.commission = commission;
 	}
 
 	public Domain getFk_idDomain() {

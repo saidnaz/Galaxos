@@ -5,8 +5,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.Association.Etat;
+import fr.isika.cda.galaxos.model.FicheAssoCompta;
+import fr.isika.cda.galaxos.model.FicheAssoDescriptif;
+import fr.isika.cda.galaxos.model.FicheAssoGestionnaire;
 import fr.isika.cda.galaxos.model.FicheAssociation;
 import fr.isika.cda.galaxos.viewmodel.AssociationCreationForm;
+import fr.isika.cda.galaxos.viewmodel.AssociationFinalisationForm;
 
 @Stateless
 public class AssociationRepository {
@@ -32,5 +36,44 @@ public class AssociationRepository {
 		entityManager.persist(asso);
 
 		return asso;
+	}
+
+	public FicheAssoDescriptif creationFicheAssoDescriptif(AssociationFinalisationForm form) {
+
+		FicheAssoDescriptif assoDescriptif = new FicheAssoDescriptif();
+
+		assoDescriptif.setSlogan(form.getSlogan());
+		assoDescriptif.setDescription(form.getDescription());
+		assoDescriptif.setLogo(form.getLogo());
+		assoDescriptif.setEtat(fr.isika.cda.galaxos.model.FicheAssoDescriptif.Etat.EN_ATTENTE_DE_VALIDATION);
+
+		entityManager.persist(assoDescriptif);
+
+		return assoDescriptif;
+	}
+
+	public FicheAssoGestionnaire creationFicheAssoGestionnaire(AssociationFinalisationForm form) {
+
+		FicheAssoGestionnaire assoGestionnaire = new FicheAssoGestionnaire();
+
+		assoGestionnaire.setPieceIdentite(form.getPieceIdentite());
+		assoGestionnaire.setEtat(fr.isika.cda.galaxos.model.FicheAssoGestionnaire.Etat.EN_ATTENTE_DE_VALIDATION);
+
+		entityManager.persist(assoGestionnaire);
+
+		return assoGestionnaire;
+	}
+
+	public FicheAssoCompta creationFicheAssoCompta(AssociationFinalisationForm form) {
+
+		FicheAssoCompta assoCompta = new FicheAssoCompta();
+
+		assoCompta.setRIB(form.getRIB());
+		assoCompta.setCommission(form.getCommission());
+		assoCompta.setEtat(fr.isika.cda.galaxos.model.FicheAssoCompta.Etat.EN_ATTENTE_DE_VALIDATION);
+
+		entityManager.persist(assoCompta);
+
+		return assoCompta;
 	}
 }

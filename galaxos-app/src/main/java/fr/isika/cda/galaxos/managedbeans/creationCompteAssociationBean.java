@@ -18,7 +18,7 @@ public class creationCompteAssociationBean implements Serializable {
 	@Inject
 	private AssociationCompteService service;
 
-	private AssociationCreationForm form = new AssociationCreationForm();;
+	private AssociationCreationForm form = new AssociationCreationForm();
 
 	public String create() {
 		UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("createAssoForm");

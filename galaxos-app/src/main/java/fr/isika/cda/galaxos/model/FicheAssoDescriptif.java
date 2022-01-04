@@ -31,7 +31,7 @@ public class FicheAssoDescriptif {
 	private String slogan;
 
 	public enum Etat {
-		EN_COURS, VALIDE, REFUSE;
+		EN_ATTENTE_DE_VALIDATION, VALIDE, REFUSE;
 	}
 
 	public FicheAssoDescriptif() {
@@ -51,9 +51,6 @@ public class FicheAssoDescriptif {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public Etat getEtat() {
 		return etat;

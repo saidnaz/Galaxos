@@ -31,8 +31,9 @@
 			class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
 			aria-hidden="true" id="iconSidenav"></i> <a class="navbar-brand m-0"
 			href="https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html"
-			target="_blank"> <img src="resources/images/logo.png" class="navbar-brand-img h-100"
-			alt="main_logo" /> <span class="ms-1 font-weight-bold">GALAXOS</span>
+			target="_blank"> <img src="resources/images/logo.png"
+			class="navbar-brand-img h-100" alt="main_logo" /> <span
+			class="ms-1 font-weight-bold">GALAXOS</span>
 		</a>
 	</div>
 	<hr class="horizontal dark mt-0" />
@@ -211,15 +212,15 @@
 								</div>
 							</div>
 							<div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
-								<div class=" border-radius-lg h-100" style="background: rgb(46, 47, 94); background: linear-gradient(274deg, rgba(46, 47, 94, 1) 23%, rgba(0, 135, 182, 1) 93%);">
+								<div class=" border-radius-lg h-100"
+									style="background: rgb(46, 47, 94); background: linear-gradient(274deg, rgba(46, 47, 94, 1) 23%, rgba(0, 135, 182, 1) 93%);">
 									<img src="resources/images/waves-white.svg"
 										class="position-absolute h-100 w-50 top-0 d-lg-block d-none"
 										alt="waves" />
 									<div
 										class="position-relative d-flex align-items-center justify-content-center h-100">
 										<img class="w-100 position-relative z-index-2 pt-4"
-											src="resources/images/rocket-white.png"
-											alt="rocket" />
+											src="resources/images/rocket-white.png" alt="rocket" />
 									</div>
 								</div>
 							</div>
@@ -242,16 +243,18 @@
 									<em>Une association qui marche c'est une association bien
 										rempli, alors dîtes nous en plus sur votre association !</em>
 								</p>
-								<form>
+								<h:form id="createAssoDescriptifForm">
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label for="slogan">Votre slogan</label> <input type="text"
-													class="form-control" id="slogan" />
+												<label for="slogan">Votre slogan</label>
+												<h:inputText id="sloganInput" class="form-control"
+													aria-label="RNA"
+													value="#{finalisationCompteAssociationBean.form.slogan}" />
+												<h:messages for="localisationInput"
+													errorClass="erreurInputForm" />
 											</div>
-
 										</div>
-
 										<div class="col-md-6">
 											<div class="form-group">
 												<label for="slogan">Votre logo</label> <input type="file"
@@ -259,21 +262,24 @@
 											</div>
 										</div>
 									</div>
-
 									<div class="row ">
 										<div class="form-group">
 											<label for="descriptionAsso">La descripion de votre
 												association</label>
-											<textarea class="form-control" id="descriptionAsso" rows="3"></textarea>
+											<h:inputTextarea id="descriptionAsso" rows="3"
+												class="form-control"
+												value="#{finalisationCompteAssociationBean.form.description}" />
 										</div>
 									</div>
 
 									<div class="row ">
 										<div class="col-12 d-flex justify-content-center  ">
-											<input type="button" value="Soumettre" class="btn main-button" />
+											<h:commandButton value="Soumettre"
+												class="btn main-button my-4 mb-2"
+												action="#{finalisationCompteAssociationBean.creationDescriptifAsso()}" />
 										</div>
 									</div>
-								</form>
+								</h:form>
 							</div>
 						</div>
 					</div>
@@ -293,7 +299,7 @@
 									<em>Pour une relation de confiance, nous avons besoin d'en
 										savoir plus sur vous !</em>
 								</p>
-								<form>
+								<h:form id="createAssoGestionnaireForm">
 									<div class="row">
 										<div class="col-md-12">
 											<div class="form-group">
@@ -305,10 +311,12 @@
 									</div>
 									<div class="row ">
 										<div class="col-12 d-flex justify-content-center  ">
-											<input type="button" value="Soumettre" class="btn main-button" />
+											<h:commandButton value="Soumettre"
+												class="btn main-button my-4 mb-2"
+												action="#{finalisationCompteAssociationBean.creationGestionnaireAsso()}" />
 										</div>
 									</div>
-								</form>
+								</h:form>
 							</div>
 						</div>
 					</div>
@@ -329,30 +337,35 @@
 									<em>Car le nerf de la guerre c'est l'argent, nous devons
 										en savoir plus</em>
 								</p>
-								<form>
+								<h:form>
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
 												<label for="slogan">Votre RIB</label> <input type="file"
 													class="form-control" id="file" placeholder="CNI" />
+
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label for="slogan">Votre commission</label>
 												<div class="input-group mb-4">
-													<input class="form-control" placeholder="Commission"
-														type="text" /> <span class="input-group-text">%</span>
+													<h:inputText id="sloganInput" class="form-control"
+														placeholder="Commission"
+														value="#{finalisationCompteAssociationBean.form.commission}" />
+													<span class="input-group-text">%</span>
 												</div>
 											</div>
 										</div>
 										<div class="row ">
 											<div class="col-12 d-flex justify-content-center  ">
-												<input type="button" value="Soumettre" class="btn main-button" />
+												<h:commandButton value="Soumettre"
+													class="btn main-button my-4 mb-2"
+													action="#{finalisationCompteAssociationBean.creationGestionnaireAsso()}" />
 											</div>
 										</div>
 									</div>
-								</form>
+								</h:form>
 							</div>
 						</div>
 					</div>
