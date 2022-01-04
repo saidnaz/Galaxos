@@ -33,7 +33,7 @@ public class FicheAssociation {
 	private String localisation;
 	
 	public enum Etat {
-		EN_COURS, VALIDE, REFUSE;
+		EN_ATTENTE_VALIDATION, VALIDE, REFUSE;
 	}
 
 	// CONSTRCUTORS

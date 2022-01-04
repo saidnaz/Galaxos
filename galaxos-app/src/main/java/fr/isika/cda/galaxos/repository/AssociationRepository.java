@@ -22,7 +22,7 @@ public class AssociationRepository {
 		ficheAsso.setNom(form.getNom());
 		ficheAsso.setRnaNumber(form.getRnaNumber());
 		ficheAsso.setLocalisation(form.getLocalisation());
-		ficheAsso.setEtat(fr.isika.cda.galaxos.model.FicheAssociation.Etat.EN_COURS);
+		ficheAsso.setEtat(fr.isika.cda.galaxos.model.FicheAssociation.Etat.EN_ATTENTE_VALIDATION);
 
 		asso.setEtat(Etat.EN_COURS);
 		asso.setFk_idDomain(null);
