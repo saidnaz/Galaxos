@@ -6,6 +6,8 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+
+import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.service.AssociationCompteService;
 import fr.isika.cda.galaxos.viewmodel.AssociationCreationForm;
 
