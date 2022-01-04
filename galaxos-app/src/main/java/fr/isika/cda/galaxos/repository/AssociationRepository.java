@@ -19,13 +19,10 @@ public class AssociationRepository {
 		Association asso = new Association();
 		FicheAssociation ficheAsso = new FicheAssociation();
 
-		ficheAsso.setCommission(form.getCommission());
-		ficheAsso.setDescription(form.getDescription());
-		ficheAsso.setLogo(form.getLogo());
 		ficheAsso.setNom(form.getNom());
 		ficheAsso.setRnaNumber(form.getRnaNumber());
-		ficheAsso.setSlogan(form.getSlogan());
 		ficheAsso.setLocalisation(form.getLocalisation());
+		ficheAsso.setEtat(fr.isika.cda.galaxos.model.FicheAssociation.Etat.EN_COURS);
 
 		asso.setEtat(Etat.EN_COURS);
 		asso.setFk_idDomain(null);

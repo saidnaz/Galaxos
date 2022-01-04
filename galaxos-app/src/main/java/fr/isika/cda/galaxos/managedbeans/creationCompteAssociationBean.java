@@ -23,7 +23,7 @@ public class creationCompteAssociationBean implements Serializable {
 	public String create() {
 		UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("createAssoForm");
 		service.create(form);
-		return "index?faces-redirect=true";
+		return "finalisationCreationAssociation?faces-redirect=true";
 	}
 
 	// GETTERS ET SETTERS

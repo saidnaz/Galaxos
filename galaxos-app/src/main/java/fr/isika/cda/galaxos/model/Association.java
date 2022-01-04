@@ -27,6 +27,18 @@ public class Association {
 	@OneToOne
 	@JoinColumn(name = "fk_ficheAssociation")
 	private FicheAssociation ficheAssociation;
+	
+	@OneToOne
+	@JoinColumn(name = "fk_ficheAssociation_descriptif")
+	private FicheAssoDescriptif ficheAssoDescriptif;
+	
+	@OneToOne
+	@JoinColumn(name = "fk_ficheAssociation_gestionnaire")
+	private FicheAssoGestionnaire ficheAssoGestionnaire;
+	
+	@OneToOne
+	@JoinColumn(name = "fk_ficheAssociation_comptabilite")
+	private FicheAssoCompta ficheAssoCompta;
 
 	@ManyToOne
 	@JoinColumn(name = "fk_idDomain", nullable = true)

@@ -29,8 +29,7 @@ public class AssociationCreationForm implements Serializable {
 
 	@NotEmpty(message = "Ce champs doit être rempli")
 	@NotNull(message = "Ce champs doit être rempli")
-	@Size(min = 1, max = 25, message = "Doit être entre 1 et 25 car.")
-	@Pattern(regexp = "/^[A-Z]{1}[0-9]{9}$/", message = "Ce champs doit correspondre à un numéro RNA valide")
+	@Pattern(regexp = "^[A-Z]{1}[0-9]{9}$", message = "Ce champs doit correspondre à un numéro RNA valide")
 	private String rnaNumber;
 
 	private int commission;
@@ -39,6 +38,7 @@ public class AssociationCreationForm implements Serializable {
 
 	@NotEmpty(message = "Ce champs doit être rempli")
 	@NotNull(message = "Ce champs doit être rempli")
+	@Size(min = 5, max = 5, message = "Doit comporter 5 chiffres")
 	private String localisation;
 
 	public AssociationCreationForm() {
