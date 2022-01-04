@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Galaxos panier</title>
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
+<h:head>
+	<title>Création d'un compte utilisateur</title>
+</h:head>
+<body>
+	
+	
+	        <div class="container-fluid vh-100" style="margin-top:300px">
+            <div class="" style="margin-top:200px">
+                <div class="rounded d-flex justify-content-center">
+                    <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
+                        <div class="text-center">
+                            <h3 class="text-primary">Inscription</h3>
+                        </div>
+                        <h:form id="createAdherentForm">
+                         <div class="p-4">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text bg-primary"><i
+                                            class="bi bi-person-plus-fill text-white"></i></span>
+                                   <h:inputText size="15" id="emailInput" value="#{CreateAccountBean.accountForm.email}"  />
+                                   <h:messages for="emailInput" />
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text bg-primary"><i
+                                            class="bi bi-key-fill text-white"></i></span>
+                                    <h:inputSecret size="8" id="passwordInput" value="#{CreateAccountBean.accountForm.password}" />
+                                <h:outputLabel value="Mot de passe : " />
+                                </div>
+                                <div class="form-check">
+                                     <div class="form-check-input" >
+                                    
+                                       
+                                    
+                                    <div class="form-check-label"></div><h:outputLabel for="flexCheckDefault">
+                                        <h:selectBooleanCheckbox value="RememberMe " id="chkRememberMe" />Souviens de moi
+                                    </div>
+                                     
+                                    </div>
+                           			 </div>
+                                <div class="btn btn-primary text-center mt-2" ">
+                                <h:commandButton value="S'inscrire" action="#{CreateAccountBean.create()}" />
+                                    S'inscrire
+                                </div>
+                                <div class="text-center mt-5"><p>Vous avez déja un compte? </p></div>
+                                  <div class="text-primary"> <h:link outcome="login"><span >Se connecter</h:link></span></div> 
+                                </p>
+                                
+                            </div>
+                        </h:form>
+                            
+                </div>
+            </div>
+        </div>
+	
+	
+	
+	
+	<h:link outcome="index">Revenir à l'accueil</h:link>
+	</body>
+</html>
