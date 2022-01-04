@@ -133,7 +133,7 @@
 									aria-label="Nom" pt:placeholder="Nom de l'association"
 									aria-describedby="email-addon"
 									value="#{creationCompteAssociationBean.form.nom}" />
-								<h:messages for="nomAssoInput" />
+								<h:messages for="nomAssoInput" errorClass="erreurInputForm" />
 							</div>
 
 							<!--  <h:outputLabel value="Slogan : " />
@@ -151,7 +151,7 @@
 									pt:placeholder="Numéro RNA" aria-label="RNA"
 									aria-describedby="password-addon"
 									value="#{creationCompteAssociationBean.form.rnaNumber}" />
-								<h:messages for="rnaNumberInput" style="color:red"  />
+								<h:messages for="rnaNumberInput" errorClass="erreurInputForm"  />
 							</div>
 
 							<div class="mb-3">
@@ -168,7 +168,7 @@
 									pt:placeholder="Code postal" aria-label="RNA"
 									aria-describedby="password-addon"
 									value="#{creationCompteAssociationBean.form.localisation}" />
-								<h:messages for="localisationInput" />
+								<h:messages for="localisationInput" errorClass="erreurInputForm" />
 							</div>
 
 							<div class="form-check form-check-info text-left">
