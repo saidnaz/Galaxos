@@ -1,7 +1,9 @@
 package fr.isika.cda.galaxos.repository;
 
+import java.util.Optional;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.Association.Etat;
@@ -17,6 +19,10 @@ public class AssociationRepository {
 
 	@PersistenceContext
 	private EntityManager entityManager;
+	
+	public Association update(Association asso) {
+		return entityManager.merge(asso);
+	}
 
 	public Association create(AssociationCreationForm form) {
 
@@ -36,6 +42,16 @@ public class AssociationRepository {
 		entityManager.persist(asso);
 
 		return asso;
+	}
+
+	public Optional<Association> findById(final Long id) {
+		try {
+			return Optional.ofNullable(this.entityManager.createNamedQuery("Association.findById", Association.class)
+					.setParameter("id", id).getSingleResult());
+		} catch (NoResultException ex) {
+			System.out.println("Association.findById() - not found : " + id);
+		}
+		return Optional.empty();
 	}
 
 	public FicheAssoDescriptif creationFicheAssoDescriptif(AssociationFinalisationForm form) {

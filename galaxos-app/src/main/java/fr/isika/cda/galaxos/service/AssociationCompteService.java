@@ -1,5 +1,7 @@
 package fr.isika.cda.galaxos.service;
 
+import java.util.Optional;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -23,6 +25,10 @@ public class AssociationCompteService {
 	public Association create(AssociationCreationForm associationCreationForm) {
 		return associationRepository.create(associationCreationForm);
 	}
+	
+	public Association update(Association asso) {
+		return associationRepository.update(asso);
+	}
 
 	public FicheAssoDescriptif creationFicheAssoDescriptif(AssociationFinalisationForm form) {
 		return associationRepository.creationFicheAssoDescriptif(form);
@@ -34,5 +40,9 @@ public class AssociationCompteService {
 
 	public FicheAssoCompta creationFicheAssoCompta(AssociationFinalisationForm form) {
 		return associationRepository.creationFicheAssoCompta(form);
+	}
+	
+	public Optional<Association> findById (Long id) {
+		return associationRepository.findById(id);
 	}
 }

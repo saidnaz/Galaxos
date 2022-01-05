@@ -6,6 +6,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.service.AssociationCompteService;
@@ -21,10 +22,16 @@ public class creationCompteAssociationBean implements Serializable {
 	private AssociationCompteService service;
 
 	private AssociationCreationForm form = new AssociationCreationForm();
+	
 
 	public String create() {
 		UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("createAssoForm");
-		service.create(form);
+		
+		Association asso = service.create(form);
+		
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		session.setAttribute("assoId", asso.getId());
+		
 		return "finalisationCreationAssociation?faces-redirect=true";
 	}
 
