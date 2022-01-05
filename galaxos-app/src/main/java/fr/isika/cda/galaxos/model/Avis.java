@@ -35,7 +35,7 @@ public class Avis{
 //	    private Consumer consumer;
 	    
 	    
-	    @OneToOne
+	 /*   @OneToOne
 	    @JoinColumn(name="fkprovider")
 	    private Provider provider;
 	    
@@ -120,7 +120,7 @@ public class Avis{
 			this.provider = provider;
 			this.consumer = consumer;
 			this.date = date;
-		}
+		}*/
 	    
 	    
 	    
