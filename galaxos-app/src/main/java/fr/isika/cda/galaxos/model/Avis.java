@@ -38,7 +38,7 @@ public class Avis{
 //	    private Consumer consumer;
 	    
 	    
-	    @OneToOne
+	 /*   @OneToOne
 	    @JoinColumn(name="fkprovider")
 	    private Provider provider;
 	    
