@@ -12,7 +12,9 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import fr.isika.cda.galaxos.model.Association;
+import fr.isika.cda.galaxos.model.FicheAssoCompta;
 import fr.isika.cda.galaxos.model.FicheAssoDescriptif;
+import fr.isika.cda.galaxos.model.FicheAssoGestionnaire;
 import fr.isika.cda.galaxos.service.AssociationCompteService;
 import fr.isika.cda.galaxos.viewmodel.AssociationFinalisationForm;
 
@@ -28,9 +30,8 @@ public class finalisationCompteAssociationBean implements Serializable {
 	private AssociationCompteService service;
 
 	private AssociationFinalisationForm form = new AssociationFinalisationForm();
-	
-	private Association asso;
 
+	private Association asso;
 
 	@PostConstruct
 	public void init() {
@@ -59,22 +60,47 @@ public class finalisationCompteAssociationBean implements Serializable {
 			FicheAssoDescriptif assoDescri = service.creationFicheAssoDescriptif(form);
 			asso.setFicheAssoDescriptif(assoDescri);
 			service.update(asso);
-			/* entityManager.merge(asso); */
+
 			return "finalisationCreationAssociation";
 		}
 		return "";
 	}
 
 	public String creationGestionnaireAsso() {
-		UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot()
-				.findComponent("createAssoGestionnaireForm");
-		service.creationFicheAssoGestionnaire(form);
-		return "finalisationCreationAssociation";
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		Long id = (Long) session.getAttribute("assoId");
+
+		Optional<Association> optional = service.findById(id);
+		if (optional.isPresent()) {
+
+			Association asso = optional.get();
+			UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot()
+					.findComponent("createAssoGestionnaireForm");
+			FicheAssoGestionnaire assoGestion = service.creationFicheAssoGestionnaire(form);
+			asso.setFicheAssoGestionnaire(assoGestion);
+			service.update(asso);
+			return "finalisationCreationAssociation";
+		}
+		return "";
 	}
 
 	public String creationComptaAsso() {
-		UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("createAssoComptaForm");
-		service.creationFicheAssoCompta(form);
+
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		Long id = (Long) session.getAttribute("assoId");
+
+		Optional<Association> optional = service.findById(id);
+		if (optional.isPresent()) {
+
+			Association asso = optional.get();
+
+			UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot()
+					.findComponent("createAssoComptaForm");
+			FicheAssoCompta assoCompta = service.creationFicheAssoCompta(form);
+			asso.setFicheAssoCompta(assoCompta);
+			service.update(asso);
+			return "finalisationCreationAssociation";
+		}
 		return "";
 	}
 
@@ -105,6 +131,7 @@ public class finalisationCompteAssociationBean implements Serializable {
 	public Association getAsso() {
 		return asso;
 	}
+
 	public void setAsso(Association asso) {
 		this.asso = asso;
 	}

@@ -30,7 +30,7 @@ public class AssociationFinalisationForm implements Serializable {
 	@NotNull(message = "Ce champs doit être rempli")
 	private String RIB;
 	
-	@NotEmpty(message = "Ce champs doit être rempli")
+	//@NotEmpty(message = "Ce champs doit être rempli")
 	@NotNull(message = "Ce champs doit être rempli")
 	private Double commission;
 
