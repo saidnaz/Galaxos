@@ -5,6 +5,9 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.servlet.http.Part;
+
+import fr.isika.cda.galaxos.helper.UploadHelper;
 import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.Association.Etat;
 import fr.isika.cda.galaxos.model.FicheAssoCompta;
@@ -19,7 +22,7 @@ public class AssociationRepository {
 
 	@PersistenceContext
 	private EntityManager entityManager;
-	
+
 	public Association update(Association asso) {
 		return entityManager.merge(asso);
 	}
@@ -54,13 +57,41 @@ public class AssociationRepository {
 		return Optional.empty();
 	}
 
+	public Optional<FicheAssociation> findByName(final String nom) {
+		try {
+			return Optional.ofNullable(
+					this.entityManager.createNamedQuery("FicheAssociation.findByName", FicheAssociation.class)
+							.setParameter("nom", nom).getSingleResult());
+		} catch (NoResultException ex) {
+			System.out.println("FIcheAssociation.findByName() - not found : " + nom);
+		}
+		return Optional.empty();
+	}
+
+	public Optional<FicheAssociation> findByRNA(final String rnaNumber) {
+		try {
+			return Optional.ofNullable(
+					this.entityManager.createNamedQuery("FicheAssociation.findByRNA", FicheAssociation.class)
+							.setParameter("rnaNumber", rnaNumber).getSingleResult());
+		} catch (NoResultException ex) {
+			System.out.println("FIcheAssociation.findByRNA() - not found : " + rnaNumber);
+		}
+		return Optional.empty();
+	}
+
 	public FicheAssoDescriptif creationFicheAssoDescriptif(AssociationFinalisationForm form) {
 
 		FicheAssoDescriptif assoDescriptif = new FicheAssoDescriptif();
 
+		String photo = "";
+		Part part = form.getPart();
+
+		UploadHelper uploadHelper = new UploadHelper();
+		photo = uploadHelper.processUpload(part);
+
 		assoDescriptif.setSlogan(form.getSlogan());
 		assoDescriptif.setDescription(form.getDescription());
-		assoDescriptif.setLogo(form.getLogo());
+		assoDescriptif.setLogo(photo);
 		assoDescriptif.setEtat(fr.isika.cda.galaxos.model.FicheAssoDescriptif.Etat.EN_ATTENTE_DE_VALIDATION);
 
 		entityManager.persist(assoDescriptif);

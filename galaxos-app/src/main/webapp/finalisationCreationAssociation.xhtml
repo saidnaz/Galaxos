@@ -272,7 +272,7 @@
 											rempli, alors dîtes nous en plus sur votre association !</em>
 									</p>
 									<div id="divDescri">
-										<h:form id="createAssoDescriptifForm">
+										<h:form id="createAssoDescriptifForm" enctype="multipart/form-data">
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">
@@ -280,14 +280,13 @@
 														<h:inputText id="sloganInput" class="form-control"
 															aria-label="RNA"
 															value="#{finalisationCompteAssociationBean.form.slogan}" />
-														<h:messages for="localisationInput"
-															errorClass="erreurInputForm" />
+														<h:messages for="sloganInput" errorClass="erreurInputForm" />
 													</div>
 												</div>
 												<div class="col-md-6">
 													<div class="form-group">
-														<label for="slogan">Votre logo</label> <input type="file"
-															class="form-control" id="file" placeholder="Logo" />
+														<label for="slogan">Votre logo</label>
+														<h:inputFile value="#{finalisationCompteAssociationBean.form.part}" class="form-control" id="file"></h:inputFile>
 													</div>
 												</div>
 											</div>
@@ -298,6 +297,8 @@
 													<h:inputTextarea id="descriptionAsso" rows="3"
 														class="form-control"
 														value="#{finalisationCompteAssociationBean.form.description}" />
+													<h:messages for="descriptionAsso"
+														errorClass="erreurInputForm" />
 												</div>
 											</div>
 
@@ -306,7 +307,7 @@
 													<h:commandButton value="Soumettre"
 														class="btn main-button my-4 mb-2"
 														action="#{finalisationCompteAssociationBean.creationDescriptifAsso()}"
-														onclick="noneDescriptif()" />
+														 />
 												</div>
 											</div>
 										</h:form>

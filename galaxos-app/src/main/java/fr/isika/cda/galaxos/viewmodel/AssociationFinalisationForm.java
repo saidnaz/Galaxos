@@ -2,6 +2,7 @@ package fr.isika.cda.galaxos.viewmodel;
 
 import java.io.Serializable;
 
+import javax.servlet.http.Part;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -9,43 +10,40 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class AssociationFinalisationForm implements Serializable {
 
 	private static final long serialVersionUID = 4205239488412544230L;
-	
+
 	@NotEmpty(message = "Ce champs doit être rempli")
 	@NotNull(message = "Ce champs doit être rempli")
 	private String slogan;
-	
+
 	@NotEmpty(message = "Ce champs doit être rempli")
 	@NotNull(message = "Ce champs doit être rempli")
 	private String description;
-	
-	@NotEmpty(message = "Ce champs doit être rempli")
+
 	@NotNull(message = "Ce champs doit être rempli")
-	private String logo;
-	
+	private Part part;
+
 	@NotEmpty(message = "Ce champs doit être rempli")
 	@NotNull(message = "Ce champs doit être rempli")
 	private String pieceIdentite;
-	
+
 	@NotEmpty(message = "Ce champs doit être rempli")
 	@NotNull(message = "Ce champs doit être rempli")
 	private String RIB;
-	
-	//@NotEmpty(message = "Ce champs doit être rempli")
+
+	// @NotEmpty(message = "Ce champs doit être rempli")
 	@NotNull(message = "Ce champs doit être rempli")
 	private Double commission;
 
-	
-	
 	public AssociationFinalisationForm() {
 		super();
 	}
 
-	public AssociationFinalisationForm(String slogan, String description, String logo, String pieceIdentite, String rIB,
+	public AssociationFinalisationForm(String slogan, String description, Part part, String pieceIdentite, String rIB,
 			Double commission) {
 		super();
 		this.slogan = slogan;
 		this.description = description;
-		this.logo = logo;
+		this.part = part;
 		this.pieceIdentite = pieceIdentite;
 		RIB = rIB;
 		this.commission = commission;
@@ -67,12 +65,12 @@ public class AssociationFinalisationForm implements Serializable {
 		this.description = description;
 	}
 
-	public String getLogo() {
-		return logo;
+	public Part getPart() {
+		return part;
 	}
 
-	public void setLogo(String logo) {
-		this.logo = logo;
+	public void setPart(Part part) {
+		this.part = part;
 	}
 
 	public String getPieceIdentite() {
@@ -102,8 +100,5 @@ public class AssociationFinalisationForm implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
-	
 
 }

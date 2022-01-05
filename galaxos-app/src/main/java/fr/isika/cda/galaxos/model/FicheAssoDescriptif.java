@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.servlet.http.Part;
 
 @Entity
 @Table(name = "Fiche_Association_Descriptif")
@@ -17,17 +18,17 @@ public class FicheAssoDescriptif {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(nullable = true)
+	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Etat etat;
 
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private String description;
 
 	@Column(nullable = true)
 	private String logo;
 
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private String slogan;
 
 	public enum Etat {
