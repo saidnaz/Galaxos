@@ -202,9 +202,9 @@
 										association</p>
 									<h5 class="font-weight-bolder">Attention votre inscription
 										n'est pas terminée</h5>
-									<p class="mb-5">Afin de valider completement votre
-										inscirption sur notre plateforme et avoir la possibilité
-										d'être visibible par toute notre galaxie merci de remplir
+									<p class="mb-5">Afin de valider complètement votre
+										inscription sur notre plateforme et avoir la possibilité
+										d'être visibible par toute notre galaxie, merci de remplir
 										l'intégralité des champs ci-dessous</p>
 									<!-- <a class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
                         Read More
@@ -238,8 +238,15 @@
 					<div class="card-body p-3">
 						<div class="row">
 							<div class="col-lg-12">
-								<h6 class="font-weight-bolder">Dîtes nous en plus sur votre
-									association</h6>
+								<div class="d-flex">
+									<div>
+										<h6 class="font-weight-bolder">Dîtes nous en plus sur
+											votre association</h6>
+									</div>
+									<div class="pl-2">
+										<span class="badge bg-gradient-primary">A remplir</span>
+									</div>
+								</div>
 								<p>
 									<em>Une association qui marche c'est une association bien
 										rempli, alors dîtes nous en plus sur votre association !</em>
@@ -298,7 +305,16 @@
 					<div class="card-body p-3">
 						<div class="row">
 							<div class="col-lg-12">
-								<h6 class="font-weight-bolder">Dîtes nous en plus sur VOUS</h6>
+
+								<div class="d-flex">
+									<div>
+										<h6 class="font-weight-bolder">Dîtes nous en plus sur
+											VOUS</h6>
+									</div>
+									<div class="pl-2">
+										<span class="badge bg-gradient-primary">A remplir</span>
+									</div>
+								</div>
 								<p>
 									<em>Pour une relation de confiance, nous avons besoin d'en
 										savoir plus sur vous !</em>
@@ -338,8 +354,15 @@
 					<div class="card-body p-3">
 						<div class="row">
 							<div class="col-lg-12">
-								<h6 class="font-weight-bolder">Dîtes nous en plus sur votre
-									rémunération</h6>
+								<div class="d-flex">
+									<div>
+										<h6 class="font-weight-bolder">Dîtes nous en plus sur
+											votre rémunération</h6>
+									</div>
+									<div class="pl-2">
+										<span class="badge bg-gradient-primary">A remplir</span>
+									</div>
+								</div>
 								<p>
 									<em>Car le nerf de la guerre c'est l'argent, nous devons
 										en savoir plus</em>
@@ -385,18 +408,19 @@
 	</main>
 
 	<!--   Core JS Files   -->
-	<script src="../assets/js/core/popper.min.js"></script>
-	<script src="../assets/js/core/bootstrap.min.js"></script>
-	<script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-	<script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-	<script src="../assets/js/plugins/chartjs.min.js"></script>
+	<h:outputScript library="js" name="core/popper.min.js"></h:outputScript>
+	<h:outputScript library="js" name="core/bootstrap.min.js"></h:outputScript>
+	<h:outputScript library="js" name="plugins/perfect-scrollbar.min.js"></h:outputScript>
+	<h:outputScript library="js" name="plugins/smooth-scrollbar.min.js"></h:outputScript>
+	<h:outputScript library="js" name="plugins/chartjs.min.js"></h:outputScript>
 	<!-- Github buttons -->
 	<script src="https://buttons.github.io/buttons.js"></script>
 	<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-	<script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
-
+	<h:outputScript library="js" name="soft-ui-dashboard.min.js"></h:outputScript>
+	<h:outputScript library="js" name="soft-ui-dashboard.js"></h:outputScript>
+	<h:outputScript library="js" name="soft-ui-dashboard.js.map"></h:outputScript>
+	
 	<script>
-		console.log("ca marche");
 		function noneDescriptif() {
   			document.getElementById("divDescri").style.display = "none";
 		}
