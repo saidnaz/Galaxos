@@ -30,7 +30,7 @@ public class CreateAccountBean implements Serializable {
 	private AdherentForm accountForm = new AdherentForm();
 	
 	public String create() {
-		UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("AdherentForm");
+		UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("createAccountForm");
 		
 		// Si les mots de passe et email sont vides
 		if( accountForm.equals(null)){
@@ -41,12 +41,11 @@ public class CreateAccountBean implements Serializable {
 			return "";
 		} else {
 			try {
-				// On appelle le service pour sauvegarder cet objet 
-				// (qui a été rempli automatiquement depuis les champs de la page)
+
 				accountService.create(accountForm);
 				
-				// On redirige vers mon panier en cas de compte créé avec succès
-				return "panier?faces-redirect=true";
+				
+				return "loginSuccess?faces-redirect=true";
 				
 			} catch(Exception ex) {
 				// On ajoute un message sur la vue qui résume l'exception
