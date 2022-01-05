@@ -2,8 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
-	
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core">
+
 
 
 <h:head>
@@ -244,63 +245,70 @@
 											votre association</h6>
 									</div>
 									<div class="pl-2">
-
-										<c:choose>
-											<c:when test="${empty var1}">
-        var1 is empty or null.
-    </c:when>
-											<c:otherwise>
-        var1 is NOT empty or null.
-    </c:otherwise>
-										</c:choose>
-
-										<span class="badge bg-gradient-primary">A remplir</span>
+										<c:if
+											test="#{finalisationCompteAssociationBean.asso.ficheAssoDescriptif == null}">
+											<span class="badge bg-gradient-primary">A remplir</span>
+										</c:if>
+										<c:if
+											test="#{finalisationCompteAssociationBean.asso.ficheAssoDescriptif != null}">
+											<span class="badge bg-gradient-warning">En attente de
+												validation</span>
+										</c:if>
 									</div>
 								</div>
+								<c:if
+									test="#{finalisationCompteAssociationBean.asso.ficheAssoDescriptif == null}">
 								<p>
 									<em>Une association qui marche c'est une association bien
 										rempli, alors dîtes nous en plus sur votre association !</em>
 								</p>
-								<div id="divDescri">
-									<h:form id="createAssoDescriptifForm">
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<label for="slogan">Votre slogan</label>
-													<h:inputText id="sloganInput" class="form-control"
-														aria-label="RNA"
-														value="#{finalisationCompteAssociationBean.form.slogan}" />
-													<h:messages for="localisationInput"
-														errorClass="erreurInputForm" />
+									<div id="divDescri">
+										<h:form id="createAssoDescriptifForm">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="slogan">Votre slogan</label>
+														<h:inputText id="sloganInput" class="form-control"
+															aria-label="RNA"
+															value="#{finalisationCompteAssociationBean.form.slogan}" />
+														<h:messages for="localisationInput"
+															errorClass="erreurInputForm" />
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="slogan">Votre logo</label> <input type="file"
+															class="form-control" id="file" placeholder="Logo" />
+													</div>
 												</div>
 											</div>
-											<div class="col-md-6">
+											<div class="row ">
 												<div class="form-group">
-													<label for="slogan">Votre logo</label> <input type="file"
-														class="form-control" id="file" placeholder="Logo" />
+													<label for="descriptionAsso">La descripion de votre
+														association</label>
+													<h:inputTextarea id="descriptionAsso" rows="3"
+														class="form-control"
+														value="#{finalisationCompteAssociationBean.form.description}" />
 												</div>
 											</div>
-										</div>
-										<div class="row ">
-											<div class="form-group">
-												<label for="descriptionAsso">La descripion de votre
-													association</label>
-												<h:inputTextarea id="descriptionAsso" rows="3"
-													class="form-control"
-													value="#{finalisationCompteAssociationBean.form.description}" />
-											</div>
-										</div>
 
-										<div class="row ">
-											<div class="col-12 d-flex justify-content-center  ">
-												<h:commandButton value="Soumettre"
-													class="btn main-button my-4 mb-2"
-													action="#{finalisationCompteAssociationBean.creationDescriptifAsso()}"
-													onclick="noneDescriptif()" />
+											<div class="row ">
+												<div class="col-12 d-flex justify-content-center  ">
+													<h:commandButton value="Soumettre"
+														class="btn main-button my-4 mb-2"
+														action="#{finalisationCompteAssociationBean.creationDescriptifAsso()}"
+														onclick="noneDescriptif()" />
+												</div>
 											</div>
-										</div>
-									</h:form>
-								</div>
+										</h:form>
+									</div>
+								</c:if>
+								<c:if
+											test="#{finalisationCompteAssociationBean.asso.ficheAssoDescriptif != null}">
+											<p>
+									<em>C'est noté ! Notre service étudie votre demande</em>
+								</p>
+										</c:if>
 							</div>
 						</div>
 					</div>
