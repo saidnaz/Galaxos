@@ -1,6 +1,7 @@
 package fr.isika.cda.galaxos.repository;
 
 import java.io.Serializable;
+import java.security.NoSuchAlgorithmException;
 import java.util.Optional;
 
 import javax.ejb.Stateless;
@@ -25,9 +26,12 @@ public class AdherentRepository implements Serializable{
 	public Adherent create(AdherentForm adherentForm) {
 		
 		Adherent adherent = new Adherent();
+        String passwordCrypt = "";
+        
+        passwordCrypt = Cryptage.encryptPassword(adherentForm.getPassword());
 
 		adherent.setEmail(adherentForm.getEmail());
-		adherent.setPassword(adherentForm.getPassword());
+		adherent.setPassword(passwordCrypt);
 		
 		entityManager.persist(adherent);
 		
