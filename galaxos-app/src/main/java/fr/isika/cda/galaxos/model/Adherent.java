@@ -3,10 +3,9 @@ package fr.isika.cda.galaxos.model;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
-
 import javax.persistence.*;
-
 import fr.isika.cda.galaxos.model.roles.Role;
+
 
 @Entity
 // @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -38,15 +37,19 @@ public class Adherent implements Serializable {
 		@JoinColumn(name = "fkDashboard")
 		private Dashboard board;
 
-	    
-	  
+
 		public List<Role> getRoles() {
 			return roles;
 		}
 
 		public void setRoles(Role role) {
 			this.roles.add(role);
+}
+	    public Long getId() {
+			return id;
 		}
+
+		
 
 		public ComptUser getUser() {
 			return user;
@@ -54,16 +57,16 @@ public class Adherent implements Serializable {
 
 		public Profil getProfil() {
 			return profil;
+
 		}
 
 		public Dashboard getBoard() {
 			return board;
 		}
 		
-
 		public Adherent() {
 		}
-	    
+    
 		@Override
 		public int hashCode() {
 			return Objects.hash(id, user);
@@ -101,8 +104,5 @@ public class Adherent implements Serializable {
 				
 				return builder.toString();
 			}
-		
-		
-	   
 
 }
