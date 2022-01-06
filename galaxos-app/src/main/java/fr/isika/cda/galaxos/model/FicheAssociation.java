@@ -21,22 +21,9 @@ public class FicheAssociation {
 	private String nom;
 
 	@Column(nullable = false)
-	private String logo;
-
-	@Column(nullable = false)
-	private String slogan;
-
-	@Column(nullable = false)
-	private String description;
-
-	@Column(nullable = false)
-	private int commission;
-	
-	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Etat etat;
 
-	
 	@Column(nullable = false)
 	private String rnaNumber;
 
@@ -85,39 +72,6 @@ public class FicheAssociation {
 		this.nom = nom;
 	}
 
-	public String getLogo() {
-		return logo;
-	}
-
-	public void setLogo(String logo) {
-		this.logo = logo;
-	}
-
-	public String getSlogan() {
-		return slogan;
-	}
-
-	public void setSlogan(String slogan) {
-		this.slogan = slogan;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-
-	public int getCommission() {
-		return commission;
-	}
-
-	public void setCommission(int commission) {
-		this.commission = commission;
-	}
-
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -125,19 +79,16 @@ public class FicheAssociation {
 		builder.append(id);
 		builder.append(", nom=");
 		builder.append(nom);
-		builder.append(", logo=");
-		builder.append(logo);
-		builder.append(", slogan=");
-		builder.append(slogan);
-		builder.append(", description=");
-		builder.append(description);
+		builder.append(", etat=");
+		builder.append(etat);
 		builder.append(", rnaNumber=");
 		builder.append(rnaNumber);
-		builder.append(", commission=");
-		builder.append(commission);
+		builder.append(", localisation=");
+		builder.append(localisation);
 		builder.append("]");
 		return builder.toString();
 	}
+
 	public String getRnaNumber() {
 		return rnaNumber;
 	}

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ import fr.isika.cda.galaxos.model.roles.Role;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
 public class Adherent implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -33,14 +34,14 @@ public class Adherent implements Serializable {
 	private Long id;
 
 	@OneToMany
-	@JoinColumn(name="adherent_id")
-    private List<Role> roles;
+	@JoinColumn(name = "adherent_id")
+	private List<Role> roles;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fkUser")
-	private ComptUser user;
+	private CompteUser user;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fkProfil")
 	private Profil profil;
 
@@ -56,17 +57,26 @@ public class Adherent implements Serializable {
 		return roles;
 	}
 
-	// TODO : addRole(...) et removeRole(....) et initialiser la liste aussi à vide !!
+	// TODO : addRole(...) et removeRole(....) et initialiser la liste aussi à vide
+	// !!
 //	public void setRoles(Role role) {
 //		this.roles.add(role);
 //	}
-	
-	public ComptUser getUser() {
+
+	public CompteUser getUser() {
 		return user;
+	}
+
+	public void setUser(CompteUser user) {
+		this.user = user;
 	}
 
 	public Profil getProfil() {
 		return profil;
+	}
+
+	public void setProfil(Profil profil) {
+		this.profil = profil;
 	}
 
 	public Dashboard getBoard() {

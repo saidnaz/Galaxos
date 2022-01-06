@@ -46,9 +46,8 @@ public class LoginBean implements Serializable {
 		if (optional.isPresent()) {
 			
 			Adherent adherent = optional.get();
-			String passwordCrypt = "";
-			passwordCrypt = Cryptage.encryptPassword(password);
-			System.out.println(passwordCrypt );
+			String passwordCrypt = Cryptage.encryptPassword(password);
+			
 			if (adherent.getUser().getEmail().equals(email) && adherent.getUser().getMdp().equals(passwordCrypt)) {
 				
 				// Email ISVALID and Password ISVALID

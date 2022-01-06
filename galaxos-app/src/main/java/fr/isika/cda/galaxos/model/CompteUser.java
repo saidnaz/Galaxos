@@ -53,6 +53,9 @@ public class CompteUser {
 		return email;
 	}
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	
 	//hashcode et equald pour le mail et mdp
 	
