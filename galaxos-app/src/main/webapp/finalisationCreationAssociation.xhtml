@@ -376,13 +376,15 @@
 											d'en savoir plus sur vous !</em>
 									</p>
 									<div id="divGestionnaire">
-										<h:form id="createAssoGestionnaireForm">
+										<h:form id="createAssoGestionnaireForm" enctype="multipart/form-data">
 											<div class="row">
 												<div class="col-md-12">
 													<div class="form-group">
-														<label for="slogan">Votre pièce d'identité</label> <input
-															type="file" class="form-control" id="file"
-															placeholder="CNI" />
+														<label for="slogan">Votre pièce d'identité</label>
+														<h:inputFile
+															value="#{finalisationCompteAssociationBean.form.pieceIdentite}"
+															class="form-control" id="file"></h:inputFile>
+														
 													</div>
 												</div>
 											</div>
@@ -441,12 +443,14 @@
 											en savoir plus</em>
 									</p>
 									<div id="divCompta">
-										<h:form>
+										<h:form enctype="multipart/form-data" id="createAssoComptaForm">
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">
-														<label for="slogan">Votre RIB</label> <input type="file"
-															class="form-control" id="file" placeholder="CNI" />
+														<label for="slogan">Votre RIB</label> 
+														<h:inputFile
+															value="#{finalisationCompteAssociationBean.form.RIB}"
+															class="form-control" id="file"></h:inputFile>
 													</div>
 												</div>
 												<div class="col-md-6">

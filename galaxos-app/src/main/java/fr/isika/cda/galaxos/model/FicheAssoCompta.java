@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.servlet.http.Part;
 
 @Entity
 @Table(name = "Fiche_Association_Comptabilite")
@@ -22,7 +23,7 @@ public class FicheAssoCompta {
 	private Etat etat;
 
 	@Column(nullable = true)
-	private String RIB;
+	private String rib;
 
 	@Column(nullable = true)
 	private Double commission;
@@ -35,16 +36,20 @@ public class FicheAssoCompta {
 		super();
 	}
 
-	public FicheAssoCompta(Long id, Etat etat, String rIB, Double commission) {
+	public FicheAssoCompta(Long id, Etat etat, String rib, Double commission) {
 		super();
 		this.id = id;
 		this.etat = etat;
-		RIB = rIB;
+		this.rib = rib;
 		this.commission = commission;
 	}
 
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Etat getEtat() {
@@ -55,12 +60,12 @@ public class FicheAssoCompta {
 		this.etat = etat;
 	}
 
-	public String getRIB() {
-		return RIB;
+	public String getRib() {
+		return rib;
 	}
 
-	public void setRIB(String rIB) {
-		RIB = rIB;
+	public void setRib(String rib) {
+		this.rib = rib;
 	}
 
 	public Double getCommission() {
@@ -71,4 +76,6 @@ public class FicheAssoCompta {
 		this.commission = commission;
 	}
 
+
+	
 }

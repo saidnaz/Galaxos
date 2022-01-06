@@ -59,16 +59,9 @@ public class finalisationCompteAssociationBean implements Serializable {
 			if (asso.getFicheAssoDescriptif() != null) {
 				compteurDescriptif = 1.0;
 			}
-			resultat= compteurCompta + compteurGestionnaire + compteurDescriptif + 2.0;
-			System.out.println(resultat);
+			resultat= compteurCompta + compteurGestionnaire + compteurDescriptif + 2.0;			
 			resultat = resultat/5;
-			System.out.println(resultat);
 			resultat = resultat*100;
-			System.out.println(resultat);
-			
-
-		
-
 		}
 	}
 

@@ -83,15 +83,15 @@ public class AssociationRepository {
 
 		FicheAssoDescriptif assoDescriptif = new FicheAssoDescriptif();
 
-		String photo = "";
+		String logo = "";
 		Part part = form.getPart();
 
 		UploadHelper uploadHelper = new UploadHelper();
-		photo = uploadHelper.processUpload(part);
+		logo = uploadHelper.processUpload(part);
 
 		assoDescriptif.setSlogan(form.getSlogan());
 		assoDescriptif.setDescription(form.getDescription());
-		assoDescriptif.setLogo(photo);
+		assoDescriptif.setLogo(logo);
 		assoDescriptif.setEtat(fr.isika.cda.galaxos.model.FicheAssoDescriptif.Etat.EN_ATTENTE_DE_VALIDATION);
 
 		entityManager.persist(assoDescriptif);
@@ -102,8 +102,14 @@ public class AssociationRepository {
 	public FicheAssoGestionnaire creationFicheAssoGestionnaire(AssociationFinalisationForm form) {
 
 		FicheAssoGestionnaire assoGestionnaire = new FicheAssoGestionnaire();
+		
+		String cni = "";
+		Part part = form.getPieceIdentite();
 
-		assoGestionnaire.setPieceIdentite(form.getPieceIdentite());
+		UploadHelper uploadHelper = new UploadHelper();
+		cni = uploadHelper.processUpload(part);
+
+		assoGestionnaire.setPieceIdentite(cni);
 		assoGestionnaire.setEtat(fr.isika.cda.galaxos.model.FicheAssoGestionnaire.Etat.EN_ATTENTE_DE_VALIDATION);
 
 		entityManager.persist(assoGestionnaire);
@@ -114,8 +120,14 @@ public class AssociationRepository {
 	public FicheAssoCompta creationFicheAssoCompta(AssociationFinalisationForm form) {
 
 		FicheAssoCompta assoCompta = new FicheAssoCompta();
+		
+		String rib = "";
+		Part part = form.getRIB();
 
-		assoCompta.setRIB(form.getRIB());
+		UploadHelper uploadHelper = new UploadHelper();
+		rib = uploadHelper.processUpload(part);
+
+		assoCompta.setRib(rib);
 		assoCompta.setCommission(form.getCommission());
 		assoCompta.setEtat(fr.isika.cda.galaxos.model.FicheAssoCompta.Etat.EN_ATTENTE_DE_VALIDATION);
 

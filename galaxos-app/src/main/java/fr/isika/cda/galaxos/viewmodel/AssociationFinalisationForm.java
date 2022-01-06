@@ -20,15 +20,13 @@ public class AssociationFinalisationForm implements Serializable {
 	private String description;
 
 	@NotNull(message = "Ce champs doit être rempli")
-	private Part part;
+	private Part logo;
 
-	@NotEmpty(message = "Ce champs doit être rempli")
 	@NotNull(message = "Ce champs doit être rempli")
-	private String pieceIdentite;
+	private Part pieceIdentite;
 
-	@NotEmpty(message = "Ce champs doit être rempli")
 	@NotNull(message = "Ce champs doit être rempli")
-	private String RIB;
+	private Part RIB;
 
 	// @NotEmpty(message = "Ce champs doit être rempli")
 	@NotNull(message = "Ce champs doit être rempli")
@@ -38,14 +36,14 @@ public class AssociationFinalisationForm implements Serializable {
 		super();
 	}
 
-	public AssociationFinalisationForm(String slogan, String description, Part part, String pieceIdentite, String rIB,
+	public AssociationFinalisationForm(String slogan, String description, Part logo, Part pieceIdentite, Part RIB,
 			Double commission) {
 		super();
 		this.slogan = slogan;
 		this.description = description;
-		this.part = part;
+		this.logo = logo;
 		this.pieceIdentite = pieceIdentite;
-		RIB = rIB;
+		this.RIB = RIB;
 		this.commission = commission;
 	}
 
@@ -66,27 +64,27 @@ public class AssociationFinalisationForm implements Serializable {
 	}
 
 	public Part getPart() {
-		return part;
+		return logo;
 	}
 
-	public void setPart(Part part) {
-		this.part = part;
+	public void setPart(Part logo) {
+		this.logo = logo;
 	}
 
-	public String getPieceIdentite() {
+	public Part getPieceIdentite() {
 		return pieceIdentite;
 	}
 
-	public void setPieceIdentite(String pieceIdentite) {
+	public void setPieceIdentite(Part pieceIdentite) {
 		this.pieceIdentite = pieceIdentite;
 	}
 
-	public String getRIB() {
+	public Part getRIB() {
 		return RIB;
 	}
 
-	public void setRIB(String rIB) {
-		RIB = rIB;
+	public void setRIB(Part RIB) {
+		this.RIB = RIB;
 	}
 
 	public Double getCommission() {
