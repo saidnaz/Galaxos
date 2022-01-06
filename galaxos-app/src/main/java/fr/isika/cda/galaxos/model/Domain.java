@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import fr.isika.cda.galaxos.model.resources.Resource;
+
 @Entity
 public class Domain {
 	@Id
