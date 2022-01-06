@@ -28,9 +28,9 @@ public class AdherentRepository implements Serializable{
         String passwordCrypt = "";
         
         passwordCrypt = Cryptage.encryptPassword(adherentForm.getPassword());
-        adherent.setNom(adherentForm.getNom());
-		
-		adherent.setPassword(passwordCrypt);
+//        adherent.setNom(adherentForm.getNom());
+//		
+//		adherent.setPassword(passwordCrypt);
 		
 		entityManager.persist(adherent);
 		

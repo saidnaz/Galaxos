@@ -36,7 +36,6 @@ public class Message {
 	
 	private int idEmeteur;
 	
-/*
 	@OneToOne
 	@JoinColumn(name = "fk_destinataire")
 	private Adherent destinataire;
@@ -44,25 +43,6 @@ public class Message {
 	@OneToOne
 	@JoinColumn(name = "fk_expediteur")
 	private Adherent expediteur;
-	
-	public Adherent getDestinataire() {
-		return destinataire;
-	}
-
-	public void setDestinataire(Adherent destinataire) {
-		this.destinataire = destinataire;
-	}
-
-	public Adherent getExpediteur() {
-		return expediteur;
-	}
-
-	public void setExpediteur(Adherent expediteur) {
-		this.expediteur = expediteur;
-	}
-*/
-	
-	
 	
 	public LocalDateTime getDate() {
 		return date;

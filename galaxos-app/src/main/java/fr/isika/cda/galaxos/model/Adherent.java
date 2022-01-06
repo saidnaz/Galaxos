@@ -1,13 +1,8 @@
 package fr.isika.cda.galaxos.model;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.*;
-
-import fr.isika.cda.galaxos.model.roles.Role;
-import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
+
+import fr.isika.cda.galaxos.model.roles.Role;
 
 @Entity
 // @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -33,13 +32,11 @@ public class Adherent implements Serializable {
 //	    @Enumerated(value = EnumType.STRING)
 //	    private Role role = Role.ROLE_USER;
 
-	@OneToMany
-	@JoinColumn(name = "adherent_id")
-	private List<Role> roles;
+	private Role role;
 
 	@OneToOne
 	@JoinColumn(name = "fkUser")
-	private CompteUser user;
+	private ComptUser user;
 
 	@OneToOne
 	@JoinColumn(name = "fkProfil")
@@ -49,15 +46,15 @@ public class Adherent implements Serializable {
 	@JoinColumn(name = "fkDashboard")
 	private Dashboard board;
 
-	public List<Role> getRoles() {
-		return roles;
+	public Long getId() {
+		return id;
 	}
 
-	public void setRoles(Role role) {
-		this.roles.add(role);
+	public Role getRole() {
+		return role;
 	}
 
-	public CompteUser getUser() {
+	public ComptUser getUser() {
 		return user;
 	}
 
@@ -69,10 +66,6 @@ public class Adherent implements Serializable {
 		return board;
 	}
 
-	public Long getId() {
-		return id;
-	}
-	
 	public Adherent() {
 	}
 
@@ -113,60 +106,5 @@ public class Adherent implements Serializable {
 
 		return builder.toString();
 	}
-
-	@Column(name = "motdepasse", nullable = false)
-	private String password;
-
-	@Column(name = "Nom", nullable = false)
-	private String nom;
-
-	// @Enumerated(value = EnumType.STRING)
-	// private Role role = Role.ROLE_USER;
-
-	// @Column(name="Comptevalide", nullable=false)
-	// private boolean isAccountNotExpired = true;
-
-	// @Column(name="Comptebloque", nullable=false)
-	// private boolean isAccountNotLocked = true;
-
-	// @ManyToOne(fetch=FetchType.EAGER)
-	// private Association association;
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-//		public boolean isAccountNotExpired() {
-//			return isAccountNotExpired;
-//		}
-//		public void setAccountNotExpired(boolean isAccountNotExpired) {
-//			this.isAccountNotExpired = isAccountNotExpired;
-//		}
-	
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-//		public boolean isAccountNotLocked() {
-//			return isAccountNotLocked;
-//		}
-//		public void setAccountNotLocked(boolean isAccountNotLocked) {
-//			this.isAccountNotLocked = isAccountNotLocked;
-//		}
-
-//		public Association getAssociation() {
-//			return association;
-//		}
-
-//		public void setAssociation(Association association) {
-//			this.association = association;
-//		}
 
 }

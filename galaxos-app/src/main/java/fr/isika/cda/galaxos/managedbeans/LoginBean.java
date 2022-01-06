@@ -49,7 +49,7 @@ public class LoginBean implements Serializable {
 			String passwordCrypt = "";
 			passwordCrypt = Cryptage.encryptPassword(password);
 			System.out.println(passwordCrypt );
-			if (adherent.getUser().getEmail().equals(email) && adherent.getPassword().equals(passwordCrypt)) {
+			if (adherent.getUser().getEmail().equals(email) && adherent.getUser().getMdp().equals(passwordCrypt)) {
 				
 				// Email ISVALID and Password ISVALID
 				connectedAdherent = adherent.getUser().getEmail();
