@@ -9,6 +9,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import fr.isika.cda.galaxos.model.Domaine;
 import fr.isika.cda.galaxos.service.ConsumerService;
 import fr.isika.cda.galaxos.viewmodel.ConsumerForm;
 
@@ -30,7 +31,6 @@ public class CreateConsumerBean implements Serializable {
 		
 		public String create() {
 			UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("createConsumerForm");
-			
 			// Si les mots de passe et email sont vides
 			if( consumerForm.equals(null)){
 				// ici utiliser le facescontext pour ajouter le message dynamiquement
