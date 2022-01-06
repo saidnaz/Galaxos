@@ -26,8 +26,11 @@ public class Message {
 	@Column(name = "Texte", nullable = false)
 	private String texte;
 	
+	private int idDestinataire;
 	
-
+	private int idEmeteur;
+	
+/*
 	@OneToOne
 	@JoinColumn(name = "fk_destinataire")
 	private Adherent destinataire;
@@ -35,12 +38,48 @@ public class Message {
 	@OneToOne
 	@JoinColumn(name = "fk_expediteur")
 	private Adherent expediteur;
-
-
-
 	
-	public Long getIdMessage() {
-		return id;
+	public Adherent getDestinataire() {
+		return destinataire;
+	}
+
+	public void setDestinataire(Adherent destinataire) {
+		this.destinataire = destinataire;
+	}
+
+	public Adherent getExpediteur() {
+		return expediteur;
+	}
+
+	public void setExpediteur(Adherent expediteur) {
+		this.expediteur = expediteur;
+	}
+*/
+	
+	
+	
+	public LocalDateTime getDate() {
+		return date;
+	}
+
+	public int getIdDestinataire() {
+		return idDestinataire;
+	}
+
+	public void setIdDestinataire(int idDestinataire) {
+		this.idDestinataire = idDestinataire;
+	}
+
+	public int getIdEmeteur() {
+		return idEmeteur;
+	}
+
+	public void setIdEmeteur(int idEmeteur) {
+		this.idEmeteur = idEmeteur;
+	}
+
+	public void setDate(LocalDateTime date) {
+		this.date = date;
 	}
 
 	public String getTexte() {
@@ -51,22 +90,11 @@ public class Message {
 		this.texte = texte;
 	}
 
-	public Adherent getDestinataire() {
-		return destinataire;
+	public Long getId() {
+		return id;
 	}
+	
 
-	public Adherent getExpediteur() {
-		return expediteur;
-	}
-
-	public LocalDateTime getDate() {
-		return date;
-	}
-
-	
-	
-	
-	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
