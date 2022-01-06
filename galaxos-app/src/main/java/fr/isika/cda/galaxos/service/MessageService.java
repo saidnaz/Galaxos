@@ -3,6 +3,7 @@ package fr.isika.cda.galaxos.service;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import fr.isika.cda.galaxos.dto.MessageDTO;
 import fr.isika.cda.galaxos.model.Message;
 import fr.isika.cda.galaxos.repository.MessageRepo;
 
@@ -17,6 +18,8 @@ public class MessageService {
 		return msgRepo.envoyer(msg);
 	}
 	
-	
+	public MessageDTO chargerMessages() {
+		return msgRepo.afficher();
+	}
 	
 }

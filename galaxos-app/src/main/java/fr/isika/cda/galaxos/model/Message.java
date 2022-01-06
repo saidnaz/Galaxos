@@ -9,11 +9,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name = "Messages")
+@Table(name = "Message")
+@NamedQueries({
+	@NamedQuery(name = "Message.findAll", query = "select m from Message m")
+})
 public class Message {
 
 	@Id

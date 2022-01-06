@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
@@ -17,6 +18,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import fr.isika.cda.galaxos.dto.MessageDTO;
 import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Message;
 import fr.isika.cda.galaxos.service.MessageService;
@@ -44,7 +46,21 @@ public class MessageBean implements Serializable {
 	private String text;
 	
 	private LocalDateTime date;
-
+	
+	// ViewModel est délcaré ici dans le bean
+	private MessageDTO messageDTO;
+	
+	// Initialisation : Lors du lancement du serv, lance les méthodes à l'intérieur du init
+	@PostConstruct
+	private void init() {
+		loadMessages();
+	}
+	
+	private void loadMessages() {
+		messageDTO = messageService.chargerMessages();
+		System.out.println(messageDTO.getlMsg().size());
+	}
+	
 /*	
 	private Adherent destinataire;
 
@@ -78,9 +94,17 @@ public class MessageBean implements Serializable {
 			messageService.envoyer(msg);
 
 			
+			// recharger la liste 
+			loadMessages();
+			
 			// return "index?faces-redirect=true"; 	// // return "index?faces-redirect=true"; 	// remet les paramètres de la page (des classes) à zero.
 			 return "messages";		// rester sur la même page en vidant les infos du formulaire
 			// return "" 	// rester sur la même page (en gardant les infos du formulaire)
+	}
+	
+	public void afficher()
+	{
+		//messageService.
 	}
 
 
@@ -108,6 +132,12 @@ public class MessageBean implements Serializable {
 		this.date = date;
 	}
 	
+	public MessageDTO getMessageDTO() {
+		return messageDTO;
+	}
 	
+	public void setMessageDTO(MessageDTO messageDTO) {
+		this.messageDTO = messageDTO;
+	}
 	
 }

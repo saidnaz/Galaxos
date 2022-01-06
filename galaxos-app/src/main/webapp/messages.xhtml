@@ -14,18 +14,38 @@
 <body>
 
 	<h:form id="MessageBean">
-		<div>
+	
+		<h:dataTable var="msg" value="#{MessageBean.messageDTO.lMsg}">
+			
+			<h:column>
+				<f:facet name="header">Destinataire</f:facet>
+				#{msg.idDestinataire}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Emetteur</f:facet>
+				#{msg.idEmeteur}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Texte du message</f:facet>
+				#{msg.texte}
+			</h:column>
+		
+			
+		</h:dataTable>
+		
+		<h:panelGrid columns="1">
 			<h:inputTextarea id="text" value="#{MessageBean.text}" size="170" />
 			<h:messages for="text" />
-		</div>
-		<div>
-			<h:commandButton value="Envoyer"
-				action="#{MessageBean.envoyer(1)}" />
-		</div>
+			
+			<h:commandButton value="Envoyer" action="#{MessageBean.envoyer(1)}" />
+		</h:panelGrid>
+
 	</h:form>
 
 	<div>
-	<h:link outcome="messagerie">Messagerie</h:link>
+		<h:link outcome="messagerie">Messagerie</h:link>
 	</div>
 
 
