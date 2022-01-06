@@ -214,12 +214,22 @@
 								<div class="d-flex flex-column h-100">
 									<p class="mb-1 pt-2 text-bold">Bienvenue sur votre espace
 										association</p>
-									<h5 class="font-weight-bolder">Attention votre inscription
-										n'est pas terminée</h5>
-									<p class="mb-5">Afin de valider complètement votre
-										inscription sur notre plateforme et avoir la possibilité
-										d'être visibible par toute notre galaxie, merci de remplir
-										l'intégralité des champs ci-dessous</p>
+									<c:set var="progress" scope="session"
+										value="${finalisationCompteAssociationBean.resultat}" />
+									<c:if test="${progress != 100}">
+										<h5 class="font-weight-bolder">Attention votre
+											inscription n'est pas terminée</h5>
+										<p class="mb-5">Afin de valider complètement votre
+											inscription sur notre plateforme et avoir la possibilité
+											d'être visibible par toute notre galaxie, merci de remplir
+											l'intégralité des champs ci-dessous</p>
+									</c:if>
+									<c:if test="${progress == 100}">
+										<h5 class="font-weight-bolder">Bravo votre inscription est terminée</h5>
+										<p class="mb-5">Vous pouvez maintenant acceder à votre espace association en attendant la validation de votre association</p>
+									<h:link value = "Mon espace association" outcome = "dashboardAsso" class="btn main-button" />
+									</c:if>
+
 									<!-- <a class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
                         Read More
                         <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
@@ -236,7 +246,8 @@
 										class="position-relative d-flex align-items-center justify-content-center h-100">
 										<!-- <img class="w-100 position-relative z-index-2 pt-4"
 											src="resources/images/rocket-white.png" alt="rocket" /> -->
-										<div class="progress-pie-chart" data-percent="#{finalisationCompteAssociationBean.resultat}">
+										<div class="progress-pie-chart"
+											data-percent="#{finalisationCompteAssociationBean.resultat}">
 											<div class="ppc-progress">
 												<div class="ppc-progress-fill"></div>
 											</div>
@@ -376,7 +387,8 @@
 											d'en savoir plus sur vous !</em>
 									</p>
 									<div id="divGestionnaire">
-										<h:form id="createAssoGestionnaireForm" enctype="multipart/form-data">
+										<h:form id="createAssoGestionnaireForm"
+											enctype="multipart/form-data">
 											<div class="row">
 												<div class="col-md-12">
 													<div class="form-group">
@@ -384,7 +396,7 @@
 														<h:inputFile
 															value="#{finalisationCompteAssociationBean.form.pieceIdentite}"
 															class="form-control" id="file"></h:inputFile>
-														
+
 													</div>
 												</div>
 											</div>
@@ -443,11 +455,12 @@
 											en savoir plus</em>
 									</p>
 									<div id="divCompta">
-										<h:form enctype="multipart/form-data" id="createAssoComptaForm">
+										<h:form enctype="multipart/form-data"
+											id="createAssoComptaForm">
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">
-														<label for="slogan">Votre RIB</label> 
+														<label for="slogan">Votre RIB</label>
 														<h:inputFile
 															value="#{finalisationCompteAssociationBean.form.RIB}"
 															class="form-control" id="file"></h:inputFile>
