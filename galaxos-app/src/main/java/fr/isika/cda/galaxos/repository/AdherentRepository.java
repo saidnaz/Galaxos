@@ -26,11 +26,13 @@ public class AdherentRepository implements Serializable{
 	public Adherent create(AdherentForm adherentForm) {
 		
 		Adherent adherent = new Adherent();
+		
+		adherent.setEmail(adherentForm.getEmail());
         String passwordCrypt = "";
         
         passwordCrypt = Cryptage.encryptPassword(adherentForm.getPassword());
-
-		adherent.setEmail(adherentForm.getEmail());
+        adherent.setNom(adherentForm.getNom());
+		
 		adherent.setPassword(passwordCrypt);
 		
 		entityManager.persist(adherent);

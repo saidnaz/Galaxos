@@ -21,6 +21,18 @@ public class AdherentForm implements Serializable{
 	@NotNull(message = "Ne doit pas être null")
 	@Size(min = 1, max = 25, message = "Doit être entre 1 et 25 car.")
 	private String password;
+	
+	@NotEmpty(message = "Ne doit pas être vide")
+	@NotNull(message = "Ne doit pas être null")
+	private String nom;
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
 	public AdherentForm() {
 		super();

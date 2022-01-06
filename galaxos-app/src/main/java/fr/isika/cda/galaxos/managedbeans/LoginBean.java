@@ -15,6 +15,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import fr.isika.cda.galaxos.model.Adherent;
+import fr.isika.cda.galaxos.repository.Cryptage;
 import fr.isika.cda.galaxos.service.AdherentService;
 import fr.isika.cda.galaxos.service.ConsumerService;
 @ManagedBean
@@ -45,26 +46,29 @@ public class LoginBean implements Serializable {
 		if (optional.isPresent()) {
 			
 			Adherent adherent = optional.get();
-			if (adherent.getEmail().equals(email) && adherent.getPassword().equals(password)) {
+			String passwordCrypt = "";
+			passwordCrypt = Cryptage.encryptPassword(password);
+			System.out.println(passwordCrypt );
+			if (adherent.getEmail().equals(email) && adherent.getPassword().equals(passwordCrypt)) {
 				
-				// Si même email et mot de passe -> On redirige vers une autre page
+				// Email ISVALID and Password ISVALID
 				connectedAdherent = adherent.getEmail();
-				return "index";
+				return "loginSuccess";
 			} else {
 
-				UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("consumerForm");
+				UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("loginForm");
 				FacesContext.getCurrentInstance().addMessage(formulaire.getClientId(),
 						new FacesMessage("Identifiants incorrects"));
 			}
 		} else {
 			
-			UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("AdherentForm");
+			UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("loginForm");
 			FacesContext.getCurrentInstance().addMessage(formulaire.getClientId(),
 					new FacesMessage("Adhérent non reconnu"));
 		}
 
 		
-		return "adherent";
+		return "login";
 	}
 
 	public String getEmail() {
@@ -79,14 +83,12 @@ public class LoginBean implements Serializable {
 		return password;
 	}
 
-	public String getConnectedConsumer() {
+	public String getConnectedAdherent() {
 		return connectedAdherent;
 	}
-
-	public void setConnectedConsumer(String connectedConsumer) {
+	public void setConnectedAdherent(String connectedAdherent) {
 		this.connectedAdherent = connectedAdherent;
 	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

@@ -35,6 +35,9 @@ if( optional.isPresent() ) {
 return adherentRepository.create(adherentform);
 }
 public Optional<Adherent> findByEmail(String email) {
+	
+	
+	
 	return adherentRepository.findByEmail(email);
 }
 

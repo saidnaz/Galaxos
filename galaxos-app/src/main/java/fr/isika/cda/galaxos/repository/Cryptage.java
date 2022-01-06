@@ -45,11 +45,10 @@ private static String byteToHex(final byte[] hash) {
     
    
 
-public static void main(String[] args)  {
-
-String resul= null;
-resul = encryptPassword( "azerty");
-System.out.println(resul);
-}
-
+/*
+ * public static void main(String[] args) {
+ * 
+ * String resul= null; resul = encryptPassword( "azerty");
+ * System.out.println(resul); }
+ */
 }
