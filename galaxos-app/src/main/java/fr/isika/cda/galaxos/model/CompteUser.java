@@ -4,12 +4,19 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 @Entity
-public class ComptUser {
+@NamedQuery(name = "CompteUser.findByEmail", query = "SELECT cons FROM CompteUser cons WHERE cons.email = :email_param")
+public class CompteUser {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
 	private String email;
 
 	@Column(length = 20, name = "motdepasse", nullable = false)
@@ -46,6 +53,9 @@ public class ComptUser {
 		return email;
 	}
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	
 	//hashcode et equald pour le mail et mdp
 	
@@ -62,14 +72,14 @@ public class ComptUser {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ComptUser other = (ComptUser) obj;
+		CompteUser other = (CompteUser) obj;
 		return Objects.equals(email, other.email) && Objects.equals(mdp, other.mdp);
 	}
 
 	
 	//Constructeur à vide
 	
-	public ComptUser() {
+	public CompteUser() {
 		super();
 	}
 	

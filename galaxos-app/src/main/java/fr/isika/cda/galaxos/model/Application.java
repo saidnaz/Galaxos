@@ -3,16 +3,17 @@ package fr.isika.cda.galaxos.model;
 import java.util.UUID;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- * Entité de test qui peut être supprimée.
- */
+
 @Entity
 public class Application {
 
 	@Id
-	private UUID id = UUID.randomUUID();
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private UUID id;
 	private String appName = "Galaxos App";
 	private String test;
 

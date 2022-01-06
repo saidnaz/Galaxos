@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.*;
 
 import fr.isika.cda.galaxos.model.Association;
+import fr.isika.cda.galaxos.model.Panier;
 import fr.isika.cda.galaxos.model.Post;
 
 @Entity
@@ -17,6 +18,9 @@ public class Consumer extends Client{
 	
 	@OneToMany(mappedBy="consumer")
 	List<Post> posts;
+	
+	@OneToMany(mappedBy="consumer")
+	private List<Panier> panierId;
 	
 	public Consumer() {}
 
@@ -41,5 +45,14 @@ public class Consumer extends Client{
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
 	}
+
 	
+	
+	public List<Panier> getPanierId() {
+		return panierId;
+	}
+
+	public void setPanierId(List<Panier> panierId) {
+		this.panierId = panierId;
+	}
 }

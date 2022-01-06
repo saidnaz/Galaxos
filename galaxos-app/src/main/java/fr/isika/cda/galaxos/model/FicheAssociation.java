@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import fr.isika.cda.galaxos.model.Association.Etat;
-
 @Entity
 @Table(name = "Fiche_Association")
 public class FicheAssociation {
@@ -18,14 +16,14 @@ public class FicheAssociation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
+	@Column(nullable = false)
+	private String nom;
+
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Etat etat;
 
-	@Column(nullable = false)
-	private String nom;
-	
 	@Column(nullable = false)
 	private String rnaNumber;
 
@@ -41,6 +39,7 @@ public class FicheAssociation {
 		super();
 	}
 
+	// GETTERS & SETTERS
 	public FicheAssociation(Long id, String nom, String rnaNumber, String localisation) {
 		super();
 		this.id = id;
@@ -73,6 +72,23 @@ public class FicheAssociation {
 		this.nom = nom;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("FicheAssociation [id=");
+		builder.append(id);
+		builder.append(", nom=");
+		builder.append(nom);
+		builder.append(", etat=");
+		builder.append(etat);
+		builder.append(", rnaNumber=");
+		builder.append(rnaNumber);
+		builder.append(", localisation=");
+		builder.append(localisation);
+		builder.append("]");
+		return builder.toString();
+	}
+
 	public String getRnaNumber() {
 		return rnaNumber;
 	}
@@ -88,10 +104,6 @@ public class FicheAssociation {
 	public void setLocalisation(String localisation) {
 		this.localisation = localisation;
 	}
-	
-
-
-
 	
 
 }

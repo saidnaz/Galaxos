@@ -9,11 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Association")
+@NamedQueries({ @NamedQuery(name = "Association.findById", query = "SELECT a FROM Association a WHERE a.id = :id"),
+		@NamedQuery(name = "FicheAssociation.findByName", query = "SELECT a FROM FicheAssociation a WHERE a.nom = :nom"),
+		@NamedQuery(name = "FicheAssociation.findByRNA", query = "SELECT a FROM FicheAssociation a WHERE a.rnaNumber = :rnaNumber"),
+		 })
 public class Association {
 
 	@Id
@@ -27,15 +33,15 @@ public class Association {
 	@OneToOne
 	@JoinColumn(name = "fk_ficheAssociation")
 	private FicheAssociation ficheAssociation;
-	
+
 	@OneToOne
 	@JoinColumn(name = "fk_ficheAssociation_descriptif")
 	private FicheAssoDescriptif ficheAssoDescriptif;
-	
+
 	@OneToOne
 	@JoinColumn(name = "fk_ficheAssociation_gestionnaire")
 	private FicheAssoGestionnaire ficheAssoGestionnaire;
-	
+
 	@OneToOne
 	@JoinColumn(name = "fk_ficheAssociation_comptabilite")
 	private FicheAssoCompta ficheAssoCompta;
@@ -96,6 +102,30 @@ public class Association {
 
 	public void setFk_idDomain(Domain fk_idDomain) {
 		this.fk_idDomain = fk_idDomain;
+	}
+
+	public FicheAssoDescriptif getFicheAssoDescriptif() {
+		return ficheAssoDescriptif;
+	}
+
+	public void setFicheAssoDescriptif(FicheAssoDescriptif ficheAssoDescriptif) {
+		this.ficheAssoDescriptif = ficheAssoDescriptif;
+	}
+
+	public FicheAssoGestionnaire getFicheAssoGestionnaire() {
+		return ficheAssoGestionnaire;
+	}
+
+	public void setFicheAssoGestionnaire(FicheAssoGestionnaire ficheAssoGestionnaire) {
+		this.ficheAssoGestionnaire = ficheAssoGestionnaire;
+	}
+
+	public FicheAssoCompta getFicheAssoCompta() {
+		return ficheAssoCompta;
+	}
+
+	public void setFicheAssoCompta(FicheAssoCompta ficheAssoCompta) {
+		this.ficheAssoCompta = ficheAssoCompta;
 	}
 
 	@Override

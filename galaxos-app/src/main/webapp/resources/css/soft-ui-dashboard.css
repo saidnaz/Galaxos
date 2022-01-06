@@ -9309,8 +9309,17 @@ fieldset:disabled .btn {
   padding: 0.5rem !important;
 }
 
+.pl-2 {
+  padding-left: 0.5rem !important;
+}
+
+
 .p-3 {
   padding: 1rem !important;
+}
+
+.pl-3 {
+  padding-left: 1rem !important;
 }
 
 .p-4 {

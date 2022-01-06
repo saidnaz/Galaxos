@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Envoyer un message</title>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+</h:head>
+<body>
+
+	<h:form id="MessageBean">
+	
+		<h:dataTable var="msg" value="#{MessageBean.messageDTO.lMsg}">
+			
+			<h:column>
+				<f:facet name="header">Destinataire</f:facet>
+				#{msg.idDestinataire}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Emetteur</f:facet>
+				#{msg.idEmeteur}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Texte du message</f:facet>
+				#{msg.texte}
+			</h:column>
+		
+			
+		</h:dataTable>
+		
+		<h:panelGrid columns="1">
+			<h:inputTextarea id="text" value="#{MessageBean.text}" size="170" />
+			<h:messages for="text" />
+			
+			<h:commandButton value="Envoyer" action="#{MessageBean.envoyer(1)}" />
+		</h:panelGrid>
+
+	</h:form>
+
+	<div>
+		<h:link outcome="messagerie">Messagerie</h:link>
+	</div>
+
+
+	<h:link outcome="index">Revenir à l'accueil</h:link>
+</body>
+</html>

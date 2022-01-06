@@ -34,7 +34,8 @@
 	<!--SECTION NAV-->
 	<div class="fixed-top">
 		<nav class="navbar navbar-expand-lg navbar-light navbar-white"
-			id="navbar"> <a class="navbar-brand" href=""> <img
+			id="navbar"> <a class="navbar-brand" href=""> 
+			<img
 			alt="LOGO" width="70" class="logo-brand-fr"
 			src="resources/images/logo.png" />
 		</a> <a class="navbar-brand d-none" href=""> <img alt="LOGO"
@@ -66,137 +67,57 @@
 
 	<!-- End Navbar -->
 	<section class="min-vh-100 mb-8" style="margin-top:120px">
-	<div
-		class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg"
-		style="background: rgb(46, 47, 94); background: linear-gradient(274deg, rgba(46, 47, 94, 1) 23%, rgba(0, 135, 182, 1) 93%);">
-		<span class="mask bg-gradient-dark opacity-6"></span>
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-3"></div>
-				<div class="col-lg-5 text-center mx-auto">
-					<h1 class="text-white mb-2 mt-5">Bienvenue!</h1>
-					<p class="text-lead text-white">Faîtes nous confiance et
-						rejoignez les 350 associations déjà présentes sur Galaxos.</p>
-				</div>
-				<div class="col-lg-3">
 
-
-					<div class="fusee">
-						<div class="rocket">
-							<div class="rocket-body">
-								<div class="bobo"></div>
-								<div class="fin fin-left"></div>
-								<div class="fin fin-right"></div>
-								<div class="window"></div>
-							</div>
-							<div class="exhaust-flame"></div>
-							<ul class="exhaust-fumes">
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-							</ul>
-							<ul class="star">
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-							</ul>
-						</div>
-					</div>
-
-
-
-
-
-				</div>
-			</div>
-		</div>
-	</div>
 	<div class="container">
-		<div class="row mt-lg-n10 mt-md-n11 mt-n10">
-			<div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
+		
+			<div class="col-xl-4 col-lg-5 col-md-7 shadow-lg mx-auto">
+			
 				<div class="card z-index-0">
 					<div class="card-header text-center pt-4">
-						<h5>Inscrire mon association</h5>
+				<img alt="LOGO" width="50" class="logo-brand-fr"
+								src="resources/images/logo.png" />
+						<h5>Connexion Galaxos</h5>	
 					</div>
 					<div class="card-body">
-
-						<h:form id="createAssoForm" role="form text-left">
-
-							<div class="mb-3">
-								<h:inputText id="nomAssoInput" class="form-control PHname"
-									aria-label="Nom" pt:placeholder="Nom de l'association"
+						<h:form id="loginForm" role="form text-left">
+							<div class="mb-4">
+								<h:inputText id="emailInput" class="form-control PHname"
+									aria-label="Nom" pt:placeholder="Email"
 									aria-describedby="email-addon"
-									value="#{creationCompteAssociationBean.form.nom}" />
-								<h:messages for="nomAssoInput"  />
+									value="#{loginBean.email}" />
+								<h:messages for="emailInput" errorClass="erreurInputForm" />
 							</div>
-
-							<div class="mb-3">
-								<h:inputText id="rnaNumberInput" class="form-control"
-									pt:placeholder="Numéro RNA" aria-label="RNA"
+							<div class="mb-4">
+								<h:inputText id="passwordInput" class="form-control"
+									pt:placeholder="Mot de passe" aria-label="password"
 									aria-describedby="password-addon"
-									value="#{creationCompteAssociationBean.form.rnaNumber}" />
-								<h:messages for="rnaNumberInput" errorClass="erreurInputForm" />
-							</div>
-
-							<div class="mb-3">
-								<select class="form-select" aria-label="Default select example">
-									<option>Choisir un domaine</option>
-									<option value="1">Animaux</option>
-									<option value="2">Nature</option>
-									<option value="3">Sport</option>
-								</select>
-							</div>
-
-							<div class="mb-3">
-								<h:inputText id="localisationInput" class="form-control"
-									pt:placeholder="Code postal" aria-label="RNA"
-									aria-describedby="password-addon"
-									value="#{creationCompteAssociationBean.form.localisation}" />
-								<h:messages for="localisationInput" errorClass="erreurInputForm" />
-							</div>
-
-							<div class="form-check form-check-info text-left">
-								<input class="form-check-input" type="checkbox" value=""
-									id="flexCheckDefault" /> <label class="form-check-label"
-									for="flexCheckDefault"> J'accepte <a
-									href="javascript:;" class="text-dark font-weight-bolder">les
-										conditions d'utilisations</a>
-								</label>
-							</div>
-
+									value="#{loginBean.password}" />
+								<h:messages for="passwordInput" errorClass="erreurInputForm"  />
+							</div>				
+							
 							<div class="text-center">
-								<h:commandButton value="Créer l'association"
+								<h:commandButton value="Accèder à mon compte"
 									class="btn main-button w-100 my-4 mb-2"
-									action="#{creationCompteAssociationBean.create()}" />
+									action="#{loginBean.doLogin()}" />
 							</div>
 						</h:form>
 
-
 						<p class="text-sm mt-3 mb-0">
-							Vous avez déjà un compte ? <a href="javascript:;"
-								class="text-dark font-weight-bolder">Se connecter</a>
+							Vous n’avez pas encore de compte? 	
+							<h:link outcome="createAccount.xhtml"><span class="text-dark font-weight-bolder">Inscrivez vous</span></h:link>
 						</p>
-
+					
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	
+
 	</section>
 
 
 	<!-- Footer-->
-	<div class="footer">
+	<div class="footer ">
 		<div class="site-section">
 			<div class="container">
 				<div class="join_footer d-block d-md-flex align-items-center px-5">
@@ -283,3 +204,4 @@
 
 </body>
 </html>
+											

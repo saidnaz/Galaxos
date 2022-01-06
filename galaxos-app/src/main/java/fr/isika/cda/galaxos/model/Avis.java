@@ -15,6 +15,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import fr.isika.cda.galaxos.model.roles.Consumer;
+import fr.isika.cda.galaxos.model.roles.Provider;
+
 @Entity
 public class Avis{
 	
@@ -120,9 +123,6 @@ public class Avis{
 			this.provider = provider;
 			this.consumer = consumer;
 			this.date = date;
-		}*/
-	    
-	    
-	    
+		}
 
 }

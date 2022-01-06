@@ -25,7 +25,7 @@ public class FicheAssoGestionnaire {
 	private String pieceIdentite;
 
 	public enum Etat {
-		EN_COURS, VALIDE, REFUSE;
+		EN_ATTENTE_DE_VALIDATION, VALIDE, REFUSE;
 	}
 
 	public FicheAssoGestionnaire() {
@@ -41,10 +41,6 @@ public class FicheAssoGestionnaire {
 
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public Etat getEtat() {
