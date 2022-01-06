@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Galaxos panier</title>
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+      
+	<h:outputStylesheet library="css" name="stylePanier.css" />
+	
+	 <style type="text/css">
+        .col-xs-updated {        
+            width: 92% !important;
+        }
+    </style>
+    <style>
+    h5 {
+	font-size: 18px;
+	margin-bottom: 0;
+	color : #706AC2}
+	table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;}
+p {
+	margin-bottom: 0;
+	line-height: 40px;
+	height: 40px;
+	padding: 0 15px;
+	background-color: #706AC2;}
+	
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: #AB52A2;
+    border-color: #706AC2;}	
+th {
+  
+  color: #AB52A2;
+}
+
+.cart-title {
+	font-size: 30px;
+	margin-bottom: 30px;
+	color: #AB52A2;
+}
+.box {
+
+  padding: 10px;
+  box-shadow: 5px 5px 8px #007CC9, 10px 10px 8px #706AC2, 15px 15px 8px  #AB52A2;
+  margin: 20px; 
+}
+li { @include display-flex(flex); @include justify-content-between;
+	margin-bottom: 30px;
+	text-transform: capitalize; }
+	span { color : #706AC2;
+	font-size: 14px;}
+.cart-title {
+	font-size: 30px;
+	margin-bottom: 30px;
+	color: white;
+	background-color: #AB52A2;
+	text-align :center;
+}
+.cart-summary {
+	position: relative;
+	z-index: 1;
+	padding: 30px 20px;}
+    </style>
+
+</h:head>
+<body>
+
+
+	<div class="container-fluid">
+		<h:form>
+			<div class="row">
+
+				<div class="cart-title mt-50">
+					<h2>Mon Panier</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 col-lg-8">
+					<div class="overflow-x: auto">
+
+						<table class="table table-responsive">
+							<thead>
+								<tr>
+									<th>Image</th>
+									<th>Ressource/Service</th>
+									<th>Prix</th>
+									<th>Quantité</th>
+									<th>Date</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><a href=""><img src="../ressources/" alt="Ressource" /></a></td>
+									
+									<td><span><h:outputText value="" /></span></td>
+									<td><span><h:outputText value="" /></span></td>
+									<td><span><h:outputText value="" /></span></td>
+									<td><span><h:outputText value="" /></span></td>
+								</tr>
+
+
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+
+
+				
+					<div class="col-12 col-lg-4 cart-summary">
+
+						<h5>Résumé de la commande</h5>
+
+						<ul>
+							<li><span>sous total:</span> <span>£<h:outputText
+										value="" /></span></li>
+
+							<li><span>totale:</span> <span>£<h:outputText
+										value="#" /></span></li>
+						</ul>
+<div class="box">
+
+						<h:commandButton class="btn-primary w-50" value="Demander un devis" />
+
+
+
+					</div>
+
+				</div>
+			</div>
+
+
+		</h:form>
+	</div>
+
+
+</body>
+</html>

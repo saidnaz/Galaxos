@@ -1,15 +1,9 @@
 package fr.isika.cda.galaxos.model.roles;
 
 
-import java.util.List;
-import java.util.Objects;
-
-import javax.persistence.*;
-
-import fr.isika.cda.galaxos.model.Adherent;
-import fr.isika.cda.galaxos.model.Association;
-import fr.isika.cda.galaxos.model.Note;
-import fr.isika.cda.galaxos.model.Post;
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="providers")

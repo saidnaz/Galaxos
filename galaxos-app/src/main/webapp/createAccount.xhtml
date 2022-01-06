@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+	<title>Galaxos : la plateforme de tous les services</title>
+	<!--     Fonts and icons     -->
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+		rel="stylesheet" />
+
+	<!-- Font Awesome Icons -->
+	<script src="https://kit.fontawesome.com/42d5adcbca.js"
+		crossorigin="anonymous"></script>
+
+
+	<!-- CSS  -->
+	<h:outputStylesheet library="css" name="main.css" />
+	<h:outputStylesheet library="css" name="home.css" />
+	<h:outputStylesheet library="css" name="creation-associaation.css" />
+	<h:outputStylesheet library="css" name="soft-ui-dashboard.css" />
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+	<!-- Bootstrap JS -->
+	<script type="text/javascript"
+		src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"></script>
+</h:head>
+
+<body>
+	<!--SECTION NAV-->
+	<div class="fixed-top">
+		<nav class="navbar navbar-expand-lg navbar-light navbar-white"
+			id="navbar"> <a class="navbar-brand" href=""> 
+			<img
+			alt="LOGO" width="70" class="logo-brand-fr"
+			src="resources/images/logo.png" />
+		</a> <a class="navbar-brand d-none" href=""> <img alt="LOGO"
+			width="70" class="logo-brand-fr" src="resources/images/logo.png" />
+		</a>
+		<button class="navbar-toggler" data-target="#nav_site_help"
+			data-toggle="collapse" type="button">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		GALAXOS
+		<div class="collapse navbar-collapse" id="nav_site_help">
+			<ul class="navbar-nav ml-auto">
+				<li class="m-1 nav-item d-flex align-items-center"><a
+					class="p-3 nav-link main-button" href="" style="color: white">
+						Besoin d'un service ? </a></li>
+				<li class="m-1 nav-item d-flex align-items-center"><h:link
+						outcome="creationAssociation.xhtml"
+						class="nav-link nav-link-hover-black button-tertiaire">Créer son association</h:link>
+				</li>
+				<li class=" m-1 nav-item d-flex align-items-center"><a
+					class="nav-link nav-link-hover-black button-secondaire" href="">Mon
+						compte</a></li>
+			</ul>
+		</div>
+		</nav>
+	</div>
+
+
+
+	<!-- End Navbar -->
+	<section class="min-vh-100 mb-8" style="margin-top:120px">
+
+	<div class="container">
+		
+			<div class="col-xl-4 col-lg-5 col-md-7 shadow-lg mx-auto">
+			
+				<div class="card z-index-0">
+					<div class="card-header text-center pt-4">
+				
+						<h5>Inscription Galaxos</h5>
+						<img alt="LOGO" width="50" class="logo-brand-fr"
+								src="resources/images/logo.png" />
+					</div>
+					<div class="card-body">
+
+						<h:form id="createAssoForm" role="form text-left">
+
+							<div class="mb-4">
+							 
+								<h:inputText id="emailInput" class="form-control PHname"
+									aria-label="Nom" pt:placeholder="Email"
+									aria-describedby="email-addon"
+									value="#{CreateAccountBean.accountForm.email}" />
+								<h:messages for="emailInput" errorClass="erreurInputForm" />
+							</div>
+
+							<div class="mb-4">
+								<h:inputText id="passwordInput" class="form-control"
+									pt:placeholder="Mot de passe" aria-label="password"
+									aria-describedby="password-addon"
+									value="#{CreateAccountBean.accountForm.password}" />
+								<h:messages for="passwordInput" errorClass="erreurInputForm"  />
+							</div>
+							
+							<div class="mb-4">
+							<i class="bi bi-person-plus-fill text-white"></i>
+								<h:inputText id="NomInput" class="form-control "
+									pt:placeholder="Nom" aria-label="Nom"
+									aria-describedby="password-addon"
+									value="#{CreateAccountBean.accountForm.nom}" />
+								<h:messages for="NomInput" errorClass="erreurInputForm" />
+							</div>
+
+							<div class="text-center">
+								<h:commandButton value="S'nscrire"
+									class="btn main-button w-100 my-4 mb-2"
+									action="#{CreateAccountBean.create()}" />
+							</div>
+						</h:form>
+
+
+						<p class="text-sm mt-3 mb-0">
+							Vous avez déjà un compte ? 	
+							<h:link outcome="login.xhtml"><span class="text-dark font-weight-bolder">Se connecter</span></h:link>
+						</p>
+					
+					</div>
+				</div>
+			</div>
+		</div>
+	
+
+	</section>
+
+
+	<!-- Footer-->
+	<div class="footer ">
+		<div class="site-section">
+			<div class="container">
+				<div class="join_footer d-block d-md-flex align-items-center px-5">
+					<div>
+						<h2 class="text-white">Vous souhaitez nous rejoindre ?</h2>
+						<h5>Laissez-vous embarquer</h5>
+					</div>
+					<div class="ml-auto">
+						<a href="" class="button-footer py-3 px-5">Inscription</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm">
+						<div class="d-flex align-items-center">
+							<img src="assets/img/logo.png" alt="" style="max-width: 50px;" />
+							<p class="text-white"
+								style="font-weight: 700; display: block; padding-top: 15px">GALAXOS</p>
+						</div>
+						<p class="text-muted ml-5 d-inline">© 2021</p>
+					</div>
+					<div class="col-sm">
+						<p class="text-white" style="font-weight: 500">Nous découvrir</p>
+						<ul class="list-unstyled ">
+							<li class="text-muted">Qui sommes nous ?</li>
+							<li class="text-muted">Nos engagements</li>
+						</ul>
+					</div>
+					<div class="col-sm">
+						<p class="text-white" style="font-weight: 500">Aide</p>
+						<ul class="list-unstyled ">
+							<li class="text-muted">FAQ</li>
+							<li class="text-muted">Centre d'aide</li>
+							<li class="text-muted">Notre guide</li>
+						</ul>
+					</div>
+					<div class="col-sm">
+						<p class="text-white" style="font-weight: 500">Informations
+							légales</p>
+						<ul class="list-unstyled ">
+							<li class="text-muted">CGU utilisateur</li>
+							<li class="text-muted">CGU association</li>
+							<li class="text-muted">Mentions légales</li>
+							<li class="text-muted">Gestion des cookies</li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<p class="text-white" style="font-weight: 500">Suivez-nous</p>
+						<ul class="list-unstyled social d-flex">
+							<li class="m-1"><a href="#"
+								class="d-flex justify-content-center align-items-center"> <svg
+										xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+										fill="currentColor" class="bi bi-facebook text-white"
+										viewBox="0 0 16 16"> <path
+										d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+									</svg>
+							</a></li>
+							<li class="m-1"><a href="#"
+								class="d-flex justify-content-center align-items-center"> <svg
+										xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+										fill="currentColor" class="bi bi-youtube text-white"
+										viewBox="0 0 16 16"> <path
+										d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" />
+									</svg>
+							</a></li>
+							<li class="m-1"><a href="#"
+								class="d-flex justify-content-center align-items-center"> <svg
+										xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+										fill="currentColor" class="bi bi-twitter text-white"
+										viewBox="0 0 16 16"> <path
+										d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+									</svg>
+							</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+  $('.PHname').attr('placeholder', 'Nom de lassociation');
+</script>
+
+</body>
+</html>

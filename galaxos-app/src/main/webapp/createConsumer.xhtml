@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Création d'un compte consumer</title>
+</h:head>
+<body>
+	<h3>Créer un compte consumer</h3>
+	<span></span>
+	<h:form id="createAccountForm">
+		<h:panelGrid columns="3">
+
+
+
+			<h:outputLabel value="Email : " />
+			<h:inputText size="15" id="emailInput" value="#{CreateConsumerBean.consumerForm.email}" />
+			<h:messages for="emailInput" />
+
+			<h:outputLabel value="Mot de passe : " />
+			<h:inputSecret size="8" id="passwordInput" value="#{CreateConsumerBean.consumerForm.password}" />
+			<h:messages for="passwordInput" />
+
+
+			<span></span>
+			<h:commandButton value="Créer mon compte consumer" action="#{CreateConsumerBean.create()}" />
+		</h:panelGrid>
+
+	</h:form>
+	<hr />
+	
+	</body>
+	</html>
