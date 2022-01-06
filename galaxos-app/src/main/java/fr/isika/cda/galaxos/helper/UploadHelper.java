@@ -13,7 +13,7 @@ public class UploadHelper {
 
 	private final int limit_max_size = 10240000;
 	private final String limit_type_file = "gif|jpg|png|jpeg";
-	private final String path_to = "resources" + File.separator + "imageUpload";
+	private final String path_to = File.separator + "resources" + File.separator + "imageUpload";
 
 	public String processUpload(Part fileUpload) {
 		String fileSaveData = "noimages.jpg";
@@ -22,7 +22,7 @@ public class UploadHelper {
 				String submittedFileName = getFilename(fileUpload);
 				if (checkFileType(submittedFileName)) {
 					if (fileUpload.getSize() > this.limit_max_size) {
-						FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "File size too large!", ""));
+						FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "L'image est trop volumineuse!", ""));
 					} else {
 						String currentFileName = submittedFileName;
 						String extension = currentFileName.substring(currentFileName.lastIndexOf("."), currentFileName.length());

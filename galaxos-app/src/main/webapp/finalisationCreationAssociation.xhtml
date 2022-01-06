@@ -18,11 +18,15 @@
 	<h:outputStylesheet library="css" name="nucleo-svg.css" />
 	<h:outputStylesheet library="css" name="main.css" />
 	<h:outputStylesheet library="css" name="home.css" />
+	<h:outputStylesheet library="css" name="finalisationAssociation.css" />
 	<!-- Font Awesome Icons -->
 	<script src="https://kit.fontawesome.com/42d5adcbca.js"
 		crossorigin="anonymous"></script>
 	<!-- CSS Files -->
 	<h:outputStylesheet library="css" name="soft-ui-dashboard.css" />
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
+		type="text/javascript"></script>
 </h:head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -230,8 +234,18 @@
 										alt="waves" />
 									<div
 										class="position-relative d-flex align-items-center justify-content-center h-100">
-										<img class="w-100 position-relative z-index-2 pt-4"
-											src="resources/images/rocket-white.png" alt="rocket" />
+										<!-- <img class="w-100 position-relative z-index-2 pt-4"
+											src="resources/images/rocket-white.png" alt="rocket" /> -->
+										<div class="progress-pie-chart" data-percent="#{finalisationCompteAssociationBean.resultat}">
+											<div class="ppc-progress">
+												<div class="ppc-progress-fill"></div>
+											</div>
+											<div class="ppc-percents">
+												<div class="pcc-percents-wrapper">
+													<span>%</span>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -272,7 +286,8 @@
 											rempli, alors dîtes nous en plus sur votre association !</em>
 									</p>
 									<div id="divDescri">
-										<h:form id="createAssoDescriptifForm" enctype="multipart/form-data">
+										<h:form id="createAssoDescriptifForm"
+											enctype="multipart/form-data">
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">
@@ -286,7 +301,9 @@
 												<div class="col-md-6">
 													<div class="form-group">
 														<label for="slogan">Votre logo</label>
-														<h:inputFile value="#{finalisationCompteAssociationBean.form.part}" class="form-control" id="file"></h:inputFile>
+														<h:inputFile
+															value="#{finalisationCompteAssociationBean.form.part}"
+															class="form-control" id="file"></h:inputFile>
 													</div>
 												</div>
 											</div>
@@ -306,8 +323,7 @@
 												<div class="col-12 d-flex justify-content-center  ">
 													<h:commandButton value="Soumettre"
 														class="btn main-button my-4 mb-2"
-														action="#{finalisationCompteAssociationBean.creationDescriptifAsso()}"
-														 />
+														action="#{finalisationCompteAssociationBean.creationDescriptifAsso()}" />
 												</div>
 											</div>
 										</h:form>
@@ -477,6 +493,9 @@
 	<h:outputScript library="js" name="plugins/perfect-scrollbar.min.js"></h:outputScript>
 	<h:outputScript library="js" name="plugins/smooth-scrollbar.min.js"></h:outputScript>
 	<h:outputScript library="js" name="plugins/chartjs.min.js"></h:outputScript>
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
+		type="text/javascript"></script>
 	<!-- Github buttons -->
 	<script src="https://buttons.github.io/buttons.js"></script>
 	<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
@@ -495,5 +514,23 @@
   			document.getElementById("divCompta").style.display = "none";
 		}
 	</script>
+	<script>
+	$(document).ready(function () {
+		$(function(){
+			  var $ppc = $('.progress-pie-chart'),
+			    percent = parseInt($ppc.data('percent')),
+			    deg = 360*percent/100;
+			  if (percent > 50) {
+			    $ppc.addClass('gt-50');
+			  }
+			  $('.ppc-progress-fill').css('transform','rotate('+ deg +'deg)');
+			  $('.ppc-percents span').html(percent+'%');
+			});
+		});
+
+	
+
+	</script>
+
 </body>
 </html>

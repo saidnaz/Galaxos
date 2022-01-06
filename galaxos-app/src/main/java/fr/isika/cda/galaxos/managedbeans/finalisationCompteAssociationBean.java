@@ -33,6 +33,8 @@ public class finalisationCompteAssociationBean implements Serializable {
 
 	private Association asso;
 
+	private Double resultat;
+
 	@PostConstruct
 	public void init() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
@@ -41,8 +43,33 @@ public class finalisationCompteAssociationBean implements Serializable {
 		Optional<Association> optional = service.findById(id);
 		if (optional.isPresent()) {
 			asso = optional.get();
-		}
 
+			Double compteurCompta = 0.0;
+			Double compteurGestionnaire = 0.0;
+			Double compteurDescriptif = 0.0;
+
+			if (asso.getFicheAssoCompta() != null) {
+				compteurCompta = 1.0;
+			}
+
+			if (asso.getFicheAssoGestionnaire() != null) {
+				compteurGestionnaire = 1.0;
+			}
+
+			if (asso.getFicheAssoDescriptif() != null) {
+				compteurDescriptif = 1.0;
+			}
+			resultat= compteurCompta + compteurGestionnaire + compteurDescriptif + 2.0;
+			System.out.println(resultat);
+			resultat = resultat/5;
+			System.out.println(resultat);
+			resultat = resultat*100;
+			System.out.println(resultat);
+			
+
+		
+
+		}
 	}
 
 	public String creationDescriptifAsso() {
@@ -135,4 +162,13 @@ public class finalisationCompteAssociationBean implements Serializable {
 	public void setAsso(Association asso) {
 		this.asso = asso;
 	}
+
+	public Double getResultat() {
+		return resultat;
+	}
+
+	public void setResultat(Double resultat) {
+		this.resultat = resultat;
+	}
+
 }
