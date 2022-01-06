@@ -1,6 +1,7 @@
 package fr.isika.cda.galaxos.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.DiscriminatorColumn;
@@ -12,6 +13,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import fr.isika.cda.galaxos.model.roles.Role;
@@ -23,16 +25,16 @@ import fr.isika.cda.galaxos.model.roles.Role;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
 public class Adherent implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-//	    @Enumerated(value = EnumType.STRING)
-//	    private Role role = Role.ROLE_USER;
-
-	private Role role;
+	@OneToMany
+	@JoinColumn(name="adherent_id")
+    private List<Role> roles;
 
 	@OneToOne
 	@JoinColumn(name = "fkUser")
@@ -50,10 +52,15 @@ public class Adherent implements Serializable {
 		return id;
 	}
 
-	public Role getRole() {
-		return role;
+	public List<Role> getRoles() {
+		return roles;
 	}
 
+	// TODO : addRole(...) et removeRole(....) et initialiser la liste aussi à vide !!
+//	public void setRoles(Role role) {
+//		this.roles.add(role);
+//	}
+	
 	public ComptUser getUser() {
 		return user;
 	}
