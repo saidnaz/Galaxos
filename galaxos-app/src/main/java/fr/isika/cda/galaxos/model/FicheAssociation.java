@@ -8,8 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 import fr.isika.cda.galaxos.model.Association.Etat;
+
 
 @Entity
 @Table(name = "Fiche_Association")
@@ -88,10 +88,5 @@ public class FicheAssociation {
 	public void setLocalisation(String localisation) {
 		this.localisation = localisation;
 	}
-	
-
-
-
-	
 
 }

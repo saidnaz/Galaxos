@@ -16,7 +16,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Association")
-
 @NamedQueries({ @NamedQuery(name = "Association.findById", query = "SELECT a FROM Association a WHERE a.id = :id"),
 		@NamedQuery(name = "FicheAssociation.findByName", query = "SELECT a FROM FicheAssociation a WHERE a.nom = :nom"),
 		@NamedQuery(name = "FicheAssociation.findByRNA", query = "SELECT a FROM FicheAssociation a WHERE a.rnaNumber = :rnaNumber"),
@@ -49,6 +48,7 @@ public class Association {
 
 	@ManyToOne
 	@JoinColumn(name = "fk_idDomain", nullable = true)
+
 	private Domain fk_idDomain;
 
 	// @OneToMany(mappedBy = "association")

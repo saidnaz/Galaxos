@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import fr.isika.cda.galaxos.model.roles.Consumer;
+
 @Entity
 public class Post {
 	@Id
@@ -30,7 +32,7 @@ public class Post {
     private Double price;
     
     public Post(String nom, String description, LocalDate dateStart, LocalDate dateEnd, Double price, String photo,
-			Provider provider, Domain domain) {
+			Consumer consumer, Domain domain) {
 		super();
 		this.nom = nom;
 		Description = description;
@@ -38,7 +40,7 @@ public class Post {
 		DateEnd = dateEnd;
 		this.price = price;
 		this.photo = photo;
-		this.provider = provider;
+		this.consumer = consumer;
 		this.domain = domain;
 	}
 
@@ -46,7 +48,7 @@ public class Post {
 	private String photo;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	private Provider provider;
+	private Consumer consumer;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Domain domain;
@@ -96,12 +98,12 @@ public class Post {
 		this.photo = photo;
 	}
 
-	public Provider getProvider() {
-		return provider;
+	public Consumer getConsumer() {
+		return consumer;
 	}
 
-	public void setProvider(Provider provider) {
-		this.provider = provider;
+	public void setConsumer(Consumer consumer) {
+		this.consumer = consumer;
 	}
 
 	public Domain getDomain() {
