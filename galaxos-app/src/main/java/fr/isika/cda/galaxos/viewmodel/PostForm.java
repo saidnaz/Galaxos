@@ -1,5 +1,6 @@
 package fr.isika.cda.galaxos.viewmodel;
 
+import java.io.File;
 import java.time.LocalDate;
 
 
