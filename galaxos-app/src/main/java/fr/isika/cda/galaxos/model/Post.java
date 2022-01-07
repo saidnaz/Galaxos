@@ -9,18 +9,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 
 import fr.isika.cda.galaxos.model.roles.Consumer;
 
 @Entity
+@NamedQuery(name = "Post.findByNom", query = "SELECT p FROM Post p WHERE p.nom = :nom_param")
 public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idPost;
 	@Column(nullable=false)
 	private String nom;
-	@Column(nullable=false)
 	
+	@Column(nullable=false)
     private String Description;
 	
 	
