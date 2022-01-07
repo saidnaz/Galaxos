@@ -39,16 +39,13 @@ public class LoginBean implements Serializable {
 	private AdherentService adherentService;
 	
 	public String doLogin () {
-		
-		
 		Optional<Adherent> optional = adherentService.findByEmail(email);
-
 		if (optional.isPresent()) {
 			
 			Adherent adherent = optional.get();
 			String passwordCrypt = Cryptage.encryptPassword(password);
 			
-			if (adherent.getUser().getEmail().equals(email) && adherent.getUser().getMdp().equals(passwordCrypt)) {
+			if (adherent.getUser().getMdp().equals(passwordCrypt)) {
 				
 				// Email ISVALID and Password ISVALID
 				connectedAdherent = adherent.getUser().getEmail();
@@ -57,7 +54,8 @@ public class LoginBean implements Serializable {
 				HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 				session.setAttribute("connectedAdherentId", adherent.getId());
 				
-				return "loginSuccess";
+				// TODO : rediriger vers la bonne page si login ok
+				return "index";
 			} else {
 
 				UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("loginForm");
@@ -70,8 +68,6 @@ public class LoginBean implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(formulaire.getClientId(),
 					new FacesMessage("Adhérent non reconnu"));
 		}
-
-		
 		return "login";
 	}
 

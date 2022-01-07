@@ -22,7 +22,6 @@ public class AdherentRepository implements Serializable{
 	private EntityManager entityManager;
 	
 	public Adherent create(AdherentForm adherentForm) {
-		
 		Adherent adherent = new Adherent();
 		CompteUser cptUser = new CompteUser();
 		Profil profil = new Profil();
@@ -32,6 +31,8 @@ public class AdherentRepository implements Serializable{
 		cptUser.setMdp(passwordCrypt);
 		cptUser.setEmail(adherentForm.getEmail());
 		
+		profil.setPseudo(adherentForm.getPseudo());
+		profil.setPrenom(adherentForm.getPrenom());
 		profil.setNom(adherentForm.getNom());
 		
 		adherent.setUser(cptUser);
@@ -48,8 +49,7 @@ public class AdherentRepository implements Serializable{
 					this.entityManager
 						.createNamedQuery("Adherent.findByEmail", Adherent.class)
 						.setParameter("email_param", email)
-						.getSingleResult()
-					);
+						.getSingleResult());
 		} catch(NoResultException ex) {
 			System.out.println("Consumer.findByemail() - not found : " + email);
 		}

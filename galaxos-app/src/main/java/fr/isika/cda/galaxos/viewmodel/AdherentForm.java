@@ -26,6 +26,18 @@ public class AdherentForm implements Serializable{
 	@NotNull(message = "Ne doit pas être null")
 	private String nom;
 
+	@NotEmpty(message = "Ne doit pas être vide")
+	@NotNull(message = "Ne doit pas être null")
+	private String prenom;
+	
+	@NotEmpty(message = "Ne doit pas être vide")
+	@NotNull(message = "Ne doit pas être null")
+	private String pseudo;
+	
+	public AdherentForm() {
+		super();
+	}
+	
 	public String getNom() {
 		return nom;
 	}
@@ -34,9 +46,11 @@ public class AdherentForm implements Serializable{
 		this.nom = nom;
 	}
 
-	public AdherentForm() {
-		super();
-		
+	public String getPrenom() {
+		return prenom;
+	}
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
 	}
 
 	public String getEmail() {
@@ -55,10 +69,11 @@ public class AdherentForm implements Serializable{
 		this.password = password;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public String getPseudo() {
+		return pseudo;
 	}
-	
-	
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
+	}
 
 }
