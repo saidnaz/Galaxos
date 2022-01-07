@@ -1,37 +1,43 @@
 package fr.isika.cda.galaxos.model.resources;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
-import fr.isika.cda.galaxos.model.Domain;
 import fr.isika.cda.galaxos.model.roles.Provider;
 
-@Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(
-		  name="TYPE_RESOURCE",
-		  discriminatorType=DiscriminatorType.STRING
-		)
-public abstract class Resource{
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long idRessource;
+@Entity 
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE) 
+@DiscriminatorColumn( 
+		  name="TYPE_RESOURCE", 
+		  discriminatorType=DiscriminatorType.STRING 
+		) 
+public abstract class Resource{ 
 	
-	@Column(name="Name", nullable=false)
-	private String name;
+	@Id 
+	@Column(name="id_ressource")
+	@GeneratedValue(strategy = GenerationType.AUTO) 
+	private Long idRessource; 
+	 
+	@Column(nullable=false) 
+	private String name; 
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	private Domain domain;
+	@ManyToOne() 
+	private Provider provider; 
+	 
+	private List<String> photos = new ArrayList<String>(); 
 	
-	@ManyToOne()
-	private Provider provider;
 	
-	private String[] photos;
-		
-	public Resource(String name, Domain domain, String[] photos) {
-		super();
+	public Resource() {}
+	
+	public Resource(String name) { 
+		super(); 
 		this.name = name;
-		this.domain = domain;
-		this.photos = photos;
+	}
+
+	public Long getIdRessource() {
+		return idRessource;
 	}
 
 	public String getName() {
@@ -42,32 +48,24 @@ public abstract class Resource{
 		this.name = name;
 	}
 
-	public Domain getDomain() {
-		return domain;
+	public Provider getProvider() {
+		return provider;
 	}
 
-	public void setDomain(Domain domain) {
-		this.domain = domain;
+	public void setProvider(Provider provider) {
+		this.provider = provider;
 	}
 
-	public String[] getPhotos() {
+	public List<String> getPhotos() {
 		return photos;
 	}
 
-	public void setPhoto(String[] photos) {
-		this.photos = photos;
+	public void addPhotos(String photo) {
+		this.photos.add(photo);
+	} 
+	
+	public void removePhotos(String photo) {
+		this.photos.remove(photo);
 	}
-
-	public Long getIdRessource() {
-		return idRessource;
-	}
-
-
-
-	public Resource() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 
 }
