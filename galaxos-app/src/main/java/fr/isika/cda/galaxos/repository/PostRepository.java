@@ -1,17 +1,22 @@
 package fr.isika.cda.galaxos.repository;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NamedQuery;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
+import fr.isika.cda.galaxos.exceptions.DAOException;
 import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Domain;
 import fr.isika.cda.galaxos.model.Post;
+import fr.isika.cda.galaxos.model.roles.Consumer;
 import fr.isika.cda.galaxos.viewmodel.PostForm;
 @Stateless
 public class PostRepository implements Serializable {
@@ -39,15 +44,13 @@ public class PostRepository implements Serializable {
 	}
 
 	
-	
-	
-	public Optional<Post>findByName(String nom) {
+	public Optional<Post>findByNom(String nom) {
 		
 		try {
 			return Optional.ofNullable(
 					this.entityManager
-						.createNamedQuery("Adherent.findByNom", Post.class)
-						.setParameter("email_param", nom)
+						.createNamedQuery("Post.findByNom", Post.class)
+						.setParameter("nom_param", nom)
 						.getSingleResult()
 					);
 		} catch(NoResultException ex) {
@@ -56,24 +59,57 @@ public class PostRepository implements Serializable {
 		return Optional.empty();
 	}
 	
+	public Optional<Post> findByIdPost(Long id) {
+		try {
+			return Optional.ofNullable(
+					this.entityManager
+						.createNamedQuery("Post.findById", Post.class)
+						.setParameter("id_param", id)
+						.getSingleResult()
+					);
+		} catch(NoResultException ex) {
+			System.out.println("Post.findByid() - not found : " +id);
+		}
+		return Optional.empty();
+	}
+
 	
 	
+//	Query(name = "Post.findByDay", query ="SELECT * FROM Post p where p.dateStart = :LocalDate.now()")
+	public List<Post> upcomingPosts() throws DAOException {
+		  try {
+	            TypedQuery<Post> query = entityManager.createQuery( "SELECT p FROM Post p where p.dateStart = :LocalDate.now()", Post.class );
+	            return query.getResultList();
+	        } catch ( Exception e ) {
+	            throw new DAOException( e );
+	        }
+	    }
+
+		LocalDate date = LocalDate.now();
+		 public List<Post> findAll() throws DAOException {
+		        try {
+		            TypedQuery<Post> query = entityManager.createQuery( "SELECT c FROM Post c ORDER BY c.id", Post.class );
+		            return query.getResultList();
+		        } catch ( Exception e ) {
+		            throw new DAOException( e );
+		        }
+		    }
 	
-	
-	public List<Post> findAll() {
+
+
+	public void deletePost(Post post) throws DAOException {
+		  
+		        try {
+		        	entityManager.remove( entityManager.merge( post) );
+		        } catch ( Exception e ) {
+		            throw new DAOException( e );
+		        }
+		    }
 		
-		return null;
-	}
-
-	public Optional<Post> findByConsumer(Long idConsumer) {
 		
-		return null;
-	}
-
-	public List<Post> upcomingPosts() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 
-}
+	
+
+
