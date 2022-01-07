@@ -360,10 +360,12 @@
 							<h5 class="text-white font-weight-bolder mb-4 pt-2">Ma page</h5>
 							<p class="text-white">Vous souhaitez voir à quoi ressemble la
 								page de votre association.</p>
-							<h:form> <h:commandButton value="Voir"
-								action="#{associationBean.redirect()}">
+							<h:form> 
+							<h:commandButton value="Voir" class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto"
+								action="#{associationBean.init()}">
 								<f:param name="id" value="#{dashboardAsso.asso.id}"></f:param>
-							</h:commandButton> </h:form>
+							</h:commandButton> 
+							</h:form>
 						</div>
 					</div>
 				</div>

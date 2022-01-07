@@ -20,7 +20,7 @@ public class AssociationBean {
 
 	Association asso = new Association();
 
-	public String redirect() {
+	public String init() {
 		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
 				.getRequest();
 		String idString = request.getParameter("id");
@@ -29,7 +29,7 @@ public class AssociationBean {
 		if (optional.isPresent()) {
 			asso = optional.get();
 		}
-		return "association?faces-redirect=true";
+		return "association";
 
 	}
 
