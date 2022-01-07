@@ -9,7 +9,6 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import fr.isika.cda.galaxos.model.Association.Etat;
-import fr.isika.cda.galaxos.model.Domain;
 import fr.isika.cda.galaxos.model.Domaine;
 
 public class AssociationCreationForm implements Serializable {
@@ -68,10 +67,6 @@ public class AssociationCreationForm implements Serializable {
 
 	public void setDomaine(Domaine domaine) {
 		this.domaine = domaine;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	public String getLocalisation() {

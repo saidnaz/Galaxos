@@ -1,9 +1,7 @@
 package fr.isika.cda.galaxos.managedbeans;
 
 import java.io.Serializable;
-import java.util.Optional;
 
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -15,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import fr.isika.cda.galaxos.exceptions.NomAssociationExistDejaExeption;
 import fr.isika.cda.galaxos.exceptions.RNAAssociationExistDejaExeption;
 import fr.isika.cda.galaxos.model.Association;
-import fr.isika.cda.galaxos.model.DataDomaine;
 import fr.isika.cda.galaxos.model.Domaine;
 import fr.isika.cda.galaxos.service.AssociationCompteService;
 import fr.isika.cda.galaxos.viewmodel.AssociationCreationForm;
@@ -31,16 +28,8 @@ public class creationCompteAssociationBean implements Serializable {
 
 	private AssociationCreationForm form = new AssociationCreationForm();
 	
-	private Domaine domaine;
-	
-	private DataDomaine dataDomaine = new DataDomaine();
-	
-
 	public String create() {
-	
 		UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("createAssoForm");
-		//UIComponent inputNom = FacesContext.getCurrentInstance().getViewRoot().findComponent("nomAssoInput");
-
 		try {
 			Association asso = service.create(form);
 			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext()
@@ -50,9 +39,6 @@ public class creationCompteAssociationBean implements Serializable {
 			return "finalisationCreationAssociation?faces-redirect=true";
 
 		} catch (NomAssociationExistDejaExeption ex) {
-
-			//FacesContext.getCurrentInstance().addMessage(inputNom.getClientId(), new FacesMessage(ex.getMessage()));
-			//FacesContext.getCurrentInstance().addMessage(formulaire.getClientId(), new FacesMessage(ex.getMessage()));
 			FacesContext.getCurrentInstance().addMessage("forumaire:nomAssoInput", new FacesMessage(ex.getMessage()));
 			System.out.println("NOM DEJA EN BASE");
 		} catch (RNAAssociationExistDejaExeption ex) {
@@ -79,34 +65,8 @@ public class creationCompteAssociationBean implements Serializable {
 		this.form = form;
 	}
 
-
-
-
-	public Domaine getDomaine() {
-		return domaine;
+	public Domaine[] getDomaines() {
+		return Domaine.values();
 	}
-
-
-
-
-	public void setDomaine(Domaine domaine) {
-		this.domaine = domaine;
-	}
-
-
-
-
-	public DataDomaine getDataDomaine() {
-		return dataDomaine;
-	}
-
-
-
-
-	public void setDataDomaine(DataDomaine dataDomaine) {
-		this.dataDomaine = dataDomaine;
-	}
-	
-	
 
 }

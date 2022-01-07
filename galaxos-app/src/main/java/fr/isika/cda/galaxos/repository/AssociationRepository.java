@@ -33,13 +33,7 @@ public class AssociationRepository {
 
 		Association asso = new Association();
 		FicheAssociation ficheAsso = new FicheAssociation();
-		
-		Domaine nomDomaine = form.getDomaine();
-		Optional<Domain> optional = this.findDomaine(nomDomaine.name());
-		Domain domain = new Domain();
-		if(optional.isPresent()) {
-			domain = optional.get();
-		}
+		Domain domain = findOrCreateDomain(form.getDomaine());
 
 		ficheAsso.setNom(form.getNom());
 		ficheAsso.setRnaNumber(form.getRnaNumber());
@@ -50,6 +44,7 @@ public class AssociationRepository {
 		asso.setFk_idDomain(domain);
 		asso.setFicheAssociation(ficheAsso);
 
+		entityManager.persist(domain);
 		entityManager.persist(ficheAsso);
 		entityManager.persist(asso);
 
@@ -77,7 +72,7 @@ public class AssociationRepository {
 		return Optional.empty();
 	}
 	
-	public Optional<Domain> findDomaine(final String name) {
+	public Optional<Domain> findDomaine(final Domaine name) {
 		try {
 			return Optional.ofNullable(
 					this.entityManager.createNamedQuery("Domain.findDomaine", Domain.class)
@@ -154,5 +149,16 @@ public class AssociationRepository {
 		entityManager.persist(assoCompta);
 
 		return assoCompta;
+	}
+	
+	private Domain findOrCreateDomain(Domaine nomDomaine) {
+		Optional<Domain> optional = this.findDomaine(nomDomaine);
+		if(optional.isPresent()) {
+			return optional.get();
+		} else {
+			Domain domain = new Domain();
+			domain.setName(nomDomaine);
+			return domain;
+		}
 	}
 }

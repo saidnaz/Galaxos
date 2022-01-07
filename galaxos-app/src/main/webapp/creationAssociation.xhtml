@@ -145,10 +145,10 @@
 
 							<div class="mb-3">
 								<h:selectOneMenu
-									value="#{creationCompteAssociationBean.domaine}"
+									value="#{creationCompteAssociationBean.form.domaine}"
 									class="form-select" aria-label="Default select example">
 									<f:selectItems
-										value="#{creationCompteAssociationBean.dataDomaine.domaines}"
+										value="#{creationCompteAssociationBean.domaines}"
 										var="domaines" itemValue="#{domaines}"
 										itemLabel="#{domaines.label}" />
 								</h:selectOneMenu>
