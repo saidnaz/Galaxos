@@ -1,0 +1,14 @@
+#timedate {
+  text-align:left;
+  width: 50%;
+  color:#fff;
+  padding: 20px;
+}
+
+#timedate a:hover {
+ color:white!important;
+}
+
+.text-white{
+	color:white!important;
+}
