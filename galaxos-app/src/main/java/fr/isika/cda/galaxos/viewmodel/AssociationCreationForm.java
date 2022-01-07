@@ -10,6 +10,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import fr.isika.cda.galaxos.model.Association.Etat;
 import fr.isika.cda.galaxos.model.Domain;
+import fr.isika.cda.galaxos.model.Domaine;
 
 public class AssociationCreationForm implements Serializable {
 
@@ -27,7 +28,7 @@ public class AssociationCreationForm implements Serializable {
 	@Pattern(regexp = "^[A-Z]{1}[0-9]{9}$", message = "Ce champs doit correspondre à un numéro RNA valide")
 	private String rnaNumber;
 
-	private Domain fk_idDomain;
+	private Domaine domaine;
 
 	@NotEmpty(message = "Ce champs doit être rempli")
 	@NotNull(message = "Ce champs doit être rempli")
@@ -61,12 +62,12 @@ public class AssociationCreationForm implements Serializable {
 		this.rnaNumber = rnaNumber;
 	}
 
-	public Domain getFk_idDomain() {
-		return fk_idDomain;
+	public Domaine getDomaine() {
+		return domaine;
 	}
 
-	public void setFk_idDomain(Domain fk_idDomain) {
-		this.fk_idDomain = fk_idDomain;
+	public void setDomaine(Domaine domaine) {
+		this.domaine = domaine;
 	}
 
 	public static long getSerialversionuid() {

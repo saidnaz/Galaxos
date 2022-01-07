@@ -10,6 +10,8 @@ import javax.servlet.http.Part;
 import fr.isika.cda.galaxos.helper.UploadHelper;
 import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.Association.Etat;
+import fr.isika.cda.galaxos.model.Domain;
+import fr.isika.cda.galaxos.model.Domaine;
 import fr.isika.cda.galaxos.model.FicheAssoCompta;
 import fr.isika.cda.galaxos.model.FicheAssoDescriptif;
 import fr.isika.cda.galaxos.model.FicheAssoGestionnaire;
@@ -31,6 +33,13 @@ public class AssociationRepository {
 
 		Association asso = new Association();
 		FicheAssociation ficheAsso = new FicheAssociation();
+		
+		Domaine nomDomaine = form.getDomaine();
+		Optional<Domain> optional = this.findDomaine(nomDomaine.name());
+		Domain domain = new Domain();
+		if(optional.isPresent()) {
+			domain = optional.get();
+		}
 
 		ficheAsso.setNom(form.getNom());
 		ficheAsso.setRnaNumber(form.getRnaNumber());
@@ -38,7 +47,7 @@ public class AssociationRepository {
 		ficheAsso.setEtat(fr.isika.cda.galaxos.model.FicheAssociation.Etat.EN_ATTENTE_VALIDATION);
 
 		asso.setEtat(Etat.EN_COURS);
-		asso.setFk_idDomain(null);
+		asso.setFk_idDomain(domain);
 		asso.setFicheAssociation(ficheAsso);
 
 		entityManager.persist(ficheAsso);
@@ -64,6 +73,17 @@ public class AssociationRepository {
 							.setParameter("nom", nom).getSingleResult());
 		} catch (NoResultException ex) {
 			System.out.println("FIcheAssociation.findByName() - not found : " + nom);
+		}
+		return Optional.empty();
+	}
+	
+	public Optional<Domain> findDomaine(final String name) {
+		try {
+			return Optional.ofNullable(
+					this.entityManager.createNamedQuery("Domain.findDomaine", Domain.class)
+							.setParameter("name", name).getSingleResult());
+		} catch (NoResultException ex) {
+			System.out.println("FIcheAssociation.findByName() - not found : " + name);
 		}
 		return Optional.empty();
 	}

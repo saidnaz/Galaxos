@@ -112,11 +112,6 @@
 							</ul>
 						</div>
 					</div>
-
-
-
-
-
 				</div>
 			</div>
 		</div>
@@ -137,7 +132,7 @@
 									aria-label="Nom" pt:placeholder="Nom de l'association"
 									aria-describedby="email-addon"
 									value="#{creationCompteAssociationBean.form.nom}" />
-								<h:messages for="nomAssoInput" errorClass="erreurInputForm"  />
+								<h:messages for="nomAssoInput" errorClass="erreurInputForm" />
 							</div>
 
 							<div class="mb-3">
@@ -149,12 +144,14 @@
 							</div>
 
 							<div class="mb-3">
-								<select class="form-select" aria-label="Default select example">
-									<option>Choisir un domaine</option>
-									<option value="1">Animaux</option>
-									<option value="2">Nature</option>
-									<option value="3">Sport</option>
-								</select>
+								<h:selectOneMenu
+									value="#{creationCompteAssociationBean.domaine}"
+									class="form-select" aria-label="Default select example">
+									<f:selectItems
+										value="#{creationCompteAssociationBean.dataDomaine.domaines}"
+										var="domaines" itemValue="#{domaines}"
+										itemLabel="#{domaines.label}" />
+								</h:selectOneMenu>
 							</div>
 
 							<div class="mb-3">
