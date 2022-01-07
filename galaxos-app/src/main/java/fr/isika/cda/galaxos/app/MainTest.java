@@ -13,16 +13,17 @@ public class MainTest {
 		// TODO Auto-generated method stub
 
 		List<LocalDate> lReservation = new ArrayList<>();	// Attribut dans le Model
-		List<LocalDate> lDispo = new ArrayList<>();		// Attribut dans le viewModel (DTO)
+		List<LocalDate> lDispoDebut = new ArrayList<>();		// Attribut dans le viewModel (DTO)
+		List<LocalDate> lDispoFin = new ArrayList<>();	
 		LocalDate dateDebutTentative;					// Attribut temporaire dans une méthode reservation qui comprend 2 méthodes !
 		
-		reservationTest(lReservation, lDispo, 2022, 2, 15, 2022, 2, 25);
+		reservationTest(lReservation, lDispoDebut, 2022, 2, 15, 2022, 2, 25);
 		System.out.println(lReservation.toString());
 		
-		afficherDatesDispo(lReservation, lDispo, 2022, 2);
-		System.out.println(lDispo.toString());
+		afficherDatesDispo(lReservation, lDispoDebut, 2022, 2);
+		System.out.println(lDispoDebut.toString());
 		
-		reservationTest(lReservation, lDispo, 2022, 2, 15, 2022, 2, 20);
+		reservationTest(lReservation, lDispoDebut, 2022, 2, 14, 2022, 2, 26);
 		System.out.println(lReservation.toString());
 		
 		
@@ -40,7 +41,7 @@ public class MainTest {
 		{
 			if (!lreservation.get(i).isBefore(debut) && !lreservation.get(i).isAfter(fin))	// Càd que la condition est validé si une date occupé est comprise dans les dates de location souhaitées
 			{
-				System.out.println("Les dates sont déjà prises, veuillez selectionner des dates valides");
+				System.out.println("Des dates sont indisponibles à la location dans l'intervalle de dates selectionnées, veuillez selectionner des dates valides");
 				return;
 			}
 		}
@@ -55,18 +56,18 @@ public class MainTest {
 	
 	
 	
-	public static void reservation(List<LocalDate> lreservation, List<LocalDate> ldispo, int annee1, int mois1, int jour1, int annee2, int mois2, int jour2)
+	public static void reservation(List<LocalDate> lreservation, List<LocalDate> ldispodebut, List<LocalDate> ldispofin, int annee1, int mois1, int jour1, int annee2, int mois2, int jour2)
 	{
 //	public static void reservation(List<LocalDate> lreservation, Date debut, Date fin) {
 	
 		LocalDate debut = LocalDate.of(annee1, mois1, jour1);
 		LocalDate fin = LocalDate.of(annee2, mois2, jour2);
 		
-		reservationDebut(lreservation, ldispo, annee1, mois1, jour1);
-		reservationFin(debut, lreservation, ldispo, annee1, mois1, jour1);
+		reservationDebut(lreservation, ldispodebut, annee1, mois1, jour1);
+		reservationFin(debut, lreservation, ldispofin, annee1, mois1, jour1);
 	}
 	
-	public static void reservationDebut(List<LocalDate> lreservation, List<LocalDate> ldispo, int annee1, int mois1, int jour1)
+	public static void reservationDebut(List<LocalDate> lreservation, List<LocalDate> ldispodebut, int annee1, int mois1, int jour1)
 	{
 		LocalDate debut = LocalDate.of(annee1, mois1, jour1);
 	//	Peut uniquement selectionner des dates disponibles à l'ecran, donc pas besoin de mettre des conditions pour voir si la dateDebut est bien dispo
@@ -81,7 +82,7 @@ public class MainTest {
 		{
 			if (!lreservation.get(i).isBefore(debut) && !lreservation.get(i).isAfter(fin))	// Càd que la condition est validé si une date occupé est comprise dans les dates de location souhaitées
 			{
-				System.out.println("Des dates sont indisponibles à la location dans l'intervalle de dates selectionnée, veuillez selectionner des dates valides");
+				System.out.println("Des dates sont indisponibles à la location dans l'intervalle de dates selectionnées, veuillez selectionner des dates valides");
 				return;
 			}
 		}

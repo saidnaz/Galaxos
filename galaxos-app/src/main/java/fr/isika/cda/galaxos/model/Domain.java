@@ -23,10 +23,10 @@ public class Domain {
 
 	@OneToMany(mappedBy = "domain")
 	private List<Service> services;
-
+	/*
 	@OneToMany(mappedBy = "domain")
 	private List<Resource> resource;
-
+*/
 	@OneToMany(mappedBy = "fk_idDomain")
 	private List<Association> associations = new ArrayList<>();
 

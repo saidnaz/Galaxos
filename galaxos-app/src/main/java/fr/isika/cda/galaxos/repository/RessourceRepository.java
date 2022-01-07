@@ -14,7 +14,7 @@ public class RessourceRepository {
 	
 	public Resource create(ResourceAddForm form) {
 		
-		Resource resource;
+		Resource resource = null;
 		return resource;
 	}
 

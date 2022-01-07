@@ -26,7 +26,7 @@ public abstract class Resource{
 	@ManyToOne() 
 	private Provider provider; 
 	 
-	private List<String> photos = new ArrayList<String>(); 
+//	private List<String> photos = new ArrayList<String>(); 
 	
 	
 	public Resource() {}
@@ -56,16 +56,16 @@ public abstract class Resource{
 		this.provider = provider;
 	}
 
-	public List<String> getPhotos() {
-		return photos;
-	}
-
-	public void addPhotos(String photo) {
-		this.photos.add(photo);
-	} 
-	
-	public void removePhotos(String photo) {
-		this.photos.remove(photo);
-	}
+//	public List<String> getPhotos() {
+//		return photos;
+//	}
+//
+//	public void addPhotos(String photo) {
+//		this.photos.add(photo);
+//	} 
+//	
+//	public void removePhotos(String photo) {
+//		this.photos.remove(photo);
+//	}
 
 }

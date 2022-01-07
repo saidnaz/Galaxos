@@ -124,5 +124,5 @@ public class Avis{
 			this.consumer = consumer;
 			this.date = date;
 		}
-
+*/
 }
