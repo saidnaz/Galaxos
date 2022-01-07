@@ -1,4 +1,4 @@
-package fr.isika.cda.galaxos.bean;
+package fr.isika.cda.galaxos.managedbeans;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -44,8 +44,6 @@ public class MessageBean implements Serializable {
 	@Size(min = 1, max = 500, message = "Doit être entre 1 et 500 caractère.")
 //	@Pattern(regexp = "[^0-9]*", message = "Ne doit pas contenir des chiffres")
 	private String text;
-	
-	private LocalDateTime date;
 	
 	// ViewModel est délcaré ici dans le bean
 	private MessageDTO messageDTO;
@@ -122,14 +120,6 @@ public class MessageBean implements Serializable {
 
 	public void setText(String text) {
 		this.text = text;
-	}
-
-	public LocalDateTime getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDateTime date) {
-		this.date = date;
 	}
 	
 	public MessageDTO getMessageDTO() {
