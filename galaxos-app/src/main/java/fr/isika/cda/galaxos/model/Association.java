@@ -18,6 +18,7 @@ import javax.persistence.Table;
 @Table(name = "Association")
 @NamedQueries({ @NamedQuery(name = "Association.findById", query = "SELECT a FROM Association a WHERE a.id = :id"),
 		@NamedQuery(name = "FicheAssociation.findByName", query = "SELECT a FROM FicheAssociation a WHERE a.nom = :nom"),
+		@NamedQuery(name = "Association.findAll", query = "SELECT a FROM Association a"),
 		@NamedQuery(name = "FicheAssociation.findByRNA", query = "SELECT a FROM FicheAssociation a WHERE a.rnaNumber = :rnaNumber"),
 		 })
 public class Association {

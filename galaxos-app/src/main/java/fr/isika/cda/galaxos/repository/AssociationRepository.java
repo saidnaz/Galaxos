@@ -1,10 +1,13 @@
 package fr.isika.cda.galaxos.repository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.servlet.http.Part;
 
 import fr.isika.cda.galaxos.helper.UploadHelper;
@@ -161,4 +164,11 @@ public class AssociationRepository {
 			return domain;
 		}
 	}
+	
+	public List<Association> findAll(){
+		TypedQuery<Association> query = this.entityManager.createNamedQuery("Association.findAll", Association.class);
+		List<Association> associations = query.getResultList();
+		return associations;
+		
+		}
 }

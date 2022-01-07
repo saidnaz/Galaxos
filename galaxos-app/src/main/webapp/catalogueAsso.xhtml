@@ -2,10 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core">
 
 <h:head>
-	<title></title>
+	<title>Galaxos : la plateforme de tous les services</title>
+	<meta
+		content="Une plateforme d'associations présentant une multitude de services" />
+	<meta content="" name="application-name" />
+	<link rel="icon" href="logo.ico" />
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<meta content="yes" name="mobile-web-app-capable" />
+
 	<!--     Fonts and icons     -->
 	<link
 		href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
@@ -14,7 +22,6 @@
 	<!-- Font Awesome Icons -->
 	<script src="https://kit.fontawesome.com/42d5adcbca.js"
 		crossorigin="anonymous"></script>
-
 
 	<!-- CSS  -->
 	<h:outputStylesheet library="css" name="main.css" />
@@ -28,7 +35,16 @@
 	<script type="text/javascript"
 		src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"></script>
 </h:head>
+
 <body>
+	<!-- 	<h1>Welcome to Galaxos !</h1> -->
+	<!-- 	<hr/> -->
+	<!-- 	<h3>#{appStatus.message}</h3> -->
+
+	<!-- 	<div> -->
+	<!-- 	<h:link outcome="messagerie">Messagerie</h:link> -->
+	<!-- 	</div> -->
+
 	<!--SECTION NAV-->
 	<div class="fixed-top">
 		<nav class="navbar navbar-expand-lg navbar-light navbar-white"
@@ -42,7 +58,7 @@
 			data-toggle="collapse" type="button">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		GALAXOS
+		<span class="gradient-text">GALAXOS</span>
 		<div class="collapse navbar-collapse" id="nav_site_help">
 			<ul class="navbar-nav ml-auto">
 				<li class="m-1 nav-item d-flex align-items-center"><a
@@ -59,155 +75,76 @@
 		</div>
 		</nav>
 	</div>
-	<!--SECTION NAV-->
 
-	<div class="container-fluid mt-5 pt-5">
-		<div class="page-header min-height-300 max-height-300 border-radius-xl mt-4"
-			style="background-image: url('../resource/images/sky.jpg'); background-position-y: 50%;">
-			<h:graphicImage library="images"
-							name="sky.jpg"
-							class="img-responsive"
-							></h:graphicImage>
-			<!--  <span class="mask bg-gradient-primary opacity-6"></span>-->
-		</div>
-		<div
-			class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
-			<div class="row gx-4">
-				<div class="col-auto">
-					<div class="avatar avatar-xl position-relative">
-						<h:graphicImage library="imageUpload"
-							name="#{associationBean.asso.ficheAssoDescriptif.logo}"
-							class="w-100 border-radius-lg shadow-sm"></h:graphicImage>
-					</div>
-				</div>
-				<div class="col-auto my-auto">
-					<div class="h-100">
-						<h5 class="mb-1">
-							#{associationBean.asso.ficheAssociation.nom}</h5>
-						<p class="mb-0 font-weight-bold text-sm">
-							#{associationBean.asso.fk_idDomain.name}</p>
-					</div>
-				</div>
-				<div
-					class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
-					<div class="nav-wrapper position-relative end-0">
-					<p>#{associationBean.asso.ficheAssoDescriptif.slogan}</p>
-						<!--  <ul class="nav nav-pills nav-fill p-1 bg-transparent"
-							role="tablist">
-							<li class="nav-item"><a
-								class="nav-link mb-0 px-0 py-1 active " data-bs-toggle="tab"
-								href="javascript:;" role="tab" aria-selected="true"> <span
-									class="ms-1">App</span>
-							</a></li>
-							<li class="nav-item"><a class="nav-link mb-0 px-0 py-1 "
-								data-bs-toggle="tab" href="javascript:;" role="tab"
-								aria-selected="false"> <span class="ms-1">Messages</span>
-							</a></li>
-							<li class="nav-item"><a class="nav-link mb-0 px-0 py-1 "
-								data-bs-toggle="tab" href="javascript:;" role="tab"
-								aria-selected="false"> <span class="ms-1">Settings</span>
-							</a></li>
-						</ul>-->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="container-fluid py-4">
-		<div class="row">
-			<div class="col-12 col-xl-4">
-				<div class="card h-100">
-					<div class="card-header pb-0 p-3">
-						<div class="row">
-							<div class="col-md-8 d-flex align-items-center">
-								<h6 class="mb-0">Description</h6>
+	<div class="container mt-5 pt-5 mb-5">
+		<h1>Trouvez votre bonheur au sein de notre galaxie</h1>
+		<h:form>
+			<div class="d-flex">
+				<ui:repeat var="item"
+					value="#{CatalogueAssociationBean.associations}">
+
+					<div class="col-3 col-xl-4 mt-5">
+						<div class="card h-100">
+							<div class="d-flex card-header justify-content-center pb-0 p-3">
+								<div
+									style="background-color: white; width: 75px; height: 75px; border-radius: 20px"
+									class="d-flex justify-content-center align-items-center">
+									<img src="resources/images/logo.png"
+										style="width: 70px; height: 70px"></img>
+								</div>
 							</div>
-							<div class="col-md-4 text-end">
-								<i class="fas fa-user-edit text-secondary text-sm"
-									data-bs-toggle="tooltip" data-bs-placement="top"
-									title="Edit Profile"></i>
+							<div class="card-body p-3">
+								<div
+									class=" d-flex align-items-center justify-content-end p-0 m-0"
+									style="height: 19px">
+									<p class="text-muted">
+										<small><i class=" fas fa-map-marker-alt text-muted"></i>
+											#{item.ficheAssociation.localisation}</small>
+									</p>
+								</div>
+								<div>
+									<h4>#{item.ficheAssociation.nom}</h4>
+									<p class="text-muted">
+										<em><small>#{item.ficheAssoDescriptif.slogan}</small></em>
+									</p>
+									<p>#{item.ficheAssoDescriptif.description}</p>
+								</div>
+								<div class="d-flex justify-content-between">
+									<div class="">
+										<div class=" p-1 main-button">
+											<small>#{item.fk_idDomain.name}</small>
+										</div>
+									</div>
+									<div class="justify-content-end align-items-end">
+										<h:commandButton value="Voir +"
+											class="text-fonce text-sm font-weight-bold mb-0 icon-move-right mt-auto"
+											action="#{associationBean.init()}"
+											style="	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;">
+											<i class="fas fa-arrow-right text-sm ms-1 text-fonce" aria-hidden="true"></i>
+											<f:param name="id" value="#{item.id}"></f:param>
+										</h:commandButton>
 
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="card-body p-3">
-						<p class="text-sm">#{associationBean.asso.ficheAssoDescriptif.description}</p>
-						<hr class="horizontal gray-light my-4" />
-						<ul class="list-group">
-							<li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong
-								class="text-dark">Localisation:</strong> &nbsp;
-								#{associationBean.asso.ficheAssociation.localisation}</li>
-							<li class="list-group-item border-0 ps-0 text-sm"><strong
-								class="text-dark">Numéro RNA:</strong> &nbsp;
-								#{associationBean.asso.ficheAssociation.rnaNumber}</li>
-							<li class="list-group-item border-0 ps-0 text-sm"><strong
-								class="text-dark">Commission de rémunération:</strong> &nbsp;
-								#{associationBean.asso.ficheAssoCompta.commission}%</li>
-						</ul>
-					</div>
-				</div>
+
+				</ui:repeat>
 			</div>
-			<div class="col-12 col-xl-4">
-				<div class="card h-100">
-					<div class="card-header pb-0 p-3">
-						<div class="row">
-							<div class="col-md-8 d-flex align-items-center">
-								<h6 class="mb-0">Services</h6>
-							</div>
-							<div class="col-md-4 text-end">
-								<i class="fas fa-tools text-secondary text-sm"
-									data-bs-toggle="tooltip" data-bs-placement="top"
-									title="Edit Profile"></i>
-							</div>
-						</div>
-					</div>
-					<div class="card-body p-3"></div>
-				</div>
-			</div>
-			<div class="col-12 col-xl-4">
-				<div class="card h-100">
-					<div class="card-header pb-0 p-3">
-						<h6 class="mb-0">Vous souhaitez ?</h6>
-					</div>
-					<div class="card-body p-3">
-						<ul class="list-group">
-							<li
-								class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-								<div
-									class="d-flex align-items-start flex-column justify-content-center">
-									<h6 class="mb-0 text-sm">Devenir adhérent chez
-										#{associationBean.asso.ficheAssociation.nom}</h6>
-								</div> <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto"
-								href="javascript:;">Adhérer</a>
-							</li>
-							<li
-								class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-								<div
-									class="d-flex align-items-start flex-column justify-content-center">
-									<h6 class="mb-0 text-sm">Devenir provider chez
-										#{associationBean.asso.ficheAssociation.nom}</h6>
-								</div> <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto"
-								href="javascript:;">Adhérer</a>
-							</li>
-							<li
-								class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-								<div
-									class="d-flex align-items-start flex-column justify-content-center">
-									<h6 class="mb-0 text-sm">Envoyez un message à
-										#{associationBean.asso.ficheAssociation.nom}</h6>
-								</div> <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto"
-								href="javascript:;">Envoyez</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		
-		
-		
-		</div>
+		</h:form>
 	</div>
+
+
 	<div style="min-height: 10vh"></div>
+
+	<!-- Footer-->
 	<div class="footer">
 		<div class="site-section">
 			<div class="container">
@@ -287,5 +224,34 @@
 			</div>
 		</div>
 	</div>
+
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+		crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+			integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+			crossorigin="anonymous"></script>
+		<script src="resources/js/home.js"></script>
+		<script src="resources/js/easy_background.js"></script>
+
+		<script>
+        easy_background("#home-hero",
+          {
+            slide: ["resources/images/formation.svg", "resources/images/garage.svg", "resources/images/promeneur_chien.svg"],
+            delay: [3000, 3000, 3000]
+          }
+        );
+      </script>
+	</link>
+	>>>>>>> creationAssociation
 </body>
 </html>
