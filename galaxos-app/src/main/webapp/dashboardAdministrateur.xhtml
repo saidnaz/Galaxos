@@ -1,24 +1,51 @@
 
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>
-    Dashboard Galaxoss
-  </title>
+
+
+<h:head>
+<title>Dashboard Galaxoss</title>
+	<meta
+		content="Une plateforme d'associations presentant une multitude de services" />
+	<meta content="" name="application-name" />
+	<link rel="icon" href="logo.ico"/>
+  	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+  	<meta content="yes" name="mobile-web-app-capable"/>
+  
   <!--     Fonts and icons     -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-  <!-- Nucleo Icons -->
-  <link href="css/nucleo-icons.css" rel="stylesheet" />
-  <link href="css/nucleo-svg.css" rel="stylesheet" />
+  
+  <link 
+  href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" 
+  rel="stylesheet" />
+  
+  
   <!-- Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="css/nucleo-svg.css" rel="stylesheet" />
+  
+  <script src="https://kit.fontawesome.com/42d5adcbca.js"
+		crossorigin="anonymous"></script>
+   
+  
   <!-- CSS Files -->
-  <link id="pagestyle" href="css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
-</head>
+  
+  <h:outputStylesheet library="css" name="main.css" />
+  <h:outputStylesheet library="css" name="home.css" />
+  <h:outputStylesheet library="css" name="soft-ui-dashboard.css"/>
+  <h:outputStylesheet library="css"	name="nucleo-svg.css"/>
+  <h:outputStylesheet library="css" name="nucleo-icons.css"/>
+  <h:outputStylesheet library="css" name="nucleo-svg.css"/>
+  
+  <!-- BOOSTRAP CSS -->
+  
+  <link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  
+  
+  
+</h:head>
 
 
 
@@ -29,18 +56,20 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="" target="_blank">
-        <img src="imgages/logo.png" class="navbar-brand-img h-100" alt="main_logo">
+        <img src="resources/imgages/logo.png" class="navbar-brand-img h-100" alt="main_logo"/>
         <span class="ms-1 font-weight-bold">Galaxos</span>
       </a>
     </div>
-    <hr class="horizontal dark mt-0">
+    
+    
+    <hr class="horizontal dark mt-0"/>
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
 
         <!--SECTION  DASHBOARD-->
 
         <li class="nav-item">
-          <a class="nav-link  active" href="../pages/dashboard.html">
+          <a class="nav-link  active" href="dashboardAdministrateur.xhtml">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fas fa-home"></i>
             </div>
@@ -52,16 +81,20 @@
 
         <!--SECTION TABLEAU -->
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/tables.html">
+          <a class="nav-link  " href="dashboardAdministrateur_tables.xhtml">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
              <i class="fas fa-table text-dark opacity-10"></i>             
             </div>
             <span class="nav-link-text ms-1">Tableau</span>
           </a>
         </li>
+        
+        
         <!-- SECTION TRANSACTION-->
+        
+        
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/billing.html">
+          <a class="nav-link  " href="dashboardAdministrateur_billing.xhtml">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="far fa-credit-card text-dark opacity-10"></i>
             </div>
@@ -70,12 +103,13 @@
         </li>
         <!-- FIN SECTION TRANSACTION-->
 
+
         <!-- SECTION PROFILE-->
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Votre Compte</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/profile.html">
+          <a class="nav-link  " href="dashboardAdministrateur_profils.xhtml">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fas fa-user-alt text-dark opacity-10"></i>
             </div>
@@ -84,7 +118,7 @@
         </li>
        <!-- FIN SECTION PROFILE-->
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/sign-up.html">
+          <a class="nav-link  " href="index.xhtml">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fas fa-sign-out-alt text-dark opacity-10"></i>
             </div>
@@ -102,6 +136,7 @@
   <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
 
     <!-- Navbar -->
+    
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
       <div class="container-fluid py-1 px-3 mt-3">
         <nav aria-label="breadcrumb">
@@ -113,7 +148,7 @@
               <li class="nav-item d-flex align-items-center">
                 <a href="javascript:;" class="nav-link text-dark font-weight-bold px-0">
                   <i class="fa fa-sign-out me-sm-1"></i>
-                  <a class="nav-link  " href="../pages/sign-up.html"></a>
+                  <!-- <a class="nav-link  " href="../pages/sign-up.html"></a> -->
                   <span class="d-sm-inline d-none">Déconnexion</span>
                 </a>
               </li>
@@ -255,7 +290,7 @@
                     <div class="d-flex mb-2">
                       <div class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-info text-center me-2 d-flex align-items-center justify-content-center">
                         <div>
-                          <i class="fas fa-rocket opacity-10" style="font-size: 9px;"aria-hidden="true"></i></i>
+                          <i class="fas fa-rocket opacity-10" style="font-size: 9px;" aria-hidden="true"></i>
                         </div>
                       </div>
                       <p class="text-xs mt-1 mb-0 font-weight-bold">Associa..</p>
@@ -341,7 +376,6 @@
                 <div class="col-lg-6 col-5 my-auto text-end">
                   <div class="dropdown float-lg-end pe-4">
                     <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
-                      
                     </a>
                   </div>
                 </div>
@@ -363,7 +397,7 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="imgages/logo.png" class="avatar avatar-sm me-3" alt="xd">
+                            <img src="imgages/logo.png" class="avatar avatar-sm me-3" alt="xd"/>
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">Takoleaf</h6>
@@ -373,16 +407,16 @@
                       <td>
                         <div class="avatar-group mt-2">
                           <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                            <img src="../assets/img/team-1.jpg" alt="team1">
+                            <img src="resources/images/team-1.jpg" alt="team1"/>
                           </a>
                           <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                            <img src="../assets/img/team-2.jpg" alt="team2">
+                            <img src="resources/images/team-2.jpg" alt="team2"/>
                           </a>
                           <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Alexander Smith">
-                            <img src="../assets/img/team-3.jpg" alt="team3">
+                            <img src="resources/images/team-3.jpg" alt="team3"/>
                           </a>
                           <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="../assets/img/team-4.jpg" alt="team4">
+                            <img src="resources/images/team-4.jpg" alt="team4"/>
                           </a>
                         </div>
                       </td>
@@ -406,7 +440,7 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="imgages/logo.png" class="avatar avatar-sm me-3" alt="atlassian">
+                            <img src="resources/images/logo.png" class="avatar avatar-sm me-3" alt="atlassian"/>
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">Musicment Votre</h6>
@@ -416,7 +450,7 @@
                       <td>
                         <div class="avatar-group mt-2">
                           <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                            <img src="../assets/img/team-2.jpg" alt="team5">
+                            <img src="resources/images/team-2.jpg" alt="team5"/>
                           </a>
                         </div>
                       </td>
@@ -440,20 +474,20 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="imgages/logo.png" class="avatar avatar-sm me-3" alt="team7">
+                            <img src="resources/images/logo.png" class="avatar avatar-sm me-3" alt="team7"/>
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Sport&Co</h6>
+                            <h6 class="mb-0 text-sm">SportndCo</h6>
                           </div>
                         </div>
                       </td>
                       <td>
                         <div class="avatar-group mt-2">
                           <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                            <img src="../assets/img/team-3.jpg" alt="team8">
+                            <img src="resources/images/team-3.jpg" alt="team8"/>
                           </a>
                           <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="../assets/img/team-1.jpg" alt="team9">
+                            <img src="resources/images/team-1.jpg" alt="team9"/>
                           </a>
                         </div>
                       </td>
@@ -477,7 +511,7 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="imgages/logo.png" class="avatar avatar-sm me-3" alt="spotify">
+                            <img src="resources/images/logo.png" class="avatar avatar-sm me-3" alt="spotify"/>
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">GreenWay</h6>
@@ -487,16 +521,16 @@
                       <td>
                         <div class="avatar-group mt-2">
                           <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                            <img src="../assets/img/team-4.jpg" alt="user1">
+                            <img src="resources/images/team-4.jpg" alt="user1"/>
                           </a>
                           <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                            <img src="../assets/img/team-3.jpg" alt="user2">
+                            <img src="resources/images/team-3.jpg" alt="user2"/>
                           </a>
                           <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Alexander Smith">
-                            <img src="../assets/img/team-4.jpg" alt="user3">
+                            <img src="resources/images/team-4.jpg" alt="user3"/>
                           </a>
                           <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="../assets/img/team-1.jpg" alt="user4">
+                            <img src="resources/images/team-1.jpg" alt="user4"/>
                           </a>
                         </div>
                       </td>
@@ -520,7 +554,7 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="imgages/logo.png" class="avatar avatar-sm me-3" alt="jira">
+                            <img src="resources/images/logo.png" class="avatar avatar-sm me-3" alt="jira"/>
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">Help my car</h6>
@@ -530,7 +564,7 @@
                       <td>
                         <div class="avatar-group mt-2">
                           <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                            <img src="../assets/img/team-4.jpg" alt="user5">
+                            <img src="resources/images/team-4.jpg" alt="user5"/>
                           </a>
                         </div>
                       </td>
@@ -554,7 +588,7 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="imgages/logo.png" class="avatar avatar-sm me-3" alt="invision">
+                            <img src="resources/images/logo.png" class="avatar avatar-sm me-3" alt="invision"/>
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">Vanguard Esport</h6>
@@ -564,10 +598,10 @@
                       <td>
                         <div class="avatar-group mt-2">
                           <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                            <img src="../assets/img/team-1.jpg" alt="user6">
+                            <img src="resources/images/team-1.jpg" alt="user6"/>
                           </a>
                           <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="../assets/img/team-4.jpg" alt="user7">
+                            <img src="resources/images/team-4.jpg" alt="user7"/>
                           </a>
                         </div>
                       </td>
@@ -672,11 +706,13 @@
 
     </div>
   </main>
+  
+  
   <div class="fixed-plugin">
     <div class="card shadow-lg ">
       <div class="card-header pb-0 pt-3 ">
       </div>
-      <hr class="horizontal dark my-1">
+      <hr class="horizontal dark my-1"/>
     </div>
   </div>
 
@@ -684,18 +720,34 @@
 
 
   <!--   Core JS Files   -->
-  <script src="ressources/js/core/popper.min.js"></script>
-  <script src="ressources/js/core/bootstrap.min.js"></script>
-  <script src="ressources/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="ressources/js/plugins/smooth-scrollbar.min.js"></script>
-  <script src="ressources/js/plugins/chartjs.min.js"></script>
+  
+	<h:outputScript library="js" name="core/popper.min.js"></h:outputScript>
+	<h:outputScript library="js" name="core/bootstrap.min.js"></h:outputScript>
+	<h:outputScript library="js" name="plugins/perfect-scrollbar.min.js"></h:outputScript>
+	<h:outputScript library="js" name="plugins/smooth-scrollbar.min.js"></h:outputScript>
+	<h:outputScript library="js" name="plugins/chartjs.min.js"></h:outputScript>
+	
+  
+   <!--   GIThub button   -->
+  
+  <script src="https://buttons.github.io/buttons.js"></script>
+  
+  
+   <!--   Control center pour dashboard : effet parallax, scrip pour exemple de page   -->
+   
+   
+    <h:outputScript library="js" name="soft-ui-dashboard.min.js"></h:outputScript>
+    <h:outputScript library="js" name="soft-ui-dashboard.js"></h:outputScript>
+	<h:outputScript library="js" name="soft-ui-dashboard.js.map"></h:outputScript>
+  
+  
   <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
 
     new Chart(ctx, {
       type: "bar",
       data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: ["JAN", "FEV", "MAR", "AVR", "MAI", "JUN", "JUI", "AOU", "SEP"],
         datasets: [{
           label: "Sales",
           tension: 0.4,
@@ -859,19 +911,23 @@
       },
     });
   </script>
+  
+  
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
+    if (win &amp;&amp; document.querySelector('#sidenav-scrollbar')) {
       var options = {
         damping: '0.5'
       }
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
   </script>
+  
+  
   <!-- Github buttons -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
+ <!--  <script async defer src="https://buttons.github.io/buttons.js"></script>-->
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="ressources/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+  <!-- <script src="ressources/js/soft-ui-dashboard.min.js?v=1.0.3"></script>-->
 </body>
 
 </html>
