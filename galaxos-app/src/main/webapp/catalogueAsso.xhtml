@@ -88,19 +88,19 @@
 					</div>
 					<div class="p-2 w-100">
 						<i class="fas fa-search text-violet" style="margin-right: 5px"></i>
-						<h:inputText id="searchInput" class="" aria-label="Search"
+						<h:inputText id="searchInput" name="searchInpunt" value="${search}" class="" aria-label="Search"
 							pt:placeholder="ex: cuisine, plomberie..."
-							aria-describedby="email-addon" value=""
+							aria-describedby="email-addon"
 							style="outline: none; border: none" />
+						
 					</div>
 				</div>
 				<div class="col-3" style="border-right: 1px solid #f2f2f2">
 					<div class="p-2">
-						<span class="text-fonce h4">Dans quelle domaine ?</span>
+						<span class="text-fonce h4">Dans quel domaine ?</span>
 					</div>
 					<div class="p-2 w-100">
-						<h:selectOneMenu
-							value="#{CatalogueAssociationBean.form.domaine}"
+						<h:selectOneMenu value="#{CatalogueAssociationBean.form.domaine}"
 							class="form-select w-100" style="outline: none; border: none"
 							aria-label="Default select example">
 							<f:selectItems value="#{CatalogueAssociationBean.domaines}"
@@ -116,20 +116,25 @@
 					<div class="p-2 w-100">
 						<i class="fas fa-search text-violet" style="margin-right: 5px"></i>
 
-						<h:inputText id="localisationInput" class=""
+						<h:inputText id="localisationInput"
 							aria-label="Localisation" pt:placeholder="ex: 78955, 29750..."
-							aria-describedby="email-addon" value=""
+							aria-describedby="email-addon"
+							value="${CatalogueAssociationBean.localisation}"
 							style="outline: none; border: none" />
 					</div>
 
 				</div>
 				<div class="col-3">
-					<button class="main-button w-100 p-2 m-2 d-block d-3"
+					<h:commandButton value="Rechercher"
+						class="main-button w-100 p-2 m-2 d-block d-3"
+						action="#{CatalogueAssociationBean.search()}"
+						style="height: 80px; background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;" />
+					<!--  <button class="main-button w-100 p-2 m-2 d-block d-3"
 						style="height: 80px; background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;">
 						<i class="fas fa-map-marker-alt"
 							style="color: white; font-size: 22px; margin-right: 15px"></i><span
 							class="h3" style="color: white">Rechercher</span>
-					</button>
+					</button>-->
 				</div>
 			</div>
 		</h:form>
@@ -142,7 +147,7 @@
 		<h:form>
 			<div class="d-flex">
 				<ui:repeat var="item"
-					value="#{CatalogueAssociationBean.associations}">
+					value="#{CatalogueAssociationBean.search()}">
 
 					<div class="col-3 col-xl-4 mt-5">
 						<div class="card h-100">

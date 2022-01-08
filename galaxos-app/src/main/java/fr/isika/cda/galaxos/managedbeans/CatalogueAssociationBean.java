@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.Domaine;
@@ -13,7 +15,7 @@ import fr.isika.cda.galaxos.repository.AssociationRepository;
 import fr.isika.cda.galaxos.viewmodel.CatalogueAssoForm;
 
 @ManagedBean(name = "CatalogueAssociationBean")
-@ViewScoped
+@RequestScoped
 public class CatalogueAssociationBean {
 
 	@Inject
@@ -22,10 +24,21 @@ public class CatalogueAssociationBean {
 	private CatalogueAssoForm form = new CatalogueAssoForm();
 
 	private List<Association> associations;
+	
+	private String localisation;
+
+
 
 	@PostConstruct
 	public void init() {
 		associations = service.findAll();
+	}
+
+	public String search() {
+		//HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		//String localisation = request.getParameter("localisation");
+		associations = service.search(localisation);
+		return "catalogueAsso";
 	}
 
 	public AssociationRepository getService() {
@@ -54,6 +67,14 @@ public class CatalogueAssociationBean {
 
 	public Domaine[] getDomaines() {
 		return Domaine.values();
+	}
+	
+	public String getLocalisation() {
+		return localisation;
+	}
+
+	public void setLocalisation(String localisation) {
+		this.localisation = localisation;
 	}
 
 }

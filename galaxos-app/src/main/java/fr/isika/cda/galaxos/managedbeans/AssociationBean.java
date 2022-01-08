@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.service.AssociationCompteService;
+import fr.isika.cda.galaxos.viewmodel.CatalogueAssoForm;
 
 @ManagedBean
 @RequestScoped
@@ -18,7 +19,7 @@ public class AssociationBean {
 	@Inject
 	private AssociationCompteService service;
 
-	Association asso = new Association();
+	private Association asso = new Association();
 
 	public String init() {
 		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
@@ -32,6 +33,7 @@ public class AssociationBean {
 		return "association";
 
 	}
+	
 
 	public AssociationCompteService getService() {
 		return service;

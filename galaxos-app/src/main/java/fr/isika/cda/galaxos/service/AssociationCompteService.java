@@ -63,8 +63,12 @@ public class AssociationCompteService {
 	public Optional<Association> findById(Long id) {
 		return associationRepository.findById(id);
 	}
-	
+
 	public List<Association> findAll() {
 		return associationRepository.findAll();
+	}
+
+	public List<Association> search(String localisation) {
+		return associationRepository.search(localisation);
 	}
 }
