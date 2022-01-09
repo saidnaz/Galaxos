@@ -193,4 +193,15 @@ public class AssociationRepository {
 		}
 		return associations;
 	}
+
+	public List<Association> findByCateg(String nomCateg) {
+		List<Association> associations = null;
+		if (!nomCateg.isBlank()) {
+			associations = entityManager.createNativeQuery(
+					"SELECT * FROM Association INNER JOIN Domain WHERE Association.fk_idDomain = Domain.idDomain AND Domain.NomDomaine = :nomCateg",Association.class)
+					.setParameter("nomCateg", nomCateg)
+					.getResultList();
+		}
+		return associations;
+	}
 }

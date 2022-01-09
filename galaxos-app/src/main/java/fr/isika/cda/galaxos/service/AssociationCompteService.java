@@ -72,4 +72,8 @@ public class AssociationCompteService {
 	public List<Association> search(String localisation, String search, Domaine domaines) {
 		return associationRepository.search(localisation, search, domaines);
 	}
+	
+	public List<Association> findByCateg(String nomCateg) {
+		return associationRepository.findByCateg(nomCateg);
+	}
 }

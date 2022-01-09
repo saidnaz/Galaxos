@@ -2,10 +2,12 @@ package fr.isika.cda.galaxos.managedbeans;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+
 import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.Domaine;
 import fr.isika.cda.galaxos.repository.AssociationRepository;
@@ -26,11 +28,20 @@ public class CatalogueAssociationBean {
 
 	private String search;
 
+
 	private Domaine domaines;
 
-	@PostConstruct
-	public void init() {
-		associations = service.findAll();
+
+	public String afficherPageCatalogue() {
+		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
+				.getRequest();
+		String categName = req.getParameter("categName");
+		if(categName.equals("all")) {
+			 associations = service.findAll();
+		} else {
+			associations = service.findByCateg(categName);
+		}
+		return "catalogueAsso";
 	}
 
 	public String search() {
@@ -88,6 +99,10 @@ public class CatalogueAssociationBean {
 
 	public void setDomaine(Domaine domaine) {
 		this.domaines = domaine;
+	}
+
+	public void setDomaines(Domaine domaines) {
+		this.domaines = domaines;
 	}
 
 }
