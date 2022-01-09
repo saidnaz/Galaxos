@@ -22,4 +22,10 @@ public class MessageService {
 		return msgRepo.afficher();
 	}
 	
+//	public List<MessagerieDTO> afficherMessagerie(Long idAdherent)
+//	{
+//		MessagerieDTO messagerieDTO = 
+//		// Algo ici pour filtrer 
+//	}
+	
 }

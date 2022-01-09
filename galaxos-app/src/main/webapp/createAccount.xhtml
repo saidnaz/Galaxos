@@ -81,7 +81,7 @@
 					</div>
 					<div class="card-body">
 
-						<h:form id="createAssoForm" role="form text-left">
+						<h:form id="createAccountForm" role="form text-left">
 
 							<div class="mb-4">
 							 
@@ -93,7 +93,7 @@
 							</div>
 
 							<div class="mb-4">
-								<h:inputText id="passwordInput" class="form-control"
+								<h:inputSecret id="passwordInput" class="form-control"
 									pt:placeholder="Mot de passe" aria-label="password"
 									aria-describedby="password-addon"
 									value="#{CreateAccountBean.accountForm.password}" />
@@ -104,11 +104,24 @@
 							<i class="bi bi-person-plus-fill text-white"></i>
 								<h:inputText id="NomInput" class="form-control "
 									pt:placeholder="Nom" aria-label="Nom"
-									aria-describedby="password-addon"
+									
 									value="#{CreateAccountBean.accountForm.nom}" />
 								<h:messages for="NomInput" errorClass="erreurInputForm" />
 							</div>
-
+							<div class="mb-4">
+							<i class="bi bi-person-plus-fill text-white"></i>
+								<h:inputText id="PrenomInput" class="form-control "
+									pt:placeholder="Prenom" aria-label="Prenom"
+									value="#{CreateAccountBean.accountForm.prenom}" />
+								<h:messages for="PrenomInput" errorClass="erreurInputForm" />
+							</div>
+							<div class="mb-4">
+							<i class="bi bi-person-plus-fill text-white"></i>
+								<h:inputText id="PseudoInput" class="form-control "
+									pt:placeholder="Pseudo" aria-label="Pseudo"
+									value="#{CreateAccountBean.accountForm.pseudo}" />
+								<h:messages for="PseudoInput" errorClass="erreurInputForm" />
+							</div>
 							<div class="text-center">
 								<h:commandButton value="S'nscrire"
 									class="btn main-button w-100 my-4 mb-2"

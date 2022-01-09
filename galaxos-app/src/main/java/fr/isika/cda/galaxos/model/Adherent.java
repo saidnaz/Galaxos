@@ -7,25 +7,17 @@ import java.util.Objects;
 import javax.persistence.*;
 
 import fr.isika.cda.galaxos.model.roles.Role;
-import javax.persistence.CascadeType;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
 import fr.isika.cda.galaxos.model.roles.Role;
 
 @Entity
 // @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 // @DiscriminatorColumn(name = "type")
-@NamedQuery(name = "Adherent.findByEmail", query = "SELECT cons FROM Adherent cons JOIN cons.user cptu WHERE cons.user.email = :email_param")
+@NamedQueries({
+	@NamedQuery(name = "Adherent.findByEmail", query = "SELECT cons FROM Adherent cons JOIN cons.user cptu WHERE cons.user.email = :email_param"),
+	@NamedQuery(name = "Adherent.findAll", query = "select a from Adherent a"),
+	@NamedQuery(name = "Adherent.findById", query = "SELECT a FROM Adherent a WHERE a.id = :id_param")
+//	"SELECT adherent FROM Adherent WHERE adherent.id = :id_param")
+})
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
 public class Adherent implements Serializable {

@@ -35,11 +35,7 @@ public class MessageRepo {
 		return msgDTO;
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<Message> TouslesMessagesTest() {
-		
-		return manager.createNamedQuery("Message.findAll").getResultList();
-	}
+	
 	
 	
 	

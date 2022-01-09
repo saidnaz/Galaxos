@@ -7,10 +7,12 @@ import java.time.LocalDateTime;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.print.attribute.standard.DateTimeAtCreation;
+import javax.servlet.http.HttpSession;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -21,6 +23,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import fr.isika.cda.galaxos.dto.MessageDTO;
 import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Message;
+import fr.isika.cda.galaxos.model.Profil;
 import fr.isika.cda.galaxos.service.MessageService;
 
 
@@ -38,6 +41,9 @@ public class MessageBean implements Serializable {
 	@Inject
 	private MessageService messageService;
 	
+	private static Profil profilDestinataire = null;
+	
+	
 	
 	@NotEmpty(message = "Ne doit pas être vide")
 	@NotNull(message = "Ne doit pas être null")
@@ -51,53 +57,37 @@ public class MessageBean implements Serializable {
 	// Initialisation : Lors du lancement du serv, lance les méthodes à l'intérieur du init
 	@PostConstruct
 	private void init() {
-		loadMessages();
-	}
-	
-	private void loadMessages() {
-		messageDTO = messageService.chargerMessages();
-		System.out.println(messageDTO.getlMsg().size());
-	}
-	
-/*	
-	private Adherent destinataire;
-
-	private Adherent expediteur;
-*/	
-	
-	public String envoyer(int idEmeteur) {
-			
-		System.out.println("Entrer dans la méthode envoyer du MessageBean");
 		
-			// remplissage de l'entité 
-			Message msg = new Message();
-			msg.setTexte(text);
-			msg.setDate(LocalDateTime.now());
-			
-			// Remplacer dans le modele "message" par Adherent emeteur
-			// + Changer en attrapant l'id de l'utilisateur connecté grace au claim dans l'authentification, ou avec un hostmanager ?
-			msg.setIdEmeteur(idEmeteur);
-			
-			// Remplacer la condition :
-			// -> Quand on clic sur le contact, déclenche une méthode qui prend en paramètre l'id du destinataire
-			if (idEmeteur == 1)
-			{
-				msg.setIdDestinataire(2);
-			}
-			else msg.setIdDestinataire(1);
+	}
+	
+	private void afficherMessages(Profil profilDest) {
+		
+		profilDestinataire = profilDest;
+		
+		messageDTO = messageService.chargerMessages();
 
-			System.out.println("text : " + text);
-			
-			// appeler le service pour sauvegarder l'entité 
-			messageService.envoyer(msg);
-
-			
-			// recharger la liste 
-			loadMessages();
-			
-			// return "index?faces-redirect=true"; 	// // return "index?faces-redirect=true"; 	// remet les paramètres de la page (des classes) à zero.
-			 return "messages";		// rester sur la même page en vidant les infos du formulaire
-			// return "" 	// rester sur la même page (en gardant les infos du formulaire)
+	}
+	
+	
+	
+	public String envoyer()
+	{
+		Message msg = new Message();
+		msg.setTexte(text);
+		msg.setDate(LocalDateTime.now());
+		
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		Profil profilExpediteur = (Profil) session.getAttribute("profil");
+		msg.setExpediteur(profilExpediteur);
+		msg.setDestinataire(profilDestinataire);
+		
+		messageService.envoyer(msg);
+					
+		afficherMessages(profilDestinataire);
+		
+		// return "index?faces-redirect=true"; 	// // return "index?faces-redirect=true"; 	// remet les paramètres de la page (des classes) à zero.
+		 return "messages";		// rester sur la même page en vidant les infos du formulaire
+		// return "" 	// rester sur la même page (en gardant les infos du formulaire)
 	}
 	
 	public void afficher()
@@ -129,5 +119,7 @@ public class MessageBean implements Serializable {
 	public void setMessageDTO(MessageDTO messageDTO) {
 		this.messageDTO = messageDTO;
 	}
+	
+	
 	
 }

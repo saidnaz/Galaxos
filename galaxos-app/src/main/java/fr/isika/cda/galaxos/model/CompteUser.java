@@ -19,16 +19,13 @@ public class CompteUser {
 	
 	private String email;
 
-	@Column(length = 20, name = "motdepasse", nullable = false)
+	@Column(name = "motdepasse", nullable = false)
 	private String mdp;
 
 	@Column(name = "CompteValide", nullable = false)
 	private boolean isAccountValide = true;
-
 	
 	//Vas rejoindre la column fkAdherant 
-	
-
 	
 	//GET & SET
 	public String getMdp() {
