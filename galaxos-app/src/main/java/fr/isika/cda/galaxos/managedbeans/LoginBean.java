@@ -54,8 +54,7 @@ public class LoginBean implements Serializable {
 				HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 				session.setAttribute("connectedAdherentId", adherent.getId());
 				
-				// TODO : rediriger vers la bonne page si login ok
-				return "index";
+				return "dashboardAdherent?faces-redirect=true";
 			} else {
 
 				UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("loginForm");
