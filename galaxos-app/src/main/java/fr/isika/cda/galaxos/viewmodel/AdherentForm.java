@@ -2,7 +2,9 @@ package fr.isika.cda.galaxos.viewmodel;
 
 import java.io.Serializable;
 
+
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
@@ -14,28 +16,44 @@ public class AdherentForm implements Serializable{
 	
 	@NotEmpty(message = "Ne doit pas être vide")
 	@NotNull(message = "Ne doit pas être null")
+	@Pattern(regexp = "[^0-9]*", message = "Ne doit pas contenir des chiffres")
+	private String nom;
+
+	@NotEmpty(message = "Ne doit pas être vide")
+	@NotNull(message = "Ne doit pas être null")
+	@Pattern(regexp = "[^0-9]*", message = "Ne doit pas contenir des chiffres")
+	private String prenom;
+	
+	@NotEmpty(message = "Ne doit pas être vide")
+	@NotNull(message = "Ne doit pas être null")
 	@Email
 	private String email;
 	
 	@NotEmpty(message = "Ne doit pas être vide")
 	@NotNull(message = "Ne doit pas être null")
-	@Size(min = 1, max = 25, message = "Doit être entre 1 et 25 car.")
+	@Size(min = 1, max = 25, message = "entre 1 et 25 caractères")
 	private String password;
 	
+	// confirmation du mot de passe
 	@NotEmpty(message = "Ne doit pas être vide")
 	@NotNull(message = "Ne doit pas être null")
-	private String nom;
-
-	@NotEmpty(message = "Ne doit pas être vide")
-	@NotNull(message = "Ne doit pas être null")
-	private String prenom;
+	@Size(min = 1, max = 25, message = "entre 1 et 25 caractères")
+	private String confirmPassword;
 	
-	@NotEmpty(message = "Ne doit pas être vide")
-	@NotNull(message = "Ne doit pas être null")
-	private String pseudo;
+	
+//	@NotEmpty(message = "Ne doit pas être vide")
+//	@NotNull(message = "Ne doit pas être null")
+//	private String pseudo;
 	
 	public AdherentForm() {
 		super();
+	}
+	
+	/**
+	 * Vérifie si les champs "password" et "confirmPassword" correspondent
+	 */
+	public boolean passwordsAreSame() {
+		return password.equals(confirmPassword);
 	}
 	
 	public String getNom() {
@@ -69,11 +87,11 @@ public class AdherentForm implements Serializable{
 		this.password = password;
 	}
 
-	public String getPseudo() {
-		return pseudo;
+	public String getConfirmPassword() {
+		return confirmPassword;
 	}
-	public void setPseudo(String pseudo) {
-		this.pseudo = pseudo;
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
 }

@@ -1,6 +1,7 @@
 package fr.isika.cda.galaxos.repository;
 
 import java.io.Serializable;
+
 import java.util.Optional;
 
 import javax.ejb.Stateless;
@@ -22,6 +23,8 @@ public class AdherentRepository implements Serializable{
 	private EntityManager entityManager;
 	
 	public Adherent create(AdherentForm adherentForm) {
+		// On fait le mapping des attributs entre l'objet qui provient de la couche présentation
+		// dans l'entité qu'on va persister
 		Adherent adherent = new Adherent();
 		CompteUser cptUser = new CompteUser();
 		Profil profil = new Profil();
@@ -31,15 +34,17 @@ public class AdherentRepository implements Serializable{
 		cptUser.setMdp(passwordCrypt);
 		cptUser.setEmail(adherentForm.getEmail());
 		
-		profil.setPseudo(adherentForm.getPseudo());
+//		profil.setPseudo(adherentForm.getPseudo());
 		profil.setPrenom(adherentForm.getPrenom());
 		profil.setNom(adherentForm.getNom());
 		
 		adherent.setUser(cptUser);
 		adherent.setProfil(profil);
 		
+		// On persiste l'objet 
 		entityManager.persist(adherent);
 		
+		// On renvoie l'objet persisté à jour (avec l'identifiant affecté par hibernate automatiquement)
 		return adherent;
 	}
 	
@@ -55,5 +60,7 @@ public class AdherentRepository implements Serializable{
 		}
 		return Optional.empty();
 	}
+	
+	
 
 }
