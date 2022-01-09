@@ -171,12 +171,25 @@ public class AssociationRepository {
 
 	}
 
-	public List<Association> search(String localisation) {
+	public List<Association> search(String localisation, String search, Domaine domaines) {
 		List<Association> associations = null;
-		if(localisation != null) {
+		if (!localisation.isBlank() && search.isBlank() && domaines == null) {
 			associations = entityManager.createNativeQuery(
-					"SELECT * FROM Association INNER JOIN Fiche_Association WHERE Association.fk_ficheAssociation = Fiche_Association.id AND Fiche_Association.localisation = ':localisation'",
-					Association.class).setParameter("localisation", localisation).getResultList();
+					"SELECT * FROM Association "
+					+ "INNER JOIN Fiche_Association "
+					+ "WHERE Association.fk_ficheAssociation = Fiche_Association.id "
+					+ "AND Fiche_Association.localisation = :localisation",Association.class)
+					.setParameter("localisation", "%" + localisation + "%")
+					.getResultList();
+		} else if (!localisation.isBlank() && !search.isBlank() && domaines == null) {
+			associations = entityManager.createNativeQuery(
+					"SELECT * FROM Association INNER JOIN Fiche_Association WHERE Association.fk_ficheAssociation = Fiche_Association.id AND Fiche_Association.localisation = :localisation AND Fiche_Association.nom = :search ",
+					Association.class).setParameter("localisation", "%" + localisation + "%")
+					.setParameter("search", "%" + search + "%" ).getResultList();
+		} else if (localisation.isBlank() && !search.isBlank() && domaines == null) {
+			associations = entityManager.createNativeQuery(
+					"SELECT * FROM Association INNER JOIN Fiche_Association WHERE Association.fk_ficheAssociation = Fiche_Association.id AND Fiche_Association.nom = :search ",
+					Association.class).setParameter("search", "%" + search + "%").getResultList();
 		}
 		return associations;
 	}

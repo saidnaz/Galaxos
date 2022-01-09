@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import fr.isika.cda.galaxos.exceptions.NomAssociationExistDejaExeption;
 import fr.isika.cda.galaxos.exceptions.RNAAssociationExistDejaExeption;
 import fr.isika.cda.galaxos.model.Association;
+import fr.isika.cda.galaxos.model.Domaine;
 import fr.isika.cda.galaxos.model.FicheAssoCompta;
 import fr.isika.cda.galaxos.model.FicheAssoDescriptif;
 import fr.isika.cda.galaxos.model.FicheAssoGestionnaire;
@@ -68,7 +69,7 @@ public class AssociationCompteService {
 		return associationRepository.findAll();
 	}
 
-	public List<Association> search(String localisation) {
-		return associationRepository.search(localisation);
+	public List<Association> search(String localisation, String search, Domaine domaines) {
+		return associationRepository.search(localisation, search, domaines);
 	}
 }

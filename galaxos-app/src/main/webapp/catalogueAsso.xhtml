@@ -88,7 +88,7 @@
 					</div>
 					<div class="p-2 w-100">
 						<i class="fas fa-search text-violet" style="margin-right: 5px"></i>
-						<h:inputText id="searchInput" name="searchInpunt" value="${search}" class="" aria-label="Search"
+						<h:inputText id="searchInput" name="searchInpunt" value="${CatalogueAssociationBean.search}" class="" aria-label="Search"
 							pt:placeholder="ex: cuisine, plomberie..."
 							aria-describedby="email-addon"
 							style="outline: none; border: none" />
@@ -147,7 +147,7 @@
 		<h:form>
 			<div class="d-flex">
 				<ui:repeat var="item"
-					value="#{CatalogueAssociationBean.search()}">
+					value="#{CatalogueAssociationBean.associations}">
 
 					<div class="col-3 col-xl-4 mt-5">
 						<div class="card h-100">
