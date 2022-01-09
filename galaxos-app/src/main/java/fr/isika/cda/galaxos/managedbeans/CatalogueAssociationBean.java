@@ -28,16 +28,14 @@ public class CatalogueAssociationBean {
 
 	private String search;
 
-
 	private Domaine domaines;
-
 
 	public String afficherPageCatalogue() {
 		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
 				.getRequest();
 		String categName = req.getParameter("categName");
-		if(categName.equals("all")) {
-			 associations = service.findAll();
+		if (categName.equals("all")) {
+			associations = service.findAll();
 		} else {
 			associations = service.findByCateg(categName);
 		}
@@ -45,7 +43,11 @@ public class CatalogueAssociationBean {
 	}
 
 	public String search() {
-		associations = service.search(localisation, search, domaines);
+		if (localisation.equals("") && search.equals("") && domaines == null) {
+			associations = service.findAll();
+		} else {
+			associations = service.search(localisation, search, domaines);
+		}
 		return "catalogueAsso";
 	}
 
