@@ -1,5 +1,6 @@
 package fr.isika.cda.galaxos.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.ejb.Stateless;
@@ -61,5 +62,9 @@ public class AssociationCompteService {
 
 	public Optional<Association> findById(Long id) {
 		return associationRepository.findById(id);
+	}
+	
+	public List<Association> findAll() {
+		return associationRepository.findAll();
 	}
 }

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import fr.isika.cda.galaxos.exceptions.NomAssociationExistDejaExeption;
 import fr.isika.cda.galaxos.exceptions.RNAAssociationExistDejaExeption;
 import fr.isika.cda.galaxos.model.Association;
+import fr.isika.cda.galaxos.model.Domaine;
 import fr.isika.cda.galaxos.service.AssociationCompteService;
 import fr.isika.cda.galaxos.viewmodel.AssociationCreationForm;
 
@@ -26,12 +27,9 @@ public class creationCompteAssociationBean implements Serializable {
 	private AssociationCompteService service;
 
 	private AssociationCreationForm form = new AssociationCreationForm();
-
+	
 	public String create() {
-
 		UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("createAssoForm");
-		//UIComponent inputNom = FacesContext.getCurrentInstance().getViewRoot().findComponent("nomAssoInput");
-
 		try {
 			Association asso = service.create(form);
 			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext()
@@ -41,9 +39,6 @@ public class creationCompteAssociationBean implements Serializable {
 			return "finalisationCreationAssociation?faces-redirect=true";
 
 		} catch (NomAssociationExistDejaExeption ex) {
-
-			//FacesContext.getCurrentInstance().addMessage(inputNom.getClientId(), new FacesMessage(ex.getMessage()));
-			//FacesContext.getCurrentInstance().addMessage(formulaire.getClientId(), new FacesMessage(ex.getMessage()));
 			FacesContext.getCurrentInstance().addMessage("forumaire:nomAssoInput", new FacesMessage(ex.getMessage()));
 			System.out.println("NOM DEJA EN BASE");
 		} catch (RNAAssociationExistDejaExeption ex) {
@@ -68,6 +63,10 @@ public class creationCompteAssociationBean implements Serializable {
 
 	public void setForm(AssociationCreationForm form) {
 		this.form = form;
+	}
+
+	public Domaine[] getDomaines() {
+		return Domaine.values();
 	}
 
 }

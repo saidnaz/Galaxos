@@ -5,19 +5,24 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
+@NamedQuery(name = "Domain.findDomaine", query = "SELECT d FROM Domain d WHERE d.name = :name")
 public class Domain {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idDomain;
 
 	@Column(name = "NomDomaine", nullable = false)
-	private String name;
+	@Enumerated(EnumType.STRING)
+	private Domaine name;
 
 	@OneToMany(mappedBy = "domain")
 	private List<Service> services;
@@ -28,6 +33,36 @@ public class Domain {
 	@OneToMany(mappedBy = "fk_idDomain")
 	private List<Association> associations = new ArrayList<>();
 
+	public Domain() {
+		super();
+	}
+
+	public Domain(Long idDomain, Domaine name, List<Service> services, List<Resource> resource,
+			List<Association> associations) {
+		super();
+		this.idDomain = idDomain;
+		this.name = name;
+		this.services = services;
+		this.resource = resource;
+		this.associations = associations;
+	}
+
+	public Long getIdDomain() {
+		return idDomain;
+	}
+
+	public void setIdDomain(Long idDomain) {
+		this.idDomain = idDomain;
+	}
+
+	public Domaine getName() {
+		return name;
+	}
+
+	public void setName(Domaine name) {
+		this.name = name;
+	}
+
 	public List<Service> getServices() {
 		return services;
 	}
@@ -36,27 +71,20 @@ public class Domain {
 		this.services = services;
 	}
 
-	public Domain(String name, List<Service> services) {
-		super();
-		this.name = name;
-		this.services = services;
+	public List<Resource> getResource() {
+		return resource;
 	}
 
-	public Domain() {
-		super();
-		
+	public void setResource(List<Resource> resource) {
+		this.resource = resource;
 	}
 
-	public String getName() {
-		return name;
+	public List<Association> getAssociations() {
+		return associations;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Long getIdDomain() {
-		return idDomain;
+	public void setAssociations(List<Association> associations) {
+		this.associations = associations;
 	}
 
 }

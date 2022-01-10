@@ -24,8 +24,6 @@ public class finalisationCompteAssociationBean implements Serializable {
 
 	private static final long serialVersionUID = 6996941272696131543L;
 
-	/* private EntityManager entityManager; */
-
 	@Inject
 	private AssociationCompteService service;
 
