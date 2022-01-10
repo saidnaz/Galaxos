@@ -24,11 +24,19 @@ public class OrderLine implements Serializable{
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
-	private int orderId;
+	private Long orderId;
 
 	@ManyToOne
 	@JoinColumn(name="FK_Command_ID")
 	private Resource resource;
+
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
+	}
+
+	public void setQuantite(Integer quantite) {
+		this.quantite = quantite;
+	}
 
 	private LocalDate dateLigneCommand;
 
@@ -53,6 +61,14 @@ public class OrderLine implements Serializable{
 	public void setPrix(Double prix) {
 		this.prix = prix;
 	}
+	
+	public OrderLine(Double prix, Integer quantite) {
+		super();
+				
+		this.prix = prix;
+		this.quantite = quantite;
+	}
+
 
 	public OrderLine(Resource resource, LocalDate dateorderline, Double prix, Integer quantite) {
 		super();
