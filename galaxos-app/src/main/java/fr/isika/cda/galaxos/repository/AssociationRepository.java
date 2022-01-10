@@ -1,8 +1,9 @@
-package fr.isika.cda.galaxos.repository;
+	package fr.isika.cda.galaxos.repository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -74,12 +75,11 @@ public class AssociationRepository {
 		}
 		return Optional.empty();
 	}
-	
+
 	public Optional<Domain> findDomaine(final Domaine name) {
 		try {
-			return Optional.ofNullable(
-					this.entityManager.createNamedQuery("Domain.findDomaine", Domain.class)
-							.setParameter("name", name).getSingleResult());
+			return Optional.ofNullable(this.entityManager.createNamedQuery("Domain.findDomaine", Domain.class)
+					.setParameter("name", name).getSingleResult());
 		} catch (NoResultException ex) {
 			System.out.println("FIcheAssociation.findByName() - not found : " + name);
 		}
@@ -120,7 +120,7 @@ public class AssociationRepository {
 	public FicheAssoGestionnaire creationFicheAssoGestionnaire(AssociationFinalisationForm form) {
 
 		FicheAssoGestionnaire assoGestionnaire = new FicheAssoGestionnaire();
-		
+
 		String cni = "";
 		Part part = form.getPieceIdentite();
 
@@ -138,7 +138,7 @@ public class AssociationRepository {
 	public FicheAssoCompta creationFicheAssoCompta(AssociationFinalisationForm form) {
 
 		FicheAssoCompta assoCompta = new FicheAssoCompta();
-		
+
 		String rib = "";
 		Part part = form.getRIB();
 
@@ -153,10 +153,10 @@ public class AssociationRepository {
 
 		return assoCompta;
 	}
-	
+
 	private Domain findOrCreateDomain(Domaine nomDomaine) {
 		Optional<Domain> optional = this.findDomaine(nomDomaine);
-		if(optional.isPresent()) {
+		if (optional.isPresent()) {
 			return optional.get();
 		} else {
 			Domain domain = new Domain();
@@ -164,11 +164,97 @@ public class AssociationRepository {
 			return domain;
 		}
 	}
-	
-	public List<Association> findAll(){
+
+	public List<Association> findAll() {
 		TypedQuery<Association> query = this.entityManager.createNamedQuery("Association.findAll", Association.class);
 		List<Association> associations = query.getResultList();
 		return associations;
+
+	}
+
+//	public List<Association> search(String localisation, String search, String domaine) {
+//		List<Association> associations = null;
+//		if (!localisation.equals("") && search.equals("") && domaine.equals("")) {
+//			associations = entityManager
+//					.createNativeQuery("SELECT * FROM Association " + "INNER JOIN Fiche_Association "
+//							+ "WHERE Association.fk_ficheAssociation = Fiche_Association.id "
+//							+ "AND Fiche_Association.localisation = :localisation", Association.class)
+//					.setParameter("localisation", localisation).getResultList();
+//		} else if (!localisation.equals("") && !search.equals("") && domaine == null) {
+//			associations = entityManager.createNativeQuery(
+//					"SELECT * FROM Association INNER JOIN Fiche_Association WHERE Association.fk_ficheAssociation = Fiche_Association.id AND Fiche_Association.localisation = :localisation AND Fiche_Association.nom = :search ",
+//					Association.class).setParameter("localisation", localisation).setParameter("search", search)
+//					.getResultList();
+//		} else if (localisation.equals("") && !search.equals("") && domaine == null) {
+//			associations = entityManager.createNativeQuery(
+//					"SELECT * FROM Association INNER JOIN Fiche_Association WHERE Association.fk_ficheAssociation = Fiche_Association.id AND Fiche_Association.nom = :search ",
+//					Association.class).setParameter("search", search).getResultList();
+//		}
+//		return associations;
+//	}
+
+	public List<Association> search(String localisation, String search, String domaine) {
+		List<Association> associations = findAll();
+		//if(search != null && !search.isEmpty()) 
+		associations = this.findBySearch(search, associations);
 		
+		associations = this.findByLocalisation(localisation, associations);
+		associations = this.findByCateg(domaine, associations);
+		return associations;
+
+	}
+
+	public List<Association> findByCateg(String nomCateg) {
+		List<Association> associations = null;
+		if (!nomCateg.isBlank()) {
+			associations = entityManager.createNativeQuery(
+					"SELECT * FROM Association INNER JOIN Domain WHERE Association.fk_idDomain = Domain.idDomain AND Domain.NomDomaine = :nomCateg",
+					Association.class).setParameter("nomCateg", nomCateg).getResultList();
 		}
+		return associations;
+	}
+
+	public List<Association> findByCateg(String nomCateg, List<Association> associations) {
+		if (!nomCateg.equals("")) {
+			return associations.stream()
+					.filter(asso -> asso.getFk_idDomain().getName().toString().equals(nomCateg))
+					.collect(Collectors.toList());		
+			
+//			associations = entityManager.createNativeQuery(
+//					"SELECT * FROM Association INNER JOIN Domain WHERE Association.fk_idDomain = Domain.idDomain AND Domain.NomDomaine = :nomCateg",
+//					Association.class).setParameter("nomCateg", nomCateg).getResultList();
+		}
+		return associations;
+	}
+
+	public List<Association> findBySearch(String search, List<Association> associations) {
+		if (!search.equals("")) {
+			return associations.stream()
+					.filter(asso -> asso.getFicheAssociation().getNom().equals(search))
+					.collect(Collectors.toList());		
+//			associations = entityManager.createNativeQuery(
+//					"SELECT * FROM Association INNER JOIN Fiche_Association WHERE Association.fk_ficheAssociation = Fiche_Association.id AND Fiche_Association.nom = :search ",
+//					Association.class).setParameter("search", search).getResultList();
+		}
+		return associations;
+	}
+
+	public List<Association> findByLocalisation(String localisation, List<Association> associations) {
+		if (!localisation.equals("")) {
+			return associations.stream()
+				.filter(asso -> asso.getFicheAssociation().getLocalisation().equals(localisation))
+				.collect(Collectors.toList());
+			
+//			associations = entityManager
+//					.createNativeQuery("SELECT * FROM Association " + "INNER JOIN Fiche_Association "
+//							+ "WHERE Association.fk_ficheAssociation = Fiche_Association.id "
+//							+ "AND Fiche_Association.localisation = :localisation", Association.class)
+//					.setParameter("localisation", localisation).getResultList();
+		}
+		return associations;
+	}
+
+	public void delete(Association asso) {
+		entityManager.remove(asso);
+	}
 }

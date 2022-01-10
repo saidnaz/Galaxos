@@ -65,13 +65,16 @@
 						<i class="fas fa-store" style="font-size: 17px;"></i>
 					</div> <span class="nav-link-text ms-1">Dashboard</span>
 			</a></li>
-			<li class="nav-item"><a class="nav-link" href="">
+			<li class="nav-item"><h:link id="param" outcome="paramAsso"
+					class="nav-link" value="">
+					<f:param name="param" value="#{dashboardAsso.asso.id}" />
 					<div
 						class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 						<i class="fas fa-cog text-fonce"
 							style="font-size: 17px; color: #2e2f5e"></i>
-					</div> <span class="nav-link-text ms-1">Paramètres</span>
-			</a></li>
+					</div>
+					<span class="nav-link-text ms-1">Paramètres</span>
+				</h:link></li>
 			<li class="nav-item"><a class="nav-link" href="">
 					<div
 						class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -360,11 +363,12 @@
 							<h5 class="text-white font-weight-bolder mb-4 pt-2">Ma page</h5>
 							<p class="text-white">Vous souhaitez voir à quoi ressemble la
 								page de votre association.</p>
-							<h:form> 
-								<h:commandButton value="Voir" class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto"
+							<h:form>
+								<h:commandButton value="Voir"
+									class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto"
 									action="#{associationBean.init()}">
 									<f:param name="id" value="#{dashboardAsso.asso.id}"></f:param>
-								</h:commandButton> 
+								</h:commandButton>
 							</h:form>
 						</div>
 					</div>

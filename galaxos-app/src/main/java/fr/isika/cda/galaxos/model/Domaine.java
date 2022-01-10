@@ -4,7 +4,7 @@ public enum Domaine {
 
 	//	Spiritualite,
 	//	Reseaux,
-	Animation_Evenement("Animation et Evenement"),	//Activités
+	Animation_Evenement("Animation et Evènement"),	//Activités
 	Art_et_Culture("Art et Culture"),	
 	Artisanat("Artisanat"),
 	Cuisine_Restauration("Cuisine et Restauration"),
@@ -16,7 +16,7 @@ public enum Domaine {
 	Sciences("Sciences"),
 	Technologie("Technologie"),
 	Entraide("Entraide"),		// Action Sociale // Entraide // Services // ex : Yoojo, allovoisin, Bricoco
-	Projet("projet");	// Demande de Financement pour un projet, 
+	Projet("Projet");	// Demande de Financement pour un projet, 
 	// ou faire une classe "Projet" à part, pour permettre de choisir après le domaine du projet
 	
 
