@@ -5,9 +5,11 @@ import java.util.Optional;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.persistence.NoResultException;
 
 import fr.isika.cda.galaxos.exceptions.NomAssociationExistDejaExeption;
 import fr.isika.cda.galaxos.exceptions.RNAAssociationExistDejaExeption;
+import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.Domaine;
 import fr.isika.cda.galaxos.model.FicheAssoCompta;
@@ -80,6 +82,10 @@ public class AssociationCompteService {
 
 	public void delete(Association asso) {
 		associationRepository.delete(asso);
+	}
+	
+	public Optional<Adherent> findAdherentById(Long id) {
+		return associationRepository.findAdherentById(id);
 	}
 
 }
