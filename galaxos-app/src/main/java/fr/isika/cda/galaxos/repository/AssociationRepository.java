@@ -5,7 +5,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -23,6 +22,7 @@ import fr.isika.cda.galaxos.model.FicheAssoDescriptif;
 import fr.isika.cda.galaxos.model.FicheAssoGestionnaire;
 import fr.isika.cda.galaxos.model.FicheAssociation;
 import fr.isika.cda.galaxos.model.roles.GestionnaireAssociation;
+import fr.isika.cda.galaxos.model.roles.Role;
 import fr.isika.cda.galaxos.viewmodel.AssociationCreationForm;
 import fr.isika.cda.galaxos.viewmodel.AssociationFinalisationForm;
 
@@ -31,7 +31,6 @@ public class AssociationRepository {
 
 	@PersistenceContext
 	private EntityManager entityManager;
-	
 
 	public Association update(Association asso) {
 		return entityManager.merge(asso);
@@ -44,9 +43,9 @@ public class AssociationRepository {
 		Domain domain = findOrCreateDomain(form.getDomaine());
 		GestionnaireAssociation gestionnaireAssociation = new GestionnaireAssociation();
 		Optional<Adherent> adherent = null;
-		
+
 		adherent = this.findAdherentById(id);
-		if(adherent.isPresent()) {
+		if (adherent.isPresent()) {
 			Adherent adhe = adherent.get();
 			gestionnaireAssociation.setAdherent(adhe);
 		}
@@ -270,17 +269,33 @@ public class AssociationRepository {
 	public void delete(Association asso) {
 		entityManager.remove(asso);
 	}
-	
 
 	public Optional<Adherent> findAdherentById(Long id) {
 		try {
-			return Optional.ofNullable(
-					this.entityManager
-						.find(Adherent.class, id));
-		} catch(NoResultException ex) {
+			return Optional.ofNullable(this.entityManager.find(Adherent.class, id));
+		} catch (NoResultException ex) {
 			System.out.println("Consumer.findAdherentById() - not found : " + id);
 		}
 		return Optional.empty();
 	}
-	
+
+	/*
+	 * public Long findRoleParAdherent(Long idAdherentConnecte) { Object role =
+	 * entityManager
+	 * .createNativeQuery("SELECT id FROM Role	WHERE Role.adherent_id = :idAdherentConnecte"
+	 * , Association.class) .setParameter("idAdherentConnecte",
+	 * idAdherentConnecte).getSingleResult(); role = role.toString(); Long idRole =
+	 * Long.parseLong(role); return idRole; }
+	 */
+
+
+	public List<Association> findAssociationsGestionnaireParAdherent(Long idAdherentConnecte) {
+		List<Association> associations = null;
+
+		return associations = entityManager
+				.createNativeQuery("SELECT * FROM Association INNER JOIN Client ON Client.association_id = Association.id INNER JOIN Role ON Client.id = Role.id WHERE Role.adherent_id = :idAdherentConnecte",
+						Association.class)
+				.setParameter("idAdherentConnecte", idAdherentConnecte).getResultList();
+	}
+
 }

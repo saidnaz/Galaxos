@@ -17,6 +17,7 @@ import fr.isika.cda.galaxos.model.FicheAssoDescriptif;
 import fr.isika.cda.galaxos.model.FicheAssoGestionnaire;
 import fr.isika.cda.galaxos.model.FicheAssociation;
 import fr.isika.cda.galaxos.model.roles.GestionnaireAssociation;
+import fr.isika.cda.galaxos.model.roles.Role;
 import fr.isika.cda.galaxos.repository.AssociationRepository;
 import fr.isika.cda.galaxos.viewmodel.AssociationCreationForm;
 import fr.isika.cda.galaxos.viewmodel.AssociationFinalisationForm;
@@ -75,7 +76,7 @@ public class AssociationCompteService {
 	public List<Association> search(String localisation, String search, String domaines) {
 		return associationRepository.search(localisation, search, domaines);
 	}
-	
+
 	public List<Association> findByCateg(String nomCateg) {
 		return associationRepository.findByCateg(nomCateg);
 	}
@@ -83,9 +84,13 @@ public class AssociationCompteService {
 	public void delete(Association asso) {
 		associationRepository.delete(asso);
 	}
-	
+
 	public Optional<Adherent> findAdherentById(Long id) {
 		return associationRepository.findAdherentById(id);
+	}
+
+	public List<Association> findAssociationsGestionnaireParAdherent(Long idAdherentConnecte) {
+		return associationRepository.findAssociationsGestionnaireParAdherent(idAdherentConnecte);
 	}
 
 }
