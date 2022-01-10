@@ -48,10 +48,39 @@ public class Adherent implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fkProfil")
 	private Profil profil;
+	
+	@OneToMany(mappedBy="adherent")
+	List<Post> posts;
 
 	@OneToOne
 	@JoinColumn(name = "fkDashboard")
 	private Dashboard board;
+	
+	private Association association;
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
+
+	public Association getAssociation() {
+		return association;
+	}
+
+	public void setAssociation(Association association) {
+		this.association = association;
+	}
+
+	
+	
+	public Adherent(Association association, List<Post> posts) {
+		super();
+		this.association = association;
+		this.posts = posts;
+	}
 
 	public Long getId() {
 		return id;
@@ -66,6 +95,10 @@ public class Adherent implements Serializable {
 //	public void setRoles(Role role) {
 //		this.roles.add(role);
 //	}
+	public Adherent(List<Post> posts) {
+		super();
+		this.posts = posts;
+	}
 
 	public CompteUser getUser() {
 		return user;
