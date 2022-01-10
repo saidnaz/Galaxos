@@ -43,10 +43,12 @@ public class CatalogueAssociationBean {
 	}
 
 	public String search() {
-		if (localisation.equals("") && search.equals("") && domaines == null) {
+		String domaine = (form.getDomaine() == null) ? "" : form.getDomaine().toString();
+		System.out.println(domaine);
+		if (localisation.equals("") && search.equals("") && domaine.equals("")) {
 			associations = service.findAll();
 		} else {
-			associations = service.search(localisation, search, domaines);
+			associations = service.search(localisation, search, domaine);
 		}
 		return "catalogueAsso";
 	}
@@ -95,16 +97,12 @@ public class CatalogueAssociationBean {
 		this.search = search;
 	}
 
-	public Domaine getDomaine() {
-		return domaines;
-	}
-
-	public void setDomaine(Domaine domaine) {
-		this.domaines = domaine;
-	}
-
 	public void setDomaines(Domaine domaines) {
 		this.domaines = domaines;
 	}
+	
+	
+
+	
 
 }

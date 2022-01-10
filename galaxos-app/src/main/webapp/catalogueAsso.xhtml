@@ -74,7 +74,7 @@
 		</nav>
 	</div>
 
-	<div class="container mt-5 pt-5 mb-5">
+	<div class="container mt-5 pt-5 mb-5" style="min-height: 60vh">
 		<h1 class="mt-2">Trouvez votre bonheur au sein de notre galaxie</h1>
 		<h:form id="catalogueAssoForm">
 			<div class="d-flex mt-3"
@@ -102,8 +102,7 @@
 						<h:selectOneMenu value="#{CatalogueAssociationBean.form.domaine}"
 							class="form-select w-100" style="outline: none; border: none"
 							aria-label="Default select example">
-							<f:selectItem itemValue="Choisir un domaine"
-								itemLabel="Choisir un domaine" />
+							<f:selectItem itemLabel="Choisir un domaine" itemValue="" />
 							<f:selectItems value="#{CatalogueAssociationBean.domaines}"
 								var="domaines" itemValue="#{domaines}"
 								itemLabel="#{domaines.label}" />
@@ -130,12 +129,7 @@
 						class="main-button w-100 p-2 m-2 d-block d-3"
 						action="#{CatalogueAssociationBean.search()}"
 						style="height: 80px; background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;" />
-					<!--  <button class="main-button w-100 p-2 m-2 d-block d-3"
-						style="height: 80px; background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;">
-						<i class="fas fa-map-marker-alt"
-							style="color: white; font-size: 22px; margin-right: 15px"></i><span
-							class="h3" style="color: white">Rechercher</span>
-					</button>-->
+
 				</div>
 			</div>
 		</h:form>

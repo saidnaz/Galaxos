@@ -69,7 +69,7 @@ public class AssociationCompteService {
 		return associationRepository.findAll();
 	}
 
-	public List<Association> search(String localisation, String search, Domaine domaines) {
+	public List<Association> search(String localisation, String search, String domaines) {
 		return associationRepository.search(localisation, search, domaines);
 	}
 	
