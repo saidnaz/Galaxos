@@ -32,10 +32,11 @@ public class PostRepository implements Serializable {
 	public Post create(PostForm  PF) {
 		Post post = new Post();
 		Domain domain = new Domain();
+		
 		post.setNom(PF.getNom());
 		post.setDescription(PF.getDescription());
-		post.setDateStart(PF.getDateStart());
-		post.setDateEnd(PF.getDateEnd());
+		//post.setDateStart(PF.getDateStart());
+		//post.setDateEnd(PF.getDateEnd());
 		post.setDomain(domain);
 			
 		entityManager.persist(post);
@@ -106,6 +107,15 @@ public class PostRepository implements Serializable {
 		        }
 		    }
 		
+
+		public Post update(Post p) {
+			   try {
+		        	((PostRepository) entityManager).update( entityManager.merge( p) );
+		        } catch ( Exception e ) {
+		            e.getStackTrace();
+		        }
+			   return p;
+		}
 		
 	}
 
