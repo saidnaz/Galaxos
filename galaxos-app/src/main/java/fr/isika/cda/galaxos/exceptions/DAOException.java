@@ -3,7 +3,10 @@ package fr.isika.cda.galaxos.exceptions;
 public class DAOException extends Exception {
 
 	public DAOException(Exception message) {
-		super(message);
+			}
+
+	public DAOException() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
