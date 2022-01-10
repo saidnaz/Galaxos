@@ -34,6 +34,15 @@ public class AssociationBean {
 
 	}
 	
+	public String delete(Long id) {
+		Optional<Association> optional = service.findById(id);
+		if (optional.isPresent()) {
+			asso = optional.get();
+			service.delete(asso);
+		}
+		return "index";
+	}
+	
 
 	public AssociationCompteService getService() {
 		return service;

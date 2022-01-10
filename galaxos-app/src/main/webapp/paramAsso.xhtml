@@ -311,20 +311,21 @@
 										</div>
 									</h:form>
 								</div>
-								<h:form>
-									<h:commandButton id="submit" value="Supprimer définivement"
-										class="btn main-button"
-										action="#{paramAssoBean.delete(dashboardAsso.asso.id)}">
-									</h:commandButton>
-								</h:form>
 							</div>
+
 						</div>
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	</main>
+	<h:form>
+		<h:commandButton id="submit" value="Supprimer définivement"
+			class="btn main-button"
+			action="#{associationBean.delete(dashboardAsso.asso.id)}">
+		</h:commandButton>
+	</h:form> </main>
 
 	<!--   Core JS Files   -->
 	<h:outputScript library="js" name="core/popper.min.js"></h:outputScript>
