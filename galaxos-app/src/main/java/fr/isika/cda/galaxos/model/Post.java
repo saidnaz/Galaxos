@@ -2,6 +2,7 @@ package fr.isika.cda.galaxos.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,8 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-
-import fr.isika.cda.galaxos.model.roles.Consumer;
 
 @Entity
 @NamedQuery(name = "Post.findByNom", query = "SELECT p FROM Post p WHERE p.nom = :nom_param")
@@ -25,7 +24,6 @@ public class Post {
 	@Column(nullable=false)
     private String Description;
 	
-	
     private LocalDate DateStart;
 	
     private LocalDate DateEnd;
@@ -33,26 +31,13 @@ public class Post {
     @Column(nullable=false)
     private Double price;
     
-    public Post(String nom, String description, LocalDate dateStart, LocalDate dateEnd, Double price, String photo,
-			Consumer consumer, Domain domain) {
-		super();
-		this.nom = nom;
-		Description = description;
-		DateStart = dateStart;
-		DateEnd = dateEnd;
-		this.price = price;
-		this.photo = photo;
-		this.consumer = consumer;
-		this.domain = domain;
-	}
-
 	@Column(nullable=false)
 	private String photo;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	private Consumer consumer;
+	private Adherent adherent;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	private Domain domain;
 	
 	public Post() {
@@ -100,12 +85,12 @@ public class Post {
 		this.photo = photo;
 	}
 
-	public Consumer getConsumer() {
-		return consumer;
+	public Adherent getAdherent() {
+		return adherent;
 	}
 
-	public void setConsumer(Consumer consumer) {
-		this.consumer = consumer;
+	public void setAdherent(Adherent adherent) {
+		this.adherent = adherent;
 	}
 
 	public Domain getDomain() {
