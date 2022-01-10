@@ -53,6 +53,8 @@ public class LoginBean implements Serializable {
 				// On va l'écrire dans la sesssion Http
 				HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 				session.setAttribute("connectedAdherentId", adherent.getId());
+				session.setAttribute("connectedAdherent", adherent);
+				session.setAttribute("profil", adherent.getProfil());
 				
 				return "dashboardAdherent?faces-redirect=true";
 			} else {
