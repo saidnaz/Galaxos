@@ -46,6 +46,8 @@ public class CreateAccountBean implements Serializable {
 				System.out.println("Adhérent créé : " + adherent);
 				
 				// On redirige vers le dashboard en cas de compte créé avec succès
+				
+				
 				return "dashboardAdherent?faces-redirect=true";
 				
 				} catch (Exception ex) {
