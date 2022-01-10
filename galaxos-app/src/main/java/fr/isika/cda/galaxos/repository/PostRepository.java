@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.NamedQuery;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -16,7 +16,7 @@ import fr.isika.cda.galaxos.exceptions.DAOException;
 import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Domain;
 import fr.isika.cda.galaxos.model.Post;
-import fr.isika.cda.galaxos.model.roles.Consumer;
+import fr.isika.cda.galaxos.service.AdherentService;
 import fr.isika.cda.galaxos.viewmodel.PostForm;
 @Stateless
 public class PostRepository implements Serializable {
@@ -29,14 +29,25 @@ public class PostRepository implements Serializable {
 	@PersistenceContext
 	private EntityManager entityManager;
 	
+	@Inject
+	private AdherentService AS;
+	
 	public Post create(PostForm  PF) {
+		
+		
+		Optional<Adherent> optional = AS.findById(PF.getIdAdherent());
+		
 		Post post = new Post();
 		Domain domain = new Domain();
 		
 		post.setNom(PF.getNom());
 		post.setDescription(PF.getDescription());
-		//post.setDateStart(PF.getDateStart());
-		//post.setDateEnd(PF.getDateEnd());
+		post.setDateStart(PF.getStartDate());
+		post.setDateEnd(PF.getEndDate());
+		
+		// TODO finir les autres mappgins
+		
+		post.setAdherent(optional.get());
 		post.setDomain(domain);
 			
 		entityManager.persist(post);
