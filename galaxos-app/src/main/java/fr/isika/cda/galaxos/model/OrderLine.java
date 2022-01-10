@@ -11,9 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 
-
-
-
 @Entity
 public class OrderLine implements Serializable{
 
@@ -38,7 +35,7 @@ public class OrderLine implements Serializable{
 		this.quantite = quantite;
 	}
 
-	private LocalDate dateLigneCommand;
+	
 
 
 	  public Resource getResource() { return resource; }
@@ -46,13 +43,6 @@ public class OrderLine implements Serializable{
 	  public void setResource(Resource resource) { this.resource = resource; }
 
 
-	public LocalDate getDateorderline() {
-		return dateLigneCommand;
-	}
-
-	public void setDateorderline(LocalDate dateorderline) {
-		this.dateLigneCommand = dateorderline;
-	}
 
 	public Double getPrix() {
 		return prix;
@@ -70,10 +60,10 @@ public class OrderLine implements Serializable{
 	}
 
 
-	public OrderLine(Resource resource, LocalDate dateorderline, Double prix, Integer quantite) {
+	public OrderLine(Resource resource, Double prix, Integer quantite) {
 		super();
 		this.resource =resource;
-		this.dateLigneCommand = dateorderline;
+		
 		this.prix = prix;
 		this.quantite = quantite;
 	}
