@@ -2,30 +2,20 @@ package fr.isika.cda.galaxos.model.resources;
 
 import javax.persistence.*;
 
+
 @Entity
 @PrimaryKeyJoinColumn(name="idRessource")
 @DiscriminatorValue("VENTE")
 public class Vente extends Resource{
-
-	private Double prix;
 	
 	private boolean isDispo;
 
 	public Vente() {
 	}
 
-	public Vente(Double prix, boolean isDispo) {
+	public Vente(boolean isDispo) {
 		super();
-		this.prix = prix;
 		this.isDispo = isDispo;
-	}
-
-	public Double getPrix() {
-		return prix;
-	}
-
-	public void setPrix(Double prix) {
-		this.prix = prix;
 	}
 
 	public boolean isDispo() {
@@ -34,5 +24,5 @@ public class Vente extends Resource{
 
 	public void setDispo(boolean isDispo) {
 		this.isDispo = isDispo;
-	}	
+	}
 }
