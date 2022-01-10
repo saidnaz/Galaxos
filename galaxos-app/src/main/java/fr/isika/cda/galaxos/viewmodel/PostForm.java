@@ -1,9 +1,9 @@
 package fr.isika.cda.galaxos.viewmodel;
 
-import java.io.File;
+
 import java.time.LocalDate;
 
-
+import javax.servlet.http.Part;
 
 import fr.isika.cda.galaxos.model.Domain;
 
@@ -16,24 +16,22 @@ private String nom;
     private String Description;
 	
 	
-    private LocalDate DateStart;
+  //  private LocalDate DateStart;
 	
-    private LocalDate DateEnd;
+   // private LocalDate DateEnd;
     
    
     private Double price;
 
 	
-	private Byte[] photo;
+	private Part photo;
 	
 	
-	public PostForm(String nom, String description, LocalDate dateStart, LocalDate dateEnd, Double price, Byte[] photo,
+	public PostForm(String nom, String description, LocalDate dateStart, LocalDate dateEnd, Double price,Part photo,
 			Domain domain) {
 		super();
 		this.nom = nom;
 		Description = description;
-		DateStart = dateStart;
-		DateEnd = dateEnd;
 		this.price = price;
 		this.photo = photo;
 		this.domain = domain;
@@ -60,24 +58,8 @@ private String nom;
 	}
 
 
-	public LocalDate getDateStart() {
-		return DateStart;
-	}
+//
 
-
-	public void setDateStart(LocalDate dateStart) {
-		DateStart = dateStart;
-	}
-
-
-	public LocalDate getDateEnd() {
-		return DateEnd;
-	}
-
-
-	public void setDateEnd(LocalDate dateEnd) {
-		DateEnd = dateEnd;
-	}
 
 
 	public Double getPrice() {
@@ -90,12 +72,12 @@ private String nom;
 	}
 
 
-	public Byte[] getPhoto() {
+	public Part getPhoto() {
 		return photo;
 	}
 
 
-	public void setPhoto(Byte[] photo) {
+	public void setPhoto(Part photo) {
 		this.photo = photo;
 	}
 
