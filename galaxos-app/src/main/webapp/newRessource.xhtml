@@ -2,67 +2,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 <h:head>
 	<meta charset="utf-8" />
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<!-- <link rel="apple-touch-icon" sizes="76x76"
-			href="../assets/img/apple-icon.png" />
-			<link rel="icon" type="image/png" href="../assets/img/favicon.png" />
-				-->
-	<!--     Fonts and icons     -->
-	<!-- <link
-					href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
-					rel="stylesheet" />-->
-	<!-- Nucleo Icons -->
-	<!-- <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-				<link href="../assets/css/nucleo-svg.css" rel="stylesheet" />-->
-	<!-- Font Awesome Icons -->
-	<!-- <script src="https://kit.fontawesome.com/42d5adcbca.js"
-					crossorigin="anonymous"></script>
-				<link href="../assets/css/nucleo-svg.css" rel="stylesheet" />-->
-	<!-- CSS Files -->
-	<!-- <link id="pagestyle"
-					href="../assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" /> -->
-	<link rel="apple-touch-icon" sizes="76x76"
-		href="/resources/images/apple-icon.png" />
-	<title>Nouvelle Ressource</title>
-
-	<link
-		href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
-		rel="stylesheet" />
-
-	<!-- Font Awesome Icons -->
-	<script src="https://kit.fontawesome.com/42d5adcbca.js"
-		crossorigin="anonymous"></script>
 
 
 	<!-- CSS  -->
-	<h:outputStylesheet library="css" name="main.css" />
-	<!-- 	<h:outputStylesheet library="css" name="home.css" /> -->
-	<!-- 	<h:outputStylesheet library="css" name="creation-association.css" /> -->
-	<h:outputStylesheet library="css" name="new-ressource.css" />
-	<h:outputStylesheet library="css" name="soft-ui-dashboard.css" />
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet"
-		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
-	<!-- Bootstrap JS -->
-	<script type="text/javascript"
-		src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"></script>
-	<script type="text/javascript"
-		src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-	<script type="text/javascript"
-		src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-	<script type="text/javascript"
-		src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-	<link rel="stylesheet" type="text/css"
-		href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+	<h:outputStylesheet library="css" name="/main.css" />
+	<h:outputStylesheet library="css" name="/home.css" />
+	<h:outputStylesheet library="css" name="/newResource.css" />
+	<h:outputStylesheet library="css" name="/creation-association.css" />
+	<h:outputStylesheet library="css" name="/soft-ui-dashboard.css" />
+	<h:outputStylesheet library="css"
+		name="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+	<h:outputScript library="js"
+		name="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" />
+	<h:outputScript library="js"
+		name="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js" />
+	<h:outputScript library="js"
+		name="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" />
+	<h:outputScript library="js"
+		name="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" />
+	<h:outputStylesheet library="css"
+		name="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </h:head>
 
 
 <body class="">
+
 	<div class="container position-sticky z-index-sticky top-0">
 		<div class="row">
 			<div class="col-12">
@@ -98,107 +69,110 @@
 					</nav>
 				</div>
 
-
-
 				<!-- End Navbar -->
 			</div>
 		</div>
 	</div>
+
+
+
 	<main class="main-content  mt-0"> <section>
 	<div class="page-header min-vh-75">
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
-					<div class="card card-plain mt-8 mb-5">
+					<div class="card card-plain mt-8 mb-5 mx-auto">
 						<div class="card-header pb-0 text-left bg-transparent">
 							<h3 class="font-weight-bolder text-info text-gradient">Créer
 								une ressource</h3>
 
-							<div class="nav-wrapper position-relative end-0">
-								<ul class="nav nav-pills nav-fill p-1" role="tablist">
-									<li class="nav-item"><a
-										class="nav-link mb-0 px-0 py-1 active"
-										data-bs-toggle="collapse" href="#vente" role="collapse"
-										aria-controls="vente" aria-expanded="false"> Je vends </a></li>
-									<li class="nav-item"><a class="nav-link mb-0 px-0 py-1"
-										data-bs-toggle="collapse" href="#location" role="collapse"
-										aria-controls="location" aria-expanded="false"> Je loue </a></li>
-								</ul>
+							<div class="btn-radio-animated m-b-3 nav nav-pills nav-fill">
+								<input class="btn-left nav-link" type="radio" value="vente"
+									id="radio-vente" name="typeRes" checked="true"
+									onClick="afficherCacher()" /> <input class="btn-right nav-link"
+									type="radio" value="location" id="radio-location"
+									name="typeRes" onClick="afficherCacher()" /> <label
+									class="btn-left">Vente</label> <label class="btn-right">Location</label>
+								<span class="background rounded-3"></span>
+							</div>
+							<div style="display: block;" id="venteForm">
+								<div class="card-body">
+									<h:form id="addVenteForm" role="form" enctype="multipart/form-data">
+										<label>Nom</label>
+										<div class="mb-3">
+											<h:inputText id="name" class="form-control"
+												pt:placeholder="Nom" aria-label="Nom"
+												aria-describedby="ajout-nom"
+												value="#{resourceBean.venteForm.name}" />
+
+										</div>
+										<label for="formFileMultiple">Photos</label>
+										<div class="mb-3">
+											<h:inputFile
+												value="#{resourceBean.venteForm.photos}"
+												class="form-control" id="file" aria-label="Photos" aria-describedby="ajout-photos"></h:inputFile>
+										</div>
+										<label>Prix</label>
+										<div class="input-group mb-3">
+											<h:inputText id="prix" class="form-control input-group-text"
+												pt:placeholder="Prix" aria-label="Prix"
+												aria-describedby="ajout-prix"
+												value="#{resourceBean.venteForm.tarif}" />
+											<span class="input-group-text">€</span>
+										</div>
+
+										<div class="text-center">
+											<h:commandButton action="#{resourceBean.create('vente')}"
+												value="Valider" class="btn bg-gradient-info w-100 mt-4 mb-0" />
+										</div>
+									</h:form>
+								</div>
 							</div>
 
-							<div class="accordion">
-								<div class="collapse accordion-collapse" id="vente">
-									<div class="card-body">
-										<form role="form">
-											<label>Nom</label>
-											<div class="mb-3">
-												<input type="text" class="form-control" placeholder="Nom"
-													aria-label="Nom" aria-describedby="ajout-nom" />
-											</div>
-											<label for="formFileMultiple">Photos</label>
-											<div class="mb-3">
-												<input type="file" id="formFileMultiple" multiple="true"
-													class="form-control" placeholder="Photos"
-													aria-label="Photos" aria-describedby="ajout-photos" />
-											</div>
-											<label>Prix</label>
-											<div class="input-group mb-3">
-												<input type="number" class="form-control input-group-text" min="0"
-												step="0.01"	aria-label="Prix" /><span class="input-group-text">€</span>
-											</div>
+							<div style="display: none;" id="locationForm">
+								<div class="card-body">
+									<h:form id="addLocationForm" role="form" enctype="multipart/form-data">
+										<label>Nom</label>
+										<div class="mb-3">
+											<input type="text" class="form-control" placeholder="Nom"
+												aria-label="Nom" aria-describedby="ajout-nom" />
+										</div>
+										<label for="formFileMultiple">Photos</label>
+										<div class="mb-3">
+											<input type="file" id="formFileMultiple" multiple="true"
+												class="form-control" placeholder="Photos"
+												aria-label="Photos" aria-describedby="ajout-photos" />
+										</div>
+										<label>Prix</label>
+										<div class="input-group mb-3">
+											<input type="text" class="form-control input-group-text"
+												min="0" step="0.01" aria-label="Prix" /> <span
+												class="input-group-text">€/J</span>
+										</div>
+										<label>Date</label>
+										<div class="mb-3">
+											<input type="text" name="daterange"
+												class="form-control datepicker"
+												placeholder="JJ/MM/AAAA - JJ/MM/AAAA" aria-label="Date"
+												aria-describedby="ajout-date" />
+										</div>
 
-											<div class="text-center">
-												<button type="button"
-													class="btn bg-gradient-info w-100 mt-4 mb-0">Valider</button>
-											</div>
-										</form>
-									</div>
-								</div>
-
-								<div class="collapse accordion-collapse" id="location">
-									<div class="card-body">
-										<form role="form">
-											<label>Nom</label>
-											<div class="mb-3">
-												<input type="text" class="form-control" placeholder="Nom"
-													aria-label="Nom" aria-describedby="ajout-nom" />
-											</div>
-											<label for="formFileMultiple">Photos</label>
-											<div class="mb-3">
-												<input type="file" id="formFileMultiple" multiple="true"
-													class="form-control" placeholder="Photos"
-													aria-label="Photos" aria-describedby="ajout-photos" />
-											</div>
-											<label>Prix</label>
-											<div class="input-group mb-3">
-												<input type="number" class="form-control input-group-text" min="0"
-												step="0.01"	aria-label="Prix" /> <span class="input-group-text">€/J</span>
-											</div>
-											<label>Date</label>
-											<div class="mb-3">
-												<input type="text" name="daterange"
-													class="form-control datepicker"
-													placeholder="JJ/MM/AAAA - JJ/MM/AAAA" aria-label="Date"
-													aria-describedby="ajout-date" />
-											</div>
-
-											<div class="text-center">
-												<button type="button"
-													class="btn bg-gradient-info w-100 mt-4 mb-0">Valider</button>
-											</div>
-										</form>
-									</div>
+										<div class="text-center">
+											<button type="button"
+												class="btn bg-gradient-info w-100 mt-4 mb-0">Valider</button>
+										</div>
+									</h:form>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-6">
+				</div>
+				<div class="col-md-6">
+					<div
+						class="oblique position-absolute top-0 h-100 d-md-block d-none">
 						<div
-							class="oblique position-absolute top-0 h-100 d-md-block d-none">
-							<div
-								class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"
-								style="background-image: url('./resources/images/curved-images/curved6.jpg')"></div>
-						</div>
+							class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"
+							style="background-image: url('./resources/images/curved-images/curved6.jpg')"></div>
 					</div>
 				</div>
 			</div>
@@ -222,7 +196,7 @@
 				<div class="row">
 					<div class="col-sm">
 						<div class="d-flex align-items-center">
-							<img src="/resources/images/logo.png" alt=""
+							<img src="resources/images/logo.png" alt=""
 								style="max-width: 50px;" />
 							<p class="text-white"
 								style="font-weight: 700; display: block; padding-top: 15px">GALAXOS</p>
@@ -312,6 +286,19 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
   </script>
+	<script>
+  function afficherCacher(){
+	  if(document.getElementById("radio-vente").checked){
+		  console.log("vente");
+	      document.getElementById("venteForm").style.display= "block";
+	      document.getElementById("locationForm").style.display= "none";
+	  }else if (document.getElementById("radio-location").checked) {
+		  console.log("location");
+		  document.getElementById("venteForm").style.display= "none";
+	      document.getElementById("locationForm").style.display= "block";
+	  }
+	}
+</script>
 	<!-- Github buttons -->
 	<script async="async defer" src="https://buttons.github.io/buttons.js"></script>
 	<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->

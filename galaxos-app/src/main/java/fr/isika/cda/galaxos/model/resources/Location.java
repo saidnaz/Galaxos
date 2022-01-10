@@ -9,25 +9,14 @@ import fr.isika.cda.galaxos.model.resources.reservations.GestionnaireResa;
 @DiscriminatorValue("LOCATION")
 public class Location extends Resource{
 	
-	private Double tarifJournalier;
-	
 	@OneToOne
 	private GestionnaireResa gestResa;
 
 	public Location() {}
 
-	public Location(Double tarifJournalier, GestionnaireResa gestResa) {
+	public Location(GestionnaireResa gestResa) {
 		super();
-		this.tarifJournalier = tarifJournalier;
 		this.gestResa = gestResa;
-	}
-
-	public Double getTarifJournalier() {
-		return tarifJournalier;
-	}
-
-	public void setTarifJournalier(Double tarifJournalier) {
-		this.tarifJournalier = tarifJournalier;
 	}
 
 	public GestionnaireResa getGestResa() {

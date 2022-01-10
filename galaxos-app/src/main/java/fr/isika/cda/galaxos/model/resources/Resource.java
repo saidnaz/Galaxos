@@ -1,7 +1,7 @@
 package fr.isika.cda.galaxos.model.resources;
 
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 
 import javax.persistence.*;
 
@@ -25,8 +25,11 @@ public abstract class Resource{
 	
 	@ManyToOne() 
 	private Provider provider; 
+	
+	@Column(nullable=false) 
+	private Double tarif;
 	 
-	private List<String> photos = new ArrayList<String>(); 
+	//private List<String> photos = new ArrayList<String>(); 
 	
 	
 	public Resource() {}
@@ -55,8 +58,27 @@ public abstract class Resource{
 	public void setProvider(Provider provider) {
 		this.provider = provider;
 	}
+	
+	public Double getTarif() {
+		return tarif;
+	}
 
-	public List<String> getPhotos() {
+	public void setTarif(Double tarif) {
+		this.tarif= tarif;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Resource [name=");
+		builder.append(name);
+		builder.append(", tarif=");
+		builder.append(tarif);
+		builder.append("]");
+		return builder.toString();
+	}
+
+	/*public List<String> getPhotos() {
 		return photos;
 	}
 
@@ -66,6 +88,7 @@ public abstract class Resource{
 	
 	public void removePhotos(String photo) {
 		this.photos.remove(photo);
-	}
+	}*/
 
+	
 }
