@@ -14,6 +14,7 @@ import fr.isika.cda.galaxos.model.FicheAssoCompta;
 import fr.isika.cda.galaxos.model.FicheAssoDescriptif;
 import fr.isika.cda.galaxos.model.FicheAssoGestionnaire;
 import fr.isika.cda.galaxos.model.FicheAssociation;
+import fr.isika.cda.galaxos.model.roles.GestionnaireAssociation;
 import fr.isika.cda.galaxos.repository.AssociationRepository;
 import fr.isika.cda.galaxos.viewmodel.AssociationCreationForm;
 import fr.isika.cda.galaxos.viewmodel.AssociationFinalisationForm;
@@ -27,7 +28,7 @@ public class AssociationCompteService {
 	public AssociationCompteService() {
 	}
 
-	public Association create(AssociationCreationForm associationCreationForm)
+	public Association create(AssociationCreationForm associationCreationForm, Long id)
 			throws NomAssociationExistDejaExeption, RNAAssociationExistDejaExeption {
 
 		Optional<FicheAssociation> optionalNom = associationRepository.findByName(associationCreationForm.getNom());
@@ -42,7 +43,7 @@ public class AssociationCompteService {
 			throw new RNAAssociationExistDejaExeption("Le numéro RNA de cette association est déjà utilisé");
 		}
 
-		return associationRepository.create(associationCreationForm);
+		return associationRepository.create(associationCreationForm, id);
 	}
 
 	public Association update(Association asso) {
@@ -80,4 +81,5 @@ public class AssociationCompteService {
 	public void delete(Association asso) {
 		associationRepository.delete(asso);
 	}
+
 }
