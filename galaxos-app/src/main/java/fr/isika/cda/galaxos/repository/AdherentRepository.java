@@ -41,6 +41,10 @@ public class AdherentRepository implements Serializable{
 		adherent.setUser(cptUser);
 		adherent.setProfil(profil);
 		
+		
+	//	adherent.setRoles(adherentForm.getRoles());
+		
+		
 		// On persiste l'objet 
 		entityManager.persist(adherent);
 		

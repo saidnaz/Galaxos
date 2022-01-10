@@ -3,12 +3,15 @@ package fr.isika.cda.galaxos.dto;
 import java.util.List;
 
 import fr.isika.cda.galaxos.model.Message;
+import fr.isika.cda.galaxos.model.Profil;
 
 public class MessageDTO {
 
 	private List<Message> lMsg;
 	
-	private List<String> lNomDestinataire;
+	private Profil destinataire;
+	
+	private Profil expediteur;
 
 	public MessageDTO() {
 		super();
@@ -26,16 +29,6 @@ public class MessageDTO {
 		this.lMsg.add(msgToAdd);
 	}
 
-	public List<String> getlNomDestinataire() {
-		return lNomDestinataire;
-	}
-
-	public void setlNomDestinataire(List<String> lNomDestinataire) {
-		this.lNomDestinataire = lNomDestinataire;
-	}
-
-	public void addlNomDestinataire(String nomDestinataire) {
-		this.lNomDestinataire.add(nomDestinataire);
-	}
+	
 	
 }

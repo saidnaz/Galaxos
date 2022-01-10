@@ -3,6 +3,7 @@ package fr.isika.cda.galaxos.managedbeans;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -21,9 +22,11 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import fr.isika.cda.galaxos.dto.MessageDTO;
+import fr.isika.cda.galaxos.dto.MessagerieDTO;
 import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Message;
 import fr.isika.cda.galaxos.model.Profil;
+import fr.isika.cda.galaxos.model.roles.Role;
 import fr.isika.cda.galaxos.service.MessageService;
 
 
@@ -32,27 +35,26 @@ import fr.isika.cda.galaxos.service.MessageService;
 @ViewScoped
 public class MessageBean implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6491967124514940460L;
 
 
 	@Inject
 	private MessageService messageService;
 	
-	private static Profil profilDestinataire = null;
+	private Profil profilDestinataire;	// Pour la liste des messages, pas la liste des contacts (messagerie)
 	
+	private Profil profilExpediteur;
 	
+	private MessagerieDTO messagerieDTO;	// Liste des contacts
 	
-	@NotEmpty(message = "Ne doit pas être vide")
-	@NotNull(message = "Ne doit pas être null")
-	@Size(min = 1, max = 500, message = "Doit être entre 1 et 500 caractère.")
-//	@Pattern(regexp = "[^0-9]*", message = "Ne doit pas contenir des chiffres")
+	private MessageDTO messageDTO;		// ViewModel est délcaré ici dans le bean
+	
+	@NotEmpty(message = "")
+	@NotNull(message = "")
+	@Size(min = 1, max = 500, message = "")
 	private String text;
 	
-	// ViewModel est délcaré ici dans le bean
-	private MessageDTO messageDTO;
+
 	
 	// Initialisation : Lors du lancement du serv, lance les méthodes à l'intérieur du init
 	@PostConstruct
@@ -78,6 +80,7 @@ public class MessageBean implements Serializable {
 		
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		Profil profilExpediteur = (Profil) session.getAttribute("profil");
+		List<Role> lRoles = (List<Role>) session.getAttribute("roles");
 		// Dans loginbean, assigné un attribut profil à httpsession
 		
 		msg.setExpediteur(profilExpediteur);
@@ -121,6 +124,32 @@ public class MessageBean implements Serializable {
 	public void setMessageDTO(MessageDTO messageDTO) {
 		this.messageDTO = messageDTO;
 	}
+
+	public Profil getProfilDestinataire() {
+		return profilDestinataire;
+	}
+
+	public void setProfilDestinataire(Profil profilDestinataire) {
+		this.profilDestinataire = profilDestinataire;
+	}
+	
+	public Profil getProfilExpediteur() {
+		return profilExpediteur;
+	}
+
+	public void setProfilExpediteur(Profil profilExpediteur) {
+		this.profilExpediteur = profilExpediteur;
+	}
+
+	public MessagerieDTO getMessagerieDTO() {
+		return messagerieDTO;
+	}
+
+	public void setMessagerieDTO(MessagerieDTO messagerieDTO) {
+		this.messagerieDTO = messagerieDTO;
+	}
+
+	
 	
 	
 	

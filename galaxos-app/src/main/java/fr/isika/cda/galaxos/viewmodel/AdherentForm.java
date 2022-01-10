@@ -1,7 +1,7 @@
 package fr.isika.cda.galaxos.viewmodel;
 
 import java.io.Serializable;
-
+import java.util.List;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -9,6 +9,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import fr.isika.cda.galaxos.model.roles.Role;
 
 public class AdherentForm implements Serializable{
 
@@ -40,6 +42,7 @@ public class AdherentForm implements Serializable{
 	@Size(min = 1, max = 25, message = "entre 1 et 25 caractères")
 	private String confirmPassword;
 	
+	private List<Role> roles;
 	
 //	@NotEmpty(message = "Ne doit pas être vide")
 //	@NotNull(message = "Ne doit pas être null")
@@ -92,6 +95,27 @@ public class AdherentForm implements Serializable{
 	}
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+
+	public AdherentForm(String email, String password, String nom, String prenom) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.password = password;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+	
+	public void addRoles(Role role)
+	{
+		this.roles.add(role);
 	}
 
 }

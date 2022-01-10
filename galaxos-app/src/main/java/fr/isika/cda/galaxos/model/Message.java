@@ -22,6 +22,9 @@ import javax.persistence.Table;
 })
 public class Message {
 
+
+//	@Pattern(regexp = "[^0-9]*", message = "Ne doit pas contenir des chiffres")
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -31,10 +34,6 @@ public class Message {
 
 	@Column(name = "Texte", nullable = false)
 	private String texte;
-	
-//	private int idDestinataire;
-//	
-//	private int idEmeteur;
 	
 	@OneToOne
 	@JoinColumn(name = "fk_destinataire")
@@ -47,22 +46,6 @@ public class Message {
 	public LocalDateTime getDate() {
 		return date;
 	}
-
-//	public int getIdDestinataire() {
-//		return idDestinataire;
-//	}
-//
-//	public void setIdDestinataire(int idDestinataire) {
-//		this.idDestinataire = idDestinataire;
-//	}
-//
-//	public int getIdEmeteur() {
-//		return idEmeteur;
-//	}
-//
-//	public void setIdEmeteur(int idEmeteur) {
-//		this.idEmeteur = idEmeteur;
-//	}
 
 	public void setDate(LocalDateTime date) {
 		this.date = date;
