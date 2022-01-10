@@ -76,4 +76,8 @@ public class AssociationCompteService {
 	public List<Association> findByCateg(String nomCateg) {
 		return associationRepository.findByCateg(nomCateg);
 	}
+
+	public void delete(Association asso) {
+		associationRepository.delete(asso);
+	}
 }

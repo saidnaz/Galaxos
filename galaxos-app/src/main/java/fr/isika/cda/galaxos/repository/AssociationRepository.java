@@ -253,4 +253,8 @@ public class AssociationRepository {
 		}
 		return associations;
 	}
+
+	public void delete(Association asso) {
+		entityManager.remove(asso);
+	}
 }
