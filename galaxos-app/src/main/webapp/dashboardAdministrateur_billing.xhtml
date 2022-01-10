@@ -30,13 +30,11 @@
   
   <!-- CSS Files -->
   
+ <h:outputStylesheet library="css" name="nucleo-icons.css"/>
+    <h:outputStylesheet library="css" name="nucleo-svg.css"/>
   <h:outputStylesheet library="css" name="main.css" />
   <h:outputStylesheet library="css" name="home.css" />
   <h:outputStylesheet library="css" name="soft-ui-dashboard.css"/>
-  <h:outputStylesheet library="css"	name="nucleo-svg.css"/>
-  <h:outputStylesheet library="css" name="nucleo-icons.css"/>
-  <h:outputStylesheet library="css" name="nucleo-svg.css"/>
-  
   <!-- BOOSTRAP CSS -->
   
   <link rel="stylesheet"
@@ -54,7 +52,7 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="" target="_blank">
-        <img src="resources/imgages/logo.png" class="navbar-brand-img h-100" alt="main_logo"/>
+        <img src="resources/images/logo.png" class="navbar-brand-img h-100" alt="main_logo"/>
         <span class="ms-1 font-weight-bold">Galaxos</span>
       </a>
     </div>
@@ -117,7 +115,7 @@
 
         <!-- Section DECONNEXION-->
         <li class="nav-item">
-          <a class="nav-link  " href="index.xhtml">
+          <a class="nav-link  " href="login.xhtml">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fas fa-sign-out-alt text-dark opacity-10"></i>
             </div>
@@ -423,6 +421,8 @@
       <hr class="horizontal dark my-1"/>
     </div>
   </div>
+  
+  
 <!--   Core JS Files   -->
   
 	<h:outputScript library="js" name="core/popper.min.js"></h:outputScript>
