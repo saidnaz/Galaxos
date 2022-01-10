@@ -10,13 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name = "CompteUser.findByEmail", query = "SELECT cons FROM CompteUser cons WHERE cons.email = :email_param")
 public class CompteUser {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@Column(nullable = false, unique=true)
 	private String email;
 
 	@Column(name = "motdepasse", nullable = false)

@@ -15,12 +15,21 @@ public class AdherentService {
 
 	@Inject
 	private AdherentRepository adherentRepository;
+	
+	public AdherentService() {
+	}
 
 	public Adherent create(AdherentForm adherentform) {
+		// je peux par exemple vérifier avant de persist si le user existe déjà
 		Optional<Adherent> optional = adherentRepository.findByEmail(adherentform.getEmail());
+		
+		// User trouvé donc on lance une exception
 		if (optional.isPresent()) {
 			throw new EntityNotFoundException("le compte adhérent existe déjà");
 		}
+		
+		// Utilisateur non trouvé -> donc email non utilisé
+		// On crée alors le compte
 		return adherentRepository.create(adherentform);
 	}
 
