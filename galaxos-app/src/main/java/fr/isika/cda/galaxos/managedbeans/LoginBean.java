@@ -3,6 +3,7 @@ package fr.isika.cda.galaxos.managedbeans;
 import java.io.Serializable;
 import java.util.Optional;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
@@ -16,8 +17,10 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import fr.isika.cda.galaxos.model.Adherent;
+import fr.isika.cda.galaxos.model.roles.AdminPlateforme;
 import fr.isika.cda.galaxos.repository.Cryptage;
 import fr.isika.cda.galaxos.service.AdherentService;
+import fr.isika.cda.galaxos.viewmodel.AdherentForm;
 @ManagedBean
 public class LoginBean implements Serializable {
 	
@@ -38,6 +41,43 @@ public class LoginBean implements Serializable {
 	@Inject
 	private AdherentService adherentService;
 	
+	@Inject
+	private AdherentService accountService;
+
+	private AdherentForm accountForm = new AdherentForm();
+
+	private static boolean init = false;
+	
+	@PostConstruct
+	public void init()
+	{
+		if (!init)
+		{
+			AdherentForm adherent1 = new AdherentForm("simon.deb@gmail.com", "azer", "Debuire", "Simon");
+			AdherentForm ad2 = new AdherentForm("pierrefer@gmail.com", "azer", "Fernand", "Pierre");
+			AdherentForm ad3 = new AdherentForm("manurolin@gmail.com", "azer", "Rolin", "Emmanuel");
+			AdherentForm ad4 = new AdherentForm("leadumont@outlook.fr", "azer", "Léa", "Dumont");
+			
+			
+			accountService.create(adherent1);
+			accountService.create(ad2);
+			accountService.create(ad3);
+			accountService.create(ad4);
+			accountService.create(new AdherentForm("riridupuis@outlook.fr","azer","Richard","Dupuis"));
+			
+			init = true;
+		}
+		
+//		AdherentForm admin = new AdherentForm("adminplatform@gmail.com", "admin", "Admin", "Admin");
+//		AdminPlateforme adminRole = new AdminPlateforme();
+//		admin.addRoles(adminRole);
+//		accountService.create(admin);
+		
+		
+	}
+	
+	
+	
 	public String doLogin () {
 		Optional<Adherent> optional = adherentService.findByEmail(email);
 		if (optional.isPresent()) {
@@ -52,7 +92,16 @@ public class LoginBean implements Serializable {
 				
 				// On va l'écrire dans la sesssion Http
 				HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+				
+				// Paramètrer des données à persister au moment de la connexion avec "set"
 				session.setAttribute("connectedAdherentId", adherent.getId());
+				session.setAttribute("connectedAdherent", adherent);
+				session.setAttribute("profil", adherent.getProfil());
+				session.setAttribute("roles", adherent.getRoles());
+				session.setAttribute("isConnected", true);
+				
+				
+				
 				
 				return "dashboardAdherent?faces-redirect=true";
 			} else {

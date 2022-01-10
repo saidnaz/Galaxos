@@ -57,6 +57,15 @@ public class Adherent implements Serializable {
 		return roles;
 	}
 
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+	
+	public void addRoles(Role role)
+	{
+		this.roles.add(role);
+	}
+	
 	// TODO : addRole(...) et removeRole(....) et initialiser la liste aussi à vide
 	// !!
 //	public void setRoles(Role role) {
