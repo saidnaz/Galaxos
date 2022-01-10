@@ -1,0 +1,461 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+
+
+<h:head>
+<title>Transaction Galaxos</title>
+	<meta
+		content="Une plateforme d'associations presentant une multitude de services" />
+	<meta content="" name="application-name" />
+	<link rel="icon" href="logo.ico"/>
+  	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+  	<meta content="yes" name="mobile-web-app-capable"/>
+  
+  <!--     Fonts and icons     -->
+  
+  <link 
+  href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" 
+  rel="stylesheet" />
+  
+  
+  <!-- Font Awesome Icons -->
+  
+  <script src="https://kit.fontawesome.com/42d5adcbca.js"
+		crossorigin="anonymous"></script>
+   
+  
+  <!-- CSS Files -->
+  
+ <h:outputStylesheet library="css" name="nucleo-icons.css"/>
+    <h:outputStylesheet library="css" name="nucleo-svg.css"/>
+  <h:outputStylesheet library="css" name="main.css" />
+  <h:outputStylesheet library="css" name="home.css" />
+  <h:outputStylesheet library="css" name="soft-ui-dashboard.css"/>
+  <!-- BOOSTRAP CSS -->
+  
+  <link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  
+  
+  
+</h:head>
+
+<body class="g-sidenav-show  bg-gray-100">
+
+
+<!-- SECTION ASIDE NAVBAR-->
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0" href="" target="_blank">
+        <img src="resources/images/logo.png" class="navbar-brand-img h-100" alt="main_logo"/>
+        <span class="ms-1 font-weight-bold">Galaxos</span>
+      </a>
+    </div>
+    <hr class="horizontal dark mt-0"/>
+    <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+
+
+        <!-- SECTION DASHBOARD-->
+
+        <li class="nav-item">
+          <a class="nav-link  " href="dashboardAdministrateur.xhtml">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fas fa-home text-dark opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Dashboard</span>
+          </a>
+        </li>
+
+        <!-- FIN DE SECTION DASHBOARD-->
+
+
+        <li class="nav-item">
+          <a class="nav-link  " href="dashboardAdministrateur_tables.xhtml">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fas fa-table text-dark opacity-10"></i>             
+             </div>
+           <span class="nav-link-text ms-1">Tableau</span>
+          </a>
+        </li>
+
+
+
+        <!-- SECTION TRANSACTION-->
+        <li class="nav-item">
+          <a class="nav-link  active" href="dashboardAdministrateur_billing.xhtml">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="far fa-credit-card"></i>
+            </div>
+            <span class="nav-link-text ms-1">Transaction</span>
+          </a>
+        </li>
+        <!--FIN DE SECTION TRANSACTION-->
+
+        <!-- SECTION PROFILE-->
+       
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Votre compte</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  " href="dashboardAdministrateur_profils.xhtml">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fas fa-user-alt text-dark opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Votre Profile</span>
+          </a>
+        </li>
+        <!-- FIN DE SECTION PROFIL-->
+
+
+        <!-- Section DECONNEXION-->
+        <li class="nav-item">
+          <a class="nav-link  " href="login.xhtml">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fas fa-sign-out-alt text-dark opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Déconnexion</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+ <!-- FIN SECTION DECONNEXION-->
+
+
+ <!-- FIN DE SECTION  NAVA BAR GAUCHE -->
+
+  <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+   
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+      <div class="container-fluid py-1 px-3 mt-3">
+        <nav aria-label="breadcrumb">
+          <h6 class="font-weight-bolder mb-0">Tableau des transactions</h6>
+        </nav>
+        
+        <div class="collapse navbar-collapse me-md-0 me-sm-4 mt-sm-0 mt-2" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <ul class="navbar-nav justify-content-end">
+              <li class="nav-item d-flex align-items-center">
+                <a href="javascript:;" class="nav-link text-dark font-weight-bold px-0">
+                  <i class="fa fa-sign-out me-sm-1"></i>
+                  <span class="d-sm-inline d-none">Déconnexion</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+
+
+
+    <!-- DEBUT C'EST LE ROW DE LA CARTE BANCAIRE ET DE ROW 1ER LIGNE-->
+    <div class="container-fluid py-4">
+      <div class="row">
+        
+        <!-- DEBUT SECTION INVOICE-->
+
+        <div class="col-lg-6">
+          <div class="card h-100">
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="col-6 d-flex align-items-center">
+                  <h6 class="mb-0">Liste Devis</h6>
+                </div>
+                <div class="col-6 text-end">
+                  <button class="btn btn-outline-primary btn-sm mb-0">Voir toutes</button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-3 pb-0">
+              <ul class="list-group">
+                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                  <div class="d-flex flex-column">
+                    <h6 class="mb-1 text-dark font-weight-bold text-sm">Janvier, 01, 2022</h6>
+                    <span class="text-xs font-weight-bold">Nom Personne</span>
+                    <span class="text-xs">#MS-415646</span>
+                  </div>
+                  <div class="d-flex align-items-center text-sm">
+                    € 40
+                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
+                  </div>
+                </li>
+                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                  <div class="d-flex flex-column">
+                    <h6 class="text-dark mb-1 font-weight-bold text-sm">Janvier, 10, 2022</h6>
+                    <span class="text-xs font-weight-bold">Nom Personne</span>
+                    <span class="text-xs">#RV-126749</span>
+                  </div>
+                  <div class="d-flex align-items-center text-sm">
+                    € 98
+                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
+                  </div>
+                </li>
+                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                  <div class="d-flex flex-column">
+                    <h6 class="text-dark mb-1 font-weight-bold text-sm">Janvier, 15, 2022</h6>
+                    <span class="text-xs font-weight-bold">Nom Personne</span>
+                    <span class="text-xs">#FB-212562</span>
+                  </div>
+                  <div class="d-flex align-items-center text-sm">
+                    € 60
+                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
+                  </div>
+                </li>
+                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                  <div class="d-flex flex-column">
+                    <h6 class="text-dark mb-1 font-weight-bold text-sm">Janvier, 25, 2022</h6>
+                    <span class="text-xs font-weight-bold">Nom Personne</span>
+                    <span class="text-xs">#QW-103578</span>
+                  </div>
+                  <div class="d-flex align-items-center text-sm">
+                    € 90
+                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
+                  </div>
+                </li>
+                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-3 border-radius-lg">
+                  <div class="d-flex flex-column">
+                    <h6 class="text-dark mb-1 font-weight-bold text-sm">Janvier, 30, 2022</h6>
+                    <span class="text-xs font-weight-bold">Nom Personne</span>
+                    <span class="text-xs">#AR-803481</span>
+                  </div>
+                  <div class="d-flex align-items-center text-sm">
+                    € 70
+                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
+                  </div>
+                </li>
+                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-3 border-radius-lg">
+                  <div class="d-flex flex-column">
+                    <h6 class="text-dark mb-1 font-weight-bold text-sm">Janvier, 31, 2022</h6>
+                    <span class="text-xs font-weight-bold">Nom Personne</span>
+                    <span class="text-xs">#AR-803454</span>
+                  </div>
+                  <div class="d-flex align-items-center text-sm">
+                    € 50
+                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+<!-- DEBUT SECTION TRANSACTION-->
+
+<div class="col-lg-6">
+  <div class="card h-100">
+    <div class="card-header pb-0 px-3">
+      <div class="row">
+        <div class="col-md-6">
+          <h6 class="mb-0">Transaction platformes</h6>
+        </div>
+        <div class="col-md-6 d-flex justify-content-end align-items-center">
+          <i class="far fa-calendar-alt me-2"></i>
+          <small>23 - 30 Mars 2021</small>
+        </div>
+      </div>
+    </div>
+    <div class="card-body pt-4 p-3">
+      <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Newest</h6>
+      <ul class="list-group">
+        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+          <div class="d-flex align-items-center">
+           <button class="btn btn-icon-only btn-rounded btn-outline-dark mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-exclamation"></i></button>
+            <div class="d-flex flex-column">
+              <h6 class="mb-1 text-dark text-sm">NOM</h6>
+              <span class="text-xs">Date de la transaction</span>
+            </div>
+          </div>
+          <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
+            + € 80
+          </div>
+        </li>
+        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+          <div class="d-flex align-items-center">
+            <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
+            <div class="d-flex flex-column">
+              <h6 class="mb-1 text-dark text-sm">NOM</h6>
+              <span class="text-xs">Date de la transaction</span>
+            </div>
+          </div>
+          <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
+            + € 79
+          </div>
+        </li>
+      </ul>
+      <h6 class="text-uppercase text-body text-xs font-weight-bolder my-3">HIER</h6>
+      <ul class="list-group">
+        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+          <div class="d-flex align-items-center">
+            <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
+            <div class="d-flex flex-column">
+              <h6 class="mb-1 text-dark text-sm">NOM</h6>
+              <span class="text-xs">Date de la transaction</span>
+            </div>
+          </div>
+          <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
+            + € 50
+          </div>
+        </li>
+        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+          <div class="d-flex align-items-center">
+            <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
+            <div class="d-flex flex-column">
+              <h6 class="mb-1 text-dark text-sm">NOM</h6>
+              <span class="text-xs">Date de la transaction</span>
+            </div>
+          </div>
+          <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
+            + € 90
+          </div>
+        </li>
+        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+          <div class="d-flex align-items-center">
+            <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
+            <div class="d-flex flex-column">
+              <h6 class="mb-1 text-dark text-sm">NOM</h6>
+              <span class="text-xs">Date de la transaction</span>
+            </div>
+          </div>
+          <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
+            + € 45
+          </div>
+        </li>
+        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+          <div class="d-flex align-items-center">
+            <button class="btn btn-icon-only btn-rounded btn-outline-dark mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-exclamation"></i></button>
+            <div class="d-flex flex-column">
+              <h6 class="mb-1 text-dark text-sm">NOM</h6>
+              <span class="text-xs">Date de la transaction</span>
+            </div>
+          </div>
+          <div class="d-flex align-items-center text-success text-sm font-weight-bold">
+            + € 70
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- FIN SECTION TRANSACTION-->
+</div>
+      <!-- FIN SECTION INVOICE-->
+
+      <!-- DEBUT SECTION ASSOCIATION VIP-->
+
+      <div class="row justify-content-center">
+        <div class="col-md-7 mt-4">
+          <div class="card">
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="col-6 d-flex align-items-center">
+                  <h6 class="mb-1">Association VIP</h6>
+                </div>
+                <div class="col-6 text-end">
+                  <button class="btn btn-outline-primary btn-sm mb-0">Voir toutes</button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body pt-4 p-3">
+              <ul class="list-group">
+                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                  <div class="d-flex flex-column">
+                    <h6 class="mb-3 text-sm">Oliver Liam</h6>
+                    <span class="mb-2 text-xs">Nom Association: <span class="text-dark font-weight-bold ms-sm-2">Viking Burrito</span></span>
+                    <span class="mb-2 text-xs">Adresse Email: <span class="text-dark ms-sm-2 font-weight-bold">oliver@burrito.com</span></span>
+                    <span class="text-xs">VAT Number: <span class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
+                  </div>
+                  <div class="ms-auto text-end">
+                    <a class="btn btn-link text-danger text-gradiant px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Supprimer</a>
+                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Voir</a>
+                  </div>
+                </li>
+                <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+                  <div class="d-flex flex-column">
+                    <h6 class="mb-3 text-sm">Lucas Harper</h6>
+                    <span class="mb-2 text-xs">Nom Association: <span class="text-dark font-weight-bold ms-sm-2">Stone Tech Zone</span></span>
+                    <span class="mb-2 text-xs">Adresse Email: <span class="text-dark ms-sm-2 font-weight-bold">lucas@stone-tech.com</span></span>
+                    <span class="text-xs">VAT Number: <span class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
+                  </div>
+                  <div class="ms-auto text-end">
+                   <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Supprimer</a>
+                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Voir</a>
+                  </div>
+                </li>
+                <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+                  <div class="d-flex flex-column">
+                    <h6 class="mb-3 text-sm">Ethan James</h6>
+                    <span class="mb-2 text-xs">Nom Association: <span class="text-dark font-weight-bold ms-sm-2">Fiber Notion</span></span>
+                    <span class="mb-2 text-xs">Adresse Email: <span class="text-dark ms-sm-2 font-weight-bold">ethan@fiber.com</span></span>
+                    <span class="text-xs">VAT Number: <span class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
+                  </div>
+                  <div class="ms-auto text-end">
+                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Supprimer</a>
+                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Voir</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- FIN DE ASSOCIATION VIP-->
+      </div>
+      <!-- FIN DE LA ROW -->
+
+    </div>
+  </main>
+<!-- Fin du main-->
+
+  <div class="fixed-plugin">
+    <div class="card shadow-lg ">
+      <div class="card-header pb-0 pt-3 ">
+      </div>
+      <hr class="horizontal dark my-1"/>
+    </div>
+  </div>
+  
+  
+<!--   Core JS Files   -->
+  
+	<h:outputScript library="js" name="core/popper.min.js"></h:outputScript>
+	<h:outputScript library="js" name="core/bootstrap.min.js"></h:outputScript>
+	<h:outputScript library="js" name="plugins/perfect-scrollbar.min.js"></h:outputScript>
+	<h:outputScript library="js" name="plugins/smooth-scrollbar.min.js"></h:outputScript>
+	<h:outputScript library="js" name="plugins/chartjs.min.js"></h:outputScript>
+	
+  
+   <!--   GIThub button   -->
+  
+  <script src="https://buttons.github.io/buttons.js"></script>
+  
+  
+   <!--   Control center pour dashboard : effet parallax, scrip pour exemple de page   -->
+   
+   
+    <h:outputScript library="js" name="soft-ui-dashboard.min.js"></h:outputScript>
+    <h:outputScript library="js" name="soft-ui-dashboard.js"></h:outputScript>
+	<h:outputScript library="js" name="soft-ui-dashboard.js.map"></h:outputScript>
+  
+  
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win &amp;&amp; document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+  
+  
+</body>
+
+</html>
