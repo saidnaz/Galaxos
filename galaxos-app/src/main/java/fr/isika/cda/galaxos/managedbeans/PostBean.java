@@ -41,7 +41,7 @@ public class PostBean {
 		Long id = (Long) session.getAttribute("Id");
 		UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("createp");
 		
-		Optional <Post> optional = PS.;
+		Optional <Post> optional = PS.findById(id);
 		
 			
 
