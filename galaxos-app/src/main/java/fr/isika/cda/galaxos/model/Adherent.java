@@ -49,10 +49,20 @@ public class Adherent implements Serializable {
 	@JoinColumn(name = "fkDashboard")
 	private Dashboard board;
 
+	private String role;
+	
 	public Long getId() {
 		return id;
 	}
+	
+	public String getRole() {
+		return role;
+	}
 
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
 	public List<Role> getRoles() {
 		return roles;
 	}

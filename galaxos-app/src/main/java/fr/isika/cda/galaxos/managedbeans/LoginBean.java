@@ -46,6 +46,8 @@ public class LoginBean implements Serializable {
 
 	private AdherentForm accountForm = new AdherentForm();
 
+	private String presentRole;
+	
 	private static boolean init = false;
 	
 	@PostConstruct
@@ -53,17 +55,18 @@ public class LoginBean implements Serializable {
 	{
 		if (!init)
 		{
-			AdherentForm adherent1 = new AdherentForm("simon.deb@gmail.com", "azer", "Debuire", "Simon");
-			AdherentForm ad2 = new AdherentForm("pierrefer@gmail.com", "azer", "Fernand", "Pierre");
-			AdherentForm ad3 = new AdherentForm("manurolin@gmail.com", "azer", "Rolin", "Emmanuel");
-			AdherentForm ad4 = new AdherentForm("leadumont@outlook.fr", "azer", "Léa", "Dumont");
-			
+			AdherentForm adherent1 = new AdherentForm("simon.deb@gmail.com", "azer", "Debuire", "Simon", "User");
+			AdherentForm ad2 = new AdherentForm("pierrefer@gmail.com", "azer", "Fernand", "Pierre", "User");
+			AdherentForm ad3 = new AdherentForm("manurolin@gmail.com", "azer", "Rolin", "Emmanuel", "User");
+			AdherentForm ad4 = new AdherentForm("leadumont@outlook.fr", "azer", "Léa", "Dumont", "User");
+			AdherentForm admin = new AdherentForm("adminplatform@gmail.com", "admin", "Admin", "Admin", "Admin");
 			
 			accountService.create(adherent1);
 			accountService.create(ad2);
 			accountService.create(ad3);
 			accountService.create(ad4);
-			accountService.create(new AdherentForm("riridupuis@outlook.fr","azer","Richard","Dupuis"));
+			accountService.create(new AdherentForm("riridupuis@outlook.fr","azer","Richard","Dupuis", "User"));
+			accountService.create(admin);
 			
 			init = true;
 		}
@@ -98,12 +101,19 @@ public class LoginBean implements Serializable {
 				session.setAttribute("connectedAdherent", adherent);
 				session.setAttribute("profil", adherent.getProfil());
 				session.setAttribute("roles", adherent.getRoles());
+				session.setAttribute("role", adherent.getRole());
 				session.setAttribute("isConnected", true);
 				
+				presentRole = (String) session.getAttribute("role");
 				
 				
+				if (presentRole.contains("User"))
+				{
+					return "dashboardAdherent?faces-redirect=true";
+				}
 				
-				return "dashboardAdherent?faces-redirect=true";
+				return "dashboardAdministrateur?faces-redirect=true";
+				
 			} else {
 
 				UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("loginForm");
@@ -143,6 +153,14 @@ public class LoginBean implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getPresentRole() {
+		return presentRole;
+	}
+
+	public void setPresentRole(String presentRole) {
+		this.presentRole = presentRole;
 	}
 	
 	

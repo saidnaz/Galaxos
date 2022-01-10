@@ -44,6 +44,8 @@ public class AdherentForm implements Serializable{
 	
 	private List<Role> roles;
 	
+	private String role;
+	
 //	@NotEmpty(message = "Ne doit pas être vide")
 //	@NotNull(message = "Ne doit pas être null")
 //	private String pseudo;
@@ -97,12 +99,13 @@ public class AdherentForm implements Serializable{
 		this.confirmPassword = confirmPassword;
 	}
 
-	public AdherentForm(String email, String password, String nom, String prenom) {
+	public AdherentForm(String email, String password, String nom, String prenom, String role) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.password = password;
+		this.role = role;
 	}
 
 	public List<Role> getRoles() {
@@ -117,5 +120,15 @@ public class AdherentForm implements Serializable{
 	{
 		this.roles.add(role);
 	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
+	
 
 }
