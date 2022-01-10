@@ -56,6 +56,7 @@ public class Adherent implements Serializable {
 	@JoinColumn(name = "fkDashboard")
 	private Dashboard board;
 	
+	@OneToOne(cascade = CascadeType.ALL)
 	private Association association;
 
 	public List<Post> getPosts() {
