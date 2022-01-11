@@ -15,16 +15,16 @@
 
 	<h:form id="MessageBean">
 	
-		<h:dataTable var="msg" value="#{MessageBean.messageDTO.lMsg}">
+		<h:dataTable var="msg" value="#{MessageBean.messageDTO}">
 			
 			<h:column>
 				<f:facet name="header">Destinataire</f:facet>
-				#{msg.destinataire.nom}
+				#{msg.destinataire.profil.prenom}
 			</h:column>
 			
 			<h:column>
 				<f:facet name="header">Emetteur</f:facet>
-				#{msg.destinataire.prenom}
+				#{msg.destinataire.profil.prenom}
 			</h:column>
 			
 			<h:column>

@@ -28,17 +28,17 @@ public class MessageRepo {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public MessageDTO afficher()
+	public List<Message> mesMessages()
 	{
-		MessageDTO msgDTO = new MessageDTO();
-		msgDTO.setlMsg(manager.createNamedQuery("Message.findAll").getResultList());
-		return msgDTO;
+		List<Message> listMsg = manager.createNamedQuery("Message.findMyList").getResultList();
+		return listMsg;
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Message> TouslesMessagesTest() {
-		
-		return manager.createNamedQuery("Message.findAll").getResultList();
+	public List<Message> allMessages()
+	{
+		List<Message> listMsg = manager.createNamedQuery("Message.findAll").getResultList();
+		return listMsg;
 	}
 	
 	
