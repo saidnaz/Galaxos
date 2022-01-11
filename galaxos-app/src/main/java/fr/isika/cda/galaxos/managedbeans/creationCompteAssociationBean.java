@@ -1,7 +1,9 @@
 package fr.isika.cda.galaxos.managedbeans;
 
 import java.io.Serializable;
+import java.util.Optional;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -12,8 +14,11 @@ import javax.servlet.http.HttpSession;
 
 import fr.isika.cda.galaxos.exceptions.NomAssociationExistDejaExeption;
 import fr.isika.cda.galaxos.exceptions.RNAAssociationExistDejaExeption;
+import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.Domaine;
+import fr.isika.cda.galaxos.model.roles.GestionnaireAssociation;
+import fr.isika.cda.galaxos.service.AdherentService;
 import fr.isika.cda.galaxos.service.AssociationCompteService;
 import fr.isika.cda.galaxos.viewmodel.AssociationCreationForm;
 
@@ -28,12 +33,22 @@ public class creationCompteAssociationBean implements Serializable {
 
 	private AssociationCreationForm form = new AssociationCreationForm();
 	
+	private Long idAdherentConnecte;
+	
+	public void init() {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);	
+		Long idAdherentConnecte = (Long) session.getAttribute("connectedAdherentId");
+	}
+
+
 	public String create() {
 		UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("createAssoForm");
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		
+		Long idAdherentConnecte = (Long) session.getAttribute("connectedAdherentId");
+		
 		try {
-			Association asso = service.create(form);
-			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext()
-					.getSession(false);
+			Association asso = service.create(form, idAdherentConnecte);
 			session.setAttribute("assoId", asso.getId());
 
 			return "finalisationCreationAssociation?faces-redirect=true";
@@ -69,4 +84,13 @@ public class creationCompteAssociationBean implements Serializable {
 		return Domaine.values();
 	}
 
+	public Long getIdAdherentConnecte() {
+		return idAdherentConnecte;
+	}
+
+	public void setIdAdherentConnecte(Long idAdherentConnecte) {
+		this.idAdherentConnecte = idAdherentConnecte;
+	}
+
+	
 }

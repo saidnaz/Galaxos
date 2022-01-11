@@ -21,7 +21,6 @@ public class AssociationCreationForm implements Serializable {
 	@NotNull(message = "Ce champs doit être rempli")
 	private String nom;
 
-
 	@NotEmpty(message = "Ce champs doit être rempli")
 	@NotNull(message = "Ce champs doit être rempli")
 	@Pattern(regexp = "^[A-Z]{1}[0-9]{9}$", message = "Ce champs doit correspondre à un numéro RNA valide")

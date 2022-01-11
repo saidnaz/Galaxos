@@ -1,4 +1,4 @@
-	package fr.isika.cda.galaxos.repository;
+package fr.isika.cda.galaxos.repository;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +12,7 @@ import javax.persistence.TypedQuery;
 import javax.servlet.http.Part;
 
 import fr.isika.cda.galaxos.helper.UploadHelper;
+import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.Association.Etat;
 import fr.isika.cda.galaxos.model.Domain;
@@ -20,6 +21,8 @@ import fr.isika.cda.galaxos.model.FicheAssoCompta;
 import fr.isika.cda.galaxos.model.FicheAssoDescriptif;
 import fr.isika.cda.galaxos.model.FicheAssoGestionnaire;
 import fr.isika.cda.galaxos.model.FicheAssociation;
+import fr.isika.cda.galaxos.model.roles.GestionnaireAssociation;
+import fr.isika.cda.galaxos.model.roles.Role;
 import fr.isika.cda.galaxos.viewmodel.AssociationCreationForm;
 import fr.isika.cda.galaxos.viewmodel.AssociationFinalisationForm;
 
@@ -33,11 +36,19 @@ public class AssociationRepository {
 		return entityManager.merge(asso);
 	}
 
-	public Association create(AssociationCreationForm form) {
+	public Association create(AssociationCreationForm form, Long id) {
 
 		Association asso = new Association();
 		FicheAssociation ficheAsso = new FicheAssociation();
 		Domain domain = findOrCreateDomain(form.getDomaine());
+		GestionnaireAssociation gestionnaireAssociation = new GestionnaireAssociation();
+		Optional<Adherent> adherent = null;
+
+		adherent = this.findAdherentById(id);
+		if (adherent.isPresent()) {
+			Adherent adhe = adherent.get();
+			gestionnaireAssociation.setAdherent(adhe);
+		}
 
 		ficheAsso.setNom(form.getNom());
 		ficheAsso.setRnaNumber(form.getRnaNumber());
@@ -48,9 +59,12 @@ public class AssociationRepository {
 		asso.setFk_idDomain(domain);
 		asso.setFicheAssociation(ficheAsso);
 
+		gestionnaireAssociation.setAssociation(asso);
+
 		entityManager.persist(domain);
 		entityManager.persist(ficheAsso);
 		entityManager.persist(asso);
+		entityManager.persist(gestionnaireAssociation);
 
 		return asso;
 	}
@@ -195,9 +209,9 @@ public class AssociationRepository {
 
 	public List<Association> search(String localisation, String search, String domaine) {
 		List<Association> associations = findAll();
-		//if(search != null && !search.isEmpty()) 
+		// if(search != null && !search.isEmpty())
 		associations = this.findBySearch(search, associations);
-		
+
 		associations = this.findByLocalisation(localisation, associations);
 		associations = this.findByCateg(domaine, associations);
 		return associations;
@@ -216,10 +230,9 @@ public class AssociationRepository {
 
 	public List<Association> findByCateg(String nomCateg, List<Association> associations) {
 		if (!nomCateg.equals("")) {
-			return associations.stream()
-					.filter(asso -> asso.getFk_idDomain().getName().toString().equals(nomCateg))
-					.collect(Collectors.toList());		
-			
+			return associations.stream().filter(asso -> asso.getFk_idDomain().getName().toString().equals(nomCateg))
+					.collect(Collectors.toList());
+
 //			associations = entityManager.createNativeQuery(
 //					"SELECT * FROM Association INNER JOIN Domain WHERE Association.fk_idDomain = Domain.idDomain AND Domain.NomDomaine = :nomCateg",
 //					Association.class).setParameter("nomCateg", nomCateg).getResultList();
@@ -229,9 +242,8 @@ public class AssociationRepository {
 
 	public List<Association> findBySearch(String search, List<Association> associations) {
 		if (!search.equals("")) {
-			return associations.stream()
-					.filter(asso -> asso.getFicheAssociation().getNom().equals(search))
-					.collect(Collectors.toList());		
+			return associations.stream().filter(asso -> asso.getFicheAssociation().getNom().equals(search))
+					.collect(Collectors.toList());
 //			associations = entityManager.createNativeQuery(
 //					"SELECT * FROM Association INNER JOIN Fiche_Association WHERE Association.fk_ficheAssociation = Fiche_Association.id AND Fiche_Association.nom = :search ",
 //					Association.class).setParameter("search", search).getResultList();
@@ -242,9 +254,9 @@ public class AssociationRepository {
 	public List<Association> findByLocalisation(String localisation, List<Association> associations) {
 		if (!localisation.equals("")) {
 			return associations.stream()
-				.filter(asso -> asso.getFicheAssociation().getLocalisation().equals(localisation))
-				.collect(Collectors.toList());
-			
+					.filter(asso -> asso.getFicheAssociation().getLocalisation().equals(localisation))
+					.collect(Collectors.toList());
+
 //			associations = entityManager
 //					.createNativeQuery("SELECT * FROM Association " + "INNER JOIN Fiche_Association "
 //							+ "WHERE Association.fk_ficheAssociation = Fiche_Association.id "
@@ -257,4 +269,33 @@ public class AssociationRepository {
 	public void delete(Association asso) {
 		entityManager.remove(asso);
 	}
+
+	public Optional<Adherent> findAdherentById(Long id) {
+		try {
+			return Optional.ofNullable(this.entityManager.find(Adherent.class, id));
+		} catch (NoResultException ex) {
+			System.out.println("Consumer.findAdherentById() - not found : " + id);
+		}
+		return Optional.empty();
+	}
+
+	/*
+	 * public Long findRoleParAdherent(Long idAdherentConnecte) { Object role =
+	 * entityManager
+	 * .createNativeQuery("SELECT id FROM Role	WHERE Role.adherent_id = :idAdherentConnecte"
+	 * , Association.class) .setParameter("idAdherentConnecte",
+	 * idAdherentConnecte).getSingleResult(); role = role.toString(); Long idRole =
+	 * Long.parseLong(role); return idRole; }
+	 */
+
+
+	public List<Association> findAssociationsGestionnaireParAdherent(Long idAdherentConnecte) {
+		List<Association> associations = null;
+
+		return associations = entityManager
+				.createNativeQuery("SELECT * FROM Association INNER JOIN Client ON Client.association_id = Association.id INNER JOIN Role ON Client.id = Role.id WHERE Role.adherent_id = :idAdherentConnecte",
+						Association.class)
+				.setParameter("idAdherentConnecte", idAdherentConnecte).getResultList();
+	}
+
 }
