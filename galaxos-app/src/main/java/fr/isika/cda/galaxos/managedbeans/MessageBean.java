@@ -13,12 +13,8 @@ import javax.servlet.http.HttpSession;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
-import fr.isika.cda.galaxos.dto.MessageDTO;
-import fr.isika.cda.galaxos.dto.MessagerieDTO;
 import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Message;
-import fr.isika.cda.galaxos.model.Profil;
-import fr.isika.cda.galaxos.model.roles.Role;
 import fr.isika.cda.galaxos.service.MessageService;
 
 
