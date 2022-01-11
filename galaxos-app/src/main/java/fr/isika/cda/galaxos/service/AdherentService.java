@@ -11,6 +11,7 @@ import fr.isika.cda.galaxos.model.CompteUser;
 import fr.isika.cda.galaxos.model.Profil;
 import fr.isika.cda.galaxos.repository.AdherentRepository;
 import fr.isika.cda.galaxos.viewmodel.AdherentForm;
+import fr.isika.cda.galaxos.viewmodel.ProfilForm;
 
 @Stateless
 public class AdherentService {
@@ -39,8 +40,16 @@ public class AdherentService {
 		return adherentRepository.findByEmail(email);
 	}
 	
-	public Adherent update(Adherent adherent) {
-		return adherentRepository.update(adherent);
+	public Adherent updateAdherent(ProfilForm form) {
+		return adherentRepository.updateAdherent(form);
+	}
+	
+	public Profil updateProfil(Profil profil) {
+		return adherentRepository.updateProfil(profil);
+	}
+	
+	public CompteUser updateCptUser(CompteUser user) {
+		return adherentRepository.updateCptUser(user);
 	}
 	
 	public Optional<Adherent> findAdherentById(Long id) {

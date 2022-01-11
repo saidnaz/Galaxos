@@ -46,3 +46,83 @@ section {
   -webkit-columns: 2;
   -moz -moz-column: 2;
 }
+
+/* Fenêtre popup */
+      
+      /* Styles pour le conteneur de la forme */
+      #formulaireProfil {
+      max-width: 300px;
+      padding: 20px;
+      background-color: #fff;
+      }
+      
+      /* Largeur complète pour les champs de saisie */
+      #formulaireProfil input[type=text] {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0 22px 0;
+      border: none;
+      background: #eee;
+      }
+      /* Quand les entrées sont concentrées, faites quelque chose */
+      #formulaireProfil input[type=text]:focus {
+      background-color: #ddd;
+      outline: none;
+      }
+      /* Stylez le bouton de connexion */
+      #formulaireProfil .btn {
+      background-color: #8ebf42;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      margin-bottom:10px;
+      opacity: 0.8;
+      }
+      /* Stylez le bouton pour annuler */
+      #formulaireProfil .cancel {
+      background-color: #cc0000;
+      }
+      /* Planez les effets pour les boutons */
+      #formulaireProfil .btn:hover, .open-button:hover {
+      opacity: 1;
+      }
+      
+      #action_menu_btn{
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		color: white;
+		cursor: pointer;
+		font-size: 20px;
+	}
+	.action_menu{
+		z-index: 1;
+		position: absolute;
+		padding: 15px 0;
+		background-color: rgba(0,0,0,0.5);
+		color: white;
+		border-radius: 15px;
+		top: 30px;
+		right: 15px;
+		display: none;
+	}
+	.action_menu ul{
+		list-style: none;
+		padding: 0;
+	margin: 0;
+	}
+	.action_menu ul li{
+		width: 100%;
+		padding: 10px 15px;
+		margin-bottom: 5px;
+	}
+	.action_menu ul li i{
+		padding-right: 10px;
+	
+	}
+	.action_menu ul li:hover{
+		cursor: pointer;
+		background-color: rgba(0,0,0,0.2);
+	}

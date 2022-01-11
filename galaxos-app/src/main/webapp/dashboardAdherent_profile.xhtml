@@ -270,13 +270,18 @@
               <div class="card-header pb-0 p-3">
                 <div class="row">
                   <div class="col-md-8 d-flex align-items-center">
-                    <h6 class="mb-0">Information personnelles</h6>
+                    <h6 class="mb-0">Informations personnelles</h6>
                   </div>
                   <div class="col-md-4 text-end">
-                    <a href="javascript:;">
-                      <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top"
-                        title="Edit Profile"></i>
+
+                        
+                    <a class="open-button" onclick="openForm()">
+                    <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Edit Profile"/>
                     </a>
+
+  					   
+
                   </div>
                 </div>
               </div>
@@ -286,16 +291,16 @@
                 </p>
                 <hr class="horizontal gray-light my-4"></hr>
                 <ul class="list-group">
-                  <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nom:</strong>
-                    &nbsp; Thompson</li>
-                  <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Prénom:</strong>
-                    &nbsp; Alec</li>
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nom:</strong> &nbsp;
+                    <span class="d-sm-inline d-none">#{dashboardProfil.profil.nom}</span></li>
+                  <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Prénom:</strong> &nbsp;
+                    <span class="d-sm-inline d-none">#{dashboardProfil.profil.prenom}</span></li>
                   <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Téléphone:</strong> &nbsp;
-                    (33) 06 23 12 34 13</li>
+                    <span class="d-sm-inline d-none">#{dashboardProfil.profil.telephone}</span></li>
                   <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp;
-                    alecthompson@mail.com</li>
+                    <span class="d-sm-inline d-none">#{dashboardProfil.user.email}</span></li>
                   <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Adresse:</strong>
-                    &nbsp; 25 rue Coquillère 75001 Paris</li>
+                    &nbsp; <span class="d-sm-inline d-none">#{dashboardProfil.profil.adresse.wholeAddress()}</span></li>
   
                 </ul>
               </div>
@@ -493,7 +498,81 @@
         </div>
       </footer>
     </div>
+    
+    <!-- fenêtre popup -->
+    
+    <div class="login-popup">
+      <div class="form-popup" id="popupForm">
+        <h:form class="form-container" id="formulaireProfil">
+          <h2>Mise à jour de votre profil Galaxos</h2>
+          
+          <div class="mb-4">
+		  <i class="bi bi-person-plus-fill text-white"></i>
+		  <h:inputText id="NumeroInput" class="form-control "
+				placeholder="Numéro" aria-label="ex : 14"
+			    value="#{dashboardProfil.form.numero}" />
+		  <h:messages for="NumeroInput" errorClass="erreurInputForm" />
+		  </div>
+		  
+		  <div class="mb-4">
+		  <i class="bi bi-person-plus-fill text-white"></i>
+		  <h:inputText id="LibelleInput" class="form-control "
+				placeholder="Libellé" aria-label="ex : rue d'Isika"
+			    value="#{dashboardProfil.form.libelle}" />
+		  <h:messages for="LibelleInput" errorClass="erreurInputForm" />
+		  </div>
+		  
+		  <div class="mb-4">
+		  <i class="bi bi-person-plus-fill text-white"></i>
+		  <h:inputText id="CodePostalInput" class="form-control "
+				placeholder="Code postal" aria-label="ex : 75001"
+			    value="#{dashboardProfil.form.codePostal}" />
+		  <h:messages for="CodePostalInput" errorClass="erreurInputForm" />
+		  </div>
+		  
+		  <div class="mb-4">
+		  <i class="bi bi-person-plus-fill text-white"></i>
+		  <h:inputText id="VilleInput" class="form-control "
+				placeholder="Ville" aria-label="ex : Paris"
+			    value="#{dashboardProfil.form.ville}" />
+		  <h:messages for="CodePostalInput" errorClass="erreurInputForm" />
+		  </div>
+		  
+		  <div class="mb-4">
+		  <i class="bi bi-person-plus-fill text-white"></i>
+		  <h:inputText id="TelephoneInput" class="form-control "
+				placeholder="Téléphone" aria-label="ex : 01 01 01 01 01"
+			    value="#{dashboardProfil.form.telephone}" />
+		  <h:messages for="TelephoneInput" errorClass="erreurInputForm" />
+		  </div>
+		  
+		  <div class="mb-4">
+		  <i class="bi bi-person-plus-fill text-white"></i>
+		  <h:inputText id="DescriptionInput" class="form-control "
+				placeholder="A propos de vous" aria-label="Description"
+			    value="#{dashboardProfil.form.libelle}" />
+		  <h:messages for="DescriptionInput" errorClass="erreurInputForm" />
+		  </div>
+		  
+		  <h:commandButton class="btn" type="submit" value="Valider" action="#{dashboardProfil.update()}" />
+		  <h:commandButton class="btn cancel" type="reset" onclick="closeForm()"  value="Annuler" />
+
+<!-- action="dashboardAdherent" -->
+        </h:form>
+      </div>
+    </div>
   </main>
+
+<script>
+       function openForm() {
+      document.getElementById("popupForm").style.display="block";
+      }
+      
+      function closeForm() {
+        document.getElementById("popupForm").style.display="none";
+      }
+</script>
+    
 
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
@@ -506,12 +585,15 @@
   </script>
   
   <!-- Bootstrap JS -->
+ 		<h:outputScript library="js" name="profil.js"></h:outputScript>
 		<h:outputScript library="js" name="core/popper.min.js"></h:outputScript>
 		<h:outputScript library="js" name="core/bootstrap.min.js"></h:outputScript>
 		<h:outputScript library="js" name="plugins/perfect-scrollbar.min.js"></h:outputScript>
 		<h:outputScript library="js" name="plugins/smooth-scrollbar.min.js"></h:outputScript>
 		<h:outputScript library="js" name="plugins/chartjs.min.js"></h:outputScript>
 		<h:outputScript library="js" name="soft-ui-dashboard.js"></h:outputScript>
+		<h:outputScript library="js" name="jquery-3.3.1.min.js"></h:outputScript>
+		
 		
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>

@@ -5,14 +5,18 @@ import java.io.Serializable;
 import java.util.Optional;
 
 import javax.ejb.Stateless;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.servlet.http.HttpSession;
 
 import fr.isika.cda.galaxos.model.Adherent;
+import fr.isika.cda.galaxos.model.Adresse;
 import fr.isika.cda.galaxos.model.CompteUser;
 import fr.isika.cda.galaxos.model.Profil;
 import fr.isika.cda.galaxos.viewmodel.AdherentForm;
+import fr.isika.cda.galaxos.viewmodel.ProfilForm;
 
 @Stateless
 public class AdherentRepository implements Serializable{
@@ -27,6 +31,9 @@ public class AdherentRepository implements Serializable{
 		// dans l'entité qu'on va persister
 		Adherent adherent = new Adherent();
 		CompteUser cptUser = new CompteUser();
+//		Adresse adresse = new Adresse("", "", 0, "");
+//		Profil profil = new Profil("", "", "", "", adresse);
+		Adresse adresse = new Adresse();
 		Profil profil = new Profil();
 		
 		String passwordCrypt = Cryptage.encryptPassword(adherentForm.getPassword());
@@ -61,8 +68,29 @@ public class AdherentRepository implements Serializable{
 		return entityManager.merge(user);
 	}
 	
-	public Adherent update(Adherent adherent) {
-		return entityManager.merge(adherent);
+	public Adherent updateAdherent(ProfilForm form) {
+		
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		Adherent adherent = (Adherent) session.getAttribute("connectedAdherent");
+		
+		Profil profil = adherent.getProfil();
+		Adresse adresse = profil.getAdresse();
+		
+		adresse.setNumero(form.getNumero());
+		adresse.setLibelle(form.getLibelle());
+		adresse.setCodePostal(form.getCodePostal());
+		adresse.setVille(form.getVille());
+		
+//		profil.setNom(form.getNom());
+//		profil.setPrenom(form.getPrenom());
+		profil.setTelephone(form.getTelephone());
+		profil.setDescription(form.getDescription());
+		profil.setAdresse(adresse);
+		
+		adherent.setProfil(profil);
+		
+		entityManager.merge(adherent);
+		return adherent;
 	}
 	
 	public Optional<Adherent> findById(final Long id) {

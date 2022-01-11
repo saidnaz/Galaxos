@@ -108,6 +108,15 @@ public class Adherent implements Serializable {
 
 	public Adherent() {
 	}
+	
+	
+
+	public Adherent(CompteUser user, Profil profil, String role) {
+		super();
+		this.user = user;
+		this.profil = profil;
+		this.role = role;
+	}
 
 	@Override
 	public int hashCode() {
