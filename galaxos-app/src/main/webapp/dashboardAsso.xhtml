@@ -82,17 +82,18 @@
 						<i class="fas fa-users" style="font-size: 17px; color: #2e2f5e"></i>
 					</div> <span class="nav-link-text ms-1">Adhérents</span>
 			</a></li>
-			<li class="nav-item"><h:commandLink value=""
-					action="#{dashboardAssoProviderBean.afficherListProviders(dashboardAsso.asso.id)}"> 
-		
-					class="nav-link" value="">
-					<div
-						class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-						<i class="fas fa-cog text-fonce"
-							style="font-size: 17px; color: #2e2f5e"></i>
-					</div>
-					<span class="nav-link-text ms-1">Providers</span>
-				</h:commandLink></li>
+			<li class="nav-item"><h:form>
+					<h:commandLink value=""
+						action="#{dashboardAssoProviderBean.afficherListProviders(dashboardAsso.asso.id)}"
+						class="nav-link">
+						<div
+							class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="fas fa-cog text-fonce"
+								style="font-size: 17px; color: #2e2f5e"></i>
+						</div>
+						<span class="nav-link-text ms-1">Providers</span>
+					</h:commandLink>
+				</h:form></li>
 			<li class="nav-item"><a class="nav-link  "
 				href="../pages/virtual-reality.html">
 					<div
@@ -296,7 +297,7 @@
 								<div class="numbers">
 									<p class="text-sm mb-0 text-capitalize font-weight-bold">Nombre
 										de providers</p>
-									<h5 class="font-weight-bolder mb-0">50</h5>
+									<h5 class="font-weight-bolder mb-0">#{dashboardAsso.countProviders}</h5>
 								</div>
 							</div>
 							<div class="col-4 text-end">

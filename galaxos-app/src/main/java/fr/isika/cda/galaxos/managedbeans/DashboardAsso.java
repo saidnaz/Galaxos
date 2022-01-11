@@ -1,5 +1,6 @@
 package fr.isika.cda.galaxos.managedbeans;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.annotation.PostConstruct;
@@ -24,6 +25,9 @@ public class DashboardAsso {
 
 	private Adherent adherentConnecte;
 
+	private List<Adherent> listProviders;
+	int countProviders;
+
 	@PostConstruct
 	public void init() {
 
@@ -41,6 +45,11 @@ public class DashboardAsso {
 		if (optional.isPresent()) {
 			asso = optional.get();
 		}
+
+		listProviders = service.findProviderParAssociation(asso.getId());
+		
+		countProviders = listProviders.size();
+
 	}
 
 	public AssociationCompteService getService() {
@@ -69,6 +78,22 @@ public class DashboardAsso {
 
 	public void setAdherentConnecte(Adherent adherentConnecte) {
 		this.adherentConnecte = adherentConnecte;
+	}
+
+	public List<Adherent> getListProviders() {
+		return listProviders;
+	}
+
+	public void setListProviders(List<Adherent> listProviders) {
+		this.listProviders = listProviders;
+	}
+
+	public int getCountProviders() {
+		return countProviders;
+	}
+
+	public void setCountProviders(int countProviders) {
+		this.countProviders = countProviders;
 	}
 
 }
