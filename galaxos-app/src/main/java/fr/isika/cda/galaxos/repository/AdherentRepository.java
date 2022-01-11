@@ -68,6 +68,7 @@ public class AdherentRepository implements Serializable{
 		return entityManager.merge(user);
 	}
 	
+<<<<<<< HEAD
 	public Adherent updateAdherent(ProfilForm form) {
 		
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
@@ -91,6 +92,10 @@ public class AdherentRepository implements Serializable{
 		
 		entityManager.merge(adherent);
 		return adherent;
+=======
+	public Adherent update(Adherent adherent) {
+		return entityManager.merge(adherent);
+>>>>>>> dashboardAdherent
 	}
 	
 	public Optional<Adherent> findById(final Long id) {

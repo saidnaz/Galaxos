@@ -40,6 +40,7 @@ public class AdherentService {
 		return adherentRepository.findByEmail(email);
 	}
 	
+<<<<<<< HEAD
 	public Adherent updateAdherent(ProfilForm form) {
 		return adherentRepository.updateAdherent(form);
 	}
@@ -50,6 +51,10 @@ public class AdherentService {
 	
 	public CompteUser updateCptUser(CompteUser user) {
 		return adherentRepository.updateCptUser(user);
+=======
+	public Adherent update(Adherent adherent) {
+		return adherentRepository.update(adherent);
+>>>>>>> dashboardAdherent
 	}
 	
 	public Optional<Adherent> findAdherentById(Long id) {
