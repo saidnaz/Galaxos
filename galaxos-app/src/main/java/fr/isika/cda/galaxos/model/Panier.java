@@ -14,13 +14,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import fr.isika.cda.galaxos.model.roles.Consumer;
 import jdk.jfr.Timestamp;
 
-@Entity
+//@Entity
+//@NamedQuery(name = "Panier.findByConsumer", query = "SELECT p FROM Panier p  WHERE p.consumer = :cons_param")
 public class Panier implements Serializable {
 
 	/**
@@ -55,8 +57,8 @@ public class Panier implements Serializable {
 		this.typePaiement = typePaiement;
 	}
 
-	@OneToMany(cascade = CascadeType.REMOVE,
-			fetch=FetchType.EAGER)
+//	@OneToMany(cascade = CascadeType.REMOVE,
+	//		fetch=FetchType.EAGER)
 	private List<OrderLine> orderlines ;
 	
 	@ManyToOne
@@ -115,8 +117,6 @@ public class Panier implements Serializable {
 
 	
 
-
-
 	public Double getPrixTotal() {
 		return prixTotal;
 	}
@@ -148,8 +148,4 @@ public class Panier implements Serializable {
 	public Long getIdPanier() {
 		return idPanier;
 	}
-
-	
-	
-
 }

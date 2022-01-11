@@ -66,7 +66,20 @@ public class AdherentRepository implements Serializable{
 						.setParameter("email_param", email)
 						.getSingleResult());
 		} catch(NoResultException ex) {
-			System.out.println("Consumer.findByemail() - not found : " + email);
+			System.out.println("adherent.findByemail() - not found : " + email);
+		}
+		return Optional.empty();
+	}
+	public Optional<Adherent> findById(Long id) {
+		try {
+			return Optional.ofNullable(
+					this.entityManager
+						.createNamedQuery("Adherent.findById", Adherent.class)
+						.setParameter("id_param", id)
+						.getSingleResult()
+					);
+		} catch(NoResultException ex) {
+			System.out.println("Adherent.findByid() - not found : " + id);
 		}
 		return Optional.empty();
 	}

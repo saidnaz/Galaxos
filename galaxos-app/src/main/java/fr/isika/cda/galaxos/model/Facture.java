@@ -21,7 +21,7 @@ public class Facture implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idFacture;
 
-	@OneToOne(cascade = CascadeType.REMOVE)
+	//@OneToOne(cascade = CascadeType.REMOVE)
 	private Panier panierDetail;
 
 	public Facture() {

@@ -11,10 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 
-
-
-
-@Entity
+//@Entity
 public class OrderLine implements Serializable{
 
 	/**
@@ -22,29 +19,41 @@ public class OrderLine implements Serializable{
 	 */
 	private static final long serialVersionUID = 6066098580527022857L;
 
-	@Id
-	@GeneratedValue (strategy = GenerationType.AUTO)
-	private int orderId;
+	//@Id
+	//@GeneratedValue (strategy = GenerationType.AUTO)
+	private Long orderId;
 
-	@ManyToOne
-	@JoinColumn(name="FK_Command_ID")
-	private Resource resource;
+	
+	private String resourceName;
+	
+	private Double totale;
 
-	private LocalDate dateLigneCommand;
-
-
-	  public Resource getResource() { return resource; }
-
-	  public void setResource(Resource resource) { this.resource = resource; }
-
-
-	public LocalDate getDateorderline() {
-		return dateLigneCommand;
+	public Double getTotale() {
+		return totale;
 	}
 
-	public void setDateorderline(LocalDate dateorderline) {
-		this.dateLigneCommand = dateorderline;
+	public void setTotale(Double totale) {
+		this.totale = totale;
 	}
+
+	public String getResourceName() {
+		return resourceName;
+	}
+
+	public void setResourceName(String resourceName) {
+		this.resourceName = resourceName;
+	}
+
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
+	}
+
+	public void setQuantite(Integer quantite) {
+		this.quantite = quantite;
+	}
+
+	
+
 
 	public Double getPrix() {
 		return prix;
@@ -53,11 +62,18 @@ public class OrderLine implements Serializable{
 	public void setPrix(Double prix) {
 		this.prix = prix;
 	}
-
-	public OrderLine(Resource resource, LocalDate dateorderline, Double prix, Integer quantite) {
+	
+	public OrderLine(Double prix, Integer quantite) {
 		super();
-		this.resource =resource;
-		this.dateLigneCommand = dateorderline;
+				
+		this.prix = prix;
+		this.quantite = quantite;
+	}
+
+
+	public OrderLine(String resource, Double prix, Integer quantite) {
+		super();
+		this.resourceName = resource;		
 		this.prix = prix;
 		this.quantite = quantite;
 	}

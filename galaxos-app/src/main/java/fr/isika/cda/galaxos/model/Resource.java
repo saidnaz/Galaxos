@@ -24,8 +24,8 @@ public class Resource {
 	private Domain domain;
 	
 	private String photo;
-	@OneToMany
-	private  List<OrderLine> orderlines;
+	//@OneToMany
+	//private  List<OrderLine> orderlines;
 		
 	public Resource(String name, Domain domain, String photo) {
 		super();
