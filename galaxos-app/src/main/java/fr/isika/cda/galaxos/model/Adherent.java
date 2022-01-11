@@ -21,11 +21,10 @@ import javax.persistence.OneToOne;
 import fr.isika.cda.galaxos.model.roles.Role;
 
 @Entity
-// @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-// @DiscriminatorColumn(name = "type")
-@NamedQueries({ 
-	@NamedQuery(name = "Adherent.findByEmail", query = "SELECT cons FROM Adherent cons JOIN cons.user cptu WHERE cons.user.email = :email_param"),
-	@NamedQuery(name = "Adherent.findById", query = "SELECT cons FROM Adherent cons JOIN cons.user cptu WHERE cons.user.id = :id"),})
+@NamedQueries({
+@NamedQuery(name = "Adherent.findByEmail", query = "SELECT cons FROM Adherent cons JOIN cons.user cptu WHERE cons.user.email = :email_param"),
+@NamedQuery(name = "Adherent.findById", query = "SELECT cons FROM Adherent cons JOIN cons.user cptu WHERE cons.user.id = :id_param")
+})
 
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
@@ -48,10 +47,40 @@ public class Adherent implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fkProfil")
 	private Profil profil;
+	
+	@OneToMany(mappedBy="adherent")
+	List<Post> posts;
 
 	@OneToOne
 	@JoinColumn(name = "fkDashboard")
 	private Dashboard board;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Association association;
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
+
+	public Association getAssociation() {
+		return association;
+	}
+
+	public void setAssociation(Association association) {
+		this.association = association;
+	}
+
+	
+	
+	public Adherent(Association association, List<Post> posts) {
+		super();
+		this.association = association;
+		this.posts = posts;
+	}
 
 	private String role;
 	
@@ -85,6 +114,10 @@ public class Adherent implements Serializable {
 //	public void setRoles(Role role) {
 //		this.roles.add(role);
 //	}
+	public Adherent(List<Post> posts) {
+		super();
+		this.posts = posts;
+	}
 
 	public CompteUser getUser() {
 		return user;
@@ -157,3 +190,4 @@ public class Adherent implements Serializable {
 	}
 
 }
+

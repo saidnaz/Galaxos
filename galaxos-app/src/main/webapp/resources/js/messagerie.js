@@ -4,3 +4,18 @@ $('#action_menu_btn').click(function(){
 });
 	});
 	
+	
+		$(document).ready(function(){
+$('#phone_icon').click(function(){
+	$('.phone_num').toggle();
+});
+	});
+	
+	
+	
+		$(document).ready(function(){
+$('#email_icon').click(function(){
+	$('.email_string').toggle();
+});
+	});
+	

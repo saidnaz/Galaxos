@@ -19,28 +19,34 @@ public class AdherentService {
 	@Inject
 	private AdherentRepository adherentRepository;
 	
-	public AdherentService() {
+public AdherentService() {
 	}
-
-	public Adherent create(AdherentForm adherentform) {
-		// je peux par exemple vérifier avant de persist si le user existe déjà
-		Optional<Adherent> optional = adherentRepository.findByEmail(adherentform.getEmail());
-		
-		// User trouvé donc on lance une exception
-		if (optional.isPresent()) {
-			throw new EntityNotFoundException("le compte adhérent existe déjà");
-		}
-		
-		// Utilisateur non trouvé -> donc email non utilisé
-		// On crée alors le compte
-		return adherentRepository.create(adherentform);
-	}
-
-	public Optional<Adherent> findByEmail(String email) {
-		return adherentRepository.findByEmail(email);
-	}
+public Adherent create(AdherentForm adherentform) {
 	
-<<<<<<< HEAD
+
+Optional<Adherent> optional = adherentRepository.findByEmail(adherentform.getEmail());//	
+
+if( optional.isPresent() ) {
+	throw new EntityNotFoundException("le compte adhérent existe déjà");
+}
+
+return adherentRepository.create(adherentform);
+}
+
+public Optional<Adherent> findByEmail(String email) {
+	
+	return adherentRepository.findByEmail(email);
+}
+
+public Optional<Adherent> findById(Long id) {
+	
+	return adherentRepository.findById(id);
+}
+
+
+
+
+
 	public Adherent updateAdherent(ProfilForm form) {
 		return adherentRepository.updateAdherent(form);
 	}
@@ -51,10 +57,10 @@ public class AdherentService {
 	
 	public CompteUser updateCptUser(CompteUser user) {
 		return adherentRepository.updateCptUser(user);
-=======
+
 	public Adherent update(Adherent adherent) {
 		return adherentRepository.update(adherent);
->>>>>>> dashboardAdherent
+
 	}
 	
 	public Optional<Adherent> findAdherentById(Long id) {
@@ -68,5 +74,6 @@ public class AdherentService {
 	public Optional<CompteUser> findCptUserById(Long id) {
 		return adherentRepository.findCptUserById(id);
 	}
+
 
 }

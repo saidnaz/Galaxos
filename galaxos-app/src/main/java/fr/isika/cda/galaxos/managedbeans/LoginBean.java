@@ -17,7 +17,6 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import fr.isika.cda.galaxos.model.Adherent;
-import fr.isika.cda.galaxos.model.roles.AdminPlateforme;
 import fr.isika.cda.galaxos.repository.Cryptage;
 import fr.isika.cda.galaxos.service.AdherentService;
 import fr.isika.cda.galaxos.viewmodel.AdherentForm;
@@ -59,7 +58,7 @@ public class LoginBean implements Serializable {
 			AdherentForm ad2 = new AdherentForm("pierrefer@gmail.com", "azer", "Fernand", "Pierre", "User");
 			AdherentForm ad3 = new AdherentForm("manurolin@gmail.com", "azer", "Rolin", "Emmanuel", "User");
 			AdherentForm ad4 = new AdherentForm("leadumont@outlook.fr", "azer", "Léa", "Dumont", "User");
-			AdherentForm admin = new AdherentForm("adminplatform@gmail.com", "admin", "Admin", "Admin", "Admin");
+			AdherentForm admin = new AdherentForm("adminplatform@gmail.com", "admin", "Administrateur", "Plateforme", "Admin");
 			
 			accountService.create(adherent1);
 			accountService.create(ad2);
@@ -104,9 +103,9 @@ public class LoginBean implements Serializable {
 				session.setAttribute("roles", adherent.getRoles());
 				session.setAttribute("role", adherent.getRole());
 				session.setAttribute("isConnected", true);
+				session.setAttribute("compteUser", adherent.getUser());
 				
 				presentRole = (String) session.getAttribute("role");
-				
 				
 				if (presentRole.contains("User"))
 				{

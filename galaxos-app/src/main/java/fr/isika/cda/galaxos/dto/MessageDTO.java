@@ -17,6 +17,9 @@ public class MessageDTO {
 		super();
 	}
 
+	
+	
+	
 	public List<Message> getlMsg() {
 		return lMsg;
 	}

@@ -47,6 +47,11 @@ public class AdherentRepository implements Serializable{
 		
 		adherent.setUser(cptUser);
 		adherent.setProfil(profil);
+//		if(adherentForm.getRole().isEmpty())
+//		{
+//			adherentForm.setRole("user");
+//			System.out.println("role automatique user assigné");
+//		}
 		adherent.setRole(adherentForm.getRole());
 		
 		
@@ -68,34 +73,9 @@ public class AdherentRepository implements Serializable{
 		return entityManager.merge(user);
 	}
 	
-<<<<<<< HEAD
-	public Adherent updateAdherent(ProfilForm form) {
-		
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		Adherent adherent = (Adherent) session.getAttribute("connectedAdherent");
-		
-		Profil profil = adherent.getProfil();
-		Adresse adresse = profil.getAdresse();
-		
-		adresse.setNumero(form.getNumero());
-		adresse.setLibelle(form.getLibelle());
-		adresse.setCodePostal(form.getCodePostal());
-		adresse.setVille(form.getVille());
-		
-//		profil.setNom(form.getNom());
-//		profil.setPrenom(form.getPrenom());
-		profil.setTelephone(form.getTelephone());
-		profil.setDescription(form.getDescription());
-		profil.setAdresse(adresse);
-		
-		adherent.setProfil(profil);
-		
-		entityManager.merge(adherent);
-		return adherent;
-=======
+
 	public Adherent update(Adherent adherent) {
 		return entityManager.merge(adherent);
->>>>>>> dashboardAdherent
 	}
 	
 	public Optional<Adherent> findById(final Long id) {
@@ -116,6 +96,7 @@ public class AdherentRepository implements Serializable{
 						.setParameter("email_param", email)
 						.getSingleResult());
 		} catch(NoResultException ex) {
+
 			System.out.println("Adherent.findByemail() - not found : " + email);
 		}
 		return Optional.empty();
@@ -127,6 +108,7 @@ public class AdherentRepository implements Serializable{
 					.setParameter("id", id).getSingleResult());
 		} catch (NoResultException ex) {
 			System.out.println("Profil.findById() - not found : " + id);
+
 		}
 		return Optional.empty();
 	}

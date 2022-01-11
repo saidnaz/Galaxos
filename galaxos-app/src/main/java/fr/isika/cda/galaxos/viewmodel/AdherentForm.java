@@ -52,6 +52,7 @@ public class AdherentForm implements Serializable{
 	
 	public AdherentForm() {
 		super();
+		role = "User";
 	}
 	
 	/**

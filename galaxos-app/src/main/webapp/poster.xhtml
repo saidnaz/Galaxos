@@ -1,0 +1,121 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	 xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<h:head>
+	<title>Galaxos : la plateforme de tous les services</title>
+	<!--     Fonts and icons     -->
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+		rel="stylesheet" />
+
+	<!-- Font Awesome Icons -->
+	<script src="https://kit.fontawesome.com/42d5adcbca.js"
+		crossorigin="anonymous"></script>
+
+
+	<!-- CSS  -->
+	<h:outputStylesheet library="css" name="main.css" />
+	<h:outputStylesheet library="css" name="home.css" />
+	<h:outputStylesheet library="css" name="creation-associaation.css" />
+	<h:outputStylesheet library="css" name="soft-ui-dashboard.css" />
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+	<!-- Bootstrap JS -->
+	<script type="text/javascript"
+		src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"></script>
+		<title>Poster une annonce</title>
+</h:head>
+
+    <h:body>
+    <div class="container">
+        <h:form id="createp" enctype="multipart/form-data">
+            <fieldset>
+                <legend>Postez votre demande D'un service ou d'une ressource</legend>
+                
+               <div class="mb-4">	
+               <div class = "row" >
+                <h:outputLabel for="name">Titre de l'annonce</h:outputLabel>
+                <h:inputText id="name" value="#{postBean.nom}"/>
+                <h:message id="nameMessage" for="name" errorClass="erreur" />
+                </div>
+                </div>
+                <div class="mb-4">	
+               <div class = "row" >
+                 <h:outputLabel for="description">Description </h:outputLabel>	
+                <h:inputText id="description" value="#{postBean.description}"/>
+                <h:message id="descriptionMessage" for="description" errorClass="erreur" />
+                </div>
+                </div>
+                <div class="mb-4">
+                <div class = "row" >	
+                <select class="form-select" aria-label="Default select example">
+									<option>Choisir un domaine</option>
+									<option value="1">Animaux</option>
+									<option value="2">Nature</option>
+									<option value="3">Sport</option>
+				</select>
+				</div>	
+				</div>		
+                 
+								
+                
+                <div class="mb-4">	
+               <div class = "row" >
+                 <h:outputLabel for="startD">A partir de: </h:outputLabel>
+                <h:inputText id="startD" value="#{postBean.startDate}">
+                	<f:convertDateTime pattern="dd-MM-yyyy HH:mm" timeZone="GMT+1" />
+                </h:inputText>
+                <h:message id="startDMessage" for="startD" errorClass="erreur" />
+                </div>
+                </div>
+                
+                 <div class="mb-4">	
+               <div class = "row" >
+                 <h:outputLabel for="endD">A partir de: </h:outputLabel>
+                <h:inputText id="endD" value="#{postBean.endDate}">
+                	<f:convertDateTime pattern="dd-MM-yyyy HH:mm" timeZone="GMT+1" />
+             	</h:inputText>
+                <h:message id="endDMessage" for="endD" errorClass="erreur" />
+                </div>
+                </div>
+                
+                  
+              
+                 <div class="mb-4">	
+                 <div class = "row" >
+                 <h:outputLabel for="price">Prix</h:outputLabel>
+                <h:inputText id="price" value="#{postBean.price}"/>
+                <h:message id="priceMessage" for="price" errorClass="erreur" />
+                </div>
+                </div>
+                
+               <div class="mb-4">	
+               <div class = "row" >
+                <div class="form-group">
+				<label for="image">Emplacement d'image</label>
+				<h:inputFile
+				value="#{postBean.photo}" 
+				class="form-control" id="file"></h:inputFile>
+               <h:messages globalOnly="true" infoClass="info" />
+               </div>
+               </div>
+               </div>
+               
+             <div class="mb-4">	
+               <div class = "row" >
+                  <h:commandButton value="Envoyer" action="#{postBean.create()}" styleClass="sansLabel"/> 
+                </div>
+                </div>
+            </fieldset>
+        </h:form>
+        </div>
+    </h:body> 
+</html>
+		
