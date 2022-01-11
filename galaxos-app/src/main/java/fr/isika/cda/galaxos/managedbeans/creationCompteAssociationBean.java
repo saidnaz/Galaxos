@@ -31,11 +31,13 @@ public class creationCompteAssociationBean implements Serializable {
 	public String create() {
 		UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("createAssoForm");
 		try {
+			
 			Association asso = service.create(form);
 			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext()
 					.getSession(false);
 			session.setAttribute("assoId", asso.getId());
-
+			
+			
 			return "finalisationCreationAssociation?faces-redirect=true";
 
 		} catch (NomAssociationExistDejaExeption ex) {

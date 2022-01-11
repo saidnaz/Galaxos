@@ -29,7 +29,7 @@
 					<div class="card-body contacts_body">
 						<ul class="contacts">
 						
-<!-- 						<ui:repeat var="contact" value="#{MessageBean.messagerieDTO}">	 -->
+< 						<ui:repeat var="contact" value="#{MessageBean.messagerieDTO}">	 </ui:repeat>
 						<li class="active">
 							<div class="d-flex bd-highlight">
 								<div class="img_cont">
@@ -42,6 +42,9 @@
 								</div>
 							</div>
 						</li>
+						
+						
+						
 						
 						<li>
 							<div class="d-flex bd-highlight">
@@ -270,7 +273,11 @@
 								<div class="input-group-append">
 <!-- 									<span class="input-group-text send_btn"> -->
 <!-- 										<i class="fas fa-location-arrow"></i> -->
-										<h:commandButton styleClass="fas fa-location-arrow" action="#{MessageBean.envoyer()}" value="Send"/>
+										<h:commandButton styleClass="fa fa-send" class="fa fa-send" action="#{MessageBean.envoyer()}"/>
+											<div class="buttons">
+											    <h:commandButton value="Button Text" styleClass="apply"/>
+											    <h:commandButton value="Button Text" styleClass="cross"/>
+											</div>
 <!-- 									</span> -->
 								</div>
 							</div>

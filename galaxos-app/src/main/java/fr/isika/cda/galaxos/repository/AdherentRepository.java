@@ -40,6 +40,11 @@ public class AdherentRepository implements Serializable{
 		
 		adherent.setUser(cptUser);
 		adherent.setProfil(profil);
+//		if(adherentForm.getRole().isEmpty())
+//		{
+//			adherentForm.setRole("user");
+//			System.out.println("role automatique user assigné");
+//		}
 		adherent.setRole(adherentForm.getRole());
 		
 		
