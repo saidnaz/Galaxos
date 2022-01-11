@@ -6,12 +6,9 @@ import fr.isika.cda.galaxos.model.Association;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
-/*@SecondaryTable(
-	    name = "clients",
-	    pkJoinColumns = @PrimaryKeyJoinColumn(name = "id"))*/
 public abstract class Client extends Role{
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	private Association association;
 	
 	public Client() {}

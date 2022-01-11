@@ -29,6 +29,9 @@
 		src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"></script>
 </h:head>
 <body>
+
+
+
 	<!--SECTION NAV-->
 	<div class="fixed-top">
 		<nav class="navbar navbar-expand-lg navbar-light navbar-white"
@@ -84,30 +87,14 @@
 						<h5 class="mb-1">
 							#{associationBean.asso.ficheAssociation.nom}</h5>
 						<p class="mb-0 font-weight-bold text-sm">
-							#{associationBean.asso.fk_idDomain.name}</p>
+							<i class="fas fa-tag"></i>
+							#{associationBean.asso.fk_idDomain.name}
+						</p>
 					</div>
 				</div>
 				<div
 					class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
-					<div class="nav-wrapper position-relative end-0">
-						<p>#{associationBean.asso.ficheAssoDescriptif.slogan}</p>
-						<!--  <ul class="nav nav-pills nav-fill p-1 bg-transparent"
-							role="tablist">
-							<li class="nav-item"><a
-								class="nav-link mb-0 px-0 py-1 active " data-bs-toggle="tab"
-								href="javascript:;" role="tab" aria-selected="true"> <span
-									class="ms-1">App</span>
-							</a></li>
-							<li class="nav-item"><a class="nav-link mb-0 px-0 py-1 "
-								data-bs-toggle="tab" href="javascript:;" role="tab"
-								aria-selected="false"> <span class="ms-1">Messages</span>
-							</a></li>
-							<li class="nav-item"><a class="nav-link mb-0 px-0 py-1 "
-								data-bs-toggle="tab" href="javascript:;" role="tab"
-								aria-selected="false"> <span class="ms-1">Settings</span>
-							</a></li>
-						</ul>-->
-					</div>
+					<div class="nav-wrapper position-relative end-0"></div>
 				</div>
 			</div>
 		</div>
@@ -119,10 +106,10 @@
 					<div class="card-header pb-0 p-3">
 						<div class="row">
 							<div class="col-md-8 d-flex align-items-center">
-								<h6 class="mb-0">Description</h6>
+								<h6 class="mb-0">Slogan</h6>
 							</div>
 							<div class="col-md-4 text-end">
-								<i class="fas fa-user-edit text-secondary text-sm"
+								<i class="fas fa-rocket text-secondary text-sm"
 									data-bs-toggle="tooltip" data-bs-placement="top"
 									title="Edit Profile"></i>
 
@@ -130,8 +117,36 @@
 						</div>
 					</div>
 					<div class="card-body p-3">
+						<p>#{associationBean.asso.ficheAssoDescriptif.slogan}</p>
+					</div>
+					<div class="card-header pb-0 p-3">
+						<div class="row">
+							<div class="col-md-8 d-flex align-items-center">
+								<h6 class="mb-0">Description</h6>
+							</div>
+							<div class="col-md-4 text-end"></div>
+						</div>
+					</div>
+					<div class="card-body p-3">
 						<p class="text-sm">#{associationBean.asso.ficheAssoDescriptif.description}</p>
-						<hr class="horizontal gray-light my-4" />
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-xl-4">
+				<div class="card h-100">
+					<div class="card-header pb-0 p-3">
+						<div class="row">
+							<div class="col-md-8 d-flex align-items-center">
+								<h6 class="mb-0">Infos</h6>
+							</div>
+							<div class="col-md-4 text-end">
+								<i class="fas fa-info-circle text-secondary text-sm"
+									data-bs-toggle="tooltip" data-bs-placement="top"
+									title="Edit Profile"></i>
+							</div>
+						</div>
+					</div>
+					<div class="card-body p-3">
 						<ul class="list-group">
 							<li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong
 								class="text-dark">Localisation:</strong> &nbsp;
@@ -151,22 +166,14 @@
 					<div class="card-header pb-0 p-3">
 						<div class="row">
 							<div class="col-md-8 d-flex align-items-center">
-								<h6 class="mb-0">Services</h6>
+								<h6 class="mb-0">Vous souhaitez</h6>
 							</div>
 							<div class="col-md-4 text-end">
-								<i class="fas fa-tools text-secondary text-sm"
+								<i class="fas fa-question-circle text-secondary text-sm"
 									data-bs-toggle="tooltip" data-bs-placement="top"
 									title="Edit Profile"></i>
 							</div>
 						</div>
-					</div>
-					<div class="card-body p-3"></div>
-				</div>
-			</div>
-			<div class="col-12 col-xl-4">
-				<div class="card h-100">
-					<div class="card-header pb-0 p-3">
-						<h6 class="mb-0">Vous souhaitez ?</h6>
 					</div>
 					<div class="card-body p-3">
 						<ul class="list-group">
@@ -187,20 +194,29 @@
 								href="javascript:;">Adhérer</a>
 							</li>
 							<li
-								class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+								class="list-group-item border-0 d-flex align-items-center justify-content-between px-0 mb-2">
 								<div
 									class="d-flex align-items-start flex-column justify-content-center">
 									<h6 class="mb-0 text-sm">Devenir provider</h6>
-								</div> <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto"
-								href="javascript:;">Adhérer</a>
+								</div>
+								<div>
+									<h:form>
+										<h:commandButton
+											action="#{associationBean.devenirProvider(associationBean.asso)}"
+											value="Adhérer" class="btn btn-link pe-3 ps-0 mb-0 ms-auto">
+										</h:commandButton>
+									</h:form>
+								</div>
 							</li>
 							<li
 								class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
 								<div
 									class="d-flex align-items-start flex-column justify-content-center">
 									<h6 class="mb-0 text-sm">Envoyez un message</h6>
-								</div> <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto"
-								href="javascript:;">Envoyez</a>
+								</div> <h:commandLink class="btn btn-link pe-3 ps-0 mb-0 ms-auto"
+									value="Envoyez"
+									action="#{associationBean.devenirProvider(associationBean.asso)}" />
+
 							</li>
 						</ul>
 					</div>
@@ -224,7 +240,50 @@
 									</div>
 								</div>
 							</div>
-							<div class="card-body p-3"></div>
+							<div class="card-body p-3">
+
+
+								<div class="table-responsive">
+									<table class="table align-items-center mb-0">
+										<thead>
+											<tr>
+												<th
+													class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom</th>
+												<th
+													class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<ui:repeat var="adh" value="#{associationBean.listAdherents}">
+												<tr>
+													<td>
+														<div class="d-flex px-2 py-1">
+															<div>
+																<h:graphicImage library="imageUpload"
+																	name="#{adh.profil.photo}"
+																	class="avatar avatar-sm me-3"></h:graphicImage>
+															</div>
+															<div class="d-flex flex-column justify-content-center">
+																<h6 class="mb-0 text-xs">#{adh.profil.prenom}
+																	#{adh.profil.nom}</h6>
+															</div>
+														</div>
+													</td>
+													<td class="align-middle"><a href="javascript:;"
+														class="text-secondary font-weight-bold text-xs"
+														data-toggle="tooltip" data-original-title="Edit user">
+															Voir </a></td>
+												</tr>
+
+											</ui:repeat>
+
+										</tbody>
+									</table>
+								</div>
+
+
+
+							</div>
 						</div>
 					</div>
 
@@ -236,7 +295,7 @@
 										<h6 class="mb-0">Avis</h6>
 									</div>
 									<div class="col-md-4 text-end">
-										<i class="fas fa-tools text-secondary text-sm"
+										<i class="fas fa-star text-secondary text-sm"
 											data-bs-toggle="tooltip" data-bs-placement="top"
 											title="Edit Profile"></i>
 									</div>
@@ -251,7 +310,7 @@
 
 		</div>
 	</div>
-	
+
 	<div style="min-height: 10vh"></div>
 	<div class="footer">
 		<div class="site-section">
