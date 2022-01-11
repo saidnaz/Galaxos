@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import javax.persistence.EntityNotFoundException;
 
 import fr.isika.cda.galaxos.model.Adherent;
+import fr.isika.cda.galaxos.model.CompteUser;
+import fr.isika.cda.galaxos.model.Profil;
 import fr.isika.cda.galaxos.repository.AdherentRepository;
 import fr.isika.cda.galaxos.viewmodel.AdherentForm;
 
@@ -35,6 +37,22 @@ public class AdherentService {
 
 	public Optional<Adherent> findByEmail(String email) {
 		return adherentRepository.findByEmail(email);
+	}
+	
+	public Adherent update(Adherent adherent) {
+		return adherentRepository.update(adherent);
+	}
+	
+	public Optional<Adherent> findAdherentById(Long id) {
+		return adherentRepository.findById(id);
+	}
+	
+	public Optional<Profil> findProfilById(Long id) {
+		return adherentRepository.findProfilById(id);
+	}
+	
+	public Optional<CompteUser> findCptUserById(Long id) {
+		return adherentRepository.findCptUserById(id);
 	}
 
 }

@@ -53,6 +53,28 @@ public class AdherentRepository implements Serializable{
 		return adherent;
 	}
 	
+	public Profil updateProfil(Profil profil) {
+		return entityManager.merge(profil);
+	}
+	
+	public CompteUser updateCptUser(CompteUser user) {
+		return entityManager.merge(user);
+	}
+	
+	public Adherent update(Adherent adherent) {
+		return entityManager.merge(adherent);
+	}
+	
+	public Optional<Adherent> findById(final Long id) {
+		try {
+			return Optional.ofNullable(this.entityManager.createNamedQuery("Adherent.findById", Adherent.class)
+					.setParameter("id", id).getSingleResult());
+		} catch (NoResultException ex) {
+			System.out.println("Adherent.findById() - not found : " + id);
+		}
+		return Optional.empty();
+	}
+	
 	public Optional<Adherent> findByEmail(String email) {
 		try {
 			return Optional.ofNullable(
@@ -61,11 +83,30 @@ public class AdherentRepository implements Serializable{
 						.setParameter("email_param", email)
 						.getSingleResult());
 		} catch(NoResultException ex) {
-			System.out.println("Consumer.findByemail() - not found : " + email);
+			System.out.println("Adherent.findByemail() - not found : " + email);
 		}
 		return Optional.empty();
 	}
 	
+	public Optional<Profil> findProfilById(final Long id) {
+		try {
+			return Optional.ofNullable(this.entityManager.createNamedQuery("Profil.findById", Profil.class)
+					.setParameter("id", id).getSingleResult());
+		} catch (NoResultException ex) {
+			System.out.println("Profil.findById() - not found : " + id);
+		}
+		return Optional.empty();
+	}
+	
+	public Optional<CompteUser> findCptUserById(final Long id) {
+		try {
+			return Optional.ofNullable(this.entityManager.createNamedQuery("CompteUser.findById", CompteUser.class)
+					.setParameter("id", id).getSingleResult());
+		} catch (NoResultException ex) {
+			System.out.println("CompteUser.findById() - not found : " + id);
+		}
+		return Optional.empty();
+	}
 	
 
 }
