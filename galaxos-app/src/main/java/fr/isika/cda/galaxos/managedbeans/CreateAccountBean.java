@@ -16,7 +16,7 @@ import fr.isika.cda.galaxos.service.AdherentService;
 import fr.isika.cda.galaxos.viewmodel.AdherentForm;
 
 @ManagedBean(name = "CreateAccountBean")
-@SessionScoped
+@ViewScoped
 public class CreateAccountBean implements Serializable {
 
 	private static final long serialVersionUID = 6612406132359512190L;
@@ -46,9 +46,7 @@ public class CreateAccountBean implements Serializable {
 				System.out.println("Adhérent créé : " + adherent);
 				
 				// On redirige vers le dashboard en cas de compte créé avec succès
-				
-				
-				return "dashboardAdherent?faces-redirect=true";
+				return "login?faces-redirect=true";
 				
 				} catch (Exception ex) {
 					// On ajoute un message sur la vue qui résume l'exception
