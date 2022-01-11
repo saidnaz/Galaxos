@@ -8,6 +8,20 @@
 	        background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
 		}
 
+		.buttons input {
+		    margin: 5px;
+		    padding: 5px 5px 5px 20px; /* 20px makes room for your background image */
+		    border: 1px solid #aaa;
+		}
+		
+		.buttons .apply {
+		    background: #eee url(path/to/apply.png) no-repeat 0 50%;
+		} 
+		
+		.buttons .cross {
+		    background: #eee url(path/to/cross.png) no-repeat 0 50%;
+		} 
+
 		.recu{
 		margin-right: 30%;
 		}

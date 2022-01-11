@@ -48,9 +48,12 @@ public class creationCompteAssociationBean implements Serializable {
 		Long idAdherentConnecte = (Long) session.getAttribute("connectedAdherentId");
 		
 		try {
-			Association asso = service.create(form, idAdherentConnecte);
-			session.setAttribute("assoId", asso.getId());
 
+			Association asso = service.create(form, idAdherentConnecte);
+
+			session.setAttribute("assoId", asso.getId());
+			
+			
 			return "finalisationCreationAssociation?faces-redirect=true";
 
 		} catch (NomAssociationExistDejaExeption ex) {
