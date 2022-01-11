@@ -82,13 +82,15 @@
 						<i class="fas fa-users" style="font-size: 17px; color: #2e2f5e"></i>
 					</div> <span class="nav-link-text ms-1">Adhérents</span>
 			</a></li>
-			<li class="nav-item"><a class="nav-link  " href="">
+			<li class="nav-item"><h:link outcome="dashboardAsso_providers"
+					class="nav-link" value="">
 					<div
 						class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-						<i class="fas fa-user-astronaut"
-							style="font-size: 17px; color: black"></i>
-					</div> <span class="nav-link-text ms-1">Providers</span>
-			</a></li>
+						<i class="fas fa-cog text-fonce"
+							style="font-size: 17px; color: #2e2f5e"></i>
+					</div>
+					<span class="nav-link-text ms-1">Providers</span>
+				</h:link></li>
 			<li class="nav-item"><a class="nav-link  "
 				href="../pages/virtual-reality.html">
 					<div
@@ -367,9 +369,10 @@
 							<h5 class="text-white font-weight-bolder mb-4 pt-2">Ma page</h5>
 							<p class="text-white">Vous souhaitez voir à quoi ressemble la
 								page de votre association.</p>
-							
+
 							<h:form>
-								<h:commandButton action="#{associationBean.affichageAsso(dashboardAsso.asso.id)}"
+								<h:commandButton
+									action="#{associationBean.affichageAsso(dashboardAsso.asso.id)}"
 									value="Voir">
 								</h:commandButton>
 							</h:form>
