@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,14 +20,15 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.Size;
 
 @Entity
+//@NamedQuery(name = "Profil.findByName", query = "SELECT cons FROM Profil cons WHERE cons.nom = :nom_param")
 public class Profil {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Basic(optional = false)
-	private String pseudo;
+//	@Basic(optional = false)
+//	private String pseudo;
 	
 	@Column(length = 100, nullable=false)
 	private String nom;
@@ -34,8 +36,8 @@ public class Profil {
 	@Column(length = 100, nullable=false)
 	private String prenom;
 
-	@Temporal(TemporalType.DATE)
-	private Date dateNaissance;
+//	@Temporal(TemporalType.DATE)
+//	private Date dateNaissance;
 	
 	@Size(min = 10, max = 12)
     @Digits(fraction = 0, integer = 12)
@@ -63,13 +65,13 @@ public class Profil {
 		return id;
 	}
 	
-	public String getPseudo() {
-		return pseudo;
-	}
-
-	public void setPseudo(String pseudo) {
-		this.pseudo = pseudo;
-	}
+//	public String getPseudo() {
+//		return pseudo;
+//	}
+//
+//	public void setPseudo(String pseudo) {
+//		this.pseudo = pseudo;
+//	}
 
 	public String getNom() {
 		return nom;
@@ -87,13 +89,13 @@ public class Profil {
 		this.prenom = prenom;
 	}
 
-	public Date getDateNaissance() {
-		return dateNaissance;
-	}
-
-	public void setDateNaissance(Date dateNaissance) {
-		this.dateNaissance = dateNaissance;
-	}
+//	public Date getDateNaissance() {
+//		return dateNaissance;
+//	}
+//
+//	public void setDateNaissance(Date dateNaissance) {
+//		this.dateNaissance = dateNaissance;
+//	}
 
 	public String getTelephone() {
 		return telephone;
@@ -144,8 +146,8 @@ public class Profil {
 		builder.append("Profil [id=");
 		builder.append(id);
 		
-		builder.append(", pseudo=");
-		builder.append(pseudo);
+//		builder.append(", pseudo=");
+//		builder.append(pseudo);
 		
 		builder.append(", nom=");
 		builder.append(nom);
@@ -153,8 +155,8 @@ public class Profil {
 		builder.append(", prenom=");
 		builder.append(prenom);
 		
-		builder.append(", date de naissance=");
-		builder.append(dateNaissance);
+//		builder.append(", date de naissance=");
+//		builder.append(dateNaissance);
 		
 		builder.append(", téléphone=");
 		builder.append(telephone);
@@ -181,13 +183,13 @@ public class Profil {
 			return false;
 		
 		Profil other = (Profil) obj;
-		return Objects.equals(id, other.id) && Objects.equals(pseudo, other.pseudo)
-				&& Objects.equals(nom, other.nom) && Objects.equals(prenom, other.prenom);
+		return Objects.equals(id, other.id) && Objects.equals(nom, other.nom)
+				&& Objects.equals(prenom, other.prenom);
 	}
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, pseudo, nom, prenom);
+		return Objects.hash(id, nom, prenom);
 	}
 
 }

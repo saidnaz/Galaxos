@@ -21,12 +21,11 @@ import javax.persistence.OneToOne;
 import fr.isika.cda.galaxos.model.roles.Role;
 
 @Entity
-// @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-// @DiscriminatorColumn(name = "type")
 @NamedQueries({
 @NamedQuery(name = "Adherent.findByEmail", query = "SELECT cons FROM Adherent cons JOIN cons.user cptu WHERE cons.user.email = :email_param"),
 @NamedQuery(name = "Adherent.findById", query = "SELECT cons FROM Adherent cons JOIN cons.user cptu WHERE cons.user.id = :id_param")
 })
+
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
 public class Adherent implements Serializable {
@@ -83,14 +82,33 @@ public class Adherent implements Serializable {
 		this.posts = posts;
 	}
 
+	private String role;
+	
 	public Long getId() {
 		return id;
 	}
+	
+	public String getRole() {
+		return role;
+	}
 
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
 	public List<Role> getRoles() {
 		return roles;
 	}
 
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+	
+	public void addRoles(Role role)
+	{
+		this.roles.add(role);
+	}
+	
 	// TODO : addRole(...) et removeRole(....) et initialiser la liste aussi à vide
 	// !!
 //	public void setRoles(Role role) {

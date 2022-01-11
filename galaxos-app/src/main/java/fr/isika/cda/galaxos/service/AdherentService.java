@@ -1,6 +1,5 @@
 package fr.isika.cda.galaxos.service;
 
-import java.io.Serializable;
 import java.util.Optional;
 
 import javax.ejb.Stateless;
@@ -12,17 +11,13 @@ import fr.isika.cda.galaxos.repository.AdherentRepository;
 import fr.isika.cda.galaxos.viewmodel.AdherentForm;
 
 @Stateless
-public class AdherentService implements Serializable{
-	
+public class AdherentService {
+
 	@Inject
 	private AdherentRepository adherentRepository;
-
-
-
-public AdherentService() {
-	super();
 	
-}
+public AdherentService() {
+	}
 public Adherent create(AdherentForm adherentform) {
 	
 
@@ -44,6 +39,7 @@ public Optional<Adherent> findById(Long id) {
 	
 	return adherentRepository.findById(id);
 }
+
 
 
 

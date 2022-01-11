@@ -11,6 +11,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.FicheAssoCompta;
 import fr.isika.cda.galaxos.model.FicheAssoDescriptif;
@@ -24,8 +25,6 @@ public class finalisationCompteAssociationBean implements Serializable {
 
 	private static final long serialVersionUID = 6996941272696131543L;
 
-	/* private EntityManager entityManager; */
-
 	@Inject
 	private AssociationCompteService service;
 
@@ -34,14 +33,24 @@ public class finalisationCompteAssociationBean implements Serializable {
 	private Association asso;
 
 	private Double resultat;
+	
+	private Adherent adherentConnecte;
 
 	@PostConstruct
 	public void init() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		Long id = (Long) session.getAttribute("assoId");
+		Long id = (Long) session.getAttribute("assoId");		
+		Long idAdherentConnecte = (Long) session.getAttribute("connectedAdherentId");
+		
+		
+		Optional<Adherent> optionalAd = service.findAdherentById(idAdherentConnecte);
+		if(optionalAd.isPresent()) {
+			adherentConnecte = optionalAd.get();
+		}
 
+		
 		Optional<Association> optional = service.findById(id);
-		if (optional.isPresent()) {
+			if (optional.isPresent()) {
 			asso = optional.get();
 
 			Double compteurCompta = 0.0;
@@ -59,6 +68,8 @@ public class finalisationCompteAssociationBean implements Serializable {
 			if (asso.getFicheAssoDescriptif() != null) {
 				compteurDescriptif = 1.0;
 			}
+			
+			
 			resultat= compteurCompta + compteurGestionnaire + compteurDescriptif + 2.0;			
 			resultat = resultat/5;
 			resultat = resultat*100;
@@ -163,5 +174,17 @@ public class finalisationCompteAssociationBean implements Serializable {
 	public void setResultat(Double resultat) {
 		this.resultat = resultat;
 	}
+
+	public Adherent getAdherentConnecte() {
+		return adherentConnecte;
+	}
+
+	public void setAdherentConnecte(Adherent adherentConnecte) {
+		this.adherentConnecte = adherentConnecte;
+	}
+
+
+	
+	
 
 }

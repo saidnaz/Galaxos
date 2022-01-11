@@ -10,25 +10,22 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name = "CompteUser.findByEmail", query = "SELECT cons FROM CompteUser cons WHERE cons.email = :email_param")
 public class CompteUser {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@Column(nullable = false, unique=true)
 	private String email;
 
-	@Column(length = 20, name = "motdepasse", nullable = false)
+	@Column(name = "motdepasse", nullable = false)
 	private String mdp;
 
 	@Column(name = "CompteValide", nullable = false)
 	private boolean isAccountValide = true;
-
 	
 	//Vas rejoindre la column fkAdherant 
-	
-
 	
 	//GET & SET
 	public String getMdp() {

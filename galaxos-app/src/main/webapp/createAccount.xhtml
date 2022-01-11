@@ -34,7 +34,7 @@
 	<!--SECTION NAV-->
 	<div class="fixed-top">
 		<nav class="navbar navbar-expand-lg navbar-light navbar-white"
-			id="navbar"> <a class="navbar-brand" href=""> 
+			id="navbar"> <a class="navbar-brand" href="index.xhtml"> 
 			<img
 			alt="LOGO" width="70" class="logo-brand-fr"
 			src="resources/images/logo.png" />
@@ -81,11 +81,26 @@
 					</div>
 					<div class="card-body">
 
-						<h:form id="createAssoForm" role="form text-left">
+						<h:form id="createAccountForm" role="form text-left">
 
 							<div class="mb-4">
-							 
-								<h:inputText id="emailInput" class="form-control PHname"
+							<i class="bi bi-person-plus-fill text-white"></i>
+								<h:inputText id="NomInput" class="form-control "
+									pt:placeholder="Nom" aria-label="Nom"
+									value="#{CreateAccountBean.accountForm.nom}" />
+								<h:messages for="NomInput" errorClass="erreurInputForm" />
+							</div>
+							
+							<div class="mb-4">
+							<i class="bi bi-person-plus-fill text-white"></i>
+								<h:inputText id="PrenomInput" class="form-control "
+									pt:placeholder="Prénom" aria-label="Prenom"
+									value="#{CreateAccountBean.accountForm.prenom}" />
+								<h:messages for="PrenomInput" errorClass="erreurInputForm" />
+							</div>
+							
+							<div class="mb-4">
+							<h:inputText id="emailInput" class="form-control PHname"
 									aria-label="Nom" pt:placeholder="Email"
 									aria-describedby="email-addon"
 									value="#{CreateAccountBean.accountForm.email}" />
@@ -93,24 +108,27 @@
 							</div>
 
 							<div class="mb-4">
-								<h:inputSecret id="passwordInput" class="form-control"
+
+
+							<h:inputSecret id="passwordInput" class="form-control"
+
 									pt:placeholder="Mot de passe" aria-label="password"
 									aria-describedby="password-addon"
 									value="#{CreateAccountBean.accountForm.password}" />
 								<h:messages for="passwordInput" errorClass="erreurInputForm"  />
 							</div>
-							
+												
+							<!-- confirmation du mot de passe -->
 							<div class="mb-4">
-							<i class="bi bi-person-plus-fill text-white"></i>
-								<h:inputText id="NomInput" class="form-control "
-									pt:placeholder="Nom" aria-label="Nom"
+							<h:inputSecret id="confirmPasswordInput" class="form-control"
+									pt:placeholder="Confirmer mot de passe" aria-label="confirmPassword"
 									aria-describedby="password-addon"
-									value="#{CreateAccountBean.accountForm.nom}" />
-								<h:messages for="NomInput" errorClass="erreurInputForm" />
+									value="#{CreateAccountBean.accountForm.confirmPassword}" />
+								<h:messages for="confirmPasswordInput" errorClass="erreurInputForm"  />
 							</div>
-
+							
 							<div class="text-center">
-								<h:commandButton value="S'nscrire"
+								<h:commandButton value="S'inscrire"
 									class="btn main-button w-100 my-4 mb-2"
 									action="#{CreateAccountBean.create()}" />
 							</div>

@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+
+
+<h:head>
+<title>Votre Profil</title>
+	<meta
+		content="Une plateforme d'associations presentant une multitude de services" />
+	<meta content="" name="application-name" />
+	<link rel="icon" href="logo.ico"/>
+  	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+  	<meta content="yes" name="mobile-web-app-capable"/>
+  
+  <!--     Fonts and icons     -->
+  
+  <link 
+  href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" 
+  rel="stylesheet" />
+  
+  
+  <!-- Font Awesome Icons -->
+  
+  <script src="https://kit.fontawesome.com/42d5adcbca.js"
+		crossorigin="anonymous"></script>
+   
+  
+  <!-- CSS Files -->
+  
+ <h:outputStylesheet library="css" name="nucleo-icons.css"/>
+    <h:outputStylesheet library="css" name="nucleo-svg.css"/>
+  <h:outputStylesheet library="css" name="main.css" />
+  <h:outputStylesheet library="css" name="home.css" />
+  <h:outputStylesheet library="css" name="soft-ui-dashboard.css"/>
+  
+  <!-- BOOSTRAP CSS -->
+  
+  <link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  
+  
+  
+</h:head>
+
+<body class="g-sidenav-show bg-gray-100">
+
+
+ <!-- SECTION ASIDE NAVBAR-->
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0" href="" target="_blank">
+        <img src="resources/images/logo.png" class="navbar-brand-img h-100" alt="main_logo"/>
+        <span class="ms-1 font-weight-bold">Galaxos</span>
+      </a>
+    </div>
+    <hr class="horizontal dark mt-0"/>
+    <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+
+
+        <!-- SECTION DASHBOARD-->
+
+        <li class="nav-item">
+          <a class="nav-link  " href="dashboardAdministrateur.xhtml">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fas fa-home text-dark opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Dashboard</span>
+          </a>
+        </li>
+
+        <!-- FIN DE SECTION DASHBOARD-->
+
+
+        <li class="nav-item">
+          <a class="nav-link  " href="dashboardAdministrateur_tables.xhtml">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fas fa-table text-dark opacity-10"></i>             
+             </div>
+           <span class="nav-link-text ms-1">Tableau</span>
+          </a>
+        </li>
+
+
+
+        <!-- SECTION TRANSACTION-->
+        <li class="nav-item">
+          <a class="nav-link  " href="dashboardAdministrateur_billing.xhtml">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="far fa-credit-card text-dark opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Transaction</span>
+          </a>
+        </li>
+        <!--FIN DE SECTION TRANSACTION-->
+
+        <!-- SECTION PROFILE-->
+       
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Votre compte</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active " href="dashboardAdministrateur_profils.xhtml">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fas fa-user-alt text-white opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Votre Profile</span>
+          </a>
+        </li>
+        <!-- FIN DE SECTION PROFIL-->
+
+
+        <!-- Section DECONNEXION-->
+        <li class="nav-item">
+          <a class="nav-link  " href="login.xhtml">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fas fa-sign-out-alt text-dark opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Déconnexion</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+<!-- FIN SECTION DECONNEXION-->
+
+
+
+  <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+      <div class="container-fluid py-1 px-3 mt-3">
+        <nav aria-label="breadcrumb">
+          <h6 class="font-weight-bolder mb-0">Profile</h6>
+        </nav>
+        <div class="collapse navbar-collapse me-md-0 me-sm-4 mt-sm-0 mt-2" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <ul class="navbar-nav justify-content-end">
+              <li class="nav-item d-flex align-items-center">
+                <a href="javascript:;" class="nav-link text-dark font-weight-bold px-0">
+                  <i class="fa fa-sign-out me-sm-1"></i>
+                  <span class="d-sm-inline d-none">Déconnexion</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+
+
+
+    <div class="container-fluid">
+      <div class="page-header min-height-200 border-radius-xl mt-4" style="background-image: url('../assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
+        <span class="mask bg-gradient-info opacity-6"></span>
+      </div>
+
+
+      <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
+        <div class="row gx-4">
+          <div class="col-auto">
+            <div class="avatar avatar-xl position-relative">
+              <img src="resources/images/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm"/>
+            </div>
+          </div>
+          <div class="col-auto my-auto">
+            <div class="h-100">
+              <h5 class="mb-1">
+                Alec Thompson
+              </h5>
+              <p class="mb-0 font-weight-bold text-sm">
+                Administrateur Galaxos
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-12 col-xl-4">
+          <div class="card h-100">
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="col-md-8 d-flex align-items-center">
+                  <h6 class="mb-0">Information Profile</h6>
+                </div>
+                <div class="col-md-4 text-end">
+                  <a href="javascript:;">
+                    <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-3">
+              <p class="text-sm">
+                Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).
+              </p>
+              <hr class="horizontal gray-light my-4"/>
+              <ul class="list-group">
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nom complet:</strong> &nbsp; Alec M. Thompson</li>
+                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Portable:</strong> &nbsp; 06 06 06 06 06</li>
+                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; alecthompson@mail.com</li> 
+                <li class="list-group-item border-0 ps-0 pb-0">
+                  <strong class="text-dark text-sm">Social:</strong> &nbsp;
+                  <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                    <i class="fab fa-facebook fa-lg"></i>
+              
+                  </a>
+                  <a class="btn btn-twitter btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                    <i class="fab fa-twitter fa-lg"></i>
+                  </a>
+                  <a class="btn btn-instagram btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                    <i class="fab fa-instagram fa-lg"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="col-12 col-xl-8">
+          <div class="card h-100">
+            <div class="card-header pb-0 p-3">
+              <h6 class="mb-0">Conversations</h6>
+            </div>
+            <div class="card-body p-3">
+              <ul class="list-group">
+                <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                  <div class="avatar me-3">
+                    <img src="resources/images/kal-visuals-square.jpg" alt="kal" class="border-radius-lg shadow"/>
+                  </div>
+                  <div class="d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="mb-0 text-sm">Sophie B.</h6>
+                    <p class="mb-0 text-xs">Hi! I need more information..</p>
+                  </div>
+                  <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
+                </li>
+                <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                  <div class="avatar me-3">
+                    <img src="resources/images/marie.jpg" alt="kal" class="border-radius-lg shadow"/>
+                  </div>
+                  <div class="d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="mb-0 text-sm">Anne Marie</h6>
+                    <p class="mb-0 text-xs">Awesome work, can you..</p>
+                  </div>
+                  <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
+                </li>
+                <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                  <div class="avatar me-3">
+                    <img src="resources/images/ivana-square.jpg" alt="kal" class="border-radius-lg shadow"/>
+                  </div>
+                  <div class="d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="mb-0 text-sm">Ivanna</h6>
+                    <p class="mb-0 text-xs">About files I can..</p>
+                  </div>
+                  <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
+                </li>
+                <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                  <div class="avatar me-3">
+                    <img src="resources/images/team-4.jpg" alt="kal" class="border-radius-lg shadow"/>
+                  </div>
+                  <div class="d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="mb-0 text-sm">Peterson</h6>
+                    <p class="mb-0 text-xs">Have a great afternoon..</p>
+                  </div>
+                  <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
+                </li>
+                <li class="list-group-item border-0 d-flex align-items-center px-0">
+                  <div class="avatar me-3">
+                    <img src="resources/images/team-3.jpg" alt="kal" class="border-radius-lg shadow"/>
+                  </div>
+                  <div class="d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="mb-0 text-sm">Nick Daniel</h6>
+                    <p class="mb-0 text-xs">Hi! I need more information..</p>
+                  </div>
+                  <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+  <div class="fixed-plugin">
+    <div class="card shadow-lg ">
+      <div class="card-header pb-0 pt-3 ">
+      </div>
+      <hr class="horizontal dark my-1"/>
+    </div>
+  </div>
+
+
+<!--   Core JS Files   -->
+  
+	<h:outputScript library="js" name="core/popper.min.js"></h:outputScript>
+	<h:outputScript library="js" name="core/bootstrap.min.js"></h:outputScript>
+	<h:outputScript library="js" name="plugins/perfect-scrollbar.min.js"></h:outputScript>
+	<h:outputScript library="js" name="plugins/smooth-scrollbar.min.js"></h:outputScript>
+	<h:outputScript library="js" name="plugins/chartjs.min.js"></h:outputScript>
+	
+  
+   <!--   GIThub button   -->
+  
+  <script src="https://buttons.github.io/buttons.js"></script>
+  
+  
+   <!--   Control center pour dashboard : effet parallax, scrip pour exemple de page   -->
+   
+   
+    <h:outputScript library="js" name="soft-ui-dashboard.min.js"></h:outputScript>
+    <h:outputScript library="js" name="soft-ui-dashboard.js"></h:outputScript>
+	<h:outputScript library="js" name="soft-ui-dashboard.js.map"></h:outputScript>
+  
+  
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win &amp;&amp; document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+  
+  
+</body>
+
+</html>

@@ -13,7 +13,7 @@
 	<meta content="width=device-width, initial-scale=1" name="viewport" />
 	<meta content="yes" name="mobile-web-app-capable" />
 
-		<!--     Fonts and icons     -->
+	<!--     Fonts and icons     -->
 	<link
 		href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
 		rel="stylesheet" />
@@ -36,21 +36,14 @@
 </h:head>
 
 <body>
-<!-- 	<h1>Welcome to Galaxos !</h1> -->
-<!-- 	<hr/> -->
-<!-- 	<h3>#{appStatus.message}</h3> -->
-	
-<!-- 	<div> -->
-<!-- 	<h:link outcome="messagerie">Messagerie</h:link> -->
-<!-- 	</div> -->
 
 	<!--SECTION NAV-->
 	<div class="fixed-top">
 		<nav class="navbar navbar-expand-lg navbar-light navbar-white"
-			id="navbar"> <a class="navbar-brand" href=""> <img
-			alt="LOGO" width="70" class="logo-brand-fr"
-			src="resources/images/logo.png" />
-		</a> <a class="navbar-brand d-none" href=""> <img alt="LOGO"
+			id="navbar"> <h:link outcome="index.xhtml" class="navbar-brand">
+			<img alt="LOGO" width="70" class="logo-brand-fr"
+				src="resources/images/logo.png" />
+		</h:link> <a class="navbar-brand d-none" href=""> <img alt="LOGO"
 			width="70" class="logo-brand-fr" src="resources/images/logo.png" />
 		</a>
 		<button class="navbar-toggler" data-target="#nav_site_help"
@@ -60,16 +53,20 @@
 		<span class="gradient-text">GALAXOS</span>
 		<div class="collapse navbar-collapse" id="nav_site_help">
 			<ul class="navbar-nav ml-auto">
-				<li class="m-1 nav-item d-flex align-items-center"><a
-					class="p-3 nav-link main-button" href="" style="color: white">
-						Besoin d'un service ? </a></li>
+				<li class="m-1 nav-item d-flex align-items-center"><h:form>
+						<h:commandLink class="p-3 nav-link main-button"
+							style="color: white"
+							action="#{CatalogueAssociationBean.afficherPageCatalogue()}"
+							value="Besoin d'un service ?">
+							<f:param id="categName" name="categName" value="all" />
+						</h:commandLink>
+					</h:form></li>
 				<li class="m-1 nav-item d-flex align-items-center"><h:link
-						outcome="creationAssociation.xhtml"
-						class="nav-link nav-link-hover-black button-tertiaire">Créer son association</h:link>
-				</li>
+						outcome="login.xhtml"
+						class="nav-link nav-link-hover-black button-tertiaire">Se connecter
+					</h:link></li>
 				<li class=" m-1 nav-item d-flex align-items-center"><a
-					class="nav-link nav-link-hover-black button-secondaire" href="">Mon
-						compte</a></li>
+					class="nav-link nav-link-hover-black button-tertiaire" href="createAccount.xhtml">S'inscrire</a></li>
 			</ul>
 		</div>
 		</nav>
@@ -117,19 +114,34 @@
 			que vous souhaitez</h6>
 		<div class="categ d-flex flex-wrap justify-content-center">
 
+
+
 			<div
 				class="categ_img d-flex flex-column justify-content-center align-items-center col-10 col-sm-8 col-md-4 col-lg-2 m-3">
 				<div>
-					<h5 class="text-fonce">Animaux</h5>
+					<h:form>
+						<h:commandLink class="text-fonce h5"
+							action="#{CatalogueAssociationBean.afficherPageCatalogue()}"
+							value="Entraide">
+							<f:param id="categName" name="categName" value="Entraide" />
+						</h:commandLink>
+					</h:form>
 				</div>
 				<img src="resources/images/categ_animaux.svg" alt=""
 					class=" img_categ_home"></img>
 			</div>
 
+
 			<div
 				class="categ_img d-flex flex-column justify-content-center align-items-center col-10 col-sm-8 col-md-4 col-lg-2 m-3">
 				<div>
-					<h5 class="text-fonce">Jardinage</h5>
+					<h:form>
+						<h:commandLink class="text-fonce h5"
+							action="#{CatalogueAssociationBean.afficherPageCatalogue()}"
+							value="Environnement">
+							<f:param id="categName" name="categName" value="Environnement" />
+						</h:commandLink>
+					</h:form>
 				</div>
 				<img src="resources/images/categ_jardin.svg" alt=""
 					class=" img_categ_home"></img>
@@ -138,7 +150,13 @@
 			<div
 				class="categ_img d-flex flex-column justify-content-center align-items-center col-10 col-sm-8 col-md-4 col-lg-2 m-3">
 				<div>
-					<h5 class="text-fonce">Sport</h5>
+					<h:form>
+						<h:commandLink class="text-fonce h5"
+							action="#{CatalogueAssociationBean.afficherPageCatalogue()}"
+							value="Bien être">
+							<f:param id="categName" name="categName" value="Bien_etre" />
+						</h:commandLink>
+					</h:form>
 				</div>
 				<img src="resources/images/categ_sport.svg" alt=""
 					class=" img_categ_home"></img>
@@ -147,7 +165,13 @@
 			<div
 				class="categ_img d-flex flex-column justify-content-center align-items-center   col-10 col-sm-8 col-md-4 col-lg-2 m-3">
 				<div>
-					<h5 class="text-fonce">Cours particuliers</h5>
+					<h:form>
+						<h:commandLink class="text-fonce h5"
+							action="#{CatalogueAssociationBean.afficherPageCatalogue()}"
+							value="Cours/Formation">
+							<f:param id="categName" name="categName" value="Cours_Formation" />
+						</h:commandLink>
+					</h:form>
 				</div>
 				<img src="resources/images/categ_cours.svg" alt=""
 					class="img_categ_home"></img>
@@ -156,7 +180,13 @@
 			<div
 				class="categ_img d-flex flex-column justify-content-center align-items-center   col-10 col-sm-8 col-md-4 col-lg-2 m-3">
 				<div>
-					<h5 class="text-fonce">Art/Culture</h5>
+					<h:form>
+						<h:commandLink class="text-fonce h5"
+							action="#{CatalogueAssociationBean.afficherPageCatalogue()}"
+							value="Art/Culture">
+							<f:param id="categName" name="categName" value="Art_et_Culture" />
+						</h:commandLink>
+					</h:form>
 				</div>
 				<img src="resources/images/categ_peinture.svg" alt=""
 					class="img_categ_home"></img>
@@ -165,25 +195,44 @@
 			<div
 				class="categ_img d-flex flex-column justify-content-center align-items-center   col-10 col-sm-8 col-md-4 col-lg-2 m-3">
 				<div>
-					<h5 class="text-fonce">Déménagement</h5>
+					<h:form>
+						<h:commandLink class="text-fonce h5"
+							action="#{CatalogueAssociationBean.afficherPageCatalogue()}"
+							value="Cuisine/restauration">
+							<f:param id="categName" name="categName"
+								value="Cuisine_Restauration" />
+						</h:commandLink>
+					</h:form>
 				</div>
-				<img src="resources/images/categ_demenagement.svg" alt=""
+				<img src="resources/images/categ_cuisine.svg" alt=""
 					class="img_categ_home"></img>
 			</div>
 
 			<div
 				class="categ_img d-flex flex-column justify-content-center align-items-center   col-10 col-sm-8 col-md-4 col-lg-2 m-3">
 				<div>
-					<h5 class="text-fonce">Enfants</h5>
+					<h:form>
+						<h:commandLink class="text-fonce h5"
+							action="#{CatalogueAssociationBean.afficherPageCatalogue()}"
+							value="Loisir">
+							<f:param id="categName" name="categName" value="Loisirs" />
+						</h:commandLink>
+					</h:form>
 				</div>
-				<img src="resources/images/categ_enfant.svg" alt=""
+				<img src="resources/images/categ_loisir.svg" alt=""
 					class="img_categ_home"></img>
 			</div>
 
 			<div
 				class="categ_img d-flex flex-column justify-content-center align-items-center  col-10 col-sm-8 col-md-4 col-lg-2 m-3">
 				<div>
-					<h5 class="text-fonce">Informatique</h5>
+					<h:form>
+						<h:commandLink class="text-fonce h5"
+							action="#{CatalogueAssociationBean.afficherPageCatalogue()}"
+							value="Technologie">
+							<f:param id="categName" name="categName" value="Technologie" />
+						</h:commandLink>
+					</h:form>
 				</div>
 				<img src="resources/images/categ_informatique.svg" alt=""
 					class="img_categ_home"></img>
@@ -192,7 +241,14 @@
 			<div
 				class="categ_img d-flex flex-column justify-content-center align-items-center   col-10 col-sm-8 col-md-4 col-lg-2 m-3">
 				<div>
-					<h5 class="text-fonce">Musique</h5>
+					<h:form>
+						<h:commandLink class="text-fonce h5"
+							action="#{CatalogueAssociationBean.afficherPageCatalogue()}"
+							value="Animation/Evenement">
+							<f:param id="categName" name="categName"
+								value="Animation_Evenement" />
+						</h:commandLink>
+					</h:form>
 				</div>
 				<img src="resources/images/categ_music.svg" alt=""
 					class="img_categ_home"></img>
@@ -201,7 +257,13 @@
 			<div
 				class="categ_img d-flex flex-column justify-content-center align-items-center   col-10 col-sm-8 col-md-4 col-lg-2 m-3">
 				<div>
-					<h5 class="text-fonce">Plus de catégories</h5>
+					<h:form>
+						<h:commandLink class="text-fonce h5"
+							action="#{CatalogueAssociationBean.afficherPageCatalogue()}"
+							value="Plus de catégorie">
+							<f:param id="categName" name="categName" value="all" />
+						</h:commandLink>
+					</h:form>
 				</div>
 				<img src="resources/images/categ_plus.svg" alt=""
 					class="img_categ_home"></img>
@@ -283,7 +345,7 @@
 						<h5>Laissez-vous embarquer</h5>
 					</div>
 					<div class="ml-auto">
-						<a href="" class="button-footer py-3 px-5">Inscription</a>
+						<a href="createAccount.xhtml" class="button-footer py-3 px-5">Inscription</a>
 					</div>
 				</div>
 				<div class="row">
@@ -381,6 +443,6 @@
         );
       </script>
 	</link>
->>>>>>> creationAssociation
+	>>>>>>> creationAssociation
 </body>
 </html>
