@@ -21,8 +21,8 @@ import javax.persistence.Transient;
 import fr.isika.cda.galaxos.model.roles.Consumer;
 import jdk.jfr.Timestamp;
 
-@Entity
-@NamedQuery(name = "Panier.findByConsumer", query = "SELECT p FROM Panier p  WHERE p.consumer = :cons_param")
+//@Entity
+//@NamedQuery(name = "Panier.findByConsumer", query = "SELECT p FROM Panier p  WHERE p.consumer = :cons_param")
 public class Panier implements Serializable {
 
 	/**
@@ -57,8 +57,8 @@ public class Panier implements Serializable {
 		this.typePaiement = typePaiement;
 	}
 
-	@OneToMany(cascade = CascadeType.REMOVE,
-			fetch=FetchType.EAGER)
+//	@OneToMany(cascade = CascadeType.REMOVE,
+	//		fetch=FetchType.EAGER)
 	private List<OrderLine> orderlines ;
 	
 	@ManyToOne

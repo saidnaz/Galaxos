@@ -3,6 +3,7 @@ package fr.isika.cda.galaxos.managedbeans;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import javax.faces.application.FacesMessage;
@@ -14,9 +15,11 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import fr.isika.cda.galaxos.exceptions.DAOException;
 import fr.isika.cda.galaxos.helper.UploadHelper;
 import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Domain;
+import fr.isika.cda.galaxos.model.Post;
 import fr.isika.cda.galaxos.service.AdherentService;
 import fr.isika.cda.galaxos.service.PostService;
 import fr.isika.cda.galaxos.viewmodel.PostForm;
@@ -29,7 +32,7 @@ public class PostBean {
 
 	private String Description;
 
-	private Date startDate; // conversion a LocalDate
+	private Date startDate; 
 
 	private Date endDate;
 
@@ -87,12 +90,25 @@ public class PostBean {
 
 	}
 
+	public Date getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+	public Date getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
 	/////////////////////////////////////////////////////////
 
 	@Inject
 	private PostService PS;
 
 	PostForm pform = new PostForm();
+	
 
 	@Inject
 	private AdherentService AS;
@@ -128,10 +144,11 @@ public class PostBean {
 				pform.setPhoto(photoFile);
 				pform.setPrice(price);
 				
+				
 				pform.setIdAdherent(id);
 				PS.create(pform);
 				
-				return "listAnnonces?faces-redirect=true";
+				return "poster?faces-redirect=true";
 
 			} catch (Exception ex) {
 				FacesContext.getCurrentInstance().addMessage("createp", new FacesMessage(ex.getMessage()));
@@ -143,6 +160,14 @@ public class PostBean {
 			return "createAccount";
 		}
 		return "poster";
-	}
+		}
 
-}
+	public List<Post> getALLPost() throws DAOException{
+		
+		List<Post> plist = PS.AffichPosts();
+		return plist;
+	}
+	
+	
+		}
+

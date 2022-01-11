@@ -33,7 +33,7 @@ public class PanierService {
 	
 	public void addToCart(Long idRessource,Long id,String useremail) {
 	
-	Adherent p   = PanierRepository.findByIdPanier(id).get();
+//	Adherent p   = PanierRepository.findByIdPanier(id).get();
 	//Ressource  = ressourceRepository.findById(idRessource).get();
 	 AR.findByEmail(useremail).get();
 	
@@ -50,8 +50,7 @@ public class PanierService {
 		if (panierRepository.findById(ad).isEmpty()) {
 			List<OrderLine> result = new ArrayList<>();
 			result.add(orderEntity);
-			//Panier p1 = new Panier(result, ad, orderEntity.getPrix(),date(atZone(ZoneId.systemDefault()).toLocalDate();), false,
-				//	orderEntity.getQuantite(), orderEntity.getPrix());
+		//	Panier p1 = new Panier(result, ad, orderEntity.getPrix(),date,orderEntity.getQuantite(), orderEntity.getPrix());
 		}else {
 			
 		}

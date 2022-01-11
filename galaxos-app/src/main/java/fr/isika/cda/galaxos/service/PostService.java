@@ -1,6 +1,7 @@
 package fr.isika.cda.galaxos.service;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Optional;
 
 import javax.ejb.Stateless;
@@ -64,6 +65,15 @@ public class PostService implements Serializable {
 //		return folder + "/" + newFile.getName();
 //	}
 
+	
+	
+	public List<Post> AffichPosts() throws DAOException{
+		
+			return PR.AffichPosts();
+		}
+	
+	
+	
 	// Delete
 	public void delete(Post p) throws DAOException {
 
@@ -86,12 +96,9 @@ public class PostService implements Serializable {
 }
 
 /*
- * public List<Post> postList() {
  * 
- * return ( PR.findAll(); }
- * 
- * 
- * public void updatePost(Post pt) { //PS.create(pt); }
+
++
  * 
  * 
  * public void deletePost(Long id) {

@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
+import fr.isika.cda.galaxos.model.Panier;
 import fr.isika.cda.galaxos.model.roles.Consumer;
 import fr.isika.cda.galaxos.viewmodel.ConsumerForm;
 
@@ -26,7 +27,6 @@ public class ConsumerRepository {
 		
 		return consumer;
 	}
-	
 	public Optional<Consumer> findByEmail(String email) {
 		try {
 			return Optional.ofNullable(
@@ -41,7 +41,11 @@ public class ConsumerRepository {
 		return Optional.empty();
 	}
 
+	
+
 	public Consumer findByIdConsumer(Long idUser) {
+		Consumer consumer = new Consumer();
+		
 		return null;
 	}
 

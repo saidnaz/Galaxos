@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 
-@Entity
+//@Entity
 public class OrderLine implements Serializable{
 
 	/**
@@ -19,13 +19,30 @@ public class OrderLine implements Serializable{
 	 */
 	private static final long serialVersionUID = 6066098580527022857L;
 
-	@Id
-	@GeneratedValue (strategy = GenerationType.AUTO)
+	//@Id
+	//@GeneratedValue (strategy = GenerationType.AUTO)
 	private Long orderId;
 
-	@ManyToOne
-	@JoinColumn(name="FK_Command_ID")
-	private Resource resource;
+	
+	private String resourceName;
+	
+	private Double totale;
+
+	public Double getTotale() {
+		return totale;
+	}
+
+	public void setTotale(Double totale) {
+		this.totale = totale;
+	}
+
+	public String getResourceName() {
+		return resourceName;
+	}
+
+	public void setResourceName(String resourceName) {
+		this.resourceName = resourceName;
+	}
 
 	public void setOrderId(Long orderId) {
 		this.orderId = orderId;
@@ -36,12 +53,6 @@ public class OrderLine implements Serializable{
 	}
 
 	
-
-
-	  public Resource getResource() { return resource; }
-
-	  public void setResource(Resource resource) { this.resource = resource; }
-
 
 
 	public Double getPrix() {
@@ -60,10 +71,9 @@ public class OrderLine implements Serializable{
 	}
 
 
-	public OrderLine(Resource resource, Double prix, Integer quantite) {
+	public OrderLine(String resource, Double prix, Integer quantite) {
 		super();
-		this.resource =resource;
-		
+		this.resourceName = resource;		
 		this.prix = prix;
 		this.quantite = quantite;
 	}

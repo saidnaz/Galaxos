@@ -34,52 +34,88 @@
 </h:head>
 
     <h:body>
+    <div class="container">
         <h:form id="createp" enctype="multipart/form-data">
             <fieldset>
                 <legend>Postez votre demande D'un service ou d'une ressource</legend>
-
+                
+               <div class="mb-4">	
+               <div class = "row" >
                 <h:outputLabel for="name">Titre de l'annonce</h:outputLabel>
-                <h:inputText id="name" value=""/>
+                <h:inputText id="name" value="#{postBean.nom}"/>
                 <h:message id="nameMessage" for="name" errorClass="erreur" />
-                <br />
-                 <h:outputLabel for="description">Description </h:outputLabel>
-                 
-                <h:inputText id="description" value=""/>
+                </div>
+                </div>
+                <div class="mb-4">	
+               <div class = "row" >
+                 <h:outputLabel for="description">Description </h:outputLabel>	
+                <h:inputText id="description" value="#{postBean.description}"/>
                 <h:message id="descriptionMessage" for="description" errorClass="erreur" />
-                <br />
-                <!--  
+                </div>
+                </div>
+                <div class="mb-4">
+                <div class = "row" >	
+                <select class="form-select" aria-label="Default select example">
+									<option>Choisir un domaine</option>
+									<option value="1">Animaux</option>
+									<option value="2">Nature</option>
+									<option value="3">Sport</option>
+				</select>
+				</div>	
+				</div>		
+                 
+								
+                
+                <div class="mb-4">	
+               <div class = "row" >
                  <h:outputLabel for="startD">A partir de: </h:outputLabel>
-                <h:inputText id="startD" value="#{postBean.dateStart}"/>
-                <f:convertDateTime pattern="dd-MM-yyyy HH:mm" timeZone="GMT+1" />
+                <h:inputText id="startD" value="#{postBean.startDate}">
+                	<f:convertDateTime pattern="dd-MM-yyyy HH:mm" timeZone="GMT+1" />
+                </h:inputText>
                 <h:message id="startDMessage" for="startD" errorClass="erreur" />
-                <br />
+                </div>
+                </div>
                 
+                 <div class="mb-4">	
+               <div class = "row" >
                  <h:outputLabel for="endD">A partir de: </h:outputLabel>
-                <h:inputText id="endD" value="#{postBean.dateEnd}"/>
-                <f:convertDateTime pattern="dd-MM-yyyy HH:mm" timeZone="GMT+1" />
-             
+                <h:inputText id="endD" value="#{postBean.endDate}">
+                	<f:convertDateTime pattern="dd-MM-yyyy HH:mm" timeZone="GMT+1" />
+             	</h:inputText>
                 <h:message id="endDMessage" for="endD" errorClass="erreur" />
-                <br />    -->
+                </div>
+                </div>
                 
-                <br />
-                 <h:outputLabel for="price">Titre de l'annonce</h:outputLabel>
-                <h:inputText id="price" value=""/>
+                  
+              
+                 <div class="mb-4">	
+                 <div class = "row" >
+                 <h:outputLabel for="price">Prix</h:outputLabel>
+                <h:inputText id="price" value="#{postBean.price}"/>
                 <h:message id="priceMessage" for="price" errorClass="erreur" />
-                <br />
-
+                </div>
+                </div>
+                
+               <div class="mb-4">	
+               <div class = "row" >
                 <div class="form-group">
-														<label for="image">Emplacement d'image</label>
-														<h:inputFile
-															value="" 
-															class="form-control" id="file"></h:inputFile>
-													</div>
-
-                <h:messages globalOnly="true" infoClass="info" />
-
-               <!--   <h:commandButton value="Envoyer" action="#{postBean.create()}" styleClass="sansLabel"/> -->
-                <br />
+				<label for="image">Emplacement d'image</label>
+				<h:inputFile
+				value="#{postBean.photo}" 
+				class="form-control" id="file"></h:inputFile>
+               <h:messages globalOnly="true" infoClass="info" />
+               </div>
+               </div>
+               </div>
+               
+             <div class="mb-4">	
+               <div class = "row" >
+                  <h:commandButton value="Envoyer" action="#{postBean.create()}" styleClass="sansLabel"/> 
+                </div>
+                </div>
             </fieldset>
         </h:form>
+        </div>
     </h:body> 
 </html>
 		

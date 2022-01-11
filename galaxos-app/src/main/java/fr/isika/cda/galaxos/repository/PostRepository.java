@@ -12,6 +12,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import fr.isika.cda.galaxos.dto.MessageDTO;
 import fr.isika.cda.galaxos.exceptions.DAOException;
 import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Domain;
@@ -44,8 +45,11 @@ public class PostRepository implements Serializable {
 		post.setDescription(PF.getDescription());
 		post.setDateStart(PF.getStartDate());
 		post.setDateEnd(PF.getEndDate());
+		post.setNom(PF.getNom());
+		post.setPhoto(PF.getPhoto());
+		post.setPrice(PF.getPrice());
 		
-		// TODO finir les autres mappgins
+	
 		
 		post.setAdherent(optional.get());
 		post.setDomain(domain);
@@ -84,7 +88,7 @@ public class PostRepository implements Serializable {
 		}
 		return Optional.empty();
 	}
-
+	
 	
 	
 //	Query(name = "Post.findByDay", query ="SELECT * FROM Post p where p.dateStart = :LocalDate.now()")
@@ -96,6 +100,16 @@ public class PostRepository implements Serializable {
 	            throw new DAOException( e );
 	        }
 	    }
+	
+	//Affich sur la vue 
+			public List<Post> AffichPosts() throws DAOException {
+				try {
+	            TypedQuery<Post> query = entityManager.createQuery( "SELECT p FROM Post p", Post.class );
+	            return query.getResultList();
+				} catch ( Exception e ) {
+	            throw new DAOException( e );
+				}
+				}
 
 		LocalDate date = LocalDate.now();
 		 public List<Post> findAll() throws DAOException {
@@ -113,22 +127,25 @@ public class PostRepository implements Serializable {
 		  
 		        try {
 		        	entityManager.remove( entityManager.merge( post) );
-		        } catch ( Exception e ) {
+		        	} catch ( Exception e ) {
 		            throw new DAOException( e );
-		        }
-		    }
+		        	}
+					}
 		
 
 		public Post update(Post p) {
+		
+			 if(p.getNom() != null) {
 			   try {
-		        	((PostRepository) entityManager).update( entityManager.merge( p) );
+				  
+		        	 ((PostRepository) entityManager).update( entityManager.merge( p) );
 		        } catch ( Exception e ) {
 		            e.getStackTrace();
-		        }
+		        }}
 			   return p;
-		}
+				}
 		
-	}
+				}
 
 
 	

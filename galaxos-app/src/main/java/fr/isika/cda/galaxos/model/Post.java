@@ -1,6 +1,7 @@
 package fr.isika.cda.galaxos.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -34,11 +35,12 @@ public class Post {
 	@Column(nullable=false)
 	private String photo;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	private Adherent adherent;
 	
 	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	private Domain domain;
+	
 	
 	public Post() {
 		super();

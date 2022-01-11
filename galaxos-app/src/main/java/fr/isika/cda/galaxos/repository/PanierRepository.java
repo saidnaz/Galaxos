@@ -36,10 +36,10 @@ public class PanierRepository {
 		return null;
 	}
 
-	public static Optional<Adherent> findByIdPanier(Long id) {
+//	public static Optional<Adherent> findByIdPanier(Long id) {
 		// TODO Auto-generated method stub
-		return null;
-	}
+	//	return null;
+	//}
 
 	
 
