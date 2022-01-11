@@ -7,7 +7,7 @@ import fr.isika.cda.galaxos.model.Profil;
 
 public class MessageDTO {
 
-	private Message msgDTO;
+	private List<Message> lMsg;
 	
 	private Profil destinataire;
 	
@@ -20,17 +20,17 @@ public class MessageDTO {
 	
 	
 	
-//	public List<Message> getlMsg() {
-//		return lMsg;
-//	}
-//
-//	public void setlMsg(List<Message> lMsg) {
-//		this.lMsg = lMsg;
-//	}
-//	
-//	public void addlMsg(Message msgToAdd) {
-//		this.lMsg.add(msgToAdd);
-//	}
+	public List<Message> getlMsg() {
+		return lMsg;
+	}
+
+	public void setlMsg(List<Message> lMsg) {
+		this.lMsg = lMsg;
+	}
+	
+	public void addlMsg(Message msgToAdd) {
+		this.lMsg.add(msgToAdd);
+	}
 
 	
 	

@@ -1,9 +1,6 @@
 package fr.isika.cda.galaxos.managedbeans;
 
 import java.io.Serializable;
-import java.util.Optional;
-
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -14,11 +11,8 @@ import javax.servlet.http.HttpSession;
 
 import fr.isika.cda.galaxos.exceptions.NomAssociationExistDejaExeption;
 import fr.isika.cda.galaxos.exceptions.RNAAssociationExistDejaExeption;
-import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.Domaine;
-import fr.isika.cda.galaxos.model.roles.GestionnaireAssociation;
-import fr.isika.cda.galaxos.service.AdherentService;
 import fr.isika.cda.galaxos.service.AssociationCompteService;
 import fr.isika.cda.galaxos.viewmodel.AssociationCreationForm;
 
