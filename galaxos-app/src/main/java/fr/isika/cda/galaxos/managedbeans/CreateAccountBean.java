@@ -2,11 +2,9 @@ package fr.isika.cda.galaxos.managedbeans;
 
 import java.io.Serializable;
 
-
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -16,7 +14,7 @@ import fr.isika.cda.galaxos.service.AdherentService;
 import fr.isika.cda.galaxos.viewmodel.AdherentForm;
 
 @ManagedBean(name = "CreateAccountBean")
-@ViewScoped
+@SessionScoped
 public class CreateAccountBean implements Serializable {
 
 	private static final long serialVersionUID = 6612406132359512190L;
