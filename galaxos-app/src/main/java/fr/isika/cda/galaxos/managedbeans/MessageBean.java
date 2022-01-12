@@ -13,8 +13,11 @@ import javax.servlet.http.HttpSession;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import fr.isika.cda.galaxos.dto.MessagerieDTO;
 import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Message;
+import fr.isika.cda.galaxos.model.Profil;
 import fr.isika.cda.galaxos.service.MessageService;
 
 
@@ -33,9 +36,11 @@ public class MessageBean implements Serializable {
 	
 	private Adherent expediteur;
 	
-	private List<Message> messagerieDTO;	// Liste des contacts
+	private List<MessagerieDTO> messagerieDTO;	// Liste des contacts
 	
 	private List<Message> messageDTO;		// ViewModel est délcaré ici dans le bean
+	
+	
 	
 	@NotEmpty
 	@NotNull
@@ -50,12 +55,19 @@ public class MessageBean implements Serializable {
 		
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		expediteur = (Adherent) session.getAttribute("connectedAdherent");
-		
+		afficherContacts(this.expediteur);
 	}
 	
-	private void afficherMessages(Adherent expediteur, Adherent destinataire) {
+	public void afficherMessages(Adherent expediteur, Adherent destinataire) {
 		messageDTO = messageService.afficherMessages(expediteur, destinataire);
 	}
+	
+	public void actualiserMessages(Adherent destinaire)
+	{
+		this.destinataire = destinaire;
+		afficherMessages(expediteur, destinataire);
+	}
+	
 	
 	public void afficherContacts(Adherent expediteur)
 	{
@@ -63,7 +75,10 @@ public class MessageBean implements Serializable {
 		// appeler methode afficher messages pour charger la nouvelle liste à afficher, et faire un redirect sur la page
 	}
 	
-	
+	public void voirProfil (Profil destinataire)
+	{
+		
+	}
 	
 	public String envoyer()
 	{		
@@ -82,12 +97,6 @@ public class MessageBean implements Serializable {
 		 return "messages";		// rester sur la même page en vidant les infos du formulaire
 		// return "" 	// rester sur la même page (en gardant les infos du formulaire)
 	}
-	
-	public void afficher()
-	{
-		//messageService.
-	}
-
 
 	public MessageService getMessageService() {
 		return messageService;
@@ -121,11 +130,11 @@ public class MessageBean implements Serializable {
 		this.expediteur = expediteur;
 	}
 
-	public List<Message> getMessagerieDTO() {
+	public List<MessagerieDTO> getMessagerieDTO() {
 		return messagerieDTO;
 	}
 
-	public void setMessagerieDTO(List<Message> messagerieDTO) {
+	public void setMessagerieDTO(List<MessagerieDTO> messagerieDTO) {
 		this.messagerieDTO = messagerieDTO;
 	}
 

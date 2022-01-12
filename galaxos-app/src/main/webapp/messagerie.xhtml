@@ -37,24 +37,27 @@
 					<div class="card-body contacts_body">
 						<ul class="contacts">
 
-							<ui:repeat var="contact" value="#{MessageBean.messagerieDTO}">
+							<ui:repeat var="contactDTO" value="#{MessageBean.messagerieDTO}">
 							
 							
 								<li class="nav-item">
-								<a class="nav-link  active" href="dashboardAdherent.xhtml">		<!--  test  -->
-								<h:commandLink action="#{MessageBean.messagerieDTO}" />
+<!-- 								<a class="nav-link  active" href="dashboardAdherent.xhtml">		 test  -->
+								<h:form>
+									<h:commandLink action="#{MessageBean.actualiserMessages(contactDTO.contact)}">
 									<div class="d-flex bd-highlight">
 										<div class="img_cont">
 											<img src="#{contact.destinataire.profil.photo}"
 												class="rounded-circle user_img" />
 										</div>
 										<div class="user_info">
-											<span>#{contact.destinataire.profil.prenom}
-												#{contact.destinataire.profil.nom}</span>
-											<p>#{contact.texte}</p>
+											<span>#{contactDTO.contact.profil.prenom}
+												#{contactDTO.contact.profil.nom}</span>
+											<p>#{contactDTO.lastMsg.date}</p>
 										</div>
 									</div>
-									</a>
+									</h:commandLink>
+									</h:form>
+<!-- 									</a> -->
 								</li>
 
 							</ui:repeat>
@@ -142,7 +145,7 @@
 									class="rounded-circle user_img" /> <span class="online_icon"></span>
 							</div>
 							<div class="user_info">
-								<span>Chat with Khalid</span>
+								<span>Chat with #{MessageBean.destinataire.profil.prenom}</span>
 								<p>1767 Messages</p>
 							</div>
 							<div class="video_cam">
@@ -153,13 +156,13 @@
 								
 								<ul>
 								<li class = "phone_num">
-								#{MessageBean.expediteur.profil.telephone}
+								#{MessageBean.destinataire.profil.telephone}
 								06 96 45 15 35
 								</li>
 								
 								
 								<li class = "email_string">
-								#{MessageBean.expediteur.user.email}
+								#{MessageBean.destinataire.user.email}
 								simon@gmail
 								</li>
 								</ul>
@@ -171,7 +174,9 @@
 
 						<div class="action_menu">
 							<ul>
+							<h:form><h:commandLink action="#{MessageBean.voirProfil(MessageBean.destinataire.profil)}">
 								<li><i class="fas fa-user-circle"></i> View profile</li>
+								</h:commandLink></h:form>
 								<li><i class="fas fa-users"></i> Add to close friends</li>
 								<li><i class="fas fa-plus"></i> Add to group</li>
 								<li><i class="fas fa-ban"></i> Block</li>
