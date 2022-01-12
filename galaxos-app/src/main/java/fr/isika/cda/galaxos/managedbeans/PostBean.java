@@ -109,7 +109,7 @@ public class PostBean {
 
 	PostForm pform = new PostForm();
 	
-
+  private Post p;
 	@Inject
 	private AdherentService AS;
 
@@ -117,7 +117,7 @@ public class PostBean {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		Long id = (Long) session.getAttribute("connectedAdherentId");
 		Optional<Adherent> optional = AS.findById(id);
-
+  
 		UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("createp");
 		if (optional.isPresent()) {
 			Adherent adherent = optional.get();
@@ -145,8 +145,8 @@ public class PostBean {
 				pform.setPrice(price);
 				
 				
-				pform.setIdAdherent(id);
-				PS.create(pform);
+			pform.setIdAdherent(id);
+			p =	PS.create(pform);
 				
 				return "poster?faces-redirect=true";
 
