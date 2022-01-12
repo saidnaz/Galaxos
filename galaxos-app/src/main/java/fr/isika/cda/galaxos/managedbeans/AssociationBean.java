@@ -63,6 +63,18 @@ public class AssociationBean {
 		}
 		return "login";
 	}
+	
+	public String devenirAdherent(Association asso) {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);	
+		Long idAdherentConnecte = (Long) session.getAttribute("connectedAdherentId");
+		Optional<Adherent> optionalAd = service.findAdherentById(idAdherentConnecte);
+		if(optionalAd.isPresent()) {
+			adherentConnecte = optionalAd.get();
+			service.devenirAdherent(adherentConnecte, asso);
+			return "index";
+		}
+		return "login";
+	}
 
 	
 	public String delete(Long id) {
