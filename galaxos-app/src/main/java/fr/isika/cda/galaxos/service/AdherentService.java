@@ -43,6 +43,12 @@ public Optional<Adherent> findById(Long id) {
 	return adherentRepository.findById(id);
 }
 
+
+public Optional<Adherent> findAdherentById(Long id) {
+	
+	return adherentRepository.findAdherentById(id);
+}
+
 	public Adherent updateAdherent(ProfilForm form) {
 		return adherentRepository.updateAdherent(form);
 	}
@@ -55,9 +61,9 @@ public Optional<Adherent> findById(Long id) {
 		return adherentRepository.updateCptUser(user);
 	}
 	
-	public Optional<Adherent> findAdherentById(Long id) {
-		return adherentRepository.findById(id);
-	}
+//	public Optional<Adherent> findAdherentById(Long id) {
+	//	return adherentRepository.findById(id);
+	//}
 	
 	public Optional<Profil> findProfilById(Long id) {
 		return adherentRepository.findProfilById(id);
@@ -66,6 +72,7 @@ public Optional<Adherent> findById(Long id) {
 	public Optional<CompteUser> findCptUserById(Long id) {
 		return adherentRepository.findCptUserById(id);
 	}
+
 
 
 }

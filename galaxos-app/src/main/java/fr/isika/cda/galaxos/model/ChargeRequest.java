@@ -28,6 +28,8 @@ public class ChargeRequest {
 			public String getDescription() {
 				return Description;
 			}
+			
+			///////////////////////////////////////////////Getters and Setters//////////////////////////////////////
 			public void setDescription(String description) {
 				Description = description;
 			}
