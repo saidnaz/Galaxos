@@ -31,10 +31,12 @@ public class AssociationBean {
 	private List<Association> associations;
 
 	private List<Adherent> listAdherents;
+	private List<Adherent> listProviders;
 
 	private Long idAdherentConnecte;
 
 	private Boolean isAdherent;
+	private Boolean isProvider;
 
 	/*
 	 * public String init() { HttpServletRequest request = (HttpServletRequest)
@@ -59,12 +61,22 @@ public class AssociationBean {
 			adherentConnecte = optionalAd.get();
 		}
 
-		// on recupere
+		// on recupere la liste des adherents pour voir si oui ou non l'adheerent en
+		// fait parti
 		listAdherents = service.findConsumerParAssociation(asso.getId());
 		isAdherent = false;
 		if (listAdherents.contains(adherentConnecte)) {
 			isAdherent = true;
 		}
+
+		// on recupere la liste des providers pour voir si oui ou non l'adheerent en
+		// fait parti
+		listProviders = service.findProviderParAssociation(asso.getId());
+		isProvider = false;
+		if (listProviders.contains(adherentConnecte)) {
+			isProvider = true;
+		}
+
 		return "association";
 	}
 
@@ -155,6 +167,22 @@ public class AssociationBean {
 
 	public void setIsAdherent(Boolean isAdherent) {
 		this.isAdherent = isAdherent;
+	}
+
+	public Boolean getIsProvider() {
+		return isProvider;
+	}
+
+	public void setIsProvider(Boolean isProvider) {
+		this.isProvider = isProvider;
+	}
+
+	public List<Adherent> getListProviders() {
+		return listProviders;
+	}
+
+	public void setListProviders(List<Adherent> listProviders) {
+		this.listProviders = listProviders;
 	}
 
 }
