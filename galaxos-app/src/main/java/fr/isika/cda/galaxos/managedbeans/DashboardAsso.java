@@ -1,5 +1,6 @@
 package fr.isika.cda.galaxos.managedbeans;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.annotation.PostConstruct;
@@ -24,6 +25,13 @@ public class DashboardAsso {
 
 	private Adherent adherentConnecte;
 
+	private List<Adherent> listProviders;
+
+	private List<Adherent> listConsumers;
+
+	int countProviders;
+	int countConsumers;
+
 	@PostConstruct
 	public void init() {
 
@@ -41,6 +49,13 @@ public class DashboardAsso {
 		if (optional.isPresent()) {
 			asso = optional.get();
 		}
+
+		listProviders = service.findProviderParAssociation(asso.getId());
+		countProviders = listProviders.size();
+		
+		listConsumers = service.findConsumerParAssociation(asso.getId());
+		countConsumers = listConsumers.size();
+
 	}
 
 	public AssociationCompteService getService() {
@@ -69,6 +84,38 @@ public class DashboardAsso {
 
 	public void setAdherentConnecte(Adherent adherentConnecte) {
 		this.adherentConnecte = adherentConnecte;
+	}
+
+	public List<Adherent> getListProviders() {
+		return listProviders;
+	}
+
+	public void setListProviders(List<Adherent> listProviders) {
+		this.listProviders = listProviders;
+	}
+
+	public int getCountProviders() {
+		return countProviders;
+	}
+
+	public void setCountProviders(int countProviders) {
+		this.countProviders = countProviders;
+	}
+
+	public List<Adherent> getListConsumers() {
+		return listConsumers;
+	}
+
+	public void setListConsumers(List<Adherent> listConsumers) {
+		this.listConsumers = listConsumers;
+	}
+
+	public int getCountConsumers() {
+		return countConsumers;
+	}
+
+	public void setCountConsumers(int countConsumers) {
+		this.countConsumers = countConsumers;
 	}
 
 }

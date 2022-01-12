@@ -6,8 +6,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import fr.isika.cda.galaxos.dto.MessageDTO;
 import fr.isika.cda.galaxos.model.Message;
 
 @Stateless
@@ -30,14 +28,16 @@ public class MessageRepo {
 	@SuppressWarnings("unchecked")
 	public List<Message> mesMessages()
 	{
-		List<Message> listMsg = manager.createNamedQuery("Message.findMyList").getResultList();
+		List<Message> listMsg = new ArrayList<>();
+		listMsg = manager.createNamedQuery("Message.findMyList").getResultList();
 		return listMsg;
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Message> allMessages()
 	{
-		List<Message> listMsg = manager.createNamedQuery("Message.findAll").getResultList();
+		List<Message> listMsg = new ArrayList<Message>();
+		listMsg = manager.createNamedQuery("Message.findAll").getResultList();
 		return listMsg;
 	}
 	

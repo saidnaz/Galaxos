@@ -100,9 +100,5 @@ public class CatalogueAssociationBean {
 	public void setDomaines(Domaine domaines) {
 		this.domaines = domaines;
 	}
-	
-	
-
-	
 
 }

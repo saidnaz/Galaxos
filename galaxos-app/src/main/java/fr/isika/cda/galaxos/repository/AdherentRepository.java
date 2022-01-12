@@ -143,6 +143,16 @@ public Adherent updateAdherent(ProfilForm form, Adherent adherent) {
 		return Optional.empty();
 	}
 	
+ 
+	public Optional<Adherent> findAdherentById(Long id) {
+		try {
+			return Optional.ofNullable(this.entityManager.find(Adherent.class, id));
+		} catch(NoResultException ex) {
+			System.out.println("Adherent.findByid() - not found : " + id);
+		}
+		return Optional.empty();
+	}
+
 	public Optional<CompteUser> findCptUserById(final Long id) {
 		try {
 			return Optional.ofNullable(this.entityManager.createNamedQuery("CompteUser.findById", CompteUser.class)
@@ -153,5 +163,6 @@ public Adherent updateAdherent(ProfilForm form, Adherent adherent) {
 		return Optional.empty();
 	}
 	
+
 
 }

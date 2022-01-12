@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:b="http://bootsfaces.net/ui">
+
+
+<h:head>
+	<title>Ajouter Ressource</title>
+	<meta charset="utf-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		
+		
+	<h:outputScript library="js"
+		name="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" />
+
+	<!-- CSS  -->
+	<h:outputStylesheet library="css" name="/main.css" />
+	<h:outputStylesheet library="css" name="/home.css" />
+	<h:outputStylesheet library="css" name="/newResource.css" />
+	<h:outputStylesheet library="css" name="/creation-association.css" />
+	<h:outputStylesheet library="css" name="/soft-ui-dashboard.css" />
+
+</h:head>
+
+
+<body class="">
+
+	<div class="container position-sticky z-index-sticky top-0">
+		<div class="row">
+			<div class="col-12">
+				<!--SECTION NAV-->
+				<div class="fixed-top">
+					<nav class="navbar navbar-expand-lg navbar-light navbar-white"
+						id="navbar"> <a class="navbar-brand" href="index.xhtml">
+						<img alt="LOGO" width="70" class="logo-brand-fr"
+						src="resources/images/logo.png" />
+					</a> <a class="navbar-brand d-none" href="index.xhtml"> <img
+						alt="LOGO" width="70" class="logo-brand-fr"
+						src="resources/images/logo.png" />
+					</a>
+					<button class="navbar-toggler" data-target="#nav_site_help"
+						data-toggle="collapse" type="button">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					GALAXOS
+					<div class="collapse navbar-collapse" id="nav_site_help">
+						<ul class="navbar-nav ml-auto">
+							<li class="m-1 nav-item d-flex align-items-center"><a
+								class="p-3 nav-link main-button" href="" style="color: white">
+									Besoin d'un service ? </a></li>
+							<li class="m-1 nav-item d-flex align-items-center"><h:link
+									outcome="creationAssociation.xhtml"
+									class="nav-link nav-link-hover-black button-tertiaire">Créer son association</h:link>
+							</li>
+							<li class=" m-1 nav-item d-flex align-items-center"><a
+								class="nav-link nav-link-hover-black button-secondaire" href="">Mon
+									compte</a></li>
+						</ul>
+					</div>
+					</nav>
+				</div>
+
+				<!-- End Navbar -->
+			</div>
+		</div>
+	</div>
+
+
+
+	<main class="main-content  mt-0"> <section>
+	<div class="page-header min-vh-75">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
+					<div class="card card-plain mt-8 mb-5 mx-auto">
+						<div class="card-header pb-0 text-left bg-transparent">
+							<h3 class="font-weight-bolder text-info text-gradient">Créer
+								une ressource</h3>
+
+							<div class="btn-radio-animated m-b-3 nav nav-pills nav-fill">
+								<input class="btn-left nav-link" type="radio" value="vente"
+									id="radio-vente" name="typeRes" checked="true"
+									onClick="afficherCacher()" /> <input
+									class="btn-right nav-link" type="radio" value="location"
+									id="radio-location" name="typeRes" onClick="afficherCacher()" />
+								<label class="btn-left">Vente</label> <label class="btn-right">Location</label>
+								<span class="background rounded-3"></span>
+							</div>
+							<div style="display: block;" id="venteForm">
+								<div class="card-body">
+									<h:form id="addVenteForm" role="form"
+										enctype="multipart/form-data">
+										<label>Nom</label>
+										<div class="mb-3">
+											<h:inputText id="name" class="form-control"
+												pt:placeholder="Nom" aria-label="Nom"
+												aria-describedby="ajout-nom"
+												value="#{resourceBean.venteForm.name}" />
+
+										</div>
+										<label for="formFileMultiple">Photos</label>
+										<div class="mb-3">
+											<h:inputFile value="#{resourceBean.venteForm.photos}"
+												a:multiple="true" class="form-control" id="file"
+												aria-label="Photos" aria-describedby="ajout-photos"></h:inputFile>
+										</div>
+										<label>Prix</label>
+										<div class="input-group mb-3">
+											<h:inputText id="prix" class="form-control input-group-text"
+												pt:placeholder="Prix" aria-label="Prix"
+												aria-describedby="ajout-prix"
+												value="#{resourceBean.venteForm.tarif}" />
+											<span class="input-group-text">€</span>
+										</div>
+
+										<div class="text-center">
+											<h:commandButton action="#{resourceBean.create('vente')}"
+												value="Valider" class="btn bg-gradient-info w-100 mt-4 mb-0" />
+										</div>
+									</h:form>
+								</div>
+							</div>
+
+							<div style="display: none;" id="locationForm">
+								<div class="card-body">
+									<h:form id="addLocationForm" role="form"
+										enctype="multipart/form-data">
+										<label>Nom</label>
+										<div class="mb-3">
+											<h:inputText id="name" class="form-control"
+												pt:placeholder="Nom" aria-label="Nom"
+												aria-describedby="ajout-nom"
+												value="#{resourceBean.locationForm.name}" />
+										</div>
+										<label for="formFileMultiple">Photos</label>
+										<div class="mb-3">
+											<h:inputFile value="#{resourceBean.locationForm.photos}"
+												a:multiple="true" class="form-control" id="file"
+												aria-label="Photos" aria-describedby="ajout-photos"></h:inputFile>
+										</div>
+										<label>Prix</label>
+										<div class="input-group mb-3">
+											<h:inputText id="prix" class="form-control input-group-text"
+												pt:placeholder="Prix" aria-label="Prix"
+												aria-describedby="ajout-prix"
+												value="#{resourceBean.locationForm.tarif}" />
+											<span class="input-group-text">€/J</span>
+										</div>
+
+										<label>Indisponibilité (Facultatif)</label>
+										<div class="input-group mb-3">
+											<label>Date de début d'indisponibilité <h:inputText
+													a:type="date"
+													value="#{resourceBean.locationForm.dateDebut}"
+													class="form-control" />
+											</label> <label>Date de fin d'indisponibilité <h:inputText
+													a:type="date" value="#{resourceBean.locationForm.dateFin}"
+													class="form-control" />
+											</label>
+										</div>
+										<div class="text-center">
+											<h:commandButton action="#{resourceBean.create('location')}"
+												value="Valider" class="btn bg-gradient-info w-100 mt-4 mb-0" />
+										</div>
+									</h:form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div
+						class="oblique position-absolute top-0 h-100 d-md-block d-none">
+						<div
+							class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"
+							style="background-image: url('./resources/images/curved-images/curved6.jpg')"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section> </main>
+	<!-- Footer-->
+	<div class="footer">
+		<div class="site-section">
+			<div class="container">
+				<div
+					class="join_footer d-block d-md-flex mt-5 align-items-center px-5">
+					<div>
+						<h2 class="text-white">Vous souhaitez nous rejoindre ?</h2>
+						<h5>Laissez-vous embarquer</h5>
+					</div>
+					<div class="ml-auto">
+						<a href="" class="button-footer py-3 px-5">Inscription</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm">
+						<div class="d-flex align-items-center">
+							<img src="resources/images/logo.png" alt=""
+								style="max-width: 50px;" />
+							<p class="text-white"
+								style="font-weight: 700; display: block; padding-top: 15px">GALAXOS</p>
+						</div>
+						<p class="text-muted ml-5 d-inline">© 2021</p>
+					</div>
+					<div class="col-sm">
+						<p class="text-white" style="font-weight: 500">Nous découvrir</p>
+						<ul class="list-unstyled ">
+							<li class="text-muted">Qui sommes nous ?</li>
+							<li class="text-muted">Nos engagements</li>
+						</ul>
+					</div>
+					<div class="col-sm">
+						<p class="text-white" style="font-weight: 500">Aide</p>
+						<ul class="list-unstyled ">
+							<li class="text-muted">FAQ</li>
+							<li class="text-muted">Centre d'aide</li>
+							<li class="text-muted">Notre guide</li>
+						</ul>
+					</div>
+					<div class="col-sm">
+						<p class="text-white" style="font-weight: 500">Informations
+							légales</p>
+						<ul class="list-unstyled ">
+							<li class="text-muted">CGU utilisateur</li>
+							<li class="text-muted">CGU association</li>
+							<li class="text-muted">Mentions légales</li>
+							<li class="text-muted">Gestion des cookies</li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<p class="text-white" style="font-weight: 500">Suivez-nous</p>
+						<ul class="list-unstyled social d-flex">
+							<li class="m-1"><a href="#"
+								class="d-flex justify-content-center align-items-center"> <svg
+										xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+										fill="currentColor" class="bi bi-facebook text-white"
+										viewBox="0 0 16 16"> <path
+										d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+									</svg>
+							</a></li>
+							<li class="m-1"><a href="#"
+								class="d-flex justify-content-center align-items-center"> <svg
+										xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+										fill="currentColor" class="bi bi-youtube text-white"
+										viewBox="0 0 16 16"> <path
+										d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" />
+									</svg>
+							</a></li>
+							<li class="m-1"><a href="#"
+								class="d-flex justify-content-center align-items-center"> <svg
+										xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+										fill="currentColor" class="bi bi-twitter text-white"
+										viewBox="0 0 16 16"> <path
+										d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+									</svg>
+							</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+  $('.PHname').attr('placeholder', 'Nom de lassociation');
+</script>
+	<h:outputScript library="js" name="core/popper.min.js" />
+	<h:outputScript library="js" name="core/bootstrap.min.js" />
+	<h:outputScript library="js" name="plugins/perfect-scrollbar.min.js" />
+	<h:outputScript library="js" name="plugins/smooth-scrollbar.min.js" />
+	<!--   Core JS Files   
+	
+	<script src="/resources/js/core/popper.min.js"></script>
+	<script src="/resources/js/core/bootstrap.min.js"></script>
+	<script src="/resources/js/plugins/perfect-scrollbar.min.js"></script>
+	<script src="/resources/js/plugins/smooth-scrollbar.min.js"></script>-->
+	<script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win &amp;&amp; document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+	<script>
+  function afficherCacher(){
+	  if(document.getElementById("radio-vente").checked){
+		  console.log("vente");
+	      document.getElementById("venteForm").style.display= "block";
+	      document.getElementById("locationForm").style.display= "none";
+	  }else if (document.getElementById("radio-location").checked) {
+		  console.log("location");
+		  document.getElementById("venteForm").style.display= "none";
+	      document.getElementById("locationForm").style.display= "block";
+	  }
+	}
+</script>
+	<!-- Github buttons -->
+	<script async="async defer" src="https://buttons.github.io/buttons.js"></script>
+	<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+	<h:outputScript library="js" name="soft-ui-dashboard.min.js?v=1.0.3" />
+	<!--  <script src="/resources/js/soft-ui-dashboard.min.js?v=1.0.3"></script> -->
+
+	<script>
+$(function() {
+  $('input[name="daterange"]').daterangepicker({
+    opens: 'left'
+  }, function(start, end, label) {
+    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+  });
+});
+</script>
+</body>
+</html>

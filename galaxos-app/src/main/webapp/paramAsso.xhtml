@@ -57,36 +57,42 @@
 	<div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100"
 		id="sidenav-collapse-main">
 		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link "
-				href="../pages/dashboard.html">
+			<li class="nav-item "><h:link outcome="dashboardAsso"
+					class="nav-link" value="">
 					<div
 						class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-						<i class="fas fa-store" style="font-size: 17px;"></i>
-					</div> <span class="nav-link-text ms-1">Dashboard</span>
-			</a></li>
+						<i class="fas fa-store" style="font-size: 17px; color: #2e2f5e"></i>
+					</div>
+					<span class="nav-link-text ms-1">Dashboard</span>
+				</h:link></li>
 			<li class="nav-item"><h:link id="param" outcome="paramAsso"
 					class="nav-link active" value="">
 					<f:param name="param" value="#{dashboardAsso.asso.id}" />
 					<div
 						class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 						<i class="fas fa-cog text-fonce"
-							style="font-size: 17px; color: #2e2f5e"></i>
+							style="font-size: 17px; "></i>
 					</div>
 					<span class="nav-link-text ms-1">Paramètres</span>
 				</h:link></li>
-			<li class="nav-item"><a class="nav-link" href="">
+			<li class="nav-item"><h:link outcome="dashboardAsso_consumer"
+					class="nav-link" value="">
 					<div
 						class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-						<i class="fas fa-users" style="font-size: 17px; color: #2e2f5e"></i>
-					</div> <span class="nav-link-text ms-1">Adhérents</span>
-			</a></li>
-			<li class="nav-item"><a class="nav-link  " href="">
+						<i class="fas fa-users text-fonce"
+							style="font-size: 17px; color: #2e2f5e"></i>
+					</div>
+					<span class="nav-link-text ms-1">Adhérents</span>
+				</h:link></li>
+			<li class="nav-item"><h:link outcome="dashboardAsso_providers"
+					class="nav-link" value="">
 					<div
 						class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-						<i class="fas fa-user-astronaut"
-							style="font-size: 17px; color: black"></i>
-					</div> <span class="nav-link-text ms-1">Providers</span>
-			</a></li>
+						<i class="fas fa-user-astronaut text-fonce"
+							style="font-size: 17px; color: #2e2f5e"></i>
+					</div>
+					<span class="nav-link-text ms-1">Providers</span>
+				</h:link></li>
 			<li class="nav-item"><a class="nav-link  "
 				href="../pages/virtual-reality.html">
 					<div
@@ -107,12 +113,15 @@
 					class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Mes
 					informations</h6>
 			</li>
-			<li class="nav-item"><a class="nav-link" href="">
+			<li class="nav-item"><h:link outcome="dashboardAdherent_profile"
+					class="nav-link" value="">
 					<div
 						class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-						<i class="fas fa-user" style="font-size: 17px; color: #2e2f5e"></i>
-					</div> <span class="nav-link-text ms-1">Mon profil</span>
-			</a></li>
+						<i class="fas fa-cog text-fonce"
+							style="font-size: 17px; color: #2e2f5e"></i>
+					</div>
+					<span class="nav-link-text ms-1">Profil</span>
+				</h:link></li>
 		</ul>
 	</div>
 	</aside>

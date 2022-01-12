@@ -1,5 +1,6 @@
 package fr.isika.cda.galaxos.managedbeans;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -34,7 +35,7 @@ List <OrderLine> myorderlines = new ArrayList<OrderLine>();
 String resourName;
 Long  panierId;
 Adherent userconnected;
-float sommeDesAchats;
+BigDecimal sommeDesAchats;
 String item;
 int cartsize;
 Map<Integer,OrderLine> map = new HashMap<Integer,OrderLine >();
@@ -161,14 +162,14 @@ public void setPrice(Double price) {
 
 
 
-		public float getSommeDesAchats() {
+		public BigDecimal getSommeDesAchats() {
 			return sommeDesAchats;
 		}
 
 
 
 
-		public void setSommeDesAchats(float sommeDesAchats) {
+		public void setSommeDesAchats(BigDecimal sommeDesAchats) {
 			this.sommeDesAchats = sommeDesAchats;
 		}
 
