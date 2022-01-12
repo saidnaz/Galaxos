@@ -11,17 +11,16 @@ import javax.servlet.http.HttpSession;
 
 import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Adresse;
-<<<<<<< HEAD
+
 import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.CompteUser;
 import fr.isika.cda.galaxos.model.Profil;
 import fr.isika.cda.galaxos.service.AdherentService;
 import fr.isika.cda.galaxos.viewmodel.ProfilForm;
-=======
+
 import fr.isika.cda.galaxos.model.CompteUser;
 import fr.isika.cda.galaxos.model.Profil;
 import fr.isika.cda.galaxos.service.AdherentService;
->>>>>>> dashboardAdherent
 
 @ManagedBean
 @ViewScoped
@@ -30,29 +29,25 @@ public class DashboardProfil {
 	@Inject
 	private AdherentService service;
 	
-<<<<<<< HEAD
+
 //	Profil profil = new Profil();
 //	CompteUser user = new CompteUser();
-	Adresse adresse = new Adresse();
 	
+	private Adresse adresse;
 	private Adherent adherent;
 	private Profil profil;
 	private CompteUser user;
 	private ProfilForm form = new ProfilForm();
-=======
-	Profil profil = new Profil();
-	CompteUser user = new CompteUser();
-	Adresse adresse = new Adresse();
+
 	
 	private Adherent adherentConnecte;
->>>>>>> dashboardAdherent
 	
 	@PostConstruct
 	public void init() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		profil = (Profil) session.getAttribute("profil");
 		user = (CompteUser) session.getAttribute("user");
-<<<<<<< HEAD
+
 
 	}
 	
@@ -80,25 +75,6 @@ public class DashboardProfil {
 //		
 //		return "";
 //	}
-=======
-		
-		//		Long id = (Long) session.getAttribute("profilId");
-//		
-//		Long idAdherentConnecte = (Long) session.getAttribute("connectedAdherentId");
-//		
-//		Optional<Adherent> optionalAd = service.findAdherentById(idAdherentConnecte);
-//		if (optionalAd.isPresent()) {
-//			adherentConnecte = optionalAd.get();
-//		}
-//		
-//		Optional<Profil> optional = service.findProfilById(id);
-//		if (optional.isPresent()) {
-//			profil = optional.get();
-//		}
-//		
-		
-	}
->>>>>>> dashboardAdherent
 
 	public DashboardProfil() {
 	}
@@ -119,7 +95,7 @@ public class DashboardProfil {
 	public void setProfil(Profil profil) {
 		this.profil = profil;
 	}
-<<<<<<< HEAD
+
 	
 	public CompteUser getUser() {
 		return user;
@@ -128,8 +104,7 @@ public class DashboardProfil {
 	public void setUser(CompteUser user) {
 		this.user = user;
 	}
-=======
->>>>>>> dashboardAdherent
+
 
 	public Adresse getAdresse() {
 		return adresse;
@@ -139,7 +114,7 @@ public class DashboardProfil {
 		this.adresse = adresse;
 	}
 
-<<<<<<< HEAD
+
 	public Adherent getAdherent() {
 		return adherent;
 	}
@@ -160,15 +135,11 @@ public class DashboardProfil {
 		this.adherent = adherent;
 	}
 	
-=======
 	public Adherent getAdherentConnecte() {
 		return adherentConnecte;
 	}
 
-	public void setAdherentConnecte(Adherent adherentConnecte) {
-		this.adherentConnecte = adherentConnecte;
-	}
->>>>>>> dashboardAdherent
+
 	
 
 }

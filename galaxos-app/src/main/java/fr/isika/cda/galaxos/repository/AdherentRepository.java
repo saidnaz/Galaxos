@@ -1,22 +1,18 @@
 package fr.isika.cda.galaxos.repository;
 
 import java.io.Serializable;
-
 import java.util.Optional;
 
 import javax.ejb.Stateless;
-import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import javax.servlet.http.HttpSession;
 
 import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Adresse;
 import fr.isika.cda.galaxos.model.CompteUser;
 import fr.isika.cda.galaxos.model.Profil;
 import fr.isika.cda.galaxos.viewmodel.AdherentForm;
-import fr.isika.cda.galaxos.viewmodel.ProfilForm;
 
 @Stateless
 public class AdherentRepository implements Serializable{
@@ -74,7 +70,7 @@ public class AdherentRepository implements Serializable{
 	}
 	
 
-	public Adherent update(Adherent adherent) {
+	public Adherent updateAdherent(Adherent adherent) {
 		return entityManager.merge(adherent);
 	}
 	

@@ -13,6 +13,10 @@ import fr.isika.cda.galaxos.repository.AdherentRepository;
 import fr.isika.cda.galaxos.viewmodel.AdherentForm;
 import fr.isika.cda.galaxos.viewmodel.ProfilForm;
 
+
+
+
+
 @Stateless
 public class AdherentService {
 
@@ -57,9 +61,10 @@ public Optional<Adherent> findById(Long id) {
 	
 	public CompteUser updateCptUser(CompteUser user) {
 		return adherentRepository.updateCptUser(user);
+	}
 
 	public Adherent update(Adherent adherent) {
-		return adherentRepository.update(adherent);
+		return adherentRepository.updateAdherent(adherent);
 
 	}
 	
