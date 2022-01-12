@@ -47,12 +47,10 @@ public class ProfilForm implements Serializable {
 	private String libelle;
 	
 	@NotNull(message = "Ne doit pas être null")
-	@Pattern(regexp = "/[^0-9]{5}/", message = "Uniquement des chiffres")
 	private Integer codePostal;
 	
 
 	@NotNull(message = "Ne doit pas être null")
-	@Pattern(regexp = "[^0-9]*", message = "Ne doit pas contenir des chiffres")
 	private String ville;
 
 
