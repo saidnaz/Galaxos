@@ -29,7 +29,7 @@ public class Domain {
 	@OneToMany(mappedBy = "domain")
 	private List<Service> services;
 
-	@OneToMany(mappedBy = "domain")
+	@OneToMany(/*mappedBy = "domain"*/)
 	private List<Resource> resource;
 
 	@OneToMany(mappedBy = "fk_idDomain")
