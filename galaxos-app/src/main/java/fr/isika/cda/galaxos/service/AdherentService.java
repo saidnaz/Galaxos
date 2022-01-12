@@ -51,6 +51,7 @@ public Optional<Adherent> findById(Long id) {
 
 	public Adherent updateAdherent(ProfilForm form, Adherent adherent) {
 		return adherentRepository.updateAdherent(form, adherent);
+	}
 
 public Optional<Adherent> findAdherentById(Long id) {
 	
