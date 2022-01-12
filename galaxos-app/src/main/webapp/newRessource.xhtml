@@ -9,10 +9,14 @@
 
 
 <h:head>
+	<title>Ajouter Ressource</title>
 	<meta charset="utf-8" />
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
+		
+		
+	<h:outputScript library="js"
+		name="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" />
 
 	<!-- CSS  -->
 	<h:outputStylesheet library="css" name="/main.css" />
@@ -20,18 +24,7 @@
 	<h:outputStylesheet library="css" name="/newResource.css" />
 	<h:outputStylesheet library="css" name="/creation-association.css" />
 	<h:outputStylesheet library="css" name="/soft-ui-dashboard.css" />
-	<h:outputStylesheet library="css"
-		name="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
-	<h:outputScript library="js"
-		name="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" />
-	<h:outputScript library="js"
-		name="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js" />
-	<h:outputScript library="js"
-		name="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" />
-	<h:outputScript library="js"
-		name="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" />
-	<h:outputStylesheet library="css"
-		name="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 </h:head>
 
 
@@ -162,9 +155,12 @@
 										<label>Indisponibilité (Facultatif)</label>
 										<div class="input-group mb-3">
 											<label>Date de début d'indisponibilité <h:inputText
-													a:type="date" value="#{resourceBean.locationForm.dateDebut}" class="form-control" />
+													a:type="date"
+													value="#{resourceBean.locationForm.dateDebut}"
+													class="form-control" />
 											</label> <label>Date de fin d'indisponibilité <h:inputText
-													a:type="date" value="#{resourceBean.locationForm.dateFin}" class="form-control" />
+													a:type="date" value="#{resourceBean.locationForm.dateFin}"
+													class="form-control" />
 											</label>
 										</div>
 										<div class="text-center">
@@ -280,7 +276,6 @@
 	<h:outputScript library="js" name="core/bootstrap.min.js" />
 	<h:outputScript library="js" name="plugins/perfect-scrollbar.min.js" />
 	<h:outputScript library="js" name="plugins/smooth-scrollbar.min.js" />
-
 	<!--   Core JS Files   
 	
 	<script src="/resources/js/core/popper.min.js"></script>
