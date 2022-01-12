@@ -6,8 +6,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import fr.isika.cda.galaxos.dto.MessageDTO;
 import fr.isika.cda.galaxos.model.Message;
 
 @Stateless
