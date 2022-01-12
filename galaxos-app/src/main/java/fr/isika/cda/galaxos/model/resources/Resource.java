@@ -9,16 +9,18 @@ import javax.persistence.*;
 
 import fr.isika.cda.galaxos.model.roles.Provider;
 
-@Entity 
+@Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE) 
 @DiscriminatorColumn( 
 		  name="TYPE_RESOURCE", 
 		  discriminatorType=DiscriminatorType.STRING 
 		) 
+@NamedQuery(name = "Resource.findById", query = "SELECT r FROM Resource r WHERE r.id_resource = :id")
+
 public abstract class Resource{ 
 	
 	@Id 
-	@Column(name="id_ressource")
+	@Column(name="id_resource")
 	@GeneratedValue(strategy = GenerationType.AUTO) 
 	private Long idRessource; 
 	 
