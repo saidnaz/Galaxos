@@ -2,6 +2,7 @@ package fr.isika.cda.galaxos.repository;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 import javax.ejb.Stateless;
 import javax.faces.context.FacesContext;
@@ -62,5 +63,15 @@ public class ResourceRepo {
 		entityManager.persist(resource);
 		
 		return resource;
+	}
+	
+	public Optional<Resource> findById(final Long id) {
+		try {
+			return Optional.ofNullable(this.entityManager.createNamedQuery("Resource.findById", Resource.class)
+					.setParameter("id", id).getSingleResult());
+		} catch (NoResultException ex) {
+			System.out.println("Resource.findById() - not found : " + id);
+		}
+		return Optional.empty();
 	}
 }
