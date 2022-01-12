@@ -36,7 +36,7 @@ public class CheckoutBean {
     private PanierBean panier;
   
     private String stripeToken;
-    @Inject
+    
     
     private String email;
     
