@@ -117,6 +117,23 @@ public class Message {
 	public Message() {
 	}
 
+	public Message(LocalDateTime date, String texte, Adherent expediteur,  Adherent destinataire) {
+		super();
+		this.date = date;
+		this.texte = texte;
+		this.expediteur = expediteur;
+		this.destinataire = destinataire;
+	}
+	
+	public Message(String texte, Adherent expediteur,Adherent destinataire) {
+		super();
+		this.texte = texte;
+		this.expediteur = expediteur;
+		this.destinataire = destinataire;
+	}
+	
+	
+
 	
 	
 	

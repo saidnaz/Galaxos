@@ -2,6 +2,7 @@ package fr.isika.cda.galaxos.managedbeans;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -13,12 +14,11 @@ import javax.servlet.http.HttpSession;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
-import fr.isika.cda.galaxos.dto.MessageDTO;
+
 import fr.isika.cda.galaxos.dto.MessagerieDTO;
 import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Message;
 import fr.isika.cda.galaxos.model.Profil;
-import fr.isika.cda.galaxos.model.roles.Role;
 import fr.isika.cda.galaxos.service.MessageService;
 
 
@@ -37,9 +37,11 @@ public class MessageBean implements Serializable {
 	
 	private Adherent expediteur;
 	
-	private List<Message> messagerieDTO;	// Liste des contacts
+	private List<MessagerieDTO> messagerieDTO;	// Liste des contacts
 	
 	private List<Message> messageDTO;		// ViewModel est délcaré ici dans le bean
+	
+	private int role;
 	
 	@NotEmpty
 	@NotNull
@@ -47,7 +49,16 @@ public class MessageBean implements Serializable {
 	private String text;
 	
 	
-	
+	public String connected()
+	{
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		boolean isConnected = (boolean) session.getAttribute("isConnected");
+		if (!isConnected)
+		{
+			return "index.xhtml";
+		}
+		return "";
+	}
 	// Initialisation : Lors du lancement du serv, lance les méthodes à l'intérieur du init
 	@PostConstruct
 	private void init() {
@@ -55,19 +66,58 @@ public class MessageBean implements Serializable {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		expediteur = (Adherent) session.getAttribute("connectedAdherent");
 		
+		if(expediteur.getRole().contains("User"))
+		{
+			this.role = 1;
+		}
+		else this.role = 0;
+		
+		afficherContacts(this.expediteur);
+		
+		if(!messagerieDTO.isEmpty())
+		{
+			destinataire = messagerieDTO.get(0).getContact();
+			messageDTO = messageService.obtenirMessages(expediteur, destinataire);
+		}
+		else { 
+			List<Message> messageDTOvide = new ArrayList<>();
+			messageDTO = messageDTOvide;
+		}
+			
+		
 	}
 	
-	private void afficherMessages(Adherent expediteur, Adherent destinataire) {
-		messageDTO = messageService.afficherMessages(expediteur, destinataire);
+	public void obtenirMessages(Adherent expediteur, Adherent destinataire) {
+		messageDTO = messageService.obtenirMessages(expediteur, destinataire);
 	}
+	
+	public void actualiserMessages(Adherent destinaire)
+	{
+		if(destinataire!=null)
+		{
+			this.destinataire = destinaire;
+			obtenirMessages(expediteur, destinataire);
+		}
+		
+	}
+	
 	
 	public void afficherContacts(Adherent expediteur)
 	{
-		messagerieDTO = messageService.afficherContacts(expediteur);
+		messagerieDTO = messageService.obtenirContacts(expediteur);
 		// appeler methode afficher messages pour charger la nouvelle liste à afficher, et faire un redirect sur la page
 	}
 	
+	public void goToMessagerie()
+	{
+		
+	}
 	
+	
+	public void voirProfil (Profil destinataire)
+	{
+		
+	}
 	
 	public String envoyer()
 	{		
@@ -80,18 +130,12 @@ public class MessageBean implements Serializable {
 		
 		messageService.envoyer(msg);
 					
-		afficherMessages(expediteur, destinataire);	// Actualiser la vue message après l'envoie pour voir le message envoyé apparaitre à la liste des autres messages
+		obtenirMessages(expediteur, destinataire);	// Actualiser la vue message après l'envoie pour voir le message envoyé apparaitre à la liste des autres messages
 		
 		// return "index?faces-redirect=true"; 	// // return "index?faces-redirect=true"; 	// remet les paramètres de la page (des classes) à zero.
 		 return "messages";		// rester sur la même page en vidant les infos du formulaire
 		// return "" 	// rester sur la même page (en gardant les infos du formulaire)
 	}
-	
-	public void afficher()
-	{
-		//messageService.
-	}
-
 
 	public MessageService getMessageService() {
 		return messageService;
@@ -125,11 +169,11 @@ public class MessageBean implements Serializable {
 		this.expediteur = expediteur;
 	}
 
-	public List<Message> getMessagerieDTO() {
+	public List<MessagerieDTO> getMessagerieDTO() {
 		return messagerieDTO;
 	}
 
-	public void setMessagerieDTO(List<Message> messagerieDTO) {
+	public void setMessagerieDTO(List<MessagerieDTO> messagerieDTO) {
 		this.messagerieDTO = messagerieDTO;
 	}
 
@@ -139,6 +183,12 @@ public class MessageBean implements Serializable {
 
 	public void setMessageDTO(List<Message> messageDTO) {
 		this.messageDTO = messageDTO;
+	}
+	public int getRole() {
+		return role;
+	}
+	public void setRole(int role) {
+		this.role = role;
 	}
 	
 	

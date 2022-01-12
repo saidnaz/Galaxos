@@ -213,9 +213,7 @@
 	}
 	.msg_head{
 		position: relative;
-	}
-	
-	
+	}	
 	
 	#action_menu_btn{
 		position: absolute;
@@ -259,7 +257,13 @@
 	}
 	
 	
+	.email_string {
+	display: none;
+	}
 	
+	.phone_num{
+	display: none;
+	}
 	
 	
 	
