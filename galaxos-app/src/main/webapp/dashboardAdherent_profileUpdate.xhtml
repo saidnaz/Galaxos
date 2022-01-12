@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+
+<title>Galaxos : la plateforme de tous les services</title>
+	<meta
+		content="Une plateforme d'associations présentant une multitude de services" />
+	<meta content="" name="application-name" />
+	<link rel="icon" href="logo.ico" />
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<meta content="yes" name="mobile-web-app-capable" />
+
+		<!--     Fonts and icons     -->
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+		rel="stylesheet" />
+
+	<!-- Font Awesome Icons -->
+	<script src="https://kit.fontawesome.com/42d5adcbca.js"
+		crossorigin="anonymous"></script>
+
+	<!-- CSS  -->
+	<h:outputStylesheet library="css" name="dashboardProfile.css" />
+	<h:outputStylesheet library="css" name="main.css" />
+	<h:outputStylesheet library="css" name="home.css" />
+	<h:outputStylesheet library="css" name="creation-associaation.css" />
+	<h:outputStylesheet library="css" name="soft-ui-dashboard.css" />
+	
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+
+<style>
+.open-btn { 
+     display: flex;
+     justify-content: center;
+   align-items: flex-end;
+   height: auto;
+     }
+    
+.open-button {
+    background-color: #1c87c9;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    }
+    
+.login-popup {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    }
+    
+.form-popup {
+    display: none;
+    position: fixed;
+    left: 45%;
+    top:5%;
+    transform: translate(-45%,5%);
+    border: 2px solid #666;
+    z-index: 9;
+    }
+    
+.form-container {
+    max-width: 300px;
+    padding: 20px;
+    background-color: #fff;
+    }
+    
+.form-container input[type=text] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #eee;
+    }
+    
+.form-container input[type=text]:focus {
+    background-color: #ddd;
+    outline: none;
+    }
+    
+.form-container .btn {
+    background-color: #8ebf42;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+    }
+    
+.form-container .cancel {
+    background-color: #cc0000;
+    }
+    
+.form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+    }
+
+</style>
+
+</h:head>
+
+ 
+<body>
+
+    <div class="login-popup">
+				      <div class="form-popup" id="popupForm">
+				        <h:form action="dashboardAdherent_profile.xhtml" class="form-container" id="formulaireProfil">
+				          <h2>Mise à jour de votre profil Galaxos</h2>
+				          
+				          <div class="mb-4">
+						  <i class="bi bi-person-plus-fill text-white"></i>
+						  <h:inputText id="NumeroInput" class="form-control "
+								placeholder="Numéro" aria-label="ex : 14"
+							    value="#{dashboardProfil.form.numero}" />
+						  <h:messages for="NumeroInput" errorClass="erreurInputForm" />
+						  </div>
+						  
+						  <div class="mb-4">
+						  <i class="bi bi-person-plus-fill text-white"></i>
+						  <h:inputText id="LibelleInput" class="form-control "
+								placeholder="Libellé" aria-label="ex : rue d'Isika"
+							    value="#{dashboardProfil.form.libelle}" />
+						  <h:messages for="LibelleInput" errorClass="erreurInputForm" />
+						  </div>
+						  
+						  <div class="mb-4">
+						  <i class="bi bi-person-plus-fill text-white"></i>
+						  <h:inputText id="CodePostalInput" class="form-control "
+								placeholder="Code postal" aria-label="ex : 75001"
+							    value="#{dashboardProfil.form.codePostal}" />
+						  <h:messages for="CodePostalInput" errorClass="erreurInputForm" />
+						  </div>
+						  
+						  <div class="mb-4">
+						  <i class="bi bi-person-plus-fill text-white"></i>
+						  <h:inputText id="VilleInput" class="form-control "
+								placeholder="Ville" aria-label="ex : Paris"
+							    value="#{dashboardProfil.form.ville}" />
+						  <h:messages for="CodePostalInput" errorClass="erreurInputForm" />
+						  </div>
+						  
+						  <div class="mb-4">
+						  <i class="bi bi-person-plus-fill text-white"></i>
+						  <h:inputText id="TelephoneInput" class="form-control "
+								placeholder="Téléphone" aria-label="ex : 01 01 01 01 01"
+							    value="#{dashboardProfil.form.telephone}" />
+						  <h:messages for="TelephoneInput" errorClass="erreurInputForm" />
+						  </div>
+						  
+						  <div class="mb-4">
+						  <i class="bi bi-person-plus-fill text-white"></i>
+						  <h:inputText id="DescriptionInput" class="form-control "
+								placeholder="A propos de vous" aria-label="Description"
+							    value="#{dashboardProfil.form.libelle}" />
+						  <h:messages for="DescriptionInput" errorClass="erreurInputForm" />
+						  </div>
+						  
+						  <h:commandButton class="btn" type="submit" value="Valider" action="#{dashboardProfil.update()}" />
+						  <h:commandButton class="btn cancel" type="reset" onclick="closeForm()"  value="Annuler" />
+				
+				<!-- action="dashboardAdherent" -->
+				        </h:form>
+				      </div>
+				    </div> 
+
+</body> 
+</html>
