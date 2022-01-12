@@ -374,12 +374,11 @@
 							<h5 class="text-white font-weight-bolder mb-4 pt-2">Ma page</h5>
 							<p class="text-white">Vous souhaitez voir à quoi ressemble la
 								page de votre association.</p>
-							<h:form>
-								<h:commandButton
-									action="#{associationBean.affichageAsso(dashboardAsso.asso.id)}"
-									value="Voir">
-								</h:commandButton>
-							</h:form>
+							<h:form id="assoForm">
+										<h:link outcome="association.xhtml" value="Voir">
+											<f:param name="idAsso" value="#{dashboardAsso.asso.id}"></f:param>
+										</h:link>
+									</h:form>
 						</div>
 					</div>
 				</div>

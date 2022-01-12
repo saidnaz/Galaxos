@@ -1,8 +1,10 @@
 package fr.isika.cda.galaxos.managedbeans;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -18,7 +20,7 @@ import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.service.AssociationCompteService;
 
 @ManagedBean
-@ApplicationScoped
+@ViewScoped
 public class AssociationBean {
 
 	@Inject
@@ -46,9 +48,16 @@ public class AssociationBean {
 	 * (optional.isPresent()) { asso = optional.get(); } return "association"; }
 	 */
 
-	public String affichageAsso(Long id) {
+	@PostConstruct
+	public void init() {
+
+		FacesContext fc = FacesContext.getCurrentInstance();
+		Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
+		String idString = params.get("idAsso");
+		Long idAsso = Long.parseLong(idString);
+
 		// on chercher l'asso en question
-		Optional<Association> optional = service.findById(id);
+		Optional<Association> optional = service.findById(idAsso);
 		if (optional.isPresent()) {
 			asso = optional.get();
 		}
@@ -77,7 +86,7 @@ public class AssociationBean {
 			isProvider = true;
 		}
 
-		return "association";
+		//return "association";
 	}
 
 	public String devenirProvider(Association asso) {
