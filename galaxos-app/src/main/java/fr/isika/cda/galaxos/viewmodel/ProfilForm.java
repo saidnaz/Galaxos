@@ -11,29 +11,29 @@ public class ProfilForm implements Serializable {
 
 	private static final long serialVersionUID = -1223098802231209636L;
 	
-	@NotEmpty(message = "Ne doit pas être vide")
-	@NotNull(message = "Ne doit pas être null")
-	@Pattern(regexp = "[^0-9]*", message = "Ne doit pas contenir des chiffres")
-	private String nom;
+//	@NotEmpty(message = "Ne doit pas être vide")
+//	@NotNull(message = "Ne doit pas être null")
+//	@Pattern(regexp = "[^0-9]*", message = "Ne doit pas contenir des chiffres")
+//	private String nom;
 
-	@NotEmpty(message = "Ne doit pas être vide")
-	@NotNull(message = "Ne doit pas être null")
-	@Pattern(regexp = "[^0-9]*", message = "Ne doit pas contenir des chiffres")
-	private String prenom;
+//	@NotEmpty(message = "Ne doit pas être vide")
+//	@NotNull(message = "Ne doit pas être null")
+//	@Pattern(regexp = "[^0-9]*", message = "Ne doit pas contenir des chiffres")
+//	private String prenom;
 	
 	
 	@NotNull(message = "Ne doit pas être null")
-	@Pattern(regexp = "[^0-9]*", message = "Ne doit pas contenir des chiffres")
+	//@Pattern(regexp = "[^0-9]*", message = "Ne doit pas contenir des chiffres")
 	private String telephone;
 
-	@NotEmpty(message = "Ne doit pas être vide")
-	@NotNull(message = "Ne doit pas être null")
-	@Pattern(regexp = "[^0-9]*", message = "Ne doit pas contenir des chiffres")
-	private String email;
+//	@NotEmpty(message = "Ne doit pas être vide")
+//	@NotNull(message = "Ne doit pas être null")
+//	@Pattern(regexp = "[^0-9]*", message = "Ne doit pas contenir des chiffres")
+//	private String email;
 	
 	
 	@NotNull(message = "Ne doit pas être null")
-	@Pattern(regexp = "[^0-9]*", message = "Ne doit pas contenir des chiffres")
+	//@Pattern(regexp = "[^0-9]*", message = "Ne doit pas contenir des chiffres")
 	private String description;
 	
 	// infos concernant l'adresse
@@ -43,7 +43,7 @@ public class ProfilForm implements Serializable {
 	
 
 	@NotNull(message = "Ne doit pas être null")
-	@Pattern(regexp = "[^0-9]*", message = "Ne doit pas contenir des chiffres")
+	//@Pattern(regexp = "[^0-9]*", message = "Ne doit pas contenir des chiffres")
 	private String libelle;
 	
 	@NotNull(message = "Ne doit pas être null")
@@ -54,24 +54,24 @@ public class ProfilForm implements Serializable {
 	private String ville;
 
 
-	public String getNom() {
-		return nom;
-	}
-
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-
-	public String getPrenom() {
-		return prenom;
-	}
-
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
+//	public String getNom() {
+//		return nom;
+//	}
+//
+//
+//	public void setNom(String nom) {
+//		this.nom = nom;
+//	}
+//
+//
+//	public String getPrenom() {
+//		return prenom;
+//	}
+//
+//
+//	public void setPrenom(String prenom) {
+//		this.prenom = prenom;
+//	}
 
 
 	public String getTelephone() {
@@ -84,14 +84,14 @@ public class ProfilForm implements Serializable {
 	}
 
 
-	public String getEmail() {
-		return email;
-	}
-
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+//	public String getEmail() {
+//		return email;
+//	}
+//
+//
+//	public void setEmail(String email) {
+//		this.email = email;
+//	}
 
 
 	public String getDescription() {
@@ -150,13 +150,13 @@ public class ProfilForm implements Serializable {
 	}
 
 
-	public ProfilForm(String nom, String prenom, String telephone, String email, String description, String numero,
+	public ProfilForm(String telephone, String description, String numero,
 			String libelle, Integer codePostal, String ville) {
 		super();
-		this.nom = nom;
-		this.prenom = prenom;
+		//this.nom = nom;
+		//this.prenom = prenom;
 		this.telephone = telephone;
-		this.email = email;
+		//this.email = email;
 		this.description = description;
 		this.numero = numero;
 		this.libelle = libelle;

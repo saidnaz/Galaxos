@@ -21,16 +21,17 @@ public class AdherentService {
 	
 public AdherentService() {
 	}
+
 public Adherent create(AdherentForm adherentform) {
 	
 
-Optional<Adherent> optional = adherentRepository.findByEmail(adherentform.getEmail());//	
-
-if( optional.isPresent() ) {
-	throw new EntityNotFoundException("le compte adhérent existe déjà");
-}
-
-return adherentRepository.create(adherentform);
+	Optional<Adherent> optional = adherentRepository.findByEmail(adherentform.getEmail());//	
+	
+	if( optional.isPresent() ) {
+		throw new EntityNotFoundException("le compte adhérent existe déjà");
+	}
+	
+	return adherentRepository.create(adherentform);
 }
 
 public Optional<Adherent> findByEmail(String email) {
@@ -44,14 +45,14 @@ public Optional<Adherent> findById(Long id) {
 }
 
 
+	public Adherent updateAdherent(ProfilForm form, Adherent adherent) {
+		return adherentRepository.updateAdherent(form, adherent);
+
 public Optional<Adherent> findAdherentById(Long id) {
 	
 	return adherentRepository.findAdherentById(id);
 }
 
-	public Adherent updateAdherent(ProfilForm form) {
-		return adherentRepository.updateAdherent(form);
-	}
 	
 	public Profil updateProfil(Profil profil) {
 		return adherentRepository.updateProfil(profil);
