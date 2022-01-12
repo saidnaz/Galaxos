@@ -50,6 +50,8 @@ public class Profil {
 	@Basic(fetch = FetchType.LAZY)
 	private Byte[] photo;
 	
+	
+	
 	@OneToOne
 	@JoinColumn(name = "fkAdresse")
 	private Adresse adresse;

@@ -22,12 +22,9 @@ public class MessageService {
 		return msgRepo.envoyer(msg);
 	}
 	
-	public List<Message> afficherMessages(Adherent autreAd, Adherent moi) {
+	public List<Message> obtenirMessages(Adherent autreAd, Adherent moi) {
 		List<Message> lAllMsg = msgRepo.allMessages();
 		List<Message> lMsg = new ArrayList<Message>();
-		
-		
-		
 		
 		
 		for (int i=0; i < lAllMsg.size(); i++)
@@ -44,7 +41,7 @@ public class MessageService {
 		return lMsg;
 	}
 	
-	public List<MessagerieDTO> afficherContacts(Adherent moi)
+	public List<MessagerieDTO> obtenirContacts(Adherent moi)
 	{
 		List<Message> lAllMsg = msgRepo.allMessages();
 		List<MessagerieDTO> lContact = new ArrayList<MessagerieDTO>();

@@ -2,6 +2,7 @@ package fr.isika.cda.galaxos.managedbeans;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -48,32 +49,64 @@ public class MessageBean implements Serializable {
 	private String text;
 	
 	
-	
+	public String connected()
+	{
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		boolean isConnected = (boolean) session.getAttribute("isConnected");
+		if (!isConnected)
+		{
+			return "index.xhtml";
+		}
+		return "";
+	}
 	// Initialisation : Lors du lancement du serv, lance les méthodes à l'intérieur du init
 	@PostConstruct
 	private void init() {
 		
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		expediteur = (Adherent) session.getAttribute("connectedAdherent");
+		
 		afficherContacts(this.expediteur);
+		
+		if(!messagerieDTO.isEmpty())
+		{
+			destinataire = messagerieDTO.get(0).getContact();
+			messageDTO = messageService.obtenirMessages(expediteur, destinataire);
+		}
+		else { 
+			List<Message> messageDTOvide = new ArrayList<>();
+			messageDTO = messageDTOvide;
+		}
+			
+		
 	}
 	
-	public void afficherMessages(Adherent expediteur, Adherent destinataire) {
-		messageDTO = messageService.afficherMessages(expediteur, destinataire);
+	public void obtenirMessages(Adherent expediteur, Adherent destinataire) {
+		messageDTO = messageService.obtenirMessages(expediteur, destinataire);
 	}
 	
 	public void actualiserMessages(Adherent destinaire)
 	{
-		this.destinataire = destinaire;
-		afficherMessages(expediteur, destinataire);
+		if(destinataire!=null)
+		{
+			this.destinataire = destinaire;
+			obtenirMessages(expediteur, destinataire);
+		}
+		
 	}
 	
 	
 	public void afficherContacts(Adherent expediteur)
 	{
-		messagerieDTO = messageService.afficherContacts(expediteur);
+		messagerieDTO = messageService.obtenirContacts(expediteur);
 		// appeler methode afficher messages pour charger la nouvelle liste à afficher, et faire un redirect sur la page
 	}
+	
+	public void goToMessagerie()
+	{
+		
+	}
+	
 	
 	public void voirProfil (Profil destinataire)
 	{
@@ -91,7 +124,7 @@ public class MessageBean implements Serializable {
 		
 		messageService.envoyer(msg);
 					
-		afficherMessages(expediteur, destinataire);	// Actualiser la vue message après l'envoie pour voir le message envoyé apparaitre à la liste des autres messages
+		obtenirMessages(expediteur, destinataire);	// Actualiser la vue message après l'envoie pour voir le message envoyé apparaitre à la liste des autres messages
 		
 		// return "index?faces-redirect=true"; 	// // return "index?faces-redirect=true"; 	// remet les paramètres de la page (des classes) à zero.
 		 return "messages";		// rester sur la même page en vidant les infos du formulaire
