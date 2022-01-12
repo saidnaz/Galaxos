@@ -23,14 +23,17 @@
 		crossorigin="anonymous"></script>
 
 	<!-- CSS  -->
+	<h:outputStylesheet library="css" name="dashboardProfile.css" />
 	<h:outputStylesheet library="css" name="main.css" />
 	<h:outputStylesheet library="css" name="home.css" />
 	<h:outputStylesheet library="css" name="creation-associaation.css" />
 	<h:outputStylesheet library="css" name="soft-ui-dashboard.css" />
-	<h:outputStylesheet library="css" name="dashboard_profile.css" />
+	
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet"
 		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+
+	
 </h:head>
  
 <body>
@@ -275,10 +278,20 @@
                   <div class="col-md-4 text-end">
 
                         
-                    <a class="open-button" onclick="openForm()">
-                    <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top"
-                        title="Edit Profile"/>
-                    </a>
+<!--                     <a class="open-button" onclick="openForm()"> -->
+<!--                     <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" -->
+<!--                         title="Edit Profile"/> -->
+<!--                     </a> -->
+
+<!--                     <h:form class="open-btn btn btn-outline-primary btn-sm mb-0 border"> -->
+                    <div class="open-button btn-outline-primary btn-sm mb-0" value="Modifier">
+      				<h:commandButton action="dashboardAdherent_profileUpdate.xhtml"/>
+    				</div>
+<!--     				</h:form> -->
+    				
+    				
+    
+				    
 
   					   
 
@@ -499,79 +512,21 @@
       </footer>
     </div>
     
-    <!-- fenêtre popup -->
     
-    <div class="login-popup">
-      <div class="form-popup" id="popupForm">
-        <h:form class="form-container" id="formulaireProfil">
-          <h2>Mise à jour de votre profil Galaxos</h2>
-          
-          <div class="mb-4">
-		  <i class="bi bi-person-plus-fill text-white"></i>
-		  <h:inputText id="NumeroInput" class="form-control "
-				placeholder="Numéro" aria-label="ex : 14"
-			    value="#{dashboardProfil.form.numero}" />
-		  <h:messages for="NumeroInput" errorClass="erreurInputForm" />
-		  </div>
-		  
-		  <div class="mb-4">
-		  <i class="bi bi-person-plus-fill text-white"></i>
-		  <h:inputText id="LibelleInput" class="form-control "
-				placeholder="Libellé" aria-label="ex : rue d'Isika"
-			    value="#{dashboardProfil.form.libelle}" />
-		  <h:messages for="LibelleInput" errorClass="erreurInputForm" />
-		  </div>
-		  
-		  <div class="mb-4">
-		  <i class="bi bi-person-plus-fill text-white"></i>
-		  <h:inputText id="CodePostalInput" class="form-control "
-				placeholder="Code postal" aria-label="ex : 75001"
-			    value="#{dashboardProfil.form.codePostal}" />
-		  <h:messages for="CodePostalInput" errorClass="erreurInputForm" />
-		  </div>
-		  
-		  <div class="mb-4">
-		  <i class="bi bi-person-plus-fill text-white"></i>
-		  <h:inputText id="VilleInput" class="form-control "
-				placeholder="Ville" aria-label="ex : Paris"
-			    value="#{dashboardProfil.form.ville}" />
-		  <h:messages for="CodePostalInput" errorClass="erreurInputForm" />
-		  </div>
-		  
-		  <div class="mb-4">
-		  <i class="bi bi-person-plus-fill text-white"></i>
-		  <h:inputText id="TelephoneInput" class="form-control "
-				placeholder="Téléphone" aria-label="ex : 01 01 01 01 01"
-			    value="#{dashboardProfil.form.telephone}" />
-		  <h:messages for="TelephoneInput" errorClass="erreurInputForm" />
-		  </div>
-		  
-		  <div class="mb-4">
-		  <i class="bi bi-person-plus-fill text-white"></i>
-		  <h:inputText id="DescriptionInput" class="form-control "
-				placeholder="A propos de vous" aria-label="Description"
-			    value="#{dashboardProfil.form.libelle}" />
-		  <h:messages for="DescriptionInput" errorClass="erreurInputForm" />
-		  </div>
-		  
-		  <h:commandButton class="btn" type="submit" value="Valider" action="#{dashboardProfil.update()}" />
-		  <h:commandButton class="btn cancel" type="reset" onclick="closeForm()"  value="Annuler" />
-
-<!-- action="dashboardAdherent" -->
-        </h:form>
-      </div>
-    </div>
+    
   </main>
+  
+  
 
-<script>
-       function openForm() {
-      document.getElementById("popupForm").style.display="block";
-      }
+<!-- <script> -->
+//        function openForm() {
+//       document.getElementById("popupForm").style.display="block";
+//       }
       
-      function closeForm() {
-        document.getElementById("popupForm").style.display="none";
-      }
-</script>
+//       function closeForm() {
+//         document.getElementById("popupForm").style.display="none";
+//       }
+<!-- </script> -->
     
 
 <script>

@@ -74,8 +74,29 @@ public class AdherentRepository implements Serializable{
 	}
 	
 
-	public Adherent update(Adherent adherent) {
-		return entityManager.merge(adherent);
+public Adherent updateAdherent(ProfilForm form) {
+		
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		Adherent adherent = (Adherent) session.getAttribute("connectedAdherent");
+		
+		Profil profil = adherent.getProfil();
+		Adresse adresse = profil.getAdresse();
+		
+		adresse.setNumero(form.getNumero());
+		adresse.setLibelle(form.getLibelle());
+		adresse.setCodePostal(form.getCodePostal());
+		adresse.setVille(form.getVille());
+		
+//		profil.setNom(form.getNom());
+//		profil.setPrenom(form.getPrenom());
+		profil.setTelephone(form.getTelephone());
+		profil.setDescription(form.getDescription());
+		profil.setAdresse(adresse);
+		
+		adherent.setProfil(profil);
+		
+		entityManager.merge(adherent);
+		return adherent;
 	}
 	
 	public Optional<Adherent> findById(final Long id) {
