@@ -171,17 +171,37 @@
 						</div>
 
 						<span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
-
+					<a class="nav-link" href="dashboardAdherent.xhtml"/>
+					
+					<h:panelGroup rendered="#{MessageBean.role==0}">
+					<a href="dashboardAdministrateur.xhtml"> 
 						<div class="action_menu">
 							<ul>
-							<h:form><h:commandLink action="#{MessageBean.voirProfil(MessageBean.destinataire.profil)}">
-								<li><i class="fas fa-user-circle"></i> View profile</li>
-								</h:commandLink></h:form>
-								<li><i class="fas fa-users"></i> Add to close friends</li>
-								<li><i class="fas fa-plus"></i> Add to group</li>
-								<li><i class="fas fa-ban"></i> Block</li>
+							<li><i class="fas fa-user-circle">
+								
+							</i>Retourner au Dashboard</li>
+<!-- 								<li><i class="fas fa-users"></i> Add to close friends</li> -->
+<!-- 								<li><i class="fas fa-plus"></i> Add to group</li> -->
+<!-- 								<li><i class="fas fa-ban"></i> Block</li> -->
 							</ul>
 						</div>
+						</a>
+					</h:panelGroup>
+					
+					<h:panelGroup rendered="#{MessageBean.role==1}">
+					<a class="nav-link" href="dashboardAdherent.xhtml">
+						<div class="action_menu">
+							<ul>
+							<li><i class="fas fa-user-circle">
+								
+							</i>Retourner au Dashboard</li>
+<!-- 								<li><i class="fas fa-users"></i> Add to close friends</li> -->
+<!-- 								<li><i class="fas fa-plus"></i> Add to group</li> -->
+<!-- 								<li><i class="fas fa-ban"></i> Block</li> -->
+							</ul>
+						</div>
+						</a>
+					</h:panelGroup>
 
 					</div>
 					

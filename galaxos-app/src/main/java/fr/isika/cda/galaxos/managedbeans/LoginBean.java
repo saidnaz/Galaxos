@@ -85,10 +85,8 @@ public class LoginBean implements Serializable {
 				
 			Message msg1 = new Message("Bonjour, j'ai un probleme avec un provider, il n'a toujours pas effectué le service qu'il me devait, comment je peux me faire rembourser ?", adSimon, admin);
 			Message msg2 = new Message("Bonjour, pouvez m'envoyer le devis reçu de ce service qui n'a pas été effectué à cette adresse email s'il vous plait : adminplatform@gmail.com. Nous traiterons votre demande à la reception de ce devis. Cordialement, L'equipe Galaxos", admin, adSimon);
-//			msgBDD(msg1);
-//			msgBDD(msg2);
-			msgService.envoyer(msg1);
-			msgService.envoyer(msg2);
+			msgBDD(msg1);
+			msgBDD(msg2);
 	//		Message msg1 = new Message("Bonjour, je suis intéréssé pour devenir provider dans votre association, j'aimerais vous poser quelque question avant si possible.", );
 			
 			

@@ -41,7 +41,7 @@ public class MessageBean implements Serializable {
 	
 	private List<Message> messageDTO;		// ViewModel est délcaré ici dans le bean
 	
-	
+	private int role;
 	
 	@NotEmpty
 	@NotNull
@@ -65,6 +65,12 @@ public class MessageBean implements Serializable {
 		
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		expediteur = (Adherent) session.getAttribute("connectedAdherent");
+		
+		if(expediteur.getRole().contains("User"))
+		{
+			this.role = 1;
+		}
+		else this.role = 0;
 		
 		afficherContacts(this.expediteur);
 		
@@ -177,6 +183,12 @@ public class MessageBean implements Serializable {
 
 	public void setMessageDTO(List<Message> messageDTO) {
 		this.messageDTO = messageDTO;
+	}
+	public int getRole() {
+		return role;
+	}
+	public void setRole(int role) {
+		this.role = role;
 	}
 	
 	
