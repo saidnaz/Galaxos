@@ -40,7 +40,7 @@ public class Profil {
 //	private Date dateNaissance;
 	
 	@Size(min = 10, max = 14)
-    @Digits(fraction = 0, integer = 12)
+    //@Digits(fraction = 0, integer = 12)
     private String telephone;
 	
 	@Lob
@@ -49,6 +49,8 @@ public class Profil {
 	@Lob
 	@Basic(fetch = FetchType.LAZY)
 	private Byte[] photo;
+	
+	
 	
 	@OneToOne
 	@JoinColumn(name = "fkAdresse")

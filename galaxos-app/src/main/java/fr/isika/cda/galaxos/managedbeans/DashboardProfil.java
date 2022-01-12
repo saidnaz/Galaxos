@@ -38,23 +38,25 @@ public class DashboardProfil {
 	@PostConstruct
 	public void init() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		profil = (Profil) session.getAttribute("profil");
-		user = (CompteUser) session.getAttribute("user");
+		adherent = (Adherent) session.getAttribute("connectedAdherent");
+		profil = adherent.getProfil();
+		user = adherent.getUser();
 	}
 	
 	public String update() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		Long idAdh = (Long) session.getAttribute("connectedAdherentId");
+		//Long idAdh = (Long) session.getAttribute("connectedAdherentId");
 		adherent = (Adherent) session.getAttribute("connectedAdherent");
-		service.updateAdherent(form);
+		profil = adherent.getProfil();
+		service.updateAdherent(form, adherent);
 		
-		return "";
+		return "dashboardAdherent_Profile";
 	}
 	
-	public String wholeAddress(Adresse adresse) {
-		String adresseEntiere = adresse.getNumero() + adresse.getLibelle() + adresse.getCodePostal() + adresse.getVille();
-		return adresseEntiere;	
-	}
+//	public String wholeAddress(Adresse adresse) {
+//		String adresseEntiere = adresse.getNumero() + adresse.getLibelle() + adresse.getCodePostal() + adresse.getVille();
+//		return adresseEntiere;	
+//	}
 
 	public DashboardProfil() {
 	}

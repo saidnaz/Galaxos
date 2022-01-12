@@ -25,16 +25,17 @@ public class AdherentService {
 	
 public AdherentService() {
 	}
+
 public Adherent create(AdherentForm adherentform) {
 	
 
-Optional<Adherent> optional = adherentRepository.findByEmail(adherentform.getEmail());//	
-
-if( optional.isPresent() ) {
-	throw new EntityNotFoundException("le compte adhérent existe déjà");
-}
-
-return adherentRepository.create(adherentform);
+	Optional<Adherent> optional = adherentRepository.findByEmail(adherentform.getEmail());//	
+	
+	if( optional.isPresent() ) {
+		throw new EntityNotFoundException("le compte adhérent existe déjà");
+	}
+	
+	return adherentRepository.create(adherentform);
 }
 
 public Optional<Adherent> findByEmail(String email) {
@@ -47,9 +48,15 @@ public Optional<Adherent> findById(Long id) {
 	return adherentRepository.findById(id);
 }
 
-	public Adherent updateAdherent(ProfilForm form) {
-		return adherentRepository.updateAdherent(form);
-	}
+
+	public Adherent updateAdherent(ProfilForm form, Adherent adherent) {
+		return adherentRepository.updateAdherent(form, adherent);
+
+public Optional<Adherent> findAdherentById(Long id) {
+	
+	return adherentRepository.findAdherentById(id);
+}
+
 	
 	public Profil updateProfil(Profil profil) {
 		return adherentRepository.updateProfil(profil);
@@ -59,9 +66,9 @@ public Optional<Adherent> findById(Long id) {
 		return adherentRepository.updateCptUser(user);
 	}
 	
-	public Optional<Adherent> findAdherentById(Long id) {
-		return adherentRepository.findById(id);
-	}
+//	public Optional<Adherent> findAdherentById(Long id) {
+	//	return adherentRepository.findById(id);
+	//}
 	
 	public Optional<Profil> findProfilById(Long id) {
 		return adherentRepository.findProfilById(id);
@@ -70,6 +77,7 @@ public Optional<Adherent> findById(Long id) {
 	public Optional<CompteUser> findCptUserById(Long id) {
 		return adherentRepository.findCptUserById(id);
 	}
+
 
 
 }

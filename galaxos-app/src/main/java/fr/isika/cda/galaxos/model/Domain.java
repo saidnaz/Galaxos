@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
+import fr.isika.cda.galaxos.model.resources.Resource;
+
 @Entity
 @NamedQuery(name = "Domain.findDomaine", query = "SELECT d FROM Domain d WHERE d.name = :name")
 public class Domain {
@@ -27,7 +29,7 @@ public class Domain {
 	@OneToMany(mappedBy = "domain")
 	private List<Service> services;
 
-	@OneToMany(mappedBy = "domain")
+	@OneToMany(/*mappedBy = "domain"*/)
 	private List<Resource> resource;
 
 	@OneToMany(mappedBy = "fk_idDomain")

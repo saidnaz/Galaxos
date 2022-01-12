@@ -18,6 +18,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
+import fr.isika.cda.galaxos.model.resources.Resource;
 import fr.isika.cda.galaxos.model.roles.Consumer;
 import jdk.jfr.Timestamp;
 

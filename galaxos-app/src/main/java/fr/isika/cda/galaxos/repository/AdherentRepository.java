@@ -29,8 +29,9 @@ public class AdherentRepository implements Serializable{
 		CompteUser cptUser = new CompteUser();
 //		Adresse adresse = new Adresse("", "", 0, "");
 //		Profil profil = new Profil("", "", "", "", adresse);
-		Adresse adresse = new Adresse();
+		Adresse adresse = new Adresse("", "", 0, "");
 		Profil profil = new Profil();
+		
 		
 		String passwordCrypt = Cryptage.encryptPassword(adherentForm.getPassword());
 		
@@ -43,6 +44,7 @@ public class AdherentRepository implements Serializable{
 		
 		adherent.setUser(cptUser);
 		adherent.setProfil(profil);
+		adherent.getProfil().setAdresse(adresse);
 //		if(adherentForm.getRole().isEmpty())
 //		{
 //			adherentForm.setRole("user");
@@ -56,6 +58,7 @@ public class AdherentRepository implements Serializable{
 		
 		// On persiste l'objet 
 		entityManager.persist(adherent);
+		entityManager.persist(adresse);
 		
 		// On renvoie l'objet persisté à jour (avec l'identifiant affecté par hibernate automatiquement)
 		return adherent;
@@ -70,28 +73,34 @@ public class AdherentRepository implements Serializable{
 	}
 	
 
-public Adherent updateAdherent(ProfilForm form) {
+public Adherent updateAdherent(ProfilForm form, Adherent adherent) {
 		
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		Adherent adherent = (Adherent) session.getAttribute("connectedAdherent");
+		adherent = (Adherent) session.getAttribute("connectedAdherent");
+		//Adresse adresse = new Adresse("", "", 0, "");
 		
 		Profil profil = adherent.getProfil();
 		Adresse adresse = profil.getAdresse();
+		//profil.setAdresse(adresse);
 		
 		adresse.setNumero(form.getNumero());
 		adresse.setLibelle(form.getLibelle());
 		adresse.setCodePostal(form.getCodePostal());
 		adresse.setVille(form.getVille());
+		entityManager.merge(adresse);
+		
 		
 //		profil.setNom(form.getNom());
 //		profil.setPrenom(form.getPrenom());
 		profil.setTelephone(form.getTelephone());
 		profil.setDescription(form.getDescription());
 		profil.setAdresse(adresse);
+		entityManager.merge(profil);
 		
 		adherent.setProfil(profil);
 		
 		entityManager.merge(adherent);
+		
 		return adherent;
 	}
 	
@@ -130,6 +139,16 @@ public Adherent updateAdherent(ProfilForm form) {
 		return Optional.empty();
 	}
 	
+ 
+	public Optional<Adherent> findAdherentById(Long id) {
+		try {
+			return Optional.ofNullable(this.entityManager.find(Adherent.class, id));
+		} catch(NoResultException ex) {
+			System.out.println("Adherent.findByid() - not found : " + id);
+		}
+		return Optional.empty();
+	}
+
 	public Optional<CompteUser> findCptUserById(final Long id) {
 		try {
 			return Optional.ofNullable(this.entityManager.createNamedQuery("CompteUser.findById", CompteUser.class)
@@ -140,5 +159,6 @@ public Adherent updateAdherent(ProfilForm form) {
 		return Optional.empty();
 	}
 	
+
 
 }

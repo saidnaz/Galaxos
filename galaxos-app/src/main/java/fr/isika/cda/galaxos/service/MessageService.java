@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
 
-import fr.isika.cda.galaxos.dto.MessageDTO;
+import fr.isika.cda.galaxos.dto.MessagerieDTO;
 import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Message;
 import fr.isika.cda.galaxos.repository.MessageRepo;
@@ -24,12 +22,9 @@ public class MessageService {
 		return msgRepo.envoyer(msg);
 	}
 	
-	public List<Message> afficherMessages(Adherent autreAd, Adherent moi) {
+	public List<Message> obtenirMessages(Adherent autreAd, Adherent moi) {
 		List<Message> lAllMsg = msgRepo.allMessages();
 		List<Message> lMsg = new ArrayList<Message>();
-		
-		
-		
 		
 		
 		for (int i=0; i < lAllMsg.size(); i++)
@@ -46,14 +41,17 @@ public class MessageService {
 		return lMsg;
 	}
 	
-	public List<Message> afficherContacts(Adherent moi)
+	public List<MessagerieDTO> obtenirContacts(Adherent moi)
 	{
 		List<Message> lAllMsg = msgRepo.allMessages();
-		List<Message> lContact = new ArrayList<Message>();
+		List<MessagerieDTO> lContact = new ArrayList<MessagerieDTO>();
+		
 		List<Long> idContact = new ArrayList<Long>();
 		idContact.add(moi.getId());
 		
-		for (int i=0; i < lAllMsg.size(); i++)
+		MessagerieDTO msgDTO = new MessagerieDTO();
+		
+		for (int i=lAllMsg.size()-1; i >= 0; i--)		// inverser la boucle si le dernierMessage afficher dans contact n'est pas bon
 		{
 			Long msgDestId = lAllMsg.get(i).getDestinataire().getId();
 			Long msgExpId = lAllMsg.get(i).getExpediteur().getId();
@@ -62,13 +60,19 @@ public class MessageService {
 			{
 				if (!idContact.contains(msgDestId) ||  !idContact.contains(msgExpId))
 				{
-					lContact.add(lAllMsg.get(i));
-				}
+					msgDTO.setLastMsg(lAllMsg.get(i));
+				
 					if (msgExpId != moi.getId())
 					{
 						idContact.add(msgExpId);
+						msgDTO.setContact(lAllMsg.get(i).getExpediteur());
 					}
-					else idContact.add(msgDestId);
+					else {
+						idContact.add(msgDestId);
+						msgDTO.setContact(lAllMsg.get(i).getDestinataire());
+					}
+					lContact.add(msgDTO);
+				}
 			}
 		}
 		

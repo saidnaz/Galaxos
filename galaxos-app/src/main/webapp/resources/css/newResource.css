@@ -1,0 +1,197 @@
+.btn-radio {
+	 position: relative;
+	 display: flex;
+	 background-color: white;
+	 border: 1px solid black;
+	 max-width: 320px;
+}
+ .btn-radio label {
+	 display: inline-block;
+	 padding: 1em 1.3em;
+	 text-align: center;
+	 transition: all 0.3s;
+	 cursor: default;
+	 display: block;
+	 flex-basis: 50%;
+	 margin: 0;
+}
+ .btn-radio input {
+	 position: absolute;
+	 top: 0;
+	 bottom: 0;
+	 height: 100%;
+	 width: 50%;
+	 border: none;
+	 visibility: visible;
+	 opacity: 0;
+	 cursor: pointer;
+}
+ .btn-radio input:checked {
+	 cursor: default;
+	 pointer-events: none;
+	 visibility: hidden;
+}
+ .btn-radio input.btn-left {
+	 left: 0;
+}
+ .btn-radio input.btn-left:not(:checked) ~ label.btn-left {
+	 color: #757575;
+}
+ .btn-radio input.btn-left:checked ~ label.btn-left {
+	 background-color: #c2c2c2;
+}
+ .btn-radio input.btn-right {
+	 right: 0;
+}
+ .btn-radio input.btn-right:not(:checked) ~ label.btn-right {
+	 color: #757575;
+}
+ .btn-radio input.btn-right:checked ~ label.btn-right {
+	 color: white;
+	 background-color: black;
+}
+ .btn-radio-animated {
+	 position: relative;
+	 display: flex;
+	 background-color: white;
+	 border: 1px solid black;
+	 max-width: 320px;
+}
+ .btn-radio-animated .background {
+	 display: block;
+	 position: absolute;
+	 top: 0;
+	 bottom: 0;
+	 left: 0;
+	 width: 50%;
+	 height: 100%;
+	 transition: all 0.3s;
+	 z-index: 0;
+}
+ .btn-radio-animated label {
+	 display: inline-block;
+	 padding: 1em 1.3em;
+	 text-align: center;
+	 transition: all 0.3s;
+	 cursor: default;
+	 display: block;
+	 position: relative;
+	 flex-basis: 50%;
+	 margin: 0;
+	 z-index: 1;
+}
+ .btn-radio-animated input {
+	 position: absolute;
+	 top: 0;
+	 bottom: 0;
+	 height: 100%;
+	 width: 50%;
+	 border: none;
+	 visibility: visible;
+	 opacity: 0;
+	 cursor: pointer;
+	 z-index: 2;
+}
+ .btn-radio-animated input:checked {
+	 cursor: default;
+	 pointer-events: none;
+	 visibility: hidden;
+}
+ .btn-radio-animated input.btn-left {
+	 left: 0;
+}
+ .btn-radio-animated input.btn-left:not(:checked) ~ label.btn-left {
+	 color: #757575;
+}
+ .btn-radio-animated input.btn-left:not(:checked):hover ~ label.btn-left {
+	 color: #4d4d4d;
+}
+ .btn-radio-animated input.btn-left:checked ~ .background {
+	 background-color: #c2c2c2;
+	 transform: translateX(0);
+}
+ .btn-radio-animated input.btn-right {
+	 right: 0;
+}
+ .btn-radio-animated input.btn-right:not(:checked) ~ label.btn-right {
+	 color: #757575;
+}
+ .btn-radio-animated input.btn-right:not(:checked):hover ~ label.btn-right {
+	 color: #4d4d4d;
+}
+ .btn-radio-animated input.btn-right:checked ~ label.btn-right {
+	 color: white;
+}
+ .btn-radio-animated input.btn-right:checked ~ .background {
+	 background-color: black;
+	 transform: translateX(100%);
+}
+ .btn-check-animated {
+	 position: relative;
+	 display: flex;
+	 background-color: white;
+	 border: 1px solid black;
+	 max-width: 320px;
+}
+ .btn-check-animated .background {
+	 display: block;
+	 position: absolute;
+	 top: 0;
+	 bottom: 0;
+	 left: 0;
+	 width: 50%;
+	 height: 100%;
+	 background-color: red;
+	 transition: all 0.3s;
+	 z-index: 0;
+}
+ .btn-check-animated label {
+	 display: inline-block;
+	 padding: 1em 1.3em;
+	 text-align: center;
+	 transition: all 0.3s;
+	 cursor: default;
+	 display: block;
+	 position: relative;
+	 flex-basis: 50%;
+	 margin: 0;
+	 z-index: 1;
+}
+ .btn-check-animated input {
+	 position: absolute;
+	 top: 0;
+	 bottom: 0;
+	 height: 100%;
+	 width: 100%;
+	 border: none;
+	 visibility: visible;
+	 opacity: 0;
+	 cursor: pointer;
+	 z-index: 2;
+}
+ .btn-check-animated input:not(:checked) ~ label.btn-left {
+	 color: black;
+}
+ .btn-check-animated input:not(:checked) ~ label.btn-right {
+	 color: #757575;
+}
+ .btn-check-animated input:not(:checked) ~ .background {
+	 background-color: #c2c2c2;
+	 transform: translateX(0);
+}
+ .btn-check-animated input:not(:checked):hover ~ label.btn-right {
+	 color: #4d4d4d;
+}
+ .btn-check-animated input:checked ~ label.btn-left {
+	 color: #757575;
+}
+ .btn-check-animated input:checked ~ label.btn-right {
+	 color: white;
+}
+ .btn-check-animated input:checked ~ .background {
+	 background-color: black;
+	 transform: translateX(100%);
+}
+ .btn-check-animated input:checked:hover ~ label.btn-left {
+	 color: #4d4d4d;
+}
