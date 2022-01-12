@@ -110,5 +110,9 @@ public class AssociationCompteService {
 	public Consumer devenirAdherent(Adherent adherentConnecte, Association asso) {
 		return associationRepository.devenirAdherent(adherentConnecte, asso);
 	} 
+	
+	public List<Adherent> findConsumerParAssociation(Long idAsso) {
+		return associationRepository.findConsumerParAssociation(idAsso);
+	}
 
 }

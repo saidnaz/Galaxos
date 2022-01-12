@@ -8,7 +8,7 @@
 
 
 <h:head>
-	<title>Mes providers</title>
+	<title>Mes adhérents</title>
 	<!--     Fonts and icons     -->
 	<link
 		href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
@@ -75,14 +75,16 @@
 					</div>
 					<span class="nav-link-text ms-1">Paramètres</span>
 				</h:link></li>
-			<li class="nav-item"><a class="nav-link" href="">
+			<li class="nav-item"><h:link outcome="dashboardAsso_consumer"
+					class="nav-link active" value="">
 					<div
 						class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-						<i class="fas fa-users" style="font-size: 17px; color: #2e2f5e"></i>
-					</div> <span class="nav-link-text ms-1">Adhérents</span>
-			</a></li>
+						<i class="fas fa-cog text-fonce" style="font-size: 17px;"></i>
+					</div>
+					<span class="nav-link-text ms-1">Adhérents</span>
+				</h:link></li>
 			<li class="nav-item"><h:link outcome="dashboardAsso_providers"
-					class="nav-link active" value="">
+					class="nav-link" value="">
 					<div
 						class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 						<i class="fas fa-cog text-fonce" style="font-size: 17px;"></i>
@@ -90,7 +92,7 @@
 					<span class="nav-link-text ms-1">Providers</span>
 				</h:link></li>
 			<li class="nav-item"><a class="nav-link  "
-				href="../pages/virtual-reality.html">
+				href="">
 					<div
 						class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 						<i class="fas fa-people-arrows "
@@ -130,7 +132,7 @@
 		id="navbarBlur" navbar-scroll="true">
 	<div class="container-fluid py-1 px-3">
 		<nav aria-label="breadcrumb">
-		<h6 class="font-weight-bolder mb-0">Modification</h6>
+		<h6 class="font-weight-bolder mb-0">Mes adhérents</h6>
 		</nav>
 
 		<div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4">
@@ -166,7 +168,7 @@
 							<div class="col-lg-12">
 								<div class="d-flex">
 									<div>
-										<h6 class="font-weight-bolder">Mes providers</h6>
+										<h6 class="font-weight-bolder">Mes adhérents</h6>
 									</div>
 									<div class="pl-2"></div>
 								</div>
@@ -189,7 +191,7 @@
 												<tbody>
 
 													<ui:repeat var="adh"
-														value="#{dashboardAssoProviderBean.listAdherents}">
+														value="#{dashboardAssoConsumerBean.listAdherents}">
 														<tr>
 															<td>
 																<div class="d-flex px-2 py-1">

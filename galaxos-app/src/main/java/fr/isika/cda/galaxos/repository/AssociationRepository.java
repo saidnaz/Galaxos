@@ -340,4 +340,12 @@ public class AssociationRepository {
 		 */
 		return consum;
 	}
+	
+	public List<Adherent> findConsumerParAssociation(Long idAsso) {
+		List<Adherent> adherents = null;
+
+		return adherents = entityManager.createNativeQuery(
+				"SELECT * FROM Adherent INNER JOIN Role ON Role.adherent_id = Adherent.id INNER JOIN Client ON Client.id = Role.id INNER JOIN Association ON Client.association_id = Association.id INNER JOIN consumers ON Role.id = consumers.id WHERE Association.id = :idAsso",
+				Adherent.class).setParameter("idAsso", idAsso).getResultList();
+	}
 }

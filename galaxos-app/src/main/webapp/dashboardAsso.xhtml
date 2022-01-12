@@ -76,12 +76,14 @@
 					</div>
 					<span class="nav-link-text ms-1">Paramètres</span>
 				</h:link></li>
-			<li class="nav-item"><a class="nav-link" href="">
+			<li class="nav-item"><h:link outcome="dashboardAsso_consumer"
+					class="nav-link active" value="">
 					<div
 						class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-						<i class="fas fa-users" style="font-size: 17px; color: #2e2f5e"></i>
-					</div> <span class="nav-link-text ms-1">Adhérents</span>
-			</a></li>
+						<i class="fas fa-cog text-fonce" style="font-size: 17px;"></i>
+					</div>
+					<span class="nav-link-text ms-1">Adhérents</span>
+				</h:link></li>
 			<li class="nav-item"><h:form>
 					<h:commandLink value=""
 						action="#{dashboardAssoProviderBean.afficherListProviders(dashboardAsso.asso.id)}"
@@ -276,7 +278,7 @@
 									<p class="text-sm mb-0 text-capitalize font-weight-bold">
 										Nombre <br></br> d'adhérents
 									</p>
-									<h5 class="font-weight-bolder mb-0">150</h5>
+									<h5 class="font-weight-bolder mb-0">#{dashboardAsso.countConsumers}</h5>
 								</div>
 							</div>
 							<div class="col-4 text-end">
@@ -372,7 +374,6 @@
 							<h5 class="text-white font-weight-bolder mb-4 pt-2">Ma page</h5>
 							<p class="text-white">Vous souhaitez voir à quoi ressemble la
 								page de votre association.</p>
-
 							<h:form>
 								<h:commandButton
 									action="#{associationBean.affichageAsso(dashboardAsso.asso.id)}"
