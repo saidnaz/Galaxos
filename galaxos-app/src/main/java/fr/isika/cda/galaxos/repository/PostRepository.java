@@ -144,6 +144,12 @@ public class PostRepository implements Serializable {
 		        }}
 			   return p;
 				}
+
+
+		public List<Post> search(LocalDate startDate, String search, String domaine) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 		
 				}
 
