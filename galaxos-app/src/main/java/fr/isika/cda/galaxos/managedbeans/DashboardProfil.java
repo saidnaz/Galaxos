@@ -11,16 +11,11 @@ import javax.servlet.http.HttpSession;
 
 import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Adresse;
-
-import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.CompteUser;
 import fr.isika.cda.galaxos.model.Profil;
 import fr.isika.cda.galaxos.service.AdherentService;
 import fr.isika.cda.galaxos.viewmodel.ProfilForm;
 
-import fr.isika.cda.galaxos.model.CompteUser;
-import fr.isika.cda.galaxos.model.Profil;
-import fr.isika.cda.galaxos.service.AdherentService;
 
 @ManagedBean
 @ViewScoped
@@ -40,15 +35,11 @@ public class DashboardProfil {
 	private ProfilForm form = new ProfilForm();
 
 	
-	private Adherent adherentConnecte;
-	
 	@PostConstruct
 	public void init() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		profil = (Profil) session.getAttribute("profil");
 		user = (CompteUser) session.getAttribute("user");
-
-
 	}
 	
 	public String update() {
@@ -62,19 +53,8 @@ public class DashboardProfil {
 	
 	public String wholeAddress(Adresse adresse) {
 		String adresseEntiere = adresse.getNumero() + adresse.getLibelle() + adresse.getCodePostal() + adresse.getVille();
-		return adresseEntiere;
-		
+		return adresseEntiere;	
 	}
-	
-//	public String update(Long idAdh) {	
-//		Optional<Adherent> optional1 = service.findAdherentById(idAdh);
-//		if (optional1.isPresent()) {
-//			adherent = optional1.get();
-//			service.updateAdherent(form);
-//		}
-//		
-//		return "";
-//	}
 
 	public DashboardProfil() {
 	}
@@ -95,7 +75,6 @@ public class DashboardProfil {
 	public void setProfil(Profil profil) {
 		this.profil = profil;
 	}
-
 	
 	public CompteUser getUser() {
 		return user;
@@ -113,13 +92,12 @@ public class DashboardProfil {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-
-
+	
 	public Adherent getAdherent() {
 		return adherent;
 	}
 
-	public void setAdherentConnecte(Adherent adherent) {
+	public void setAdherent(Adherent adherent) {
 		this.adherent = adherent;
 	}
 
@@ -130,15 +108,6 @@ public class DashboardProfil {
 	public void setForm(ProfilForm form) {
 		this.form = form;
 	}
-
-	public void setAdherent(Adherent adherent) {
-		this.adherent = adherent;
-	}
-	
-	public Adherent getAdherentConnecte() {
-		return adherentConnecte;
-	}
-
 
 	
 

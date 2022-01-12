@@ -47,10 +47,6 @@ public Optional<Adherent> findById(Long id) {
 	return adherentRepository.findById(id);
 }
 
-
-
-
-
 	public Adherent updateAdherent(ProfilForm form) {
 		return adherentRepository.updateAdherent(form);
 	}
@@ -61,11 +57,6 @@ public Optional<Adherent> findById(Long id) {
 	
 	public CompteUser updateCptUser(CompteUser user) {
 		return adherentRepository.updateCptUser(user);
-	}
-
-	public Adherent update(Adherent adherent) {
-		return adherentRepository.updateAdherent(adherent);
-
 	}
 	
 	public Optional<Adherent> findAdherentById(Long id) {
