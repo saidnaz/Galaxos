@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core">
 
 <h:head>
 	<title></title>
@@ -190,15 +191,22 @@
 								<div
 									class="d-flex align-items-start flex-column justify-content-center">
 									<h6 class="mb-0 text-sm">Devenir adhérent</h6>
-								</div>
-								<div>
-									<h:form>
-										<h:commandButton
-											action="#{associationBean.devenirAdherent(associationBean.asso)}"
-											value="Adhérer" class="btn btn-link pe-3 ps-0 mb-0 ms-auto">
-										</h:commandButton>
-									</h:form>
-								</div>
+								</div> <c:choose>
+									<c:when test="#{associationBean.isAdherent}">
+										<p><em>Vous êtes déjà adhérent</em></p>
+									</c:when>
+									<c:otherwise>
+										<div>
+											<h:form>
+												<h:commandButton
+													action="#{associationBean.devenirAdherent(associationBean.asso)}"
+													value="Adhérer" class="btn btn-link pe-3 ps-0 mb-0 ms-auto">
+												</h:commandButton>
+											</h:form>
+										</div>
+									</c:otherwise>
+								</c:choose>
+
 							</li>
 							<li
 								class="list-group-item border-0 d-flex align-items-center justify-content-between px-0 mb-2">

@@ -25,15 +25,16 @@ public class AssociationBean {
 	private AssociationCompteService service;
 
 	private Association asso = new Association();
-	
+
 	private Adherent adherentConnecte = new Adherent();
-	
+
 	private List<Association> associations;
-	
+
 	private List<Adherent> listAdherents;
-	
+
 	private Long idAdherentConnecte;
 
+	private Boolean isAdherent;
 
 	/*
 	 * public String init() { HttpServletRequest request = (HttpServletRequest)
@@ -42,33 +43,48 @@ public class AssociationBean {
 	 * Optional<Association> optional = service.findById(id); if
 	 * (optional.isPresent()) { asso = optional.get(); } return "association"; }
 	 */
-	
+
 	public String affichageAsso(Long id) {
+		// on chercher l'asso en question
 		Optional<Association> optional = service.findById(id);
 		if (optional.isPresent()) {
 			asso = optional.get();
 		}
-		listAdherents = service.findProviderParAssociation(asso.getId());
+
+		// on recupere l'adherent connecté
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		idAdherentConnecte = (Long) session.getAttribute("connectedAdherentId");
+		Optional<Adherent> optionalAd = service.findAdherentById(idAdherentConnecte);
+		if (optionalAd.isPresent()) {
+			adherentConnecte = optionalAd.get();
+		}
+
+		// on recupere
+		listAdherents = service.findConsumerParAssociation(asso.getId());
+		isAdherent = false;
+		if (listAdherents.contains(adherentConnecte)) {
+			isAdherent = true;
+		}
 		return "association";
 	}
-	
+
 	public String devenirProvider(Association asso) {
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);	
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		Long idAdherentConnecte = (Long) session.getAttribute("connectedAdherentId");
 		Optional<Adherent> optionalAd = service.findAdherentById(idAdherentConnecte);
-		if(optionalAd.isPresent()) {
+		if (optionalAd.isPresent()) {
 			adherentConnecte = optionalAd.get();
 			service.devenirProvider(adherentConnecte, asso);
 			return "index";
 		}
 		return "login";
 	}
-	
+
 	public String devenirAdherent(Association asso) {
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);	
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		Long idAdherentConnecte = (Long) session.getAttribute("connectedAdherentId");
 		Optional<Adherent> optionalAd = service.findAdherentById(idAdherentConnecte);
-		if(optionalAd.isPresent()) {
+		if (optionalAd.isPresent()) {
 			adherentConnecte = optionalAd.get();
 			service.devenirAdherent(adherentConnecte, asso);
 			return "index";
@@ -76,7 +92,6 @@ public class AssociationBean {
 		return "login";
 	}
 
-	
 	public String delete(Long id) {
 		Optional<Association> optional = service.findById(id);
 		if (optional.isPresent()) {
@@ -134,5 +149,12 @@ public class AssociationBean {
 		this.listAdherents = listAdherents;
 	}
 
+	public Boolean getIsAdherent() {
+		return isAdherent;
+	}
+
+	public void setIsAdherent(Boolean isAdherent) {
+		this.isAdherent = isAdherent;
+	}
 
 }
