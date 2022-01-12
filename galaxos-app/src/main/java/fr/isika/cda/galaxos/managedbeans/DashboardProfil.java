@@ -27,8 +27,8 @@ public class DashboardProfil {
 
 //	Profil profil = new Profil();
 //	CompteUser user = new CompteUser();
-	Adresse adresse = new Adresse();
 	
+	private Adresse adresse;
 	private Adherent adherent;
 	private Profil profil;
 	private CompteUser user;
@@ -85,6 +85,7 @@ public class DashboardProfil {
 	public void setUser(CompteUser user) {
 		this.user = user;
 	}
+
 
 	public Adresse getAdresse() {
 		return adresse;

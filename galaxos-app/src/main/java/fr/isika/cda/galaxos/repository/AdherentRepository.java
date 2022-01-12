@@ -1,7 +1,6 @@
 package fr.isika.cda.galaxos.repository;
 
 import java.io.Serializable;
-
 import java.util.Optional;
 
 import javax.ejb.Stateless;

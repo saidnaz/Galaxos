@@ -13,6 +13,10 @@ import fr.isika.cda.galaxos.repository.AdherentRepository;
 import fr.isika.cda.galaxos.viewmodel.AdherentForm;
 import fr.isika.cda.galaxos.viewmodel.ProfilForm;
 
+
+
+
+
 @Stateless
 public class AdherentService {
 
