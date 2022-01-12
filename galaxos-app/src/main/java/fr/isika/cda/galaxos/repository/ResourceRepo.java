@@ -1,13 +1,20 @@
 package fr.isika.cda.galaxos.repository;
 
-import javax.ejb.Stateless;
-import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
+import javax.ejb.Stateless;
+import javax.faces.context.FacesContext;
+import javax.persistence.*;
+import javax.servlet.http.HttpSession;
+
+import fr.isika.cda.galaxos.dto.LocationAddForm;
 import fr.isika.cda.galaxos.dto.ResourceAddForm;
 import fr.isika.cda.galaxos.model.resources.Location;
 import fr.isika.cda.galaxos.model.resources.Resource;
 import fr.isika.cda.galaxos.model.resources.Vente;
 import fr.isika.cda.galaxos.model.resources.reservations.GestionnaireResa;
+import fr.isika.cda.galaxos.model.resources.reservations.Reservation;
 
 @Stateless
 public class ResourceRepo {
@@ -27,6 +34,13 @@ public class ResourceRepo {
 		else if(type.equals("fr.isika.cda.galaxos.dto.LocationAddForm")) {
 			resource = new Location();
 			GestionnaireResa gestRes = new GestionnaireResa();
+		
+			LocalDateTime debut = ((LocationAddForm)form).getDateDebut();
+			if(debut != null) {
+				Reservation reservation = new Reservation();
+				reservation.setDateFin(((LocationAddForm)form).getDateFin());
+				gestRes.addFkReservation(reservation);
+			}
 			((Location) resource).setGestResa(gestRes);
 			entityManager.persist(gestRes);
 		}
@@ -37,6 +51,11 @@ public class ResourceRepo {
 		resource.setName(form.getName());
 		double prix= Double.parseDouble(form.getTarif());
 		resource.setTarif(prix);
+		
+		//HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		//Long idAdherentConnecte = (Long) session.getAttribute("connectedAdherentId");
+		resource.setProvider(null);
+        resource.setDatePublication(LocalDateTime.now());
 		
 		System.out.println(resource.toString());
 		

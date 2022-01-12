@@ -1,5 +1,7 @@
 package fr.isika.cda.galaxos.model.resources;
 
+import java.time.LocalDateTime;
+
 //import java.util.ArrayList;
 //import java.util.List;
 
@@ -28,10 +30,12 @@ public abstract class Resource{
 	
 	@Column(nullable=false) 
 	private Double tarif;
+	
+	@Column(nullable=false)
+	private LocalDateTime datePublication;
 	 
 	//private List<String> photos = new ArrayList<String>(); 
-	
-	
+
 	public Resource() {}
 	
 	public Resource(String name) { 
@@ -65,6 +69,14 @@ public abstract class Resource{
 
 	public void setTarif(Double tarif) {
 		this.tarif= tarif;
+	}
+	
+	public LocalDateTime getDatePublication() {
+		return datePublication;
+	}
+
+	public void setDatePublication(LocalDateTime datePublication) {
+		this.datePublication = datePublication;
 	}
 
 	@Override

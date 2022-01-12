@@ -3,7 +3,10 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:b="http://bootsfaces.net/ui">
+
 
 <h:head>
 	<meta charset="utf-8" />
@@ -89,15 +92,16 @@
 							<div class="btn-radio-animated m-b-3 nav nav-pills nav-fill">
 								<input class="btn-left nav-link" type="radio" value="vente"
 									id="radio-vente" name="typeRes" checked="true"
-									onClick="afficherCacher()" /> <input class="btn-right nav-link"
-									type="radio" value="location" id="radio-location"
-									name="typeRes" onClick="afficherCacher()" /> <label
-									class="btn-left">Vente</label> <label class="btn-right">Location</label>
+									onClick="afficherCacher()" /> <input
+									class="btn-right nav-link" type="radio" value="location"
+									id="radio-location" name="typeRes" onClick="afficherCacher()" />
+								<label class="btn-left">Vente</label> <label class="btn-right">Location</label>
 								<span class="background rounded-3"></span>
 							</div>
 							<div style="display: block;" id="venteForm">
 								<div class="card-body">
-									<h:form id="addVenteForm" role="form" enctype="multipart/form-data">
+									<h:form id="addVenteForm" role="form"
+										enctype="multipart/form-data">
 										<label>Nom</label>
 										<div class="mb-3">
 											<h:inputText id="name" class="form-control"
@@ -108,9 +112,9 @@
 										</div>
 										<label for="formFileMultiple">Photos</label>
 										<div class="mb-3">
-											<h:inputFile
-												value="#{resourceBean.venteForm.photos}"
-												class="form-control" id="file" aria-label="Photos" aria-describedby="ajout-photos"></h:inputFile>
+											<h:inputFile value="#{resourceBean.venteForm.photos}"
+												a:multiple="true" class="form-control" id="file"
+												aria-label="Photos" aria-describedby="ajout-photos"></h:inputFile>
 										</div>
 										<label>Prix</label>
 										<div class="input-group mb-3">
@@ -131,35 +135,41 @@
 
 							<div style="display: none;" id="locationForm">
 								<div class="card-body">
-									<h:form id="addLocationForm" role="form" enctype="multipart/form-data">
+									<h:form id="addLocationForm" role="form"
+										enctype="multipart/form-data">
 										<label>Nom</label>
 										<div class="mb-3">
-											<input type="text" class="form-control" placeholder="Nom"
-												aria-label="Nom" aria-describedby="ajout-nom" />
+											<h:inputText id="name" class="form-control"
+												pt:placeholder="Nom" aria-label="Nom"
+												aria-describedby="ajout-nom"
+												value="#{resourceBean.locationForm.name}" />
 										</div>
 										<label for="formFileMultiple">Photos</label>
 										<div class="mb-3">
-											<input type="file" id="formFileMultiple" multiple="true"
-												class="form-control" placeholder="Photos"
-												aria-label="Photos" aria-describedby="ajout-photos" />
+											<h:inputFile value="#{resourceBean.locationForm.photos}"
+												a:multiple="true" class="form-control" id="file"
+												aria-label="Photos" aria-describedby="ajout-photos"></h:inputFile>
 										</div>
 										<label>Prix</label>
 										<div class="input-group mb-3">
-											<input type="text" class="form-control input-group-text"
-												min="0" step="0.01" aria-label="Prix" /> <span
-												class="input-group-text">€/J</span>
-										</div>
-										<label>Date</label>
-										<div class="mb-3">
-											<input type="text" name="daterange"
-												class="form-control datepicker"
-												placeholder="JJ/MM/AAAA - JJ/MM/AAAA" aria-label="Date"
-												aria-describedby="ajout-date" />
+											<h:inputText id="prix" class="form-control input-group-text"
+												pt:placeholder="Prix" aria-label="Prix"
+												aria-describedby="ajout-prix"
+												value="#{resourceBean.locationForm.tarif}" />
+											<span class="input-group-text">€/J</span>
 										</div>
 
+										<label>Indisponibilité (Facultatif)</label>
+										<div class="input-group mb-3">
+											<label>Date de début d'indisponibilité <h:inputText
+													a:type="date" value="#{resourceBean.locationForm.dateDebut}" class="form-control" />
+											</label> <label>Date de fin d'indisponibilité <h:inputText
+													a:type="date" value="#{resourceBean.locationForm.dateFin}" class="form-control" />
+											</label>
+										</div>
 										<div class="text-center">
-											<button type="button"
-												class="btn bg-gradient-info w-100 mt-4 mb-0">Valider</button>
+											<h:commandButton action="#{resourceBean.create('location')}"
+												value="Valider" class="btn bg-gradient-info w-100 mt-4 mb-0" />
 										</div>
 									</h:form>
 								</div>

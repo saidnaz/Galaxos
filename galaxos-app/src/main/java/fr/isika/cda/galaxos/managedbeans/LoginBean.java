@@ -18,10 +18,10 @@ import org.hibernate.validator.constraints.NotEmpty;
 import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.repository.Cryptage;
 import fr.isika.cda.galaxos.service.AdherentService;
+
 @ManagedBean
 public class LoginBean implements Serializable {
-	
-	
+
 	private static final long serialVersionUID = -182763123620809611L;
 
 	@NotEmpty(message = "Ne doit pas être vide")
@@ -34,29 +34,29 @@ public class LoginBean implements Serializable {
 	@Size(min = 1, max = 25, message = "Doit être entre 1 et 25 car.")
 	private String password;
 	private String connectedAdherent = "";
-	
+
 	@Inject
 	private AdherentService adherentService;
-	
-	public String doLogin () {
-		
-		
+
+	public String doLogin() {
+
 		Optional<Adherent> optional = adherentService.findByEmail(email);
 
 		if (optional.isPresent()) {
-			
+
 			Adherent adherent = optional.get();
 			String passwordCrypt = Cryptage.encryptPassword(password);
-			
+
 			if (adherent.getUser().getEmail().equals(email) && adherent.getUser().getMdp().equals(passwordCrypt)) {
-				
+
 				// Email ISVALID and Password ISVALID
 				connectedAdherent = adherent.getUser().getEmail();
-				
+
 				// On va l'écrire dans la sesssion Http
-				HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+				HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext()
+						.getSession(false);
 				session.setAttribute("connectedAdherentId", adherent.getId());
-				
+
 				return "loginSuccess";
 			} else {
 
@@ -65,14 +65,19 @@ public class LoginBean implements Serializable {
 						new FacesMessage("Identifiants incorrects"));
 			}
 		} else {
-			
+
 			UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("loginForm");
 			FacesContext.getCurrentInstance().addMessage(formulaire.getClientId(),
 					new FacesMessage("Adhérent non reconnu"));
 		}
 
-		
 		return "login";
+	}
+
+	public String doLogout() {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		session.invalidate();
+		return "/index?faces-redirect=true";
 	}
 
 	public String getEmail() {
@@ -90,9 +95,11 @@ public class LoginBean implements Serializable {
 	public String getConnectedAdherent() {
 		return connectedAdherent;
 	}
+
 	public void setConnectedAdherent(String connectedAdherent) {
 		this.connectedAdherent = connectedAdherent;
 	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -100,8 +107,5 @@ public class LoginBean implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
-
 
 }
