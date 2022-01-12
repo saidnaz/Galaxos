@@ -37,11 +37,11 @@ public class Message {
 	
 	@OneToOne
 	@JoinColumn(name = "fk_destinataire")
-	private Profil destinataire;
+	private Adherent destinataire;
 
 	@OneToOne
 	@JoinColumn(name = "fk_expediteur")
-	private Profil expediteur;
+	private Adherent expediteur;
 	
 	public LocalDateTime getDate() {
 		return date;
@@ -63,19 +63,19 @@ public class Message {
 		return id;
 	}
 
-	public Profil getDestinataire() {
+	public Adherent getDestinataire() {
 		return destinataire;
 	}
 
-	public void setDestinataire(Profil destinataire) {
+	public void setDestinataire(Adherent destinataire) {
 		this.destinataire = destinataire;
 	}
 
-	public Profil getExpediteur() {
+	public Adherent getExpediteur() {
 		return expediteur;
 	}
 
-	public void setExpediteur(Profil expediteur) {
+	public void setExpediteur(Adherent expediteur) {
 		this.expediteur = expediteur;
 	}
 
@@ -116,6 +116,23 @@ public class Message {
 
 	public Message() {
 	}
+
+	public Message(LocalDateTime date, String texte, Adherent expediteur,  Adherent destinataire) {
+		super();
+		this.date = date;
+		this.texte = texte;
+		this.expediteur = expediteur;
+		this.destinataire = destinataire;
+	}
+	
+	public Message(String texte, Adherent expediteur,Adherent destinataire) {
+		super();
+		this.texte = texte;
+		this.expediteur = expediteur;
+		this.destinataire = destinataire;
+	}
+	
+	
 
 	
 	

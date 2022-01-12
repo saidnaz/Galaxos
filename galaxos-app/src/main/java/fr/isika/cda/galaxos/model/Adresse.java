@@ -35,6 +35,19 @@ public class Adresse {
 		
 	}
 	
+	
+	
+	public Adresse(String numero, String libelle, Integer codePostal, String ville) {
+		super();
+		this.numero = numero;
+		this.libelle = libelle;
+		this.codePostal = codePostal;
+		this.ville = ville;
+
+	}
+
+
+
 	public Long getId() {
 		return id;
 	}
@@ -71,7 +84,11 @@ public class Adresse {
 		this.codePostal = codePostal;
 	}
 
-	
+	public String wholeAddress(Adresse adresse) {
+		String adresseEntiere = adresse.getNumero() + adresse.getLibelle() + adresse.getCodePostal() + adresse.getVille();
+		return adresseEntiere;
+		
+	}
 
 	@Override
 	public String toString() {
