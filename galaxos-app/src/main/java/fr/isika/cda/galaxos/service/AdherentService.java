@@ -40,7 +40,10 @@ public Optional<Adherent> findById(Long id) {
 	return adherentRepository.findById(id);
 }
 
-
+public Optional<Adherent> findAdherentById(Long id) {
+	
+	return adherentRepository.findAdherentById(id);
+}
 
 
 

@@ -32,7 +32,7 @@ public class PostBean {
 
 	private String Description;
 
-	private Date startDate; 
+	private Date startDate;
 
 	private Date endDate;
 
@@ -93,12 +93,15 @@ public class PostBean {
 	public Date getStartDate() {
 		return startDate;
 	}
+
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
+
 	public Date getEndDate() {
 		return endDate;
 	}
+
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
@@ -108,33 +111,31 @@ public class PostBean {
 	private PostService PS;
 
 	PostForm pform = new PostForm();
-	
-  private Post p;
+
+	private Post p;
 	@Inject
 	private AdherentService AS;
 
 	public String create() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		Long id = (Long) session.getAttribute("connectedAdherentId");
-		Optional<Adherent> optional = AS.findById(id);
-  
+		Optional<Adherent> optional = AS.findAdherentById(id);
+
 		UIComponent formulaire = FacesContext.getCurrentInstance().getViewRoot().findComponent("createp");
 		if (optional.isPresent()) {
 			Adherent adherent = optional.get();
 			try {
-				
+
 				System.out.println("adh : " + adherent);
-				
+
 				LocalDate startDateLocal = convertTo(startDate);
 				LocalDate endDateLocal = convertTo(endDate);
 				System.out.println("start : " + startDateLocal);
 				System.out.println("end : " + endDateLocal);
 
-				
-				
 				UploadHelper uploadHelper = new UploadHelper();
 				String photoFile = uploadHelper.processUpload(photo);
-				
+
 				pform = new PostForm();
 				pform.setNom(nom);
 				pform.setDescription(Description);
@@ -143,11 +144,10 @@ public class PostBean {
 				pform.setEndDate(endDateLocal);
 				pform.setPhoto(photoFile);
 				pform.setPrice(price);
-				
-				
-			pform.setIdAdherent(id);
-			p =	PS.create(pform);
-				
+
+				pform.setIdAdherent(id);
+				p = PS.create(pform);
+
 				return "poster?faces-redirect=true";
 
 			} catch (Exception ex) {
@@ -160,14 +160,12 @@ public class PostBean {
 			return "createAccount";
 		}
 		return "poster";
-		}
+	}
 
-	public List<Post> getALLPost() throws DAOException{
-		
+	public List<Post> getALLPost() throws DAOException {
+
 		List<Post> plist = PS.AffichPosts();
 		return plist;
 	}
-	
-	
-		}
 
+}

@@ -84,6 +84,13 @@ public class AdherentRepository implements Serializable{
 		return Optional.empty();
 	}
 	
-	
+	public Optional<Adherent> findAdherentById(Long id) {
+		try {
+			return Optional.ofNullable(this.entityManager.find(Adherent.class, id));
+		} catch(NoResultException ex) {
+			System.out.println("Adherent.findByid() - not found : " + id);
+		}
+		return Optional.empty();
+	}
 
 }
