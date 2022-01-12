@@ -73,7 +73,7 @@
 			color:white !important;
 		}
 		.search:focus{
-		     box-shadow:none !important;
+		   box-shadow:none !important;
            outline:0px !important;
 		}
 		.type_msg{
@@ -182,7 +182,8 @@
 		margin-bottom: auto;
 		margin-left: 10px;
 		border-radius: 25px;
-		background-color: #82ccdd;
+		background-color: #706AC2;
+		color:white;
 		padding: 10px;
 		position: relative;
 	}
@@ -191,7 +192,8 @@
 		margin-bottom: auto;
 		margin-right: 10px;
 		border-radius: 25px;
-		background-color: #78e08f;
+		color:white;
+		background-color: #0087B6;
 		padding: 10px;
 		position: relative;
 	}

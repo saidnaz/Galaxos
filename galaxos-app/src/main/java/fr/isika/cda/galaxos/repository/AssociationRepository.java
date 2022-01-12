@@ -21,7 +21,9 @@ import fr.isika.cda.galaxos.model.FicheAssoCompta;
 import fr.isika.cda.galaxos.model.FicheAssoDescriptif;
 import fr.isika.cda.galaxos.model.FicheAssoGestionnaire;
 import fr.isika.cda.galaxos.model.FicheAssociation;
+import fr.isika.cda.galaxos.model.roles.Consumer;
 import fr.isika.cda.galaxos.model.roles.GestionnaireAssociation;
+import fr.isika.cda.galaxos.model.roles.Provider;
 import fr.isika.cda.galaxos.model.roles.Role;
 import fr.isika.cda.galaxos.viewmodel.AssociationCreationForm;
 import fr.isika.cda.galaxos.viewmodel.AssociationFinalisationForm;
@@ -288,14 +290,62 @@ public class AssociationRepository {
 	 * Long.parseLong(role); return idRole; }
 	 */
 
-
 	public List<Association> findAssociationsGestionnaireParAdherent(Long idAdherentConnecte) {
 		List<Association> associations = null;
 
-		return associations = entityManager
-				.createNativeQuery("SELECT * FROM Association INNER JOIN Client ON Client.association_id = Association.id INNER JOIN Role ON Client.id = Role.id WHERE Role.adherent_id = :idAdherentConnecte",
-						Association.class)
-				.setParameter("idAdherentConnecte", idAdherentConnecte).getResultList();
+		return associations = entityManager.createNativeQuery(
+				"SELECT * FROM Association INNER JOIN Client ON Client.association_id = Association.id INNER JOIN Role ON Client.id = Role.id INNER JOIN gestionnaires_assos ON Role.id = gestionnaires_assos.id WHERE Role.adherent_id = :idAdherentConnecte",
+				Association.class).setParameter("idAdherentConnecte", idAdherentConnecte).getResultList();
 	}
 
+	public List<Association> findAssociationsProviderParAdherent(Long idAdherentConnecte) {
+		List<Association> associations = null;
+
+		return associations = entityManager.createNativeQuery(
+				"SELECT * FROM Association INNER JOIN Client ON Client.association_id = Association.id INNER JOIN Role ON Client.id = Role.id INNER JOIN providers ON Role.id = providers.id WHERE Role.adherent_id = :idAdherentConnecte",
+				Association.class).setParameter("idAdherentConnecte", idAdherentConnecte).getResultList();
+	}
+
+	public List<Adherent> findProviderParAssociation(Long idAsso) {
+		List<Adherent> adherents = null;
+
+		return adherents = entityManager.createNativeQuery(
+				"SELECT * FROM Adherent INNER JOIN Role ON Role.adherent_id = Adherent.id INNER JOIN Client ON Client.id = Role.id INNER JOIN Association ON Client.association_id = Association.id INNER JOIN providers ON Role.id = providers.id WHERE Association.id = :idAsso",
+				Adherent.class).setParameter("idAsso", idAsso).getResultList();
+	}
+
+	// SELECT * FROM Adherent INNER JOIN Role ON Role.adherent_id = Adherent.id
+	// INNER JOIN Client ON Client.id = Role.id INNER JOIN Association ON
+	// Client.association_id = Association.id INNER JOIN providers ON Role.id =
+	// providers.id WHERE Association.id = 24
+
+	public Provider devenirProvider(Adherent adherent, Association asso) {
+		Provider provider = new Provider();
+		provider.setAdherent(adherent);
+		provider.setAssociation(asso);
+		provider.setNote(null);
+		entityManager.persist(provider);
+		return provider;
+	}
+
+	public Consumer devenirAdherent(Adherent adherentConnecte, Association asso) {
+		Consumer consum = new Consumer();
+		consum.setAdherent(adherentConnecte);
+		consum.setAssociation(asso);
+		entityManager.persist(consum);
+		
+		/*
+		 * List<Role> roles = adherentConnecte.getRoles(); roles.add(consum);
+		 * adherentConnecte.setRoles(roles); entityManager.merge(adherentConnecte);
+		 */
+		return consum;
+	}
+	
+	public List<Adherent> findConsumerParAssociation(Long idAsso) {
+		List<Adherent> adherents = null;
+
+		return adherents = entityManager.createNativeQuery(
+				"SELECT * FROM Adherent INNER JOIN Role ON Role.adherent_id = Adherent.id INNER JOIN Client ON Client.id = Role.id INNER JOIN Association ON Client.association_id = Association.id INNER JOIN consumers ON Role.id = consumers.id WHERE Association.id = :idAsso",
+				Adherent.class).setParameter("idAsso", idAsso).getResultList();
+	}
 }

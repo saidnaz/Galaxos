@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.OrderLine;
 import fr.isika.cda.galaxos.model.Panier;
-import fr.isika.cda.galaxos.model.Resource;
+import fr.isika.cda.galaxos.model.resources.Resource;
 import fr.isika.cda.galaxos.repository.AdherentRepository;
 import fr.isika.cda.galaxos.repository.ConsumerRepository;
 import fr.isika.cda.galaxos.repository.PanierRepository;

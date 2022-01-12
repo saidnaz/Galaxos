@@ -39,7 +39,7 @@ public class Profil {
 //	@Temporal(TemporalType.DATE)
 //	private Date dateNaissance;
 	
-	@Size(min = 10, max = 12)
+	@Size(min = 10, max = 14)
     @Digits(fraction = 0, integer = 12)
     private String telephone;
 	
@@ -63,6 +63,26 @@ public class Profil {
 	public Profil() {	
 	}
 	
+	
+	
+	public Profil(String nom, String prenom, String telephone, String description, Adresse adresse) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.telephone = telephone;
+		this.description = description;
+		this.adresse = adresse;
+	}
+
+	public Profil(String nom, String prenom, String telephone, String description) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.telephone = telephone;
+		this.description = description;
+	}
+
+
 	public Long getId() {
 		return id;
 	}

@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+<title>Formulaire profil</title>
+	<!--     Fonts and icons     -->
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+		rel="stylesheet" />
+
+	<!-- Font Awesome Icons -->
+	<script src="https://kit.fontawesome.com/42d5adcbca.js"
+		crossorigin="anonymous"></script>
+
+
+	<!-- CSS  -->
+	<h:outputStylesheet library="css" name="main.css" />
+	<h:outputStylesheet library="css" name="home.css" />
+	<h:outputStylesheet library="css" name="creation-associaation.css" />
+	<h:outputStylesheet library="css" name="soft-ui-dashboard.css" />
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+	<!-- Bootstrap JS -->
+	<script type="text/javascript"
+		src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"></script>
+</h:head>
+ 
+<body>
+
+<section class="min-vh-100 mb-8" style="margin-top:120px">
+
+	<div class="container">
+		
+			<div class="col-xl-4 col-lg-5 col-md-7 shadow-lg mx-auto">
+			
+				<div class="card z-index-0">
+					<div class="card-header text-center pt-4">
+				
+						<h5>Mise à jour de votre profil Galaxos</h5>
+						<img alt="LOGO" width="50" class="logo-brand-fr"
+								src="resources/images/logo.png" />
+					</div>
+					<div class="card-body">
+
+						<h:form id="createAccountForm" role="form text-left">
+
+							<div class="mb-4">
+							<i class="bi bi-person-plus-fill text-white"></i>
+								<h:inputText id="NomInput" class="form-control "
+									pt:placeholder="Nom" aria-label="Nom"
+									value="#{CreateAccountBean.accountForm.nom}" />
+								<h:messages for="NomInput" errorClass="erreurInputForm" />
+							</div>
+							
+							<div class="mb-4">
+							<i class="bi bi-person-plus-fill text-white"></i>
+								<h:inputText id="PrenomInput" class="form-control "
+									pt:placeholder="Prénom" aria-label="Prenom"
+									value="#{CreateAccountBean.accountForm.prenom}" />
+								<h:messages for="PrenomInput" errorClass="erreurInputForm" />
+							</div>
+							
+							<div class="mb-4">
+							<h:inputText id="emailInput" class="form-control PHname"
+									aria-label="Nom" pt:placeholder="Email"
+									aria-describedby="email-addon"
+									value="#{CreateAccountBean.accountForm.email}" />
+								<h:messages for="emailInput" errorClass="erreurInputForm" />
+							</div>
+
+							<div class="mb-4">
+							<h:inputSecret id="passwordInput" class="form-control"
+									pt:placeholder="Mot de passe" aria-label="password"
+									aria-describedby="password-addon"
+									value="#{CreateAccountBean.accountForm.password}" />
+								<h:messages for="passwordInput" errorClass="erreurInputForm"  />
+							</div>
+												
+							<!-- confirmation du mot de passe -->
+							<div class="mb-4">
+							<h:inputSecret id="confirmPasswordInput" class="form-control"
+									pt:placeholder="Confirmer mot de passe" aria-label="confirmPassword"
+									aria-describedby="password-addon"
+									value="#{CreateAccountBean.accountForm.confirmPassword}" />
+								<h:messages for="confirmPasswordInput" errorClass="erreurInputForm"  />
+							</div>
+							
+							<div class="text-center">
+								<h:commandButton value="S'inscrire"
+									class="btn main-button w-100 my-4 mb-2"
+									action="#{CreateAccountBean.create()}" />
+							</div>
+						</h:form>
+
+					
+					</div>
+				</div>
+			</div>
+		</div>
+	
+
+	</section> 
+
+</body> 
+</html>

@@ -2,11 +2,9 @@ package fr.isika.cda.galaxos.managedbeans;
 
 import java.io.Serializable;
 
-
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -46,9 +44,7 @@ public class CreateAccountBean implements Serializable {
 				System.out.println("Adhérent créé : " + adherent);
 				
 				// On redirige vers le dashboard en cas de compte créé avec succès
-				
-				
-				return "dashboardAdherent?faces-redirect=true";
+				return "login?faces-redirect=true";
 				
 				} catch (Exception ex) {
 					// On ajoute un message sur la vue qui résume l'exception
