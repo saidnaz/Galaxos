@@ -18,7 +18,6 @@ public class Reservation {
 	public Reservation() {}
 
 	public Reservation(Long idReservation, LocalDateTime dateDebut, LocalDateTime dateFin) {
-		super();
 		this.idReservation = idReservation;
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;

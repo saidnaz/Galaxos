@@ -9,7 +9,6 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import fr.isika.cda.galaxos.dto.LocationAddForm;
-//import fr.isika.cda.galaxos.dto.ResourceAddForm;
 import fr.isika.cda.galaxos.dto.VenteAddForm;
 import fr.isika.cda.galaxos.model.resources.Resource;
 import fr.isika.cda.galaxos.service.ResourceService;
@@ -27,27 +26,23 @@ public class ResourceBean implements Serializable {
 	
 	private LocationAddForm locationForm = new LocationAddForm();
 	
-	//private ResourceAddForm form;
-	
 	public String create(String type) {
-		
+		System.out.println("hello there! Type is :" + type);
 		UIComponent formu;
 		Resource resource;
 		
 		if(type.equals("vente")) {
-			//form = new VenteAddForm();
 			formu = FacesContext.getCurrentInstance().getViewRoot().findComponent("addVenteForm");
 			resource = service.create(venteForm);
 		}
 		else if(type.equals("location")) {
-			//form = new LocationAddForm();
 			formu = FacesContext.getCurrentInstance().getViewRoot().findComponent("addLocationForm");
 			resource = service.create(locationForm);
 		}
 		else {
+			System.out.println("Ohno Ohno Ohnonononono!!");
 			return "Création de ressource Impossible";
 		}
-		//resource = service.create(form);
 		return "index?faces-redirect=true";
 	}
 
@@ -58,14 +53,6 @@ public class ResourceBean implements Serializable {
 	public void setService(ResourceService service) {
 		this.service = service;
 	}
-
-	/*public ResourceAddForm getForm() {
-		return form;
-	}
-
-	public void setForm(ResourceAddForm form) {
-		this.form = form;
-	}*/
 
 	public VenteAddForm getVenteForm() {
 		return venteForm;
