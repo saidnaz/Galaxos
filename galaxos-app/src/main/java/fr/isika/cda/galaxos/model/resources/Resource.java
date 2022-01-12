@@ -14,9 +14,10 @@ import fr.isika.cda.galaxos.model.roles.Provider;
 @DiscriminatorColumn( 
 		  name="TYPE_RESOURCE", 
 		  discriminatorType=DiscriminatorType.STRING 
-		) 
-@NamedQuery(name = "Resource.findById", query = "SELECT r FROM Resource r WHERE r.id_resource = :id")
-
+		)
+@NamedQueries({
+	@NamedQuery(name = "Resource.findById", query = "SELECT r FROM Resource r WHERE r.idRessource = :id")
+})
 public abstract class Resource{ 
 	
 	@Id 
