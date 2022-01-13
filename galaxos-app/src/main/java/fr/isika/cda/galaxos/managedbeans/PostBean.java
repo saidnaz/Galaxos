@@ -19,6 +19,7 @@ import fr.isika.cda.galaxos.exceptions.DAOException;
 import fr.isika.cda.galaxos.helper.UploadHelper;
 import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Domain;
+import fr.isika.cda.galaxos.model.Domaine;
 import fr.isika.cda.galaxos.model.Post;
 import fr.isika.cda.galaxos.service.AdherentService;
 import fr.isika.cda.galaxos.service.PostService;
@@ -39,6 +40,7 @@ public class PostBean {
 	private Double price;
 
 	private Domain domain;
+	private Domaine selectedDomaine;
 	private Part photo;
 
 	private LocalDate convertTo(Date dateToConvert) {
@@ -72,7 +74,12 @@ public class PostBean {
 	public Part getPhoto() {
 		return photo;
 	}
-
+public Domaine getSelectedDomaine() {
+	return selectedDomaine;
+}
+public void setSelectedDomaine(Domaine selectedDomaine) {
+	this.selectedDomaine = selectedDomaine;
+}
 	public void setPhoto(Part photo) {
 		this.photo = photo;
 	}
@@ -105,6 +112,11 @@ public class PostBean {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
+	
+	public Domaine[] getDomaines() {
+		return Domaine.values();
+	}
+	
 	/////////////////////////////////////////////////////////
 
 	@Inject
@@ -136,9 +148,14 @@ public class PostBean {
 				UploadHelper uploadHelper = new UploadHelper();
 				String photoFile = uploadHelper.processUpload(photo);
 
-				pform = new PostForm();
+				
 				pform.setNom(nom);
 				pform.setDescription(Description);
+				
+				
+				domain = new Domain();
+				domain.setName(selectedDomaine);
+				
 				pform.setDomain(domain);
 				pform.setStartDate(startDateLocal);
 				pform.setEndDate(endDateLocal);
@@ -148,7 +165,7 @@ public class PostBean {
 				pform.setIdAdherent(id);
 				p = PS.create(pform);
 
-				return "poster?faces-redirect=true";
+				return "index?faces-redirect=true";
 
 			} catch (Exception ex) {
 				FacesContext.getCurrentInstance().addMessage("createp", new FacesMessage(ex.getMessage()));
