@@ -44,15 +44,11 @@
 	</div>
 	<hr class="horizontal dark mt-0" />
 	<div class="sidenav-header">
-		<i
-			class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
-			aria-hidden="true" id="iconSidenav"></i> <a class="navbar-brand m-0"
-			href="https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html"
-			target="_blank"> <h:graphicImage library="imageUpload"
+		 <p class="navbar-brand m-0"> <h:graphicImage library="imageUpload"
 				name="#{dashboardAsso.asso.ficheAssoDescriptif.logo}"
 				class="navbar-brand-img h-100"></h:graphicImage> <span
 			class="ms-1 font-weight-bold">#{dashboardAsso.asso.ficheAssociation.nom}</span>
-		</a>
+		</p>
 	</div>
 	<hr class="horizontal dark" />
 	<div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100"
@@ -140,17 +136,15 @@
 		<h6 class="font-weight-bolder mb-0">Mon Dashboard</h6>
 		</nav>
 
-		<div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
-			id="navbar">
+		<div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4">
 			<div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
 			<ul class="navbar-nav  justify-content-end">
-				<li class="nav-item d-flex align-items-center"><h:link
-						outcome="dashboardAdherent_profile"
-						class="nav-link text-body font-weight-bold px-0" value="">
-						<i class="fa fa-user me-sm-1"></i>
-						<span class="d-sm-inline d-none">#{dashboardAsso.adherentConnecte.profil.prenom}
+				<li class="nav-item d-flex align-items-center"><a
+					href="javascript:;"
+					class="nav-link text-body font-weight-bold px-0"> <i
+						class="fa fa-user me-sm-1"></i> <span class="d-sm-inline d-none">#{dashboardAsso.adherentConnecte.profil.prenom}
 							#{dashboardAsso.adherentConnecte.profil.nom}</span>
-					</h:link></li>
+				</a></li>
 			</ul>
 		</div>
 	</div>

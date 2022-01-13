@@ -43,12 +43,9 @@
 	</div>
 	<hr class="horizontal dark mt-0" />
 	<div class="sidenav-header">
-		<i
-			class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
-			aria-hidden="true" id="iconSidenav"></i> <a class="navbar-brand m-0"
-			href="https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html"
-			target="_blank"> <span class="ms-1 font-weight-bold">#{finalisationCompteAssociationBean.asso.ficheAssociation.nom}</span>
-		</a>
+		<p class="navbar-brand m-0">
+			<span class="ms-1 font-weight-bold">#{finalisationCompteAssociationBean.asso.ficheAssociation.nom}</span>
+		</p>
 	</div>
 	<hr class="horizontal dark" />
 	<div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100"
@@ -95,9 +92,10 @@
 			<div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
 			<ul class="navbar-nav  justify-content-end">
 				<li class="nav-item d-flex align-items-center"><a
-					href="javascript:;"
+					href=""
 					class="nav-link text-body font-weight-bold px-0"> <i
-						class="fa fa-user me-sm-1"></i> <span class="d-sm-inline d-none">#{finalisationCompteAssociationBean.adherentConnecte.profil.prenom} #{finalisationCompteAssociationBean.adherentConnecte.profil.nom}</span>
+						class="fa fa-user me-sm-1"></i> <span class="d-sm-inline d-none">#{finalisationCompteAssociationBean.adherentConnecte.profil.prenom}
+							#{finalisationCompteAssociationBean.adherentConnecte.profil.nom}</span>
 				</a></li>
 			</ul>
 		</div>

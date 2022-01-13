@@ -45,8 +45,8 @@
 		<a
 			class="navbar-brand d-flex justify-content-center align-items-center m-0"
 			href="index.xhtml"> <img src="resources/images/logo.ico" class=""
-			alt="main_logo" style="max-width: 100%; max-height: 4rem;"></img> <span
-			class="ms-1 font-weight-bold">GALAXOS</span>
+			alt="main_logo" style="max-width: 100%; max-height: 4rem;"></img><span
+			class="gradient-text ms-1">GALAXOS</span>
 		</a>
 	</div>
 
@@ -90,13 +90,13 @@
 			<div class="ms-md-auto pe-md-3 d-flex align-items-center">
 
 				<ul class="navbar-nav justify-content-end">
-					<li class="nav-item d-flex align-items-center" style="padding-right: 17px"><h:form
-							id="fsdf">
+					<li class="nav-item d-flex align-items-center"
+						style="padding-right: 17px"><h:form id="fsdf">
 							<div class="nav-link text-dark font-weight-bold px-0">
 								<i class="fas fa-user-astronaut me-sm-1"></i>
 								<h:commandLink class="d-sm-inline d-none"
 									action="#{CatalogueAssociationBean.afficherPageCatalogue()}"
-									value="Catalogue d'annonce"
+									value="Catalogue associations"
 									style="background: none;
 	color: inherit;
 	border: none;
@@ -149,7 +149,7 @@
 		</div>
 		<div
 			class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
-			<div class="row gx-4">
+			<div class="row justify-content-between gx-4">
 
 				<div class="col-auto ">
 					<div class="avatar avatar-xl position-relative">
@@ -170,7 +170,7 @@
 				</div>
 				<div class="col-5"></div>
 				<!-- row justify-content-center mt-5 -->
-				<div class="col-3 align-item-end">
+				<div class="col-3 d-flex justify-content-end">
 					<div class="mx-auto">
 						<div class="card h-100">
 							<div class="d-flex justify-content-center align-item-center">
@@ -400,7 +400,7 @@
 														</div>
 													</td>
 													<td>
-														<p class="text-sm font-weight-bold mb-0">#{item.fk_idDomain.name}</p>
+														<p class="text-sm font-weight-bold mb-0">#{item.fk_idDomain.name.label}</p>
 													</td>
 													<td><span
 														class="text-sm font-weight-bold bg-gradient-primary"
@@ -430,7 +430,7 @@
 														</div>
 													</td>
 													<td>
-														<p class="text-sm font-weight-bold mb-0">#{item.fk_idDomain.name}</p>
+														<p class="text-sm font-weight-bold mb-0">#{item.fk_idDomain.name.label}</p>
 													</td>
 													<td><span
 														class="text-sm font-weight-bold bg-gradient-info"
@@ -459,7 +459,7 @@
 														</div>
 													</td>
 													<td>
-														<p class="text-sm font-weight-bold mb-0">#{item.fk_idDomain.name}</p>
+														<p class="text-sm font-weight-bold mb-0">#{item.fk_idDomain.name.label}</p>
 													</td>
 													<td><span
 														class="text-sm font-weight-bold bg-gradient-success"

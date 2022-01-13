@@ -96,7 +96,7 @@ public class AssociationBean {
 		if (optionalAd.isPresent()) {
 			adherentConnecte = optionalAd.get();
 			service.devenirProvider(adherentConnecte, asso);
-			return "index";
+			return "dashboardAdherent_profile";
 		}
 		return "login";
 	}
@@ -108,7 +108,7 @@ public class AssociationBean {
 		if (optionalAd.isPresent()) {
 			adherentConnecte = optionalAd.get();
 			service.devenirAdherent(adherentConnecte, asso);
-			return "index";
+			return "dashboardAdherent_profile";
 		}
 		return "login";
 	}
