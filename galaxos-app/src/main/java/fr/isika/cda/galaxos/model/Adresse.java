@@ -45,6 +45,14 @@ public class Adresse {
 		this.ville = ville;
 
 	}
+	
+	public void modifAdresse(String numero, String libelle, Integer codePostal, String ville)
+	{
+		this.numero = numero;
+		this.libelle = libelle;
+		this.codePostal = codePostal;
+		this.ville = ville;
+	}
 
 
 

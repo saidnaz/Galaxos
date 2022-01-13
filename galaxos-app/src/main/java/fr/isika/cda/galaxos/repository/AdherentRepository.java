@@ -115,6 +115,15 @@ public Adherent updateAdherent(ProfilForm form, Adherent adherent) {
 		
 		return adherent;
 	}
+
+public Adherent updateAdherentBDD(Adherent adherent) {
+	
+	entityManager.merge(adherent.getProfil().getAdresse());
+	entityManager.merge(adherent.getProfil());
+	entityManager.merge(adherent);
+	
+	return adherent;
+}
 	
 	public Optional<Adherent> findById(final Long id) {
 		try {
