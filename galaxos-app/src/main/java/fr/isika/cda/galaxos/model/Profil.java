@@ -80,6 +80,37 @@ public class Profil {
 		this.telephone = telephone;
 		this.description = description;
 	}
+	
+	public Profil(String telephone, String photo, String description, Adresse adresse) {
+		super();
+		this.telephone = telephone;
+		
+		this.photo = "resources/images/" + photo;
+		this.description = description;
+		this.adresse = adresse;
+	//	this.id = id;
+		
+		
+	}
+
+	public void modifProfil(String telephone, String photo, String description, String num, String rue, Integer cp, String ville)
+	{
+		this.telephone = telephone;
+		this.photo = "resources/images/" + photo;
+		this.description = description;
+		this.adresse.setNumero(num);
+		this.adresse.setNumero(rue);
+		this.adresse.setCodePostal(cp);
+		this.adresse.setLibelle(ville);
+	}
+	
+	public void modifProfilAdmin(String telephone, String photo, String description)
+	{
+		this.telephone = telephone;
+		this.photo = "resources/images/" + photo;
+		this.description = description;
+	}
+	
 
 
 	public Long getId() {
@@ -204,5 +235,6 @@ public class Profil {
 	public int hashCode() {
 		return Objects.hash(id, nom, prenom);
 	}
-
+	
+	
 }

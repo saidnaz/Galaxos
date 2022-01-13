@@ -80,6 +80,10 @@ public Optional<Adherent> findAdherentById(Long id) {
 		return adherentRepository.findCptUserById(id);
 	}
 
+	public void updateAdherentBDD(Adherent adherent)
+	{
+		adherentRepository.updateAdherentBDD(adherent);
+	}
 
 
 }
