@@ -107,8 +107,8 @@
  .btn-radio-animated input.btn-left:not(:checked):hover ~ label.btn-left {
 	 color: black;
 }
- .btn-radio-animated input.btn-right:checked ~ label.btn-right {
-	 color: white;
+ .btn-radio-animated input.btn-left:checked ~ label.btn-left {
+	 color: white!important;
 }
  .btn-radio-animated input.btn-left:checked ~ .background {
 	 background-color: #0087B6;
@@ -176,7 +176,7 @@
 
 
 
-/* La je vois pas du tout... Y a un truc à faire avec cette section mais je sais pas du tout. */
+/* La je vois pas du tout... Y a un truc ï¿½ faire avec cette section mais je sais pas du tout. */
 
 /*
 
