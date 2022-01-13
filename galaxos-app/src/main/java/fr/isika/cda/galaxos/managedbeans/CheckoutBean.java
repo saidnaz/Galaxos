@@ -1,7 +1,5 @@
 package fr.isika.cda.galaxos.managedbeans;
 
-
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import javax.annotation.PostConstruct;
@@ -28,23 +26,68 @@ public class CheckoutBean {
     //Public Stripe API key
 
    
-    @Inject
-    private ChargeRequest price;
-    @Inject
-    private PaymentService paymentService;
-    
+  
     private PanierBean panier;
   
     private String stripeToken;
     
-    
+    private  BigDecimal total;
     private String email;
+    
+    
+    
+    @Inject
+    private ChargeRequest price;
+    public PanierBean getPanier() {
+		return panier;
+	}
+
+	public void setPanier(PanierBean panier) {
+		this.panier = panier;
+	}
+
+	public String getStripeToken() {
+		return stripeToken;
+	}
+
+	public void setStripeToken(String stripeToken) {
+		this.stripeToken = stripeToken;
+	}
+
+	public BigDecimal getTotal() {
+		return total;
+	}
+
+	public void setTotal(BigDecimal total) {
+		this.total = total;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public PaymentService getPaymentService() {
+		return paymentService;
+	}
+
+	public void setPaymentService(PaymentService paymentService) {
+		this.paymentService = paymentService;
+	}
+
+	@Inject
+    private PaymentService paymentService;
+    
     
     @PostConstruct
     private void init() throws StripeException{
         if (stripeToken != null && !stripeToken.isEmpty()) {
 
             createCharge();
+            total = panier.getSommeDesAchats();
         }
     }
 
@@ -74,7 +117,7 @@ private void createCharge() throws StripeException {
     	
     	Stripe.apiKey =  "sk_test_51JmfnrBVeS0qA3DPjCdV4AhiUBUD9wrCSp1ucRH1FrbZWLCuM3Kk8Bn4D6TH0D1D4Xh30eOSw2dkNDcrwPSUhb6V00PmWgviMA";//SecretKey
     	 
-        Charge charge = paymentService.charge(stripeToken, panier.getSommeDesAchats(), "euro");
+        Charge charge = paymentService.charge(stripeToken, total, "euro");
     }
 //		 if (charge != null) { "success?faces-redirect=true";
 //		 }
