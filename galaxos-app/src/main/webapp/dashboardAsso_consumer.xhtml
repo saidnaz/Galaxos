@@ -43,15 +43,12 @@
 	</div>
 	<hr class="horizontal dark mt-0" />
 	<div class="sidenav-header">
-		<i
-			class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
-			aria-hidden="true" id="iconSidenav"></i> <a class="navbar-brand m-0"
-			href="https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html"
-			target="_blank"> <h:graphicImage library="imageUpload"
+		<p class="navbar-brand m-0">
+			<h:graphicImage library="imageUpload"
 				name="#{dashboardAsso.asso.ficheAssoDescriptif.logo}"
-				class="navbar-brand-img h-100"></h:graphicImage> <span
-			class="ms-1 font-weight-bold">#{dashboardAsso.asso.ficheAssociation.nom}</span>
-		</a>
+				class="navbar-brand-img h-100"></h:graphicImage>
+			<span class="ms-1 font-weight-bold">#{dashboardAsso.asso.ficheAssociation.nom}</span>
+		</p>
 	</div>
 	<hr class="horizontal dark" />
 	<div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100"
@@ -87,12 +84,12 @@
 					class="nav-link" value="">
 					<div
 						class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-						<i class="fas fa-user-astronaut text-fonce" style="font-size: 17px; color: #2e2f5e"></i>
+						<i class="fas fa-user-astronaut text-fonce"
+							style="font-size: 17px; color: #2e2f5e"></i>
 					</div>
 					<span class="nav-link-text ms-1">Providers</span>
 				</h:link></li>
-			<li class="nav-item"><a class="nav-link  "
-				href="">
+			<li class="nav-item"><a class="nav-link  " href="">
 					<div
 						class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 						<i class="fas fa-people-arrows "
@@ -190,8 +187,7 @@
 												</thead>
 												<tbody>
 
-													<ui:repeat var="adh"
-														value="#{dashboardAsso.listConsumers}">
+													<ui:repeat var="adh" value="#{dashboardAsso.listConsumers}">
 														<tr>
 															<td>
 																<div class="d-flex px-2 py-1">
@@ -212,7 +208,10 @@
 																<p class="text-xs font-weight-bold mb-0">#{adh.user.email}</p>
 															</td>
 															<td class="align-middle">
-																<p class="text-center text-xs font-weight-bold mb-0">#{adh.profil.adresse.numero} #{adh.profil.adresse.libelle} #{adh.profil.adresse.codePostal} #{adh.profil.adresse.ville}</p>
+																<p class="text-center text-xs font-weight-bold mb-0">#{adh.profil.adresse.numero}
+																	#{adh.profil.adresse.libelle}
+																	#{adh.profil.adresse.codePostal}
+																	#{adh.profil.adresse.ville}</p>
 															</td>
 
 															<td class="align-middle"><a href="javascript:;"
