@@ -123,7 +123,7 @@ public class MessageBean implements Serializable {
 	{		
 		Message msg = new Message();
 		msg.setTexte(text);
-		msg.setDate(LocalDateTime.now());
+//		msg.setDate(LocalDateTime.now());
 		
 		msg.setExpediteur(expediteur);
 		msg.setDestinataire(destinataire);
@@ -133,7 +133,7 @@ public class MessageBean implements Serializable {
 		obtenirMessages(expediteur, destinataire);	// Actualiser la vue message après l'envoie pour voir le message envoyé apparaitre à la liste des autres messages
 		
 		// return "index?faces-redirect=true"; 	// // return "index?faces-redirect=true"; 	// remet les paramètres de la page (des classes) à zero.
-		 return "messages";		// rester sur la même page en vidant les infos du formulaire
+		 return "messagerie";		// rester sur la même page en vidant les infos du formulaire
 		// return "" 	// rester sur la même page (en gardant les infos du formulaire)
 	}
 
