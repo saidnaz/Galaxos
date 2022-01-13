@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-<title>Galaxos : la plateforme de tous les services</title>
+	<title>Galaxos : la plateforme de tous les services</title>
 	<meta
 		content="Une plateforme d'associations présentant une multitude de services" />
 	<meta content="" name="application-name" />
@@ -13,7 +13,7 @@
 	<meta content="width=device-width, initial-scale=1" name="viewport" />
 	<meta content="yes" name="mobile-web-app-capable" />
 
-		<!--     Fonts and icons     -->
+	<!--     Fonts and icons     -->
 	<link
 		href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
 		rel="stylesheet" />
@@ -31,593 +31,643 @@
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet"
 		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
-		
-	
+
+
 
 </h:head>
 
 
-<body> 
-<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
-    id="sidenav-main">
-    <div class="">
-      <a class="navbar-brand d-flex justify-content-center align-items-center m-0"
-        href="index.xhtml">
-        <img src="resources/images/logo.ico" class="" alt="main_logo" style="max-width: 100%; max-height: 4rem;"></img>
-        <span class="ms-1 font-weight-bold">GALAXOS</span>
-      </a>
-    </div>
+<body>
+	<aside
+		class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
+		id="sidenav-main">
+	<div class="">
+		<a
+			class="navbar-brand d-flex justify-content-center align-items-center m-0"
+			href="index.xhtml"> <img src="resources/images/logo.ico" class=""
+			alt="main_logo" style="max-width: 100%; max-height: 4rem;"></img> <span
+			class="ms-1 font-weight-bold">GALAXOS</span>
+		</a>
+	</div>
 
-    <hr class="horizontal dark mt-0"></hr>
+	<hr class="horizontal dark mt-0"></hr>
 
-    <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link  active" href="dashboardAdherent.xhtml">
-            <div
-              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="fas fa-laptop text-lg opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Tableau de bord</span>
-          </a>
-        </li>
+	<div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100"
+		id="sidenav-collapse-main">
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link  active"
+				href="dashboardAdherent.xhtml">
+					<div
+						class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+						<i class="fas fa-laptop text-lg opacity-10"></i>
+					</div> <span class="nav-link-text ms-1">Tableau de bord</span>
+			</a></li>
 
-        <li class="nav-item">
-          <a class="nav-link  " href="dashboardAdherent_profile.xhtml">
-            <div
-            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="fas fa-user text-dark text-lg opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Profil</span>
-          </a>
-        </li>
+			<li class="nav-item"><a class="nav-link  "
+				href="dashboardAdherent_profile.xhtml">
+					<div
+						class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+						<i class="fas fa-user text-dark text-lg opacity-10"></i>
+					</div> <span class="nav-link-text ms-1">Profil</span>
+			</a></li>
 
-      </ul>
-    </div>
-  </aside>
-  
-  <div class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
-    <!-- Navbar -->
-    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
-      navbar-scroll="true">
-      <div class="container-fluid py-1">
+		</ul>
+	</div>
+	</aside>
 
-        <h6 class="text-dark font-weight-bolder ms-2">Bienvenue dans votre espace personnel</h6>
+	<div
+		class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+		<!-- Navbar -->
+		<nav
+			class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
+			id="navbarBlur" navbar-scroll="true">
+		<div class="container-fluid py-1">
 
-        <div class="collapse navbar-collapse me-md-0 me-sm-4 mt-sm-0 mt-2" id="navbar">
-          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+			<h6 class="text-dark font-weight-bolder ms-2">Bienvenue dans
+				votre espace personnel</h6>
 
-            <ul class="navbar-nav justify-content-end">
-              <li class="nav-item d-flex align-items-center">
-                <a href="javascript:;" class="nav-link text-dark font-weight-bold px-0">
-                  <i class="fa fa-sign-out me-sm-1"></i>
-                  <span class="d-sm-inline d-none">Déconnexion</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <!-- End Navbar -->
+			<div class="collapse navbar-collapse me-md-0 me-sm-4 mt-sm-0 mt-2"
+				id="navbar">
+				<div class="ms-md-auto pe-md-3 d-flex align-items-center">
 
+					<ul class="navbar-nav justify-content-end">
+						<li class="nav-item d-flex align-items-center" style="padding-right: 17px"><h:form
+								id="fsdf">
+								<div class="nav-link text-dark font-weight-bold px-0">
+									<i class="fas fa-user-astronaut me-sm-1"></i>
+									<h:commandLink class="d-sm-inline d-none"
+										action="#{CatalogueAssociationBean.afficherPageCatalogue()}"
+										value="Catalogue d'annonce"
+										style="background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;">
+										<f:param id="categName" name="categName" value="all" />
+									</h:commandLink>
+								</div>
+							</h:form></li>
+						<li class="nav-item d-flex align-items-center"><h:form>
+								<div class="nav-link text-dark font-weight-bold px-0">
+									<i class="fa fa-sign-out me-sm-1"></i>
+									<h:commandButton value="Déconnexion" class="d-sm-inline d-none"
+										action="#{loginBean.doLogout()}"
+										style="background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;">
+									</h:commandButton>
 
-
-    <div class="container-fluid py-4">
-      <div class="row">
-
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Argent</p>
-                    <h5 class="font-weight-bolder mb-0">
-                      30€
-                    </h5>
-                  </div>
-                </div>
-                <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="fas fa-coins text-lg opacity-10"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Gain</p>
-                    <h5 class="font-weight-bolder mb-0">
-                      230€
-                    </h5>
-                  </div>
-                </div>
-                <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="fa fa-plus text-lg opacity-10"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xl-3 col-sm-6">
-          <div class="card">
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Dépenses</p>
-                    <h5 class="font-weight-bolder mb-0">
-                      200€
-                    </h5>
-                  </div>
-                </div>
-                <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="fa fa-minus text-lg opacity-10"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Clients</p>
-                    <h5 class="font-weight-bolder mb-0">
-                      34
-                    </h5>
-                  </div>
-                </div>
-                <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="fas fa-user text-lg opacity-10"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
+								</div>
+							</h:form></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		</nav>
+		<!-- End Navbar -->
 
 
 
+		<div class="container-fluid py-4">
+			<div class="row">
 
+				<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+					<div class="card">
+						<div class="card-body p-3">
+							<div class="row">
+								<div class="col-8">
+									<div class="numbers">
+										<p class="text-sm mb-0 text-capitalize font-weight-bold">Total
+											Argent</p>
+										<h5 class="font-weight-bolder mb-0">30€</h5>
+									</div>
+								</div>
+								<div class="col-4 text-end">
+									<div
+										class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+										<i class="fas fa-coins text-lg opacity-10"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-      <div class="row mt-4">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-header pb-0">
-              <h6>Messagerie</h6>
-            </div>
-            <div class="card-body px-0 pt-0 pb-2">
-              <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
-                  <thead>
-                    <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Auteur</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Titre</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Statut
-                      </th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                        Date</th>
-                      <th class="text-secondary opacity-7"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="resources/images/team-2.jpg" class="avatar avatar-sm me-3" alt="user1"></img>
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">John Michael</h6>
-                            <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Cherche bricolage</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Online</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">15/12/21</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                          data-original-title="Edit message">
-                          Voir
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="resources/images/team-3.jpg" class="avatar avatar-sm me-3" alt="user2"></img>
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                            <p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Recherche plomberie</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">11/12/21</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                          data-original-title="Edit message">
-                          Voir
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="resources/images/team-4.jpg" class="avatar avatar-sm me-3" alt="user3"></img>
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Laurent Perrier</h6>
-                            <p class="text-xs text-secondary mb-0">laurent@creative-tim.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Recherche réparation voiture</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Online</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">29/11/21</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                          data-original-title="Edit message">
-                          Voir
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="resources/images/team-3.jpg" class="avatar avatar-sm me-3" alt="user4"></img>
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Michael Levi</h6>
-                            <p class="text-xs text-secondary mb-0">michael@creative-tim.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Recherche jardinier</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Online</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">24/11/21</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                          data-original-title="Edit message">
-                          Voir
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="resources/images/team-2.jpg" class="avatar avatar-sm me-3" alt="user5"></img>
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Richard Gran</h6>
-                            <p class="text-xs text-secondary mb-0">richard@creative-tim.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Cherche déménagement</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">04/11/21</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                          data-original-title="Edit message">
-                          Voir
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="resources/images/team-4.jpg" class="avatar avatar-sm me-3" alt="user6"></img>
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Miriam Eric</h6>
-                            <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Recherche plomberie</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">24/10/21</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                          data-original-title="Edit message">
-                          Voir
-                        </a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+				<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+					<div class="card">
+						<div class="card-body p-3">
+							<div class="row">
+								<div class="col-8">
+									<div class="numbers">
+										<p class="text-sm mb-0 text-capitalize font-weight-bold">Gain</p>
+										<h5 class="font-weight-bolder mb-0">230€</h5>
+									</div>
+								</div>
+								<div class="col-4 text-end">
+									<div
+										class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+										<i class="fa fa-plus text-lg opacity-10"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-      <div class="col-12">
+				<div class="col-xl-3 col-sm-6">
+					<div class="card">
+						<div class="card-body p-3">
+							<div class="row">
+								<div class="col-8">
+									<div class="numbers">
+										<p class="text-sm mb-0 text-capitalize font-weight-bold">Dépenses</p>
+										<h5 class="font-weight-bolder mb-0">200€</h5>
+									</div>
+								</div>
+								<div class="col-4 text-end">
+									<div
+										class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+										<i class="fa fa-minus text-lg opacity-10"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-        <div class="row">
-        <div class="col-8 mt-4">
-          <div class="card h-100">
-            <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="col-md-8 d-flex align-items-center">
-                  <h6 class="mb-1">Avis et commentaires</h6>
-                </div>
-              </div>
-            </div>
+				<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+					<div class="card">
+						<div class="card-body p-3">
+							<div class="row">
+								<div class="col-8">
+									<div class="numbers">
+										<p class="text-sm mb-0 text-capitalize font-weight-bold">Clients</p>
+										<h5 class="font-weight-bolder mb-0">34</h5>
+									</div>
+								</div>
+								<div class="col-4 text-end">
+									<div
+										class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+										<i class="fas fa-user text-lg opacity-10"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-            <div class="card-body p-3">
-              <div class="row">
-
-                <div class="card card-blog card-plain">
-                  <div class="row">
-                    <div class="col-2">
-                      <li class="list-group-item border-0 d-flex align-items-center px-0">
-                        <div class="avatar me-3">
-                          <img src="resources/images/team-3.jpg" alt="kal" class="border-radius-lg shadow"></img>
-                        </div>
-                        <div class="d-flex align-items-start flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">Nick</h6>
-                          <p class="mb-0 text-xs">Il y a 7 jours</p>
-                        </div>
-                      </li>
-                    </div>
-
-                    <div class="col-10">
-                      <p>Titre commentaire</p>
-
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="ratings">
-                          <i class="fa fa-star rating-color"></i>
-                          <i class="fa fa-star rating-color"></i>
-                          <i class="fa fa-star rating-color"></i>
-                          <i class="fa fa-star rating-color"></i>
-                          <i class="fa fa-star"></i>
-                        </div>
-                      </div>
-
-                      <p class="mb-4 text-sm">
-                        Excellente expérience. Très efficace, professionel.. je ne changerai pas du tout et fort
-                        recommandé !!!
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="card card-blog card-plain">
-                  <div class="row">
-                    <div class="col-2">
-                      <li class="list-group-item border-0 d-flex align-items-center px-0">
-                        <div class="avatar me-3">
-                          <img src="resources/images/team-4.jpg" alt="kal" class="border-radius-lg shadow"></img>
-                        </div>
-                        <div class="d-flex align-items-start flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">Benoit</h6>
-                          <p class="mb-0 text-xs">Il y a 12 jours</p>
-                        </div>
-                      </li>
-                    </div>
-
-                    <div class="col-10">
-                      <p>Titre commentaire</p>
-
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="ratings">
-                          <i class="fa fa-star rating-color"></i>
-                          <i class="fa fa-star rating-color"></i>
-                          <i class="fa fa-star rating-color"></i>
-                          <i class="fa fa-star rating-color"></i>
-                          <i class="fa fa-star"></i>
-                        </div>
-                      </div>
-
-                      <p class="mb-4 text-sm">
-                        Top !
-                      </p>
-                    </div>
-                  </div>
-                </div>
+			</div>
 
 
 
-                
 
-                <div class="card card-blog card-plain">
-                  <div class="row">
-                    <div class="col-2">
-                      <li class="list-group-item border-0 d-flex align-items-center px-0">
-                        <div class="avatar me-3">
-                          <img src="resources/images/marie.jpg" alt="kal" class="border-radius-lg shadow"></img>
-                        </div>
-                        <div class="d-flex align-items-start flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">Marie</h6>
-                          <p class="mb-0 text-xs">Il y a 27 jours</p>
-                        </div>
-                      </li>
-                    </div>
 
-                    <div class="col-10">
-                      <p>Titre commentaire</p>
+			<div class="row mt-4">
+				<div class="col-12">
+					<div class="card">
+						<div class="card-header pb-0">
+							<h6>Messagerie</h6>
+						</div>
+						<div class="card-body px-0 pt-0 pb-2">
+							<div class="table-responsive p-0">
+								<table class="table align-items-center mb-0">
+									<thead>
+										<tr>
+											<th
+												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Auteur</th>
+											<th
+												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Titre</th>
+											<th
+												class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Statut
+											</th>
+											<th
+												class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+												Date</th>
+											<th class="text-secondary opacity-7"></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<div class="d-flex px-2 py-1">
+													<div>
+														<img src="resources/images/team-2.jpg"
+															class="avatar avatar-sm me-3" alt="user1"></img>
+													</div>
+													<div class="d-flex flex-column justify-content-center">
+														<h6 class="mb-0 text-sm">John Michael</h6>
+														<p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
+													</div>
+												</div>
+											</td>
+											<td>
+												<p class="text-xs font-weight-bold mb-0">Cherche
+													bricolage</p>
+											</td>
+											<td class="align-middle text-center text-sm"><span
+												class="badge badge-sm bg-gradient-success">Online</span></td>
+											<td class="align-middle text-center"><span
+												class="text-secondary text-xs font-weight-bold">15/12/21</span>
+											</td>
+											<td class="align-middle"><a href="javascript:;"
+												class="text-secondary font-weight-bold text-xs"
+												data-toggle="tooltip" data-original-title="Edit message">
+													Voir </a></td>
+										</tr>
+										<tr>
+											<td>
+												<div class="d-flex px-2 py-1">
+													<div>
+														<img src="resources/images/team-3.jpg"
+															class="avatar avatar-sm me-3" alt="user2"></img>
+													</div>
+													<div class="d-flex flex-column justify-content-center">
+														<h6 class="mb-0 text-sm">Alexa Liras</h6>
+														<p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
+													</div>
+												</div>
+											</td>
+											<td>
+												<p class="text-xs font-weight-bold mb-0">Recherche
+													plomberie</p>
+											</td>
+											<td class="align-middle text-center text-sm"><span
+												class="badge badge-sm bg-gradient-secondary">Offline</span>
+											</td>
+											<td class="align-middle text-center"><span
+												class="text-secondary text-xs font-weight-bold">11/12/21</span>
+											</td>
+											<td class="align-middle"><a href="javascript:;"
+												class="text-secondary font-weight-bold text-xs"
+												data-toggle="tooltip" data-original-title="Edit message">
+													Voir </a></td>
+										</tr>
+										<tr>
+											<td>
+												<div class="d-flex px-2 py-1">
+													<div>
+														<img src="resources/images/team-4.jpg"
+															class="avatar avatar-sm me-3" alt="user3"></img>
+													</div>
+													<div class="d-flex flex-column justify-content-center">
+														<h6 class="mb-0 text-sm">Laurent Perrier</h6>
+														<p class="text-xs text-secondary mb-0">laurent@creative-tim.com</p>
+													</div>
+												</div>
+											</td>
+											<td>
+												<p class="text-xs font-weight-bold mb-0">Recherche
+													réparation voiture</p>
+											</td>
+											<td class="align-middle text-center text-sm"><span
+												class="badge badge-sm bg-gradient-success">Online</span></td>
+											<td class="align-middle text-center"><span
+												class="text-secondary text-xs font-weight-bold">29/11/21</span>
+											</td>
+											<td class="align-middle"><a href="javascript:;"
+												class="text-secondary font-weight-bold text-xs"
+												data-toggle="tooltip" data-original-title="Edit message">
+													Voir </a></td>
+										</tr>
+										<tr>
+											<td>
+												<div class="d-flex px-2 py-1">
+													<div>
+														<img src="resources/images/team-3.jpg"
+															class="avatar avatar-sm me-3" alt="user4"></img>
+													</div>
+													<div class="d-flex flex-column justify-content-center">
+														<h6 class="mb-0 text-sm">Michael Levi</h6>
+														<p class="text-xs text-secondary mb-0">michael@creative-tim.com</p>
+													</div>
+												</div>
+											</td>
+											<td>
+												<p class="text-xs font-weight-bold mb-0">Recherche
+													jardinier</p>
+											</td>
+											<td class="align-middle text-center text-sm"><span
+												class="badge badge-sm bg-gradient-success">Online</span></td>
+											<td class="align-middle text-center"><span
+												class="text-secondary text-xs font-weight-bold">24/11/21</span>
+											</td>
+											<td class="align-middle"><a href="javascript:;"
+												class="text-secondary font-weight-bold text-xs"
+												data-toggle="tooltip" data-original-title="Edit message">
+													Voir </a></td>
+										</tr>
+										<tr>
+											<td>
+												<div class="d-flex px-2 py-1">
+													<div>
+														<img src="resources/images/team-2.jpg"
+															class="avatar avatar-sm me-3" alt="user5"></img>
+													</div>
+													<div class="d-flex flex-column justify-content-center">
+														<h6 class="mb-0 text-sm">Richard Gran</h6>
+														<p class="text-xs text-secondary mb-0">richard@creative-tim.com</p>
+													</div>
+												</div>
+											</td>
+											<td>
+												<p class="text-xs font-weight-bold mb-0">Cherche
+													déménagement</p>
+											</td>
+											<td class="align-middle text-center text-sm"><span
+												class="badge badge-sm bg-gradient-secondary">Offline</span>
+											</td>
+											<td class="align-middle text-center"><span
+												class="text-secondary text-xs font-weight-bold">04/11/21</span>
+											</td>
+											<td class="align-middle"><a href="javascript:;"
+												class="text-secondary font-weight-bold text-xs"
+												data-toggle="tooltip" data-original-title="Edit message">
+													Voir </a></td>
+										</tr>
+										<tr>
+											<td>
+												<div class="d-flex px-2 py-1">
+													<div>
+														<img src="resources/images/team-4.jpg"
+															class="avatar avatar-sm me-3" alt="user6"></img>
+													</div>
+													<div class="d-flex flex-column justify-content-center">
+														<h6 class="mb-0 text-sm">Miriam Eric</h6>
+														<p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p>
+													</div>
+												</div>
+											</td>
+											<td>
+												<p class="text-xs font-weight-bold mb-0">Recherche
+													plomberie</p>
+											</td>
+											<td class="align-middle text-center text-sm"><span
+												class="badge badge-sm bg-gradient-secondary">Offline</span>
+											</td>
+											<td class="align-middle text-center"><span
+												class="text-secondary text-xs font-weight-bold">24/10/21</span>
+											</td>
+											<td class="align-middle"><a href="javascript:;"
+												class="text-secondary font-weight-bold text-xs"
+												data-toggle="tooltip" data-original-title="Edit message">
+													Voir </a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="ratings">
-                          <i class="fa fa-star rating-color"></i>
-                          <i class="fa fa-star rating-color"></i>
-                          <i class="fa fa-star rating-color"></i>
-                          <i class="fa fa-star rating-color"></i>
-                          <i class="fa fa-star"></i>
-                        </div>
-                      </div>
+			<div class="col-12">
 
-                      <p class="mb-4 text-sm">
-                        Impeccable Ponctuel Travaux proprement réalisés Bons conseils Je recommande
-                      </p>
-                    </div>
-                  </div>
-                </div>
+				<div class="row">
+					<div class="col-8 mt-4">
+						<div class="card h-100">
+							<div class="card-header pb-0 p-3">
+								<div class="row">
+									<div class="col-md-8 d-flex align-items-center">
+										<h6 class="mb-1">Avis et commentaires</h6>
+									</div>
+								</div>
+							</div>
 
-                
+							<div class="card-body p-3">
+								<div class="row">
 
-                <div class="card-body px-1 pb-0">
-                  <div class="d-flex align-items-center justify-content-between">
-                    <button type="button" class="btn btn-outline-primary btn-sm mb-0">Voir plus de commentaires</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-lg-4 mt-4">
-          <div class="card h-100">
-            <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="col-6 d-flex align-items-center">
-                  <h6 class="mb-0">Factures</h6>
-                </div>
-                <div class="col-6 text-end">
-                  <button class="btn btn-outline-primary btn-sm mb-0">Voir tout</button>
-                </div>
-              </div>
-            </div>
-            <div class="card-body p-3 pb-0">
-              <ul class="list-group">
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex flex-column">
-                    <h6 class="mb-1 text-dark font-weight-bold text-sm">01/03/2020</h6>
-                    <span class="text-xs">Jean Jacques</span>
-                  </div>
-                  <div class="d-flex align-items-center text-sm">
-                    180€
-                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i
-                        class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex flex-column">
-                    <h6 class="text-dark mb-1 font-weight-bold text-sm">10/02/2021</h6>
-                    <span class="text-xs">Marie</span>
-                  </div>
-                  <div class="d-flex align-items-center text-sm">
-                    250€
-                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i
-                        class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex flex-column">
-                    <h6 class="text-dark mb-1 font-weight-bold text-sm">05/04/2020</h6>
-                    <span class="text-xs">Yves</span>
-                  </div>
-                  <div class="d-flex align-items-center text-sm">
-                    560€
-                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i
-                        class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex flex-column">
-                    <h6 class="text-dark mb-1 font-weight-bold text-sm">25/06/2019</h6>
-                    <span class="text-xs">Bernard</span>
-                  </div>
-                  <div class="d-flex align-items-center text-sm">
-                    120€
-                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i
-                        class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
-                  <div class="d-flex flex-column">
-                    <h6 class="text-dark mb-1 font-weight-bold text-sm">01/03/2019</h6>
-                    <span class="text-xs">Laure</span>
-                  </div>
-                  <div class="d-flex align-items-center text-sm">
-                    300€
-                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i
-                        class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+									<div class="card card-blog card-plain">
+										<div class="row">
+											<div class="col-2">
+												<li
+													class="list-group-item border-0 d-flex align-items-center px-0">
+													<div class="avatar me-3">
+														<img src="resources/images/team-3.jpg" alt="kal"
+															class="border-radius-lg shadow"></img>
+													</div>
+													<div
+														class="d-flex align-items-start flex-column justify-content-center">
+														<h6 class="mb-0 text-sm">Nick</h6>
+														<p class="mb-0 text-xs">Il y a 7 jours</p>
+													</div>
+												</li>
+											</div>
 
-       
-    
-    
-    
-    
-      </div>
-      </div>
-  </div>
-  
+											<div class="col-10">
+												<p>Titre commentaire</p>
 
-  <script>
+												<div
+													class="d-flex justify-content-between align-items-center">
+													<div class="ratings">
+														<i class="fa fa-star rating-color"></i> <i
+															class="fa fa-star rating-color"></i> <i
+															class="fa fa-star rating-color"></i> <i
+															class="fa fa-star rating-color"></i> <i
+															class="fa fa-star"></i>
+													</div>
+												</div>
+
+												<p class="mb-4 text-sm">Excellente expérience. Très
+													efficace, professionel.. je ne changerai pas du tout et
+													fort recommandé !!!</p>
+											</div>
+										</div>
+									</div>
+
+									<div class="card card-blog card-plain">
+										<div class="row">
+											<div class="col-2">
+												<li
+													class="list-group-item border-0 d-flex align-items-center px-0">
+													<div class="avatar me-3">
+														<img src="resources/images/team-4.jpg" alt="kal"
+															class="border-radius-lg shadow"></img>
+													</div>
+													<div
+														class="d-flex align-items-start flex-column justify-content-center">
+														<h6 class="mb-0 text-sm">Benoit</h6>
+														<p class="mb-0 text-xs">Il y a 12 jours</p>
+													</div>
+												</li>
+											</div>
+
+											<div class="col-10">
+												<p>Titre commentaire</p>
+
+												<div
+													class="d-flex justify-content-between align-items-center">
+													<div class="ratings">
+														<i class="fa fa-star rating-color"></i> <i
+															class="fa fa-star rating-color"></i> <i
+															class="fa fa-star rating-color"></i> <i
+															class="fa fa-star rating-color"></i> <i
+															class="fa fa-star"></i>
+													</div>
+												</div>
+
+												<p class="mb-4 text-sm">Top !</p>
+											</div>
+										</div>
+									</div>
+
+
+
+
+
+									<div class="card card-blog card-plain">
+										<div class="row">
+											<div class="col-2">
+												<li
+													class="list-group-item border-0 d-flex align-items-center px-0">
+													<div class="avatar me-3">
+														<img src="resources/images/marie.jpg" alt="kal"
+															class="border-radius-lg shadow"></img>
+													</div>
+													<div
+														class="d-flex align-items-start flex-column justify-content-center">
+														<h6 class="mb-0 text-sm">Marie</h6>
+														<p class="mb-0 text-xs">Il y a 27 jours</p>
+													</div>
+												</li>
+											</div>
+
+											<div class="col-10">
+												<p>Titre commentaire</p>
+
+												<div
+													class="d-flex justify-content-between align-items-center">
+													<div class="ratings">
+														<i class="fa fa-star rating-color"></i> <i
+															class="fa fa-star rating-color"></i> <i
+															class="fa fa-star rating-color"></i> <i
+															class="fa fa-star rating-color"></i> <i
+															class="fa fa-star"></i>
+													</div>
+												</div>
+
+												<p class="mb-4 text-sm">Impeccable Ponctuel Travaux
+													proprement réalisés Bons conseils Je recommande</p>
+											</div>
+										</div>
+									</div>
+
+
+
+									<div class="card-body px-1 pb-0">
+										<div class="d-flex align-items-center justify-content-between">
+											<button type="button"
+												class="btn btn-outline-primary btn-sm mb-0">Voir
+												plus de commentaires</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 mt-4">
+						<div class="card h-100">
+							<div class="card-header pb-0 p-3">
+								<div class="row">
+									<div class="col-6 d-flex align-items-center">
+										<h6 class="mb-0">Factures</h6>
+									</div>
+									<div class="col-6 text-end">
+										<button class="btn btn-outline-primary btn-sm mb-0">Voir
+											tout</button>
+									</div>
+								</div>
+							</div>
+							<div class="card-body p-3 pb-0">
+								<ul class="list-group">
+									<li
+										class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+										<div class="d-flex flex-column">
+											<h6 class="mb-1 text-dark font-weight-bold text-sm">01/03/2020</h6>
+											<span class="text-xs">Jean Jacques</span>
+										</div>
+										<div class="d-flex align-items-center text-sm">
+											180€
+											<button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4">
+												<i class="fas fa-file-pdf text-lg me-1"></i> PDF
+											</button>
+										</div>
+									</li>
+									<li
+										class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+										<div class="d-flex flex-column">
+											<h6 class="text-dark mb-1 font-weight-bold text-sm">10/02/2021</h6>
+											<span class="text-xs">Marie</span>
+										</div>
+										<div class="d-flex align-items-center text-sm">
+											250€
+											<button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4">
+												<i class="fas fa-file-pdf text-lg me-1"></i> PDF
+											</button>
+										</div>
+									</li>
+									<li
+										class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+										<div class="d-flex flex-column">
+											<h6 class="text-dark mb-1 font-weight-bold text-sm">05/04/2020</h6>
+											<span class="text-xs">Yves</span>
+										</div>
+										<div class="d-flex align-items-center text-sm">
+											560€
+											<button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4">
+												<i class="fas fa-file-pdf text-lg me-1"></i> PDF
+											</button>
+										</div>
+									</li>
+									<li
+										class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+										<div class="d-flex flex-column">
+											<h6 class="text-dark mb-1 font-weight-bold text-sm">25/06/2019</h6>
+											<span class="text-xs">Bernard</span>
+										</div>
+										<div class="d-flex align-items-center text-sm">
+											120€
+											<button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4">
+												<i class="fas fa-file-pdf text-lg me-1"></i> PDF
+											</button>
+										</div>
+									</li>
+									<li
+										class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
+										<div class="d-flex flex-column">
+											<h6 class="text-dark mb-1 font-weight-bold text-sm">01/03/2019</h6>
+											<span class="text-xs">Laure</span>
+										</div>
+										<div class="d-flex align-items-center text-sm">
+											300€
+											<button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4">
+												<i class="fas fa-file-pdf text-lg me-1"></i> PDF
+											</button>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+
+			</div>
+		</div>
+	</div>
+
+
+	<script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win &amp;&amp; document.querySelector('#sidenav-scrollbar')) {
       var options = {
@@ -626,17 +676,17 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
   </script>
-  
-  <!-- Bootstrap JS -->
-		<h:outputScript library="js" name="core/popper.min.js"></h:outputScript>
-		<h:outputScript library="js" name="core/bootstrap.min.js"></h:outputScript>
-		<h:outputScript library="js" name="plugins/perfect-scrollbar.min.js"></h:outputScript>
-		<h:outputScript library="js" name="plugins/smooth-scrollbar.min.js"></h:outputScript>
-		<h:outputScript library="js" name="plugins/chartjs.min.js"></h:outputScript>
-		<h:outputScript library="js" name="soft-ui-dashboard.js"></h:outputScript>
-		
-  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
-  
-</body> 
+
+	<!-- Bootstrap JS -->
+	<h:outputScript library="js" name="core/popper.min.js"></h:outputScript>
+	<h:outputScript library="js" name="core/bootstrap.min.js"></h:outputScript>
+	<h:outputScript library="js" name="plugins/perfect-scrollbar.min.js"></h:outputScript>
+	<h:outputScript library="js" name="plugins/smooth-scrollbar.min.js"></h:outputScript>
+	<h:outputScript library="js" name="plugins/chartjs.min.js"></h:outputScript>
+	<h:outputScript library="js" name="soft-ui-dashboard.js"></h:outputScript>
+
+	<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+	<script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+
+</body>
 </html>

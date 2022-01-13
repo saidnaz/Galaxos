@@ -94,23 +94,27 @@ public class AssociationCompteService {
 	public List<Association> findAssociationsGestionnaireParAdherent(Long idAdherentConnecte) {
 		return associationRepository.findAssociationsGestionnaireParAdherent(idAdherentConnecte);
 	}
-	
+
 	public List<Association> findAssociationsProviderParAdherent(Long idAdherentConnecte) {
-		return associationRepository.findAssociationsGestionnaireParAdherent(idAdherentConnecte);
+		return associationRepository.findAssociationsProviderParAdherent(idAdherentConnecte);
 	}
-	
+
+	public List<Association> findAssociationsAdherentParAdherent(Long idAdherentConnecte) {
+		return associationRepository.findAssociationsAdherentParAdherent(idAdherentConnecte);
+	}
+
 	public Provider devenirProvider(Adherent adherent, Association asso) {
 		return associationRepository.devenirProvider(adherent, asso);
 	}
-	
+
 	public List<Adherent> findProviderParAssociation(Long idAsso) {
 		return associationRepository.findProviderParAssociation(idAsso);
 	}
 
 	public Consumer devenirAdherent(Adherent adherentConnecte, Association asso) {
 		return associationRepository.devenirAdherent(adherentConnecte, asso);
-	} 
-	
+	}
+
 	public List<Adherent> findConsumerParAssociation(Long idAsso) {
 		return associationRepository.findConsumerParAssociation(idAsso);
 	}

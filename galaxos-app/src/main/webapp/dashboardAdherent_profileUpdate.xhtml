@@ -34,8 +34,7 @@
 	<!--SECTION NAV-->
 	<div class="fixed-top">
 		<nav class="navbar navbar-expand-lg navbar-light navbar-white"
-			id="navbar"> <a class="navbar-brand" href="index.xhtml"> 
-			<img
+			id="navbar"> <a class="navbar-brand" href="index.xhtml"> <img
 			alt="LOGO" width="70" class="logo-brand-fr"
 			src="resources/images/logo.png" />
 		</a> <a class="navbar-brand d-none" href=""> <img alt="LOGO"
@@ -48,19 +47,19 @@
 		GALAXOS
 		<div class="collapse navbar-collapse" id="nav_site_help">
 			<ul class="navbar-nav ml-auto align-items-center">
-			<li class="m-1 nav-item d-flex">
-			<h4>La galaxie des associations</h4>
-			</li>
-<!-- 				<li class="m-1 nav-item d-flex align-items-center"><a -->
-<!-- 					class="p-3 nav-link main-button" href="" style="color: white"> -->
-<!-- 						Besoin d'un service ? </a></li> -->
-<!-- 				<li class="m-1 nav-item d-flex align-items-center"><h:link -->
-<!-- 						outcome="creationAssociation.xhtml" -->
-<!-- 						class="nav-link nav-link-hover-black button-tertiaire">Créer son association</h:link> -->
-<!-- 				</li> -->
-<!-- 				<li class=" m-1 nav-item d-flex align-items-center"><a -->
-<!-- 					class="nav-link nav-link-hover-black button-secondaire" href="">Mon -->
-<!-- 						compte</a></li> -->
+				<li class="m-1 nav-item d-flex">
+					<h4>La galaxie des associations</h4>
+				</li>
+				<!-- 				<li class="m-1 nav-item d-flex align-items-center"><a -->
+				<!-- 					class="p-3 nav-link main-button" href="" style="color: white"> -->
+				<!-- 						Besoin d'un service ? </a></li> -->
+				<!-- 				<li class="m-1 nav-item d-flex align-items-center"><h:link -->
+				<!-- 						outcome="creationAssociation.xhtml" -->
+				<!-- 						class="nav-link nav-link-hover-black button-tertiaire">Créer son association</h:link> -->
+				<!-- 				</li> -->
+				<!-- 				<li class=" m-1 nav-item d-flex align-items-center"><a -->
+				<!-- 					class="nav-link nav-link-hover-black button-secondaire" href="">Mon -->
+				<!-- 						compte</a></li> -->
 			</ul>
 		</div>
 		</nav>
@@ -72,83 +71,89 @@
 	<section class="min-vh-100 mb-8" style="margin-top:120px">
 
 	<div class="container">
-		
-			<div class="col-xl-4 col-lg-5 col-md-7 shadow-lg mx-auto">
-			
-				<div class="card z-index-0">
-					<div class="card-header text-center pt-4">
-				<img alt="LOGO" width="50" class="logo-brand-fr"
-								src="resources/images/logo.png" />
-						<h5>Modification de vos données</h5>	
-					</div>
-					<div class="card-body">
-						<h:form id="loginForm" role="form text-left">
-							<div class="mb-4">
-								<h:inputText id="numeroInput" class="form-control"
-									pt:placeholder="Numéro ex : 14" aria-label="Numero"
-									value="#{dashboardProfil.form.numero}" />
-								<h:messages for="numeroInput" errorClass="erreurInputForm"  />
-							</div>
-							
-							<div class="mb-4">
-								<h:inputText id="libelleInput" class="form-control"
-									pt:placeholder="Libellé ex : rue d'Isika" aria-label="Libelle"
-									value="#{dashboardProfil.form.libelle}" />
-								<h:messages for="libelleInput" errorClass="erreurInputForm"  />
-							</div>
-							
-							<div class="mb-4">
-								<h:inputText id="codePostalInput" class="form-control"
-									pt:placeholder="Code Postal ex : 75001" aria-label="CodePostal"
-									value="#{dashboardProfil.form.codePostal}" />
-								<h:messages for="codePostalInput" errorClass="erreurInputForm"  />
-							</div>
-							
-							<div class="mb-4">
-								<h:inputText id="villeInput" class="form-control"
-									pt:placeholder="Ville ex : Paris" aria-label="Ville"
-									value="#{dashboardProfil.form.ville}" />
-								<h:messages for="villeInput" errorClass="erreurInputForm"  />
-							</div>
-							
-							<div class="mb-4">
-								<h:inputText id="telephoneInput" class="form-control"
-									pt:placeholder="Téléphone ex : 01 01 01 01 01" aria-label="Telephone"
-									value="#{dashboardProfil.form.telephone}" />
-								<h:messages for="telephoneInput" errorClass="erreurInputForm"  />
-							</div>
-							
-							<div class="mb-4">
-								<h:inputTextarea id="descriptionInput" class="form-control PHname"
-									pt:placeholder="A propos de vous" aria-label="Description"
-									aria-describeby="description"
-									value="#{dashboardProfil.form.description}" />
-								<h:messages for="telephoneInput" errorClass="erreurInputForm"  />
-							</div>
-												
-							
-							<div class="text-center">
-								<h:commandButton value="Valider"
-									class="btn main-button w-100 my-4 mb-2"
-									action="#{dashboardProfil.update()}" 
-									outcome="dashboardAdherent_profile.xhtml" />
-									
-									<h:link
-						outcome="dashboardAdherent_profile.xhtml"
-						class="nav-link nav-link-hover-black button-tertiaire">Retour
-					</h:link>
-									
-									
-							</div>
-						</h:form>
 
-						
-					
-					</div>
+		<div class="col-xl-4 col-lg-5 col-md-7 shadow-lg mx-auto">
+
+			<div class="card z-index-0">
+				<div class="card-header text-center pt-4">
+					<img alt="LOGO" width="50" class="logo-brand-fr"
+						src="resources/images/logo.png" />
+					<h5>Modification de vos données</h5>
+				</div>
+				<div class="card-body">
+					<h:form id="loginForm" role="form text-left"
+						enctype="multipart/form-data">
+						<div class="mb-4">
+							<h:inputText id="numeroInput" class="form-control"
+								pt:placeholder="Numéro ex : 14" aria-label="Numero"
+								value="#{dashboardProfil.form.numero}" />
+							<h:messages for="numeroInput" errorClass="erreurInputForm" />
+						</div>
+
+						<div class="mb-4">
+							<h:inputText id="libelleInput" class="form-control"
+								pt:placeholder="Libellé ex : rue d'Isika" aria-label="Libelle"
+								value="#{dashboardProfil.form.libelle}" />
+							<h:messages for="libelleInput" errorClass="erreurInputForm" />
+						</div>
+
+						<div class="mb-4">
+							<h:inputText id="codePostalInput" class="form-control"
+								pt:placeholder="Code Postal ex : 75001" aria-label="CodePostal"
+								value="#{dashboardProfil.form.codePostal}" />
+							<h:messages for="codePostalInput" errorClass="erreurInputForm" />
+						</div>
+
+						<div class="mb-4">
+							<h:inputText id="villeInput" class="form-control"
+								pt:placeholder="Ville ex : Paris" aria-label="Ville"
+								value="#{dashboardProfil.form.ville}" />
+							<h:messages for="villeInput" errorClass="erreurInputForm" />
+						</div>
+
+						<div class="mb-4">
+							<h:inputText id="telephoneInput" class="form-control"
+								pt:placeholder="Téléphone ex : 01 01 01 01 01"
+								aria-label="Telephone" value="#{dashboardProfil.form.telephone}" />
+							<h:messages for="telephoneInput" errorClass="erreurInputForm" />
+						</div>
+
+						<div class="mb-4">
+							<h:inputTextarea id="descriptionInput"
+								class="form-control PHname" pt:placeholder="A propos de vous"
+								aria-label="Description" aria-describeby="description"
+								value="#{dashboardProfil.form.description}" />
+							<h:messages for="telephoneInput" errorClass="erreurInputForm" />
+						</div>
+
+						<div class="mb-4">
+							<h:inputFile
+								value="#{dashboardProfil.form.photo}"
+								class="form-control" id="file"></h:inputFile>
+
+						</div>
+
+
+						<div class="text-center">
+							<h:commandButton value="Valider"
+								class="btn main-button w-100 my-4 mb-2"
+								action="#{dashboardProfil.update()}" />
+
+							<h:link outcome="dashboardAdherent_profile.xhtml"
+								class="nav-link nav-link-hover-black button-tertiaire">Retour
+					</h:link>
+
+
+						</div>
+					</h:form>
+
+
+
 				</div>
 			</div>
 		</div>
-	
+	</div>
+
 
 	</section>
 
@@ -241,4 +246,3 @@
 
 </body>
 </html>
-											

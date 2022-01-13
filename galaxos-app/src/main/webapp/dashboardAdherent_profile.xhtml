@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-<title>Galaxos : la plateforme de tous les services</title>
+	<title>Galaxos : la plateforme de tous les services</title>
 	<meta
 		content="Une plateforme d'associations présentant une multitude de services" />
 	<meta content="" name="application-name" />
@@ -13,7 +13,7 @@
 	<meta content="width=device-width, initial-scale=1" name="viewport" />
 	<meta content="yes" name="mobile-web-app-capable" />
 
-		<!--     Fonts and icons     -->
+	<!--     Fonts and icons     -->
 	<link
 		href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
 		rel="stylesheet" />
@@ -28,502 +28,530 @@
 	<h:outputStylesheet library="css" name="home.css" />
 	<h:outputStylesheet library="css" name="creation-associaation.css" />
 	<h:outputStylesheet library="css" name="soft-ui-dashboard.css" />
-	
+
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet"
 		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
 
-	
+
 </h:head>
- 
+
 <body>
 
-<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
-    id="sidenav-main">
-    <div class="">
-      <a class="navbar-brand d-flex justify-content-center align-items-center m-0"
-        href="index.xhtml">
-        <img src="resources/images/logo.ico" class="" alt="main_logo" style="max-width: 100%; max-height: 4rem;"></img>
-        <span class="ms-1 font-weight-bold">GALAXOS</span>
-      </a>
-    </div>
+	<aside
+		class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
+		id="sidenav-main">
+	<div class="">
+		<a
+			class="navbar-brand d-flex justify-content-center align-items-center m-0"
+			href="index.xhtml"> <img src="resources/images/logo.ico" class=""
+			alt="main_logo" style="max-width: 100%; max-height: 4rem;"></img> <span
+			class="ms-1 font-weight-bold">GALAXOS</span>
+		</a>
+	</div>
 
-    <hr class="horizontal dark mt-0"></hr>
+	<hr class="horizontal dark mt-0"></hr>
 
-    <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="dashboardAdherent.xhtml">
-            <div
-              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="fas fa-laptop text-dark text-lg opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Tableau de bord</span>
-          </a>
-        </li>
+	<div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100"
+		id="sidenav-collapse-main">
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link"
+				href="dashboardAdherent.xhtml">
+					<div
+						class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+						<i class="fas fa-laptop text-dark text-lg opacity-10"></i>
+					</div> <span class="nav-link-text ms-1">Tableau de bord</span>
+			</a></li>
 
-        <li class="nav-item">
-          <a class="nav-link  active" href="dashboardAdherent_profile.xhtml">
-            <div
-            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="fas fa-user text-lg opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Profil</span>
-          </a>
-        </li>
-        <li class="nav-item"><a class="nav-link "
-				href="dashboardAdherent_association.xhtml">
+			<li class="nav-item"><a class="nav-link  active"
+				href="dashboardAdherent_profile.xhtml">
 					<div
 						class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 						<i class="fas fa-user text-lg opacity-10"></i>
-					</div> <span class="nav-link-text ms-1">Association</span>
+					</div> <span class="nav-link-text ms-1">Profil</span>
 			</a></li>
 
-      </ul>
-    </div>
-  </aside>
-  
-   <main class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
-    <!-- Navbar -->
-    <nav class="navbar navbar-main navbar-expand-lg bg-transparent shadow-none position-absolute px-4 w-100 z-index-2">
-      <div class="container-fluid py-1">
 
-        <h6 class="text-dark font-weight-bolder ms-2">Informations personnelles</h6>
+		</ul>
+	</div>
+	</aside>
 
-        <div class="collapse navbar-collapse me-md-0 me-sm-4 mt-sm-0 mt-2" id="navbar">
-          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+	<main
+		class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
+	<!-- Navbar --> <nav
+		class="navbar navbar-main navbar-expand-lg bg-transparent shadow-none position-absolute px-4 w-100 z-index-2">
+	<div class="container-fluid py-1">
 
-            <ul class="navbar-nav justify-content-end">
-              <li class="nav-item d-flex align-items-center">
-                <a href="javascript:;" class="nav-link text-dark font-weight-bold px-0">
-                  <i class="fa fa-sign-out me-sm-1"></i>
-                  <span class="d-sm-inline d-none">Déconnexion</span>
-                </a>
-              </li>
+		<h6 class="text-dark font-weight-bolder ms-2">Informations
+			personnelles</h6>
 
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <!-- End Navbar -->
+		<div class="collapse navbar-collapse me-md-0 me-sm-4 mt-sm-0 mt-2"
+			id="navbar">
+			<div class="ms-md-auto pe-md-3 d-flex align-items-center">
+
+				<ul class="navbar-nav justify-content-end">
+					<li class="nav-item d-flex align-items-center" style="padding-right: 17px"><h:form
+							id="fsdf">
+							<div class="nav-link text-dark font-weight-bold px-0">
+								<i class="fas fa-user-astronaut me-sm-1"></i>
+								<h:commandLink class="d-sm-inline d-none"
+									action="#{CatalogueAssociationBean.afficherPageCatalogue()}"
+									value="Catalogue d'annonce"
+									style="background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;">
+									<f:param id="categName" name="categName" value="all" />
+								</h:commandLink>
+							</div>
+						</h:form></li>
 
 
 
-    <div class="container-fluid py-4">
-      <div class="page-header min-height-300 border-radius-xl mt-4"
-        style="background-image: url('resources/images/curved14.jpg'); background-position-y: 50%;">
-        <span class="mask bg-gradient-primary opacity-6"></span>
-      </div>
-      <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
-        <div class="row gx-4">
-        
-          <div class="col-auto">
-            <div class="avatar avatar-xl position-relative">
-              <img src="resources/images/bruce.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm"></img>
-            </div>
-          </div>
-          
-          <div class="col-auto my-auto border">
-            <div class="h-100">
-              <h5 class="mb-1">
-                <span class="d-sm-inline d-none">#{dashboardProfil.profil.prenom}
-							#{dashboardProfil.profil.nom}</span>
-              </h5>
-            </div>
-          </div>
-          
-          <!-- row justify-content-center mt-5 -->
-          <div>
-          <div class="mx-auto">
-			<div class="card h-100 col-3">
-				<div
-					class="d-flex flex-column justify-content-center align-item-center">
-					<i class="fas fa-plus-circle text-fonce text-center m-2"
-						style="font-size: 60px"></i>
-					<h:link value="Inscrire mon association" outcome="creationAssociation" class="text-fonce text-center m-2" />
-				
-				</div>
 
+					<li class="nav-item d-flex align-items-center"><h:form>
+							<div class="nav-link text-dark font-weight-bold px-0">
+								<i class="fa fa-sign-out me-sm-1"></i>
+								<h:commandButton value="Déconnexion" class="d-sm-inline d-none"
+									action="#{loginBean.doLogout()}"
+									style="background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;">
+								</h:commandButton>
+
+							</div>
+						</h:form> <!-- <a
+						href="javascript:;"
+						class="nav-link text-dark font-weight-bold px-0"> <i
+							class="fa fa-sign-out me-sm-1"></i> <span
+							class="d-sm-inline d-none">Déconnexion</span>
+						</a> --></li>
+
+				</ul>
 			</div>
 		</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container-fluid py-4">
-      <div class="row">
-
-        <div class="col-12 col-xl-12 mt-4">
-          <div class="card h-100">
-
-            <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="col-md-8 d-flex align-items-center">
-                  <h6 class="mb-0">Liste des compétences</h6>
-                </div>
-                <div class="col-md-4 text-end">
-                  <a href="javascript:;">
-                    <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top"
-                      title="Edit Profile"></i>
-                  </a>
-                </div>
-            </div>
-            </div>
+	</div>
+	</nav> <!-- End Navbar -->
 
 
-            <div class="card-body p-3">
-              <section class="categories-list">
-                <ul>
-                  <strong style="color: #1a70e2;">Bricolage Maison</strong>
-                  <li>
-                    <a href="" title="Serrurerie">Serrurerie</a>
-                  </li>
-                  <li>
-                    <a href="" title="Pose ou réparation store / fenêtre / porte">Pose ou réparation store / fenêtre /
-                      porte</a>
-                  </li>
-                  <li>
-                    <a href="/" title="Accroche murale">Accroche murale</a>
-                  </li>
-                  <li>
-                    <a href="" title="Menuiserie">Menuiserie</a>
-                  </li>
-                </ul>
 
-                <ul>
-                  <strong style="color: #a91f83;">Peinture</strong>
-                  <li>
-                    <a href="" title="Peinture de toit">Peinture de toit</a>
-                  </li>
-                  <li>
-                    <a href="" title="Peinture de meubles">Peinture de meubles</a>
-                  </li>
-                </ul>
+	<div class="container-fluid py-4">
+		<div class="page-header min-height-300 border-radius-xl mt-4"
+			style="background-image: url('resources/images/curved14.jpg'); background-position-y: 50%;">
+			<span class="mask bg-gradient-primary opacity-6"></span>
+		</div>
+		<div
+			class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
+			<div class="row gx-4">
 
-                <ul>
-                  <strong style="color: #6cc630;">Jardinage</strong>
-                  <li>
-                    <a href="" title="Portail, grillage et occultation">Portail, grillage et occultation</a>
-                  </li>
-                  <li>
-                    <a href="" title="Entretien jardin">Entretien jardin</a>
-                  </li>
-                  <li>
-                    <a href="" title="Remise en état du sol">Remise en état du sol</a>
-                  </li>
-                </ul>
+				<div class="col-auto ">
+					<div class="avatar avatar-xl position-relative">
+						<h:graphicImage library="imageUpload"
+							name="#{dashboardProfil.profil.photo}"
+							class="w-100 border-radius-lg shadow-sm"></h:graphicImage>
 
-                <ul>
-                  <strong style="color: #3307ab;">Mécanique</strong>
-                  <li>
-                    <a href="" title="Installation accessoire véhicule">Installation accessoire véhicule</a>
-                  </li>
-                  <li>
-                    <a href="" title="Vidange">Vidange</a>
-                  </li>
-                  <li>
-                    <a href="" title="Installation / Réparation rétroviseurs">Installation / Réparation rétroviseurs</a>
-                  </li>
-                  <li>
-                    <a href="" title="Changement de pneus">Changement de pneus</a>
-                  </li>
-                  <li>
-                    <a href="" title="Changement de batterie">Changement de batterie</a>
-                  </li>
-                  <li>
-                    <a href="" title="Nettoyage intérieur / Extérieur">Nettoyage intérieur / Extérieur</a>
-                  </li>
-                  <li>
-                    <a href="" title="Réparation vélo">Réparation vélo</a>
-                  </li>
-                </ul>
+					</div>
+				</div>
+
+				<div class="col-auto my-auto">
+					<div class="h-100">
+						<h5 class="mb-1">
+							<span class="d-sm-inline d-none">#{dashboardProfil.profil.prenom}
+								#{dashboardProfil.profil.nom}</span>
+						</h5>
+					</div>
+				</div>
+				<div class="col-5"></div>
+				<!-- row justify-content-center mt-5 -->
+				<div class="col-3 align-item-end">
+					<div class="mx-auto">
+						<div class="card h-100">
+							<div class="d-flex justify-content-center align-item-center">
+								<i class="fas fa-plus-circle text-fonce text-center m-2"
+									style="font-size: 60px"></i>
+								<h:link value="Inscrire mon association"
+									outcome="creationAssociation"
+									class="text-fonce text-center m-2" />
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid py-4">
+		<div class="row">
+
+			<div class="col-12 col-xl-12 mt-4">
+				<div class="card h-100">
+
+					<div class="card-header pb-0 p-3">
+						<div class="row">
+							<div class="col-md-8 d-flex align-items-center">
+								<h6 class="mb-0">Liste des compétences</h6>
+							</div>
+							<div class="col-md-4 text-end">
+								<a href="javascript:;"> <i
+									class="fas fa-user-edit text-secondary text-sm"
+									data-bs-toggle="tooltip" data-bs-placement="top"
+									title="Edit Profile"></i>
+								</a>
+							</div>
+						</div>
+					</div>
 
 
-                <ul>
-                  <strong style="color: #fd1d3e;">Plomberie</strong>
-                  <li>
-                    <a href="" title="Petite plomberie">Petite plomberie</a>
-                  </li>
-                </ul>
+					<div class="card-body p-3">
+						<section class="categories-list">
+						<ul>
+							<strong style="color: #1a70e2;">Bricolage Maison</strong>
+							<li><a href="" title="Serrurerie">Serrurerie</a></li>
+							<li><a href=""
+								title="Pose ou réparation store / fenêtre / porte">Pose ou
+									réparation store / fenêtre / porte</a></li>
+							<li><a href="/" title="Accroche murale">Accroche murale</a>
+							</li>
+							<li><a href="" title="Menuiserie">Menuiserie</a></li>
+						</ul>
 
-                <ul>
-                  <strong style="color: #561665;">Déménagement</strong>
-                  <li>
-                    <a href="" title="Emballage">Emballage</a>
-                  </li>
-                  <li>
-                    <a href="" title="Chargement / Déchargement">Chargement / Déchargement</a>
-                  </li>
-                  <li>
-                    <a href="" title="Transport">Transport</a>
-                  </li>
-                </ul>
+						<ul>
+							<strong style="color: #a91f83;">Peinture</strong>
+							<li><a href="" title="Peinture de toit">Peinture de toit</a>
+							</li>
+							<li><a href="" title="Peinture de meubles">Peinture de
+									meubles</a></li>
+						</ul>
 
-                <ul>
-                  <strong style="color: #7A6F32;">Montage de meubles</strong>
-                  <li>
-                    <a href="" title="Installation objet de déco">Installation objet de déco</a>
-                  </li>
-                  <li>
-                    <a href="" title="Montage / Démontage de meubles">Montage / Démontage de meubles</a>
-                  </li>
-                  <li>
-                    <a href="" title="Montage d&#039;un meuble Ikea ">Montage d&#039;un meuble Ikea </a>
-                  </li>
-                </ul>
+						<ul>
+							<strong style="color: #6cc630;">Jardinage</strong>
+							<li><a href="" title="Portail, grillage et occultation">Portail,
+									grillage et occultation</a></li>
+							<li><a href="" title="Entretien jardin">Entretien jardin</a>
+							</li>
+							<li><a href="" title="Remise en état du sol">Remise en
+									état du sol</a></li>
+						</ul>
 
-              </section>
-            </div>
-          </div>
-        </div>
+						<ul>
+							<strong style="color: #3307ab;">Mécanique</strong>
+							<li><a href="" title="Installation accessoire véhicule">Installation
+									accessoire véhicule</a></li>
+							<li><a href="" title="Vidange">Vidange</a></li>
+							<li><a href=""
+								title="Installation / Réparation rétroviseurs">Installation
+									/ Réparation rétroviseurs</a></li>
+							<li><a href="" title="Changement de pneus">Changement de
+									pneus</a></li>
+							<li><a href="" title="Changement de batterie">Changement
+									de batterie</a></li>
+							<li><a href="" title="Nettoyage intérieur / Extérieur">Nettoyage
+									intérieur / Extérieur</a></li>
+							<li><a href="" title="Réparation vélo">Réparation vélo</a></li>
+						</ul>
 
-        <div class="row">
 
-          <div class="col-12 col-xl-4 mt-4">
-            <div class="card h-100 mb-4">
-              <div class="card-header pb-0 p-3">
-                <div class="row">
-                  <div class="col-md-8 d-flex align-items-center">
-                    <h6 class="mb-0">Informations personnelles</h6>
-                  </div>
-                  <div class="col-md-4 text-end">
+						<ul>
+							<strong style="color: #fd1d3e;">Plomberie</strong>
+							<li><a href="" title="Petite plomberie">Petite plomberie</a>
+							</li>
+						</ul>
 
-                        
-<!--                     <a class="open-button" onclick="openForm()"> -->
-<!--                     <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" -->
-<!--                         title="Edit Profile"/> -->
-<!--                     </a> -->
+						<ul>
+							<strong style="color: #561665;">Déménagement</strong>
+							<li><a href="" title="Emballage">Emballage</a></li>
+							<li><a href="" title="Chargement / Déchargement">Chargement
+									/ Déchargement</a></li>
+							<li><a href="" title="Transport">Transport</a></li>
+						</ul>
 
-<!--                     <h:form class="open-btn btn btn-outline-primary btn-sm mb-0 border"> -->
-<!--                     <div class="open-button btn-outline-primary btn-sm mb-0" value="Modifier"> -->
-<!--       				<h:commandButton action="dashboardAdherent_profileUpdate.xhtml"/> -->
-<!--     				</div> -->
-<!--     				</h:form> -->
-<!--     				<div class="text-right"> -->
-<!-- 								<h:commandButton value="Modifier" -->
-<!-- 									class="btn main-button w-100 my-4 mb-2 justify-content: center;" -->
-<!-- 									href="dashboardAdherent_profileUpdate.xhtml" /> -->
-<!-- 							</div> -->
-							
-					<li class="m-1 nav-item d-flex align-items-center"><h:link
-						outcome="dashboardAdherent_profileUpdate.xhtml"
-						class="nav-link nav-link-hover-black button-tertiaire">Modifier
+						<ul>
+							<strong style="color: #7A6F32;">Montage de meubles</strong>
+							<li><a href="" title="Installation objet de déco">Installation
+									objet de déco</a></li>
+							<li><a href="" title="Montage / Démontage de meubles">Montage
+									/ Démontage de meubles</a></li>
+							<li><a href="" title="Montage d&#039;un meuble Ikea ">Montage
+									d&#039;un meuble Ikea </a></li>
+						</ul>
+
+						</section>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+
+				<div class="col-12 col-xl-4 mt-4">
+					<div class="card h-100 mb-4">
+						<div class="card-header pb-0 p-3">
+							<div class="row">
+								<div class="col-md-8 d-flex align-items-center">
+									<h6 class="mb-0">Informations personnelles</h6>
+								</div>
+								<div class="col-md-4 text-end">
+
+
+									<!--                     <a class="open-button" onclick="openForm()"> -->
+									<!--                     <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" -->
+									<!--                         title="Edit Profile"/> -->
+									<!--                     </a> -->
+
+									<!--                     <h:form class="open-btn btn btn-outline-primary btn-sm mb-0 border"> -->
+									<!--                     <div class="open-button btn-outline-primary btn-sm mb-0" value="Modifier"> -->
+									<!--       				<h:commandButton action="dashboardAdherent_profileUpdate.xhtml"/> -->
+									<!--     				</div> -->
+									<!--     				</h:form> -->
+									<!--     				<div class="text-right"> -->
+									<!-- 								<h:commandButton value="Modifier" -->
+									<!-- 									class="btn main-button w-100 my-4 mb-2 justify-content: center;" -->
+									<!-- 									href="dashboardAdherent_profileUpdate.xhtml" /> -->
+									<!-- 							</div> -->
+
+									<li class="m-1 nav-item d-flex align-items-center"><h:link
+											outcome="dashboardAdherent_profileUpdate.xhtml"
+											class="nav-link nav-link-hover-black button-tertiaire">Modifier
 					</h:link></li>
-    				
-    
-				    
-
-  					   
-
-                  </div>
-                </div>
-              </div>
-              <div class="card-body p-3">
-                <p class="text-sm">
-                  #{dashboardProfil.profil.description}
-                </p>
-                <hr class="horizontal gray-light my-4"></hr>
-                <ul class="list-group">
-                  <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nom:</strong> &nbsp;
-                    <span class="d-sm-inline d-none">#{dashboardProfil.profil.nom}</span></li>
-                  <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Prénom:</strong> &nbsp;
-                    <span class="d-sm-inline d-none">#{dashboardProfil.profil.prenom}</span></li>
-                  <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Téléphone:</strong> &nbsp;
-                    <span class="d-sm-inline d-none">#{dashboardProfil.profil.telephone}</span></li>
-                  <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp;
-                    <span class="d-sm-inline d-none">#{dashboardProfil.user.email}</span></li>
-                  <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Adresse:</strong>
-                    &nbsp; <span class="d-sm-inline d-none">#{dashboardProfil.profil.adresse.numero} 
-                    #{dashboardProfil.profil.adresse.libelle} #{dashboardProfil.profil.adresse.codePostal} 
-                    #{dashboardProfil.profil.adresse.ville} </span></li>
-                </ul>
-              </div>
-            </div>
-          </div>
 
 
-          <div class="col-12 col-xl-8 mt-4">
-            <div class="card h-100 mb-4">
-              <div class="card-header pb-0">
-                <h6>Associations</h6>
-              </div>
-              <div class="card-body px-0 pt-0 pb-2">
-                <div class="table-responsive p-0">
-                  <table class="table align-items-center justify-content-center mb-0">
-                    <thead>
-                      <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Domaine</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Membres</th>
-                      </tr>
-                    </thead>
-
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div class="d-flex px-2">
-                            <div>
-                              <img src="resources/images/logoAssoExemple"
-                                class="avatar avatar-sm rounded-circle me-2" alt="spotify"></img>
-                            </div>
-                            <div class="my-auto">
-                              <h6 class="mb-0 text-sm">Spotify</h6>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="text-sm font-weight-bold mb-0">Bricolage</p>
-                        </td>
-                        <td>
-                          <span class="text-sm font-weight-bold">8</span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td>
-                          <div class="d-flex px-2">
-                            <div>
-                              <img src="resources/images/logoAssoExemple"
-                                class="avatar avatar-sm rounded-circle me-2" alt="invision"></img>
-                            </div>
-                            <div class="my-auto">
-                              <h6 class="mb-0 text-sm">Invision</h6>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="text-sm font-weight-bold mb-0">Cuisine</p>
-                        </td>
-                        <td>
-                          <span class="text-sm font-weight-bold">5</span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td>
-                          <div class="d-flex px-2">
-                            <div>
-                              <img src="resources/images/logoAssoExemple"
-                                class="avatar avatar-sm rounded-circle me-2" alt="jira"></img>
-                            </div>
-                            <div class="my-auto">
-                              <h6 class="mb-0 text-sm">Jira</h6>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="text-sm font-weight-bold mb-0">Voiture</p>
-                        </td>
-                        <td>
-                          <span class="text-sm font-weight-bold">3</span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td>
-                          <div class="d-flex px-2">
-                            <div>
-                              <img src="resources/images/logoAssoExemple"
-                                class="avatar avatar-sm rounded-circle me-2" alt="slack"></img>
-                            </div>
-                            <div class="my-auto">
-                              <h6 class="mb-0 text-sm">Slack</h6>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="text-sm font-weight-bold mb-0">Plomberie</p>
-                        </td>
-                        <td>
-                          <span class="text-sm font-weight-bold">10</span>
-                        </td>
-                      </tr>
-
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
-            <div class="row">
-                <div class="col-md-12 mb-lg-0 mb-4">
-                  <div class="card mt-4">
-                    <div class="card-header pb-0 p-3">
-                      <div class="row">
-                        <div class="col-6 d-flex align-items-center">
-                          <h6 class="mb-0">Méthode de paiement</h6>
-                        </div>
-                        <div class="col-6 text-end">
-                          <a class="btn bg-gradient-dark mb-0" href="javascript:;"><i
-                              class="fas fa-plus"></i>&nbsp;&nbsp;Ajouter une nouvelle carte</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-body p-3">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div
-                            class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
-                            <img class="w-10 me-3 mb-0" src="resources/images/logo_mastercard.png" alt="logo"></img>
-                            <h6 class="mb-0">****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;7852</h6>
-                            <i class="fas fa-pencil-alt ms-auto text-dark cursor-pointer" data-bs-toggle="tooltip"
-                              data-bs-placement="top" title="Edit Card"></i>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div
-                            class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
-                            <img class="w-10 me-3 mb-0" src="resources/images/logo_visa.png" alt="logo"></img>
-                            <h6 class="mb-0">****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;5248</h6>
-                            <i class="fas fa-pencil-alt ms-auto text-dark cursor-pointer" data-bs-toggle="tooltip"
-                              data-bs-placement="top" title="Edit Card"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              
-            </div>
-          </div>
-  
-  
-        </div>
 
 
-      </div>
-      
-      
-     
-  
-  
-  
-    </div>
-    
-    
-    
-  </main>
-  
-  
 
-<!-- <script> -->
-//        function openForm() {
-//       document.getElementById("popupForm").style.display="block";
-//       }
-      
-//       function closeForm() {
-//         document.getElementById("popupForm").style.display="none";
-//       }
-<!-- </script> -->
-    
 
-<script>
+								</div>
+							</div>
+						</div>
+						<div class="card-body p-3">
+							<p class="text-sm">#{dashboardProfil.profil.description}</p>
+							<hr class="horizontal gray-light my-4"></hr>
+							<ul class="list-group">
+								<li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong
+									class="text-dark">Nom:</strong> &nbsp; <span
+									class="d-sm-inline d-none">#{dashboardProfil.profil.nom}</span></li>
+								<li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong
+									class="text-dark">Prénom:</strong> &nbsp; <span
+									class="d-sm-inline d-none">#{dashboardProfil.profil.prenom}</span></li>
+								<li class="list-group-item border-0 ps-0 text-sm"><strong
+									class="text-dark">Téléphone:</strong> &nbsp; <span
+									class="d-sm-inline d-none">#{dashboardProfil.profil.telephone}</span></li>
+								<li class="list-group-item border-0 ps-0 text-sm"><strong
+									class="text-dark">Email:</strong> &nbsp; <span
+									class="d-sm-inline d-none">#{dashboardProfil.user.email}</span></li>
+								<li class="list-group-item border-0 ps-0 text-sm"><strong
+									class="text-dark">Adresse:</strong> &nbsp; <span
+									class="d-sm-inline d-none">#{dashboardProfil.profil.adresse.numero}
+										#{dashboardProfil.profil.adresse.libelle}
+										#{dashboardProfil.profil.adresse.codePostal}
+										#{dashboardProfil.profil.adresse.ville} </span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-12 col-xl-8 mt-4">
+					<div class="card h-100 mb-4">
+						<div class="card-header pb-0">
+							<h6>Associations</h6>
+						</div>
+						<div class="card-body px-0 pt-0 pb-2">
+							<div class="table-responsive p-0">
+								<table
+									class="table align-items-center justify-content-center mb-0">
+									<thead>
+										<tr>
+											<th
+												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom</th>
+											<th
+												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Domaine</th>
+											<th
+												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Statut</th>
+											<th
+												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
+										</tr>
+									</thead>
+
+									<tbody>
+
+										<h:form id='assoGestionnaire'>
+											<ui:repeat var="item"
+												value="#{adherentAssoDash.associationsGestionnaire}">
+												<tr>
+													<td>
+														<div class="d-flex px-2">
+															<div>
+
+																<h:graphicImage library="imageUpload"
+																	name="#{item.ficheAssoDescriptif.logo}"
+																	class="avatar avatar-sm rounded-circle me-2"></h:graphicImage>
+															</div>
+															<div class="my-auto">
+																<h6 class="mb-0 text-sm">#{item.ficheAssociation.nom}</h6>
+															</div>
+														</div>
+													</td>
+													<td>
+														<p class="text-sm font-weight-bold mb-0">#{item.fk_idDomain.name}</p>
+													</td>
+													<td><span
+														class="text-sm font-weight-bold bg-gradient-primary"
+														style="color: white !important; border-radius: 10%; padding: 6px">Gestionnaire</span></td>
+													<td><h:link outcome="dashboardAsso.xhtml" value="Voir">
+
+														</h:link></td>
+												</tr>
+											</ui:repeat>
+										</h:form>
+
+										<h:form id='assoProvider'>
+											<ui:repeat var="item"
+												value="#{adherentAssoDash.associationsProvider}">
+												<tr>
+													<td>
+														<div class="d-flex px-2">
+															<div>
+
+																<h:graphicImage library="imageUpload"
+																	name="#{item.ficheAssoDescriptif.logo}"
+																	class="avatar avatar-sm rounded-circle me-2"></h:graphicImage>
+															</div>
+															<div class="my-auto">
+																<h6 class="mb-0 text-sm">#{item.ficheAssociation.nom}</h6>
+															</div>
+														</div>
+													</td>
+													<td>
+														<p class="text-sm font-weight-bold mb-0">#{item.fk_idDomain.name}</p>
+													</td>
+													<td><span
+														class="text-sm font-weight-bold bg-gradient-info"
+														style="color: white !important; border-radius: 10%; padding: 6px">Provider</span></td>
+													<td><h:link outcome="association.xhtml" value="Voir">
+															<f:param name="idAsso" value="#{item.id}"></f:param>
+														</h:link></td>
+												</tr>
+											</ui:repeat>
+										</h:form>
+
+										<h:form id='assoAdherent'>
+											<ui:repeat var="item"
+												value="#{adherentAssoDash.associationsAdherent}">
+												<tr>
+													<td>
+														<div class="d-flex px-2">
+															<div>
+																<h:graphicImage library="imageUpload"
+																	name="#{item.ficheAssoDescriptif.logo}"
+																	class="avatar avatar-sm rounded-circle me-2"></h:graphicImage>
+															</div>
+															<div class="my-auto">
+																<h6 class="mb-0 text-sm">#{item.ficheAssociation.nom}</h6>
+															</div>
+														</div>
+													</td>
+													<td>
+														<p class="text-sm font-weight-bold mb-0">#{item.fk_idDomain.name}</p>
+													</td>
+													<td><span
+														class="text-sm font-weight-bold bg-gradient-success"
+														style="color: white !important; border-radius: 10%; padding: 6px">Adhérent</span></td>
+													<td><h:link outcome="association.xhtml" value="Voir">
+															<f:param name="idAsso" value="#{item.id}"></f:param>
+														</h:link></td>
+												</tr>
+											</ui:repeat>
+										</h:form>
+
+
+
+
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row justify-content-center">
+				<div class="col-lg-8">
+					<div class="row">
+						<div class="col-md-12 mb-lg-0 mb-4">
+							<div class="card mt-4">
+								<div class="card-header pb-0 p-3">
+									<div class="row">
+										<div class="col-6 d-flex align-items-center">
+											<h6 class="mb-0">Méthode de paiement</h6>
+										</div>
+										<div class="col-6 text-end">
+											<a class="btn bg-gradient-dark mb-0" href="javascript:;"><i
+												class="fas fa-plus"></i>&nbsp;&nbsp;Ajouter une nouvelle
+												carte</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-body p-3">
+									<div class="row">
+										<div class="col-md-6">
+											<div
+												class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
+												<img class="w-10 me-3 mb-0"
+													src="resources/images/logo_mastercard.png" alt="logo"></img>
+												<h6 class="mb-0">****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;7852</h6>
+												<i
+													class="fas fa-pencil-alt ms-auto text-dark cursor-pointer"
+													data-bs-toggle="tooltip" data-bs-placement="top"
+													title="Edit Card"></i>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div
+												class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
+												<img class="w-10 me-3 mb-0"
+													src="resources/images/logo_visa.png" alt="logo"></img>
+												<h6 class="mb-0">****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;5248</h6>
+												<i
+													class="fas fa-pencil-alt ms-auto text-dark cursor-pointer"
+													data-bs-toggle="tooltip" data-bs-placement="top"
+													title="Edit Card"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+
+			</div>
+
+
+		</div>
+
+
+
+
+
+
+	</div>
+
+	</main>
+
+
+
+	<script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win &amp;&amp; document.querySelector('#sidenav-scrollbar')) {
       var options = {
@@ -532,20 +560,20 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
   </script>
-  
-  <!-- Bootstrap JS -->
- 		<h:outputScript library="js" name="profil.js"></h:outputScript>
-		<h:outputScript library="js" name="core/popper.min.js"></h:outputScript>
-		<h:outputScript library="js" name="core/bootstrap.min.js"></h:outputScript>
-		<h:outputScript library="js" name="plugins/perfect-scrollbar.min.js"></h:outputScript>
-		<h:outputScript library="js" name="plugins/smooth-scrollbar.min.js"></h:outputScript>
-		<h:outputScript library="js" name="plugins/chartjs.min.js"></h:outputScript>
-		<h:outputScript library="js" name="soft-ui-dashboard.js"></h:outputScript>
-		<h:outputScript library="js" name="jquery-3.3.1.min.js"></h:outputScript>
-		
-		
-  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
-  
-</body> 
+
+	<!-- Bootstrap JS -->
+	<h:outputScript library="js" name="profil.js"></h:outputScript>
+	<h:outputScript library="js" name="core/popper.min.js"></h:outputScript>
+	<h:outputScript library="js" name="core/bootstrap.min.js"></h:outputScript>
+	<h:outputScript library="js" name="plugins/perfect-scrollbar.min.js"></h:outputScript>
+	<h:outputScript library="js" name="plugins/smooth-scrollbar.min.js"></h:outputScript>
+	<h:outputScript library="js" name="plugins/chartjs.min.js"></h:outputScript>
+	<h:outputScript library="js" name="soft-ui-dashboard.js"></h:outputScript>
+	<h:outputScript library="js" name="jquery-3.3.1.min.js"></h:outputScript>
+
+
+	<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+	<script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+
+</body>
 </html>
