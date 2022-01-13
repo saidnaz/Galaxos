@@ -145,6 +145,18 @@
 										action="#{CreateAccountBean.create()}" />
 								</div>
 							</h:form>
+							<button class="btn main-button w-100 my-4 mb-2" value="Demo"
+								onclick="myDemo()">Demo</button>
+							<script>
+									function myDemo()
+									{
+										document.getElementById("createAccountForm:NomInput").value = 'Rovelli';
+										document.getElementById("createAccountForm:PrenomInput").value = 'Antonio';
+										document.getElementById("createAccountForm:emailInput").value = 'antonio_rovel@gmail.com';
+										document.getElementById("createAccountForm:passwordInput").value = 'tototo';
+										document.getElementById("createAccountForm:confirmPasswordInput").value = 'tototo';
+									};
+									</script>
 
 
 							<p class="text-sm mt-3 mb-0">

@@ -34,12 +34,10 @@
 	<!--SECTION NAV-->
 	<div class="fixed-top">
 		<nav class="navbar navbar-expand-lg navbar-light navbar-white"
-
 			id="navbar"> <a class="navbar-brand" href="index.xhtml"> <img
 			alt="LOGO" width="70" class="logo-brand-fr"
 			src="resources/images/logo.png" />
 		</a> <a class="navbar-brand d-none" href=""> <img alt="LOGO"
-
 			width="70" class="logo-brand-fr" src="resources/images/logo.png" />
 		</a>
 		<button class="navbar-toggler" data-target="#nav_site_help"
@@ -173,7 +171,7 @@
 
 							<div class="form-check form-check-info text-left">
 								<input class="form-check-input" type="checkbox" value=""
-									id="flexCheckDefault" /> <label class="form-check-label"
+									id="mychekbox" /> <label class="form-check-label"
 									for="flexCheckDefault"> J'accepte <a
 									href="javascript:;" class="text-dark font-weight-bolder">les
 										conditions d'utilisations</a>
@@ -183,8 +181,21 @@
 								<h:commandButton value="Créer l'association"
 									class="btn main-button w-100 my-4 mb-2"
 									action="#{creationCompteAssociationBean.create()}" />
+
 							</div>
 						</h:form>
+
+						<button class="btn main-button w-100 my-4 mb-2" value="Demo"
+							onclick="myDemo()">Demo</button>
+						<script>
+									function myDemo()
+									{
+										document.getElementById("createAssoForm:nomAssoInput").value = 'The English Academy';
+										document.getElementById("createAssoForm:rnaNumberInput").value = 'W123876523';
+										document.getElementById("createAssoForm:localisationInput").value = '75008';
+										document.getElementById("mychekbox").checked = true;
+									};
+									</script>
 					</div>
 				</div>
 			</div>
