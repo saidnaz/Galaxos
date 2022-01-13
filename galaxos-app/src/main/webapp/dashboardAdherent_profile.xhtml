@@ -70,13 +70,7 @@
 						<i class="fas fa-user text-lg opacity-10"></i>
 					</div> <span class="nav-link-text ms-1">Profil</span>
 			</a></li>
-			<li class="nav-item"><a class="nav-link "
-				href="dashboardAdherent_association.xhtml">
-					<div
-						class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-						<i class="fas fa-user text-lg opacity-10"></i>
-					</div> <span class="nav-link-text ms-1">Association</span>
-			</a></li>
+
 
 		</ul>
 	</div>
@@ -96,12 +90,16 @@
 			<div class="ms-md-auto pe-md-3 d-flex align-items-center">
 
 				<ul class="navbar-nav justify-content-end">
-					<li class="nav-item d-flex align-items-center"><a
+					<li class="nav-item d-flex align-items-center"><h:form>
+							<h:commandButton value="Déconnexion"
+								class="nav-link text-dark font-weight-bold px-0"
+								action="#{loginBean.doLogout()}" />
+						</h:form> <!-- <a
 						href="javascript:;"
 						class="nav-link text-dark font-weight-bold px-0"> <i
 							class="fa fa-sign-out me-sm-1"></i> <span
 							class="d-sm-inline d-none">Déconnexion</span>
-					</a></li>
+						</a> --></li>
 
 				</ul>
 			</div>
@@ -140,8 +138,7 @@
 				<div class="col-3 align-item-end">
 					<div class="mx-auto">
 						<div class="card h-100">
-							<div
-								class="d-flex justify-content-center align-item-center">
+							<div class="d-flex justify-content-center align-item-center">
 								<i class="fas fa-plus-circle text-fonce text-center m-2"
 									style="font-size: 60px"></i>
 								<h:link value="Inscrire mon association"
@@ -342,84 +339,106 @@
 											<th
 												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Domaine</th>
 											<th
-												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Membres</th>
+												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Statut</th>
+											<th
+												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
 										</tr>
 									</thead>
 
 									<tbody>
-										<tr>
-											<td>
-												<div class="d-flex px-2">
-													<div>
-														<img src="resources/images/logoAssoExemple"
-															class="avatar avatar-sm rounded-circle me-2"
-															alt="spotify"></img>
-													</div>
-													<div class="my-auto">
-														<h6 class="mb-0 text-sm">Spotify</h6>
-													</div>
-												</div>
-											</td>
-											<td>
-												<p class="text-sm font-weight-bold mb-0">Bricolage</p>
-											</td>
-											<td><span class="text-sm font-weight-bold">8</span></td>
-										</tr>
 
-										<tr>
-											<td>
-												<div class="d-flex px-2">
-													<div>
-														<img src="resources/images/logoAssoExemple"
-															class="avatar avatar-sm rounded-circle me-2"
-															alt="invision"></img>
-													</div>
-													<div class="my-auto">
-														<h6 class="mb-0 text-sm">Invision</h6>
-													</div>
-												</div>
-											</td>
-											<td>
-												<p class="text-sm font-weight-bold mb-0">Cuisine</p>
-											</td>
-											<td><span class="text-sm font-weight-bold">5</span></td>
-										</tr>
+										<h:form id='assoGestionnaire'>
+											<ui:repeat var="item"
+												value="#{adherentAssoDash.associationsGestionnaire}">
+												<tr>
+													<td>
+														<div class="d-flex px-2">
+															<div>
 
-										<tr>
-											<td>
-												<div class="d-flex px-2">
-													<div>
-														<img src="resources/images/logoAssoExemple"
-															class="avatar avatar-sm rounded-circle me-2" alt="jira"></img>
-													</div>
-													<div class="my-auto">
-														<h6 class="mb-0 text-sm">Jira</h6>
-													</div>
-												</div>
-											</td>
-											<td>
-												<p class="text-sm font-weight-bold mb-0">Voiture</p>
-											</td>
-											<td><span class="text-sm font-weight-bold">3</span></td>
-										</tr>
+																<h:graphicImage library="imageUpload"
+																	name="#{item.ficheAssoDescriptif.logo}"
+																	class="avatar avatar-sm rounded-circle me-2"></h:graphicImage>
+															</div>
+															<div class="my-auto">
+																<h6 class="mb-0 text-sm">#{item.ficheAssociation.nom}</h6>
+															</div>
+														</div>
+													</td>
+													<td>
+														<p class="text-sm font-weight-bold mb-0">#{item.fk_idDomain.name}</p>
+													</td>
+													<td><span
+														class="text-sm font-weight-bold bg-gradient-primary"
+														style="color: white !important; border-radius: 10%; padding: 6px">Gestionnaire</span></td>
+													<td><h:link outcome="dashboardAsso.xhtml" value="Voir">
 
-										<tr>
-											<td>
-												<div class="d-flex px-2">
-													<div>
-														<img src="resources/images/logoAssoExemple"
-															class="avatar avatar-sm rounded-circle me-2" alt="slack"></img>
-													</div>
-													<div class="my-auto">
-														<h6 class="mb-0 text-sm">Slack</h6>
-													</div>
-												</div>
-											</td>
-											<td>
-												<p class="text-sm font-weight-bold mb-0">Plomberie</p>
-											</td>
-											<td><span class="text-sm font-weight-bold">10</span></td>
-										</tr>
+														</h:link></td>
+												</tr>
+											</ui:repeat>
+										</h:form>
+
+										<h:form id='assoProvider'>
+											<ui:repeat var="item"
+												value="#{adherentAssoDash.associationsProvider}">
+												<tr>
+													<td>
+														<div class="d-flex px-2">
+															<div>
+
+																<h:graphicImage library="imageUpload"
+																	name="#{item.ficheAssoDescriptif.logo}"
+																	class="avatar avatar-sm rounded-circle me-2"></h:graphicImage>
+															</div>
+															<div class="my-auto">
+																<h6 class="mb-0 text-sm">#{item.ficheAssociation.nom}</h6>
+															</div>
+														</div>
+													</td>
+													<td>
+														<p class="text-sm font-weight-bold mb-0">#{item.fk_idDomain.name}</p>
+													</td>
+													<td><span
+														class="text-sm font-weight-bold bg-gradient-info"
+														style="color: white !important; border-radius: 10%; padding: 6px">Provider</span></td>
+													<td><h:link outcome="association.xhtml" value="Voir">
+															<f:param name="idAsso" value="#{item.id}"></f:param>
+														</h:link></td>
+												</tr>
+											</ui:repeat>
+										</h:form>
+
+										<h:form id='assoAdherent'>
+											<ui:repeat var="item"
+												value="#{adherentAssoDash.associationsAdherent}">
+												<tr>
+													<td>
+														<div class="d-flex px-2">
+															<div>
+																<h:graphicImage library="imageUpload"
+																	name="#{item.ficheAssoDescriptif.logo}"
+																	class="avatar avatar-sm rounded-circle me-2"></h:graphicImage>
+															</div>
+															<div class="my-auto">
+																<h6 class="mb-0 text-sm">#{item.ficheAssociation.nom}</h6>
+															</div>
+														</div>
+													</td>
+													<td>
+														<p class="text-sm font-weight-bold mb-0">#{item.fk_idDomain.name}</p>
+													</td>
+													<td><span
+														class="text-sm font-weight-bold bg-gradient-success"
+														style="color: white !important; border-radius: 10%; padding: 6px">Adhérent</span></td>
+													<td><h:link outcome="association.xhtml" value="Voir">
+															<f:param name="idAsso" value="#{item.id}"></f:param>
+														</h:link></td>
+												</tr>
+											</ui:repeat>
+										</h:form>
+
+
+
+
 
 									</tbody>
 								</table>
@@ -492,8 +511,6 @@
 
 
 	</div>
-
-
 
 	</main>
 
