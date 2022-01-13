@@ -5,18 +5,15 @@ import java.util.Map;
 import java.util.Optional;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Association;
+import fr.isika.cda.galaxos.model.Post;
 import fr.isika.cda.galaxos.service.AssociationCompteService;
 
 @ManagedBean
@@ -34,19 +31,12 @@ public class AssociationBean {
 
 	private List<Adherent> listAdherents;
 	private List<Adherent> listProviders;
+	private List<Post> listPost;
 
 	private Long idAdherentConnecte;
 
 	private Boolean isAdherent;
 	private Boolean isProvider;
-
-	/*
-	 * public String init() { HttpServletRequest request = (HttpServletRequest)
-	 * FacesContext.getCurrentInstance().getExternalContext() .getRequest(); String
-	 * idString = request.getParameter("id"); Long id = Long.valueOf(idString);
-	 * Optional<Association> optional = service.findById(id); if
-	 * (optional.isPresent()) { asso = optional.get(); } return "association"; }
-	 */
 
 	@PostConstruct
 	public void init() {
@@ -85,8 +75,11 @@ public class AssociationBean {
 		if (listProviders.contains(adherentConnecte)) {
 			isProvider = true;
 		}
+		
+		listPost = service.findPostParAsso(idAsso);
+		
 
-		//return "association";
+		// return "association";
 	}
 
 	public String devenirProvider(Association asso) {
@@ -192,6 +185,14 @@ public class AssociationBean {
 
 	public void setListProviders(List<Adherent> listProviders) {
 		this.listProviders = listProviders;
+	}
+
+	public List<Post> getListPost() {
+		return listPost;
+	}
+
+	public void setListPost(List<Post> listPost) {
+		this.listPost = listPost;
 	}
 
 }
