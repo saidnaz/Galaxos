@@ -276,11 +276,11 @@
 												<th
 													class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom</th>
 												<th
-													class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
+													class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Avis</th>
 											</tr>
 										</thead>
 										<tbody>
-											<ui:repeat var="adh" value="#{associationBean.listAdherents}">
+											<ui:repeat var="adh" value="#{associationBean.listProviders}">
 												<tr>
 													<td>
 														<div class="d-flex px-2 py-1">
@@ -295,10 +295,7 @@
 															</div>
 														</div>
 													</td>
-													<td class="align-middle"><a href="javascript:;"
-														class="text-secondary font-weight-bold text-xs"
-														data-toggle="tooltip" data-original-title="Edit user">
-															Voir </a></td>
+													<td class="align-middle"></td>
 												</tr>
 
 											</ui:repeat>

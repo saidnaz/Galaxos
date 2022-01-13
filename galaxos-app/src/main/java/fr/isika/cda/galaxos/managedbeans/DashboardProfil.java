@@ -50,7 +50,7 @@ public class DashboardProfil {
 		profil = adherent.getProfil();
 		service.updateAdherent(form, adherent);
 		
-		return "dashboardAdherent_Profile";
+		return "dashboardAdherent_profile";
 	}
 	
 //	public String wholeAddress(Adresse adresse) {

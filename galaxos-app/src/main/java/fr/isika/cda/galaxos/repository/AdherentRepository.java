@@ -9,7 +9,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
+import fr.isika.cda.galaxos.helper.UploadHelper;
 import fr.isika.cda.galaxos.model.Adherent;
 import fr.isika.cda.galaxos.model.Adresse;
 import fr.isika.cda.galaxos.model.CompteUser;
@@ -86,6 +88,12 @@ public Adherent updateAdherent(ProfilForm form, Adherent adherent) {
 		Adresse adresse = profil.getAdresse();
 		//profil.setAdresse(adresse);
 		
+		String photo = "";
+		Part part = form.getPhoto();
+
+		UploadHelper uploadHelper = new UploadHelper();
+		photo = uploadHelper.processUpload(part);
+		
 		adresse.setNumero(form.getNumero());
 		adresse.setLibelle(form.getLibelle());
 		adresse.setCodePostal(form.getCodePostal());
@@ -98,6 +106,7 @@ public Adherent updateAdherent(ProfilForm form, Adherent adherent) {
 		profil.setTelephone(form.getTelephone());
 		profil.setDescription(form.getDescription());
 		profil.setAdresse(adresse);
+		profil.setPhoto(photo);
 		entityManager.merge(profil);
 		
 		adherent.setProfil(profil);

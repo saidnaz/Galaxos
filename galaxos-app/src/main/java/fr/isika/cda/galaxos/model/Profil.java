@@ -46,9 +46,8 @@ public class Profil {
 	@Lob
 	private String description;
 
-	@Lob
-	@Basic(fetch = FetchType.LAZY)
-	private Byte[] photo;
+
+	private String photo;
 	
 	
 	
@@ -87,13 +86,7 @@ public class Profil {
 		return id;
 	}
 	
-//	public String getPseudo() {
-//		return pseudo;
-//	}
-//
-//	public void setPseudo(String pseudo) {
-//		this.pseudo = pseudo;
-//	}
+
 
 	public String getNom() {
 		return nom;
@@ -135,13 +128,6 @@ public class Profil {
 		this.description = description;
 	}
 
-	public Byte[] getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(Byte[] photo) {
-		this.photo = photo;
-	}
 
 	public Adresse getAdresse() {
 		return adresse;
@@ -151,13 +137,20 @@ public class Profil {
 		this.adresse = adresse;
 	}
 
-//	public Adherent getDestinataire() {
-//		return destinataire;
-//	}
-//
-//	public Adherent getExpediteur() {
-//		return expediteur;
-//	}
+	
+
+
+
+
+	public String getPhoto() {
+		return photo;
+	}
+
+
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 
 
 
@@ -168,8 +161,6 @@ public class Profil {
 		builder.append("Profil [id=");
 		builder.append(id);
 		
-//		builder.append(", pseudo=");
-//		builder.append(pseudo);
 		
 		builder.append(", nom=");
 		builder.append(nom);

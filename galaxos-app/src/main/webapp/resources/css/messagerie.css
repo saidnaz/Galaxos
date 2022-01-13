@@ -169,7 +169,7 @@
 	}
 	.video_cam{
 		margin-left: 50px;
-		margin-top: 5px;
+		margin-top: auto;
 	}
 	.video_cam span{
 		color: white;
