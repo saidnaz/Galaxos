@@ -34,8 +34,8 @@ public class Message {
 	@Column(name = "Date", nullable = false)
 	private LocalDateTime date;
 	
-	@Column(name = "DateString", nullable = false)
-	private LocalDateTime dateString;
+//	@Column(name = "DateString", nullable = false)
+//	private LocalDateTime dateString;
 
 	@Column(name = "Texte", nullable = false)
 	private String texte;
@@ -84,13 +84,13 @@ public class Message {
 		this.expediteur = expediteur;
 	}
 	
-	public LocalDateTime getDateString() {
-		return dateString;
-	}
-
-	public void setDateString(LocalDateTime dateString) {
-		this.dateString = dateString;
-	}
+//	public LocalDateTime getDateString() {
+//		return dateString;
+//	}
+//
+//	public void setDateString(LocalDateTime dateString) {
+//		this.dateString = dateString;
+//	}
 
 
 	@Override
