@@ -33,7 +33,7 @@
 
 
 
-<!--SECTION NAV-->
+	<!--SECTION NAV-->
 	<div class="fixed-top">
 		<nav class="navbar navbar-expand-lg navbar-light navbar-white"
 			id="navbar"> <h:link outcome="index.xhtml" class="navbar-brand">
@@ -185,12 +185,24 @@
 					<div class="card-body p-3">
 						<ul class="list-group">
 							<li
-								class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+								class="list-group-item border-0 d-flex align-items-center justify-content-between px-0 mb-2">
 								<div
 									class="d-flex align-items-start flex-column justify-content-center">
 									<h6 class="mb-0 text-sm">Envoyez une demande de service ?</h6>
-								</div> <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto"
-								href="poster.xhtml">Envoyer</a>
+								</div> <!-- <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto"
+								href="poster.xhtml">Envoyer</a> -->
+
+
+								<div>
+									<h:form id="adfkjhdskf">
+										<h:link outcome="poster.xhtml"
+											class="btn btn-link pe-3 ps-0 mb-0 ms-auto" value="Envoyer">
+											<f:param name="idAsso" value="#{associationBean.asso.id}"></f:param>
+										</h:link>
+									</h:form>
+								</div>
+
+
 							</li>
 							<li
 								class="list-group-item border-0 d-flex align-items-center justify-content-between px-0 mb-2">

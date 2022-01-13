@@ -4,8 +4,10 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -18,10 +20,12 @@ import javax.servlet.http.Part;
 import fr.isika.cda.galaxos.exceptions.DAOException;
 import fr.isika.cda.galaxos.helper.UploadHelper;
 import fr.isika.cda.galaxos.model.Adherent;
+import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.Domain;
 import fr.isika.cda.galaxos.model.Domaine;
 import fr.isika.cda.galaxos.model.Post;
 import fr.isika.cda.galaxos.service.AdherentService;
+import fr.isika.cda.galaxos.service.AssociationCompteService;
 import fr.isika.cda.galaxos.service.PostService;
 import fr.isika.cda.galaxos.viewmodel.PostForm;
 
@@ -74,12 +78,15 @@ public class PostBean {
 	public Part getPhoto() {
 		return photo;
 	}
-public Domaine getSelectedDomaine() {
-	return selectedDomaine;
-}
-public void setSelectedDomaine(Domaine selectedDomaine) {
-	this.selectedDomaine = selectedDomaine;
-}
+
+	public Domaine getSelectedDomaine() {
+		return selectedDomaine;
+	}
+
+	public void setSelectedDomaine(Domaine selectedDomaine) {
+		this.selectedDomaine = selectedDomaine;
+	}
+
 	public void setPhoto(Part photo) {
 		this.photo = photo;
 	}
@@ -112,21 +119,40 @@ public void setSelectedDomaine(Domaine selectedDomaine) {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	
+
 	public Domaine[] getDomaines() {
 		return Domaine.values();
 	}
-	
+
 	/////////////////////////////////////////////////////////
 
 	@Inject
 	private PostService PS;
 
+	@Inject
+	private AssociationCompteService service;
+
 	PostForm pform = new PostForm();
 
 	private Post p;
+	
 	@Inject
 	private AdherentService AS;
+
+	private Association asso;
+
+	@PostConstruct
+	public void init() {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
+		String idString = params.get("idAsso");
+		Long idAsso = Long.parseLong(idString);
+
+		Optional<Association> optional = service.findById(idAsso);
+		if (optional.isPresent()) {
+			asso = optional.get();
+		}
+	}
 
 	public String create() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
@@ -148,22 +174,20 @@ public void setSelectedDomaine(Domaine selectedDomaine) {
 				UploadHelper uploadHelper = new UploadHelper();
 				String photoFile = uploadHelper.processUpload(photo);
 
-				
 				pform.setNom(nom);
 				pform.setDescription(Description);
-				
-				
+
 				domain = new Domain();
 				domain.setName(selectedDomaine);
-				
+
 				pform.setDomain(domain);
 				pform.setStartDate(startDateLocal);
 				pform.setEndDate(endDateLocal);
 				pform.setPhoto(photoFile);
 				pform.setPrice(price);
-
+				//pform.setAssociation(asso);
 				pform.setIdAdherent(id);
-				p = PS.create(pform);
+				p = PS.create(pform, asso);
 
 				return "index?faces-redirect=true";
 
@@ -183,6 +207,14 @@ public void setSelectedDomaine(Domaine selectedDomaine) {
 
 		List<Post> plist = PS.AffichPosts();
 		return plist;
+	}
+
+	public Association getAsso() {
+		return asso;
+	}
+
+	public void setAsso(Association asso) {
+		this.asso = asso;
 	}
 
 }
