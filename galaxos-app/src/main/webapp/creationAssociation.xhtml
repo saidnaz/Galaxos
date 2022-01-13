@@ -34,10 +34,12 @@
 	<!--SECTION NAV-->
 	<div class="fixed-top">
 		<nav class="navbar navbar-expand-lg navbar-light navbar-white"
-			id="navbar"> <h:link outcome="index.xhtml" class="navbar-brand">
-			<img alt="LOGO" width="70" class="logo-brand-fr"
-				src="resources/images/logo.png" />
-		</h:link> <a class="navbar-brand d-none" href=""> <img alt="LOGO"
+
+			id="navbar"> <a class="navbar-brand" href="index.xhtml"> <img
+			alt="LOGO" width="70" class="logo-brand-fr"
+			src="resources/images/logo.png" />
+		</a> <a class="navbar-brand d-none" href=""> <img alt="LOGO"
+
 			width="70" class="logo-brand-fr" src="resources/images/logo.png" />
 		</a>
 		<button class="navbar-toggler" data-target="#nav_site_help"
@@ -47,6 +49,7 @@
 		<span class="gradient-text">GALAXOS</span>
 		<div class="collapse navbar-collapse" id="nav_site_help">
 			<ul class="navbar-nav ml-auto">
+
 				<li class="m-1 nav-item d-flex align-items-center"><h:form>
 						<h:commandLink class="p-3 nav-link main-button"
 							style="color: white"
@@ -64,6 +67,7 @@
 							action="#{loginBean.doLogout()}" value="Se déconnecter">
 						</h:commandLink>
 					</h:form></li>
+
 			</ul>
 		</div>
 		</nav>
@@ -199,7 +203,7 @@
 						<h5>Laissez-vous embarquer</h5>
 					</div>
 					<div class="ml-auto">
-						<a href="" class="button-footer py-3 px-5">Inscription</a>
+						<a href="createAccount.xhtml" class="button-footer py-3 px-5">Inscription</a>
 					</div>
 				</div>
 				<div class="row">

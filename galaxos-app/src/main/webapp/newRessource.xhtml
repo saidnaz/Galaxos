@@ -9,88 +9,112 @@
 
 
 <h:head>
-	<title>Ajouter Ressource</title>
-	<meta charset="utf-8" />
-	<meta name="viewport"
-		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		
-		
-	<h:outputScript library="js"
-		name="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" />
+	<title>Ajouter une ressource</title>
+	<meta
+		content="Une plateforme d'associations présentant une multitude de services" />
+	<meta content="" name="application-name" />
+	<link rel="icon" href="logo.ico" />
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<meta content="yes" name="mobile-web-app-capable" />
 
+	<!--     Fonts and icons     -->
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+		rel="stylesheet" />
+
+	<!-- Font Awesome Icons -->
+	<script src="https://kit.fontawesome.com/42d5adcbca.js"
+		crossorigin="anonymous"></script>
 	<!-- CSS  -->
 	<h:outputStylesheet library="css" name="/main.css" />
 	<h:outputStylesheet library="css" name="/home.css" />
 	<h:outputStylesheet library="css" name="/newResource.css" />
 	<h:outputStylesheet library="css" name="/creation-association.css" />
 	<h:outputStylesheet library="css" name="/soft-ui-dashboard.css" />
-
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+	<!-- Bootstrap JS -->
+	<script type="text/javascript"
+		src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"></script>
 </h:head>
 
 
-<body class="">
 
-	<div class="container position-sticky z-index-sticky top-0">
-		<div class="row">
-			<div class="col-12">
-				<!--SECTION NAV-->
-				<div class="fixed-top">
-					<nav class="navbar navbar-expand-lg navbar-light navbar-white"
-						id="navbar"> <a class="navbar-brand" href="index.xhtml">
-						<img alt="LOGO" width="70" class="logo-brand-fr"
-						src="resources/images/logo.png" />
-					</a> <a class="navbar-brand d-none" href="index.xhtml"> <img
-						alt="LOGO" width="70" class="logo-brand-fr"
-						src="resources/images/logo.png" />
-					</a>
-					<button class="navbar-toggler" data-target="#nav_site_help"
-						data-toggle="collapse" type="button">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					GALAXOS
-					<div class="collapse navbar-collapse" id="nav_site_help">
-						<ul class="navbar-nav ml-auto">
-							<li class="m-1 nav-item d-flex align-items-center"><a
-								class="p-3 nav-link main-button" href="" style="color: white">
-									Besoin d'un service ? </a></li>
-							<li class="m-1 nav-item d-flex align-items-center"><h:link
-									outcome="creationAssociation.xhtml"
-									class="nav-link nav-link-hover-black button-tertiaire">Créer son association</h:link>
-							</li>
-							<li class=" m-1 nav-item d-flex align-items-center"><a
-								class="nav-link nav-link-hover-black button-secondaire" href="">Mon
-									compte</a></li>
-						</ul>
-					</div>
-					</nav>
-				</div>
+<body>
 
-				<!-- End Navbar -->
-			</div>
+	<!--SECTION NAV-->
+	<div class="fixed-top">
+		<nav class="navbar navbar-expand-lg navbar-light navbar-white"
+			id="navbar"> <h:link outcome="index.xhtml" class="navbar-brand">
+			<img alt="LOGO" width="70" class="logo-brand-fr"
+				src="resources/images/logo.png" />
+		</h:link> <a class="navbar-brand d-none" href=""> <img alt="LOGO"
+			width="70" class="logo-brand-fr" src="resources/images/logo.png" />
+		</a>
+		<button class="navbar-toggler" data-target="#nav_site_help"
+			data-toggle="collapse" type="button">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<span class="gradient-text">GALAXOS</span>
+		<div class="collapse navbar-collapse" id="nav_site_help">
+			<ul class="navbar-nav ml-auto">
+				<li class="m-1 nav-item d-flex align-items-center"><h:form>
+						<h:commandLink class="p-3 nav-link main-button"
+							style="color: white"
+							action="#{CatalogueAssociationBean.afficherPageCatalogue()}"
+							value="Besoin d'un service ?">
+							<f:param id="categName" name="categName" value="all" />
+						</h:commandLink>
+					</h:form></li>
+				<li class="m-1 nav-item d-flex align-items-center"><h:link
+						outcome="creationAssociation.xhtml"
+						class="nav-link nav-link-hover-black button-tertiaire">Créer son association
+					</h:link></li>
+				<li class=" m-1 nav-item d-flex align-items-center"><a
+					class="nav-link nav-link-hover-black button-secondaire"
+					href="login.xhtml">Mon compte</a></li>
+			</ul>
 		</div>
+		</nav>
 	</div>
+	<!--  END DE LA NAV !!  -->
+
+
+	<!--  SECTION MAIN -->
 
 
 
-	<main class="main-content  mt-0"> <section>
-	<div class="page-header min-vh-75">
+	<section class="min-vh-100 mb-8" style="margin-top:120px">
+	<div
+		class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg"
+		style="background: rgb(46, 47, 94); background: linear-gradient(274deg, rgba(46, 47, 94, 1) 23%, rgba(0, 135, 182, 1) 93%);">
+		<span class="mask bg-gradient-dark opacity-6"></span>
+
+
 		<div class="container">
-			<div class="row">
-				<div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
-					<div class="card card-plain mt-8 mb-5 mx-auto">
-						<div class="card-header pb-0 text-left bg-transparent">
-							<h3 class="font-weight-bolder text-info text-gradient">Créer
-								une ressource</h3>
+			<div class="row mt-lg-10 mt-md-10 mt-10">
+				<div class="col-xl-5 col-lg-5 col-md-5 shadow-lg mx-auto">
+					<div class="card z-index-0">
+						<div class="card-header text-center pt-4">
+							<img alt="LOGO" width="50" class="logo-brand-fr"
+								src="resources/images/logo.png" />
+							<h5>Créer une ressource</h5>
 
-							<div class="btn-radio-animated m-b-3 nav nav-pills nav-fill">
-								<input class="btn-left nav-link" type="radio" value="vente"
+						</div>
+						<div class="card-body">
+						
+							<div class="btn-radio-animated mb-3 nav nav-pills mx-auto">
+								<input class="btn-left nav-link " type="radio" value="vente"
 									id="radio-vente" name="typeRes" checked="true"
 									onClick="afficherCacher()" /> <input
 									class="btn-right nav-link" type="radio" value="location"
 									id="radio-location" name="typeRes" onClick="afficherCacher()" />
-								<label class="btn-left">Vente</label> <label class="btn-right">Location</label>
+								<label class="btn-left">Vente</label> 
+								<label class="btn-right">Location</label>
 								<span class="background rounded-3"></span>
 							</div>
+							
 							<div style="display: block;" id="venteForm">
 								<div class="card-body">
 									<h:form id="addVenteForm" role="form"
@@ -157,10 +181,14 @@
 											<label>Date de début d'indisponibilité <h:inputText
 													a:type="date"
 													value="#{resourceBean.locationForm.dateDebut}"
-													class="form-control" />
-											</label> <label>Date de fin d'indisponibilité <h:inputText
-													a:type="date" value="#{resourceBean.locationForm.dateFin}"
-													class="form-control" />
+													class="form-control mb-2" />
+											</label> 
+											</div>
+										<div class="input-group mb-3">
+											<label>Date de fin d'indisponibilité <h:inputText
+													a:type="date" 
+													value="#{resourceBean.locationForm.dateFin}"
+													class="form-control mb-2 ml-1" />
 											</label>
 										</div>
 										<div class="text-center">
@@ -173,18 +201,18 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6">
-					<div
-						class="oblique position-absolute top-0 h-100 d-md-block d-none">
-						<div
-							class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"
-							style="background-image: url('./resources/images/curved-images/curved6.jpg')"></div>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
-	</section> </main>
+
+	</section>
+
+
+	<!--  FIN DE SECTION  -->
+
+
+
+
 	<!-- Footer-->
 	<div class="footer">
 		<div class="site-section">
@@ -196,7 +224,7 @@
 						<h5>Laissez-vous embarquer</h5>
 					</div>
 					<div class="ml-auto">
-						<a href="" class="button-footer py-3 px-5">Inscription</a>
+						<a href="createAccount.xhtml" class="button-footer py-3 px-5">Inscription</a>
 					</div>
 				</div>
 				<div class="row">
@@ -267,6 +295,7 @@
 			</div>
 		</div>
 	</div>
+
 
 
 	<script>
