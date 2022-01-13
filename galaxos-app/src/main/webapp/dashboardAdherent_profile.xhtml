@@ -90,8 +90,29 @@
 			<div class="ms-md-auto pe-md-3 d-flex align-items-center">
 
 				<ul class="navbar-nav justify-content-end">
-					<li class="nav-item d-flex align-items-center">
-					<h:form>
+					<li class="nav-item d-flex align-items-center" style="padding-right: 17px"><h:form
+							id="fsdf">
+							<div class="nav-link text-dark font-weight-bold px-0">
+								<i class="fas fa-user-astronaut me-sm-1"></i>
+								<h:commandLink class="d-sm-inline d-none"
+									action="#{CatalogueAssociationBean.afficherPageCatalogue()}"
+									value="Catalogue d'annonce"
+									style="background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;">
+									<f:param id="categName" name="categName" value="all" />
+								</h:commandLink>
+							</div>
+						</h:form></li>
+
+
+
+
+					<li class="nav-item d-flex align-items-center"><h:form>
 							<div class="nav-link text-dark font-weight-bold px-0">
 								<i class="fa fa-sign-out me-sm-1"></i>
 								<h:commandButton value="Déconnexion" class="d-sm-inline d-none"
@@ -132,10 +153,10 @@
 
 				<div class="col-auto ">
 					<div class="avatar avatar-xl position-relative">
-					<h:graphicImage library="imageUpload"
+						<h:graphicImage library="imageUpload"
 							name="#{dashboardProfil.profil.photo}"
 							class="w-100 border-radius-lg shadow-sm"></h:graphicImage>
-						
+
 					</div>
 				</div>
 
