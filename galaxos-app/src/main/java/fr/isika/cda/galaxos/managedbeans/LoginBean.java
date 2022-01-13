@@ -2,6 +2,7 @@ package fr.isika.cda.galaxos.managedbeans;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 import javax.annotation.PostConstruct;
@@ -199,8 +200,13 @@ public class LoginBean implements Serializable {
 	// Methode pour envoyer des exemples messages en bdd
 	public void msgBDD(Message msg)
 	{
-		msg.setDate(LocalDateTime.now());
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm");
+		String str = LocalDateTime.now().format(formatter);
+		LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
+		msg.setDate(dateTime);
 		msgService.envoyer(msg);
+		
+		
 	}
 
 }

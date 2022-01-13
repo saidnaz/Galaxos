@@ -1,6 +1,7 @@
 package fr.isika.cda.galaxos.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -29,8 +30,12 @@ public class Message {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	
 	@Column(name = "Date", nullable = false)
 	private LocalDateTime date;
+	
+	@Column(name = "DateString", nullable = false)
+	private LocalDateTime dateString;
 
 	@Column(name = "Texte", nullable = false)
 	private String texte;
@@ -78,6 +83,15 @@ public class Message {
 	public void setExpediteur(Adherent expediteur) {
 		this.expediteur = expediteur;
 	}
+	
+	public LocalDateTime getDateString() {
+		return dateString;
+	}
+
+	public void setDateString(LocalDateTime dateString) {
+		this.dateString = dateString;
+	}
+
 
 	@Override
 	public String toString() {
@@ -123,6 +137,10 @@ public class Message {
 		this.texte = texte;
 		this.expediteur = expediteur;
 		this.destinataire = destinataire;
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm");
+		String str = LocalDateTime.now().format(formatter);
+		LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
 	}
 	
 	public Message(String texte, Adherent expediteur,Adherent destinataire) {
@@ -131,7 +149,8 @@ public class Message {
 		this.expediteur = expediteur;
 		this.destinataire = destinataire;
 	}
-	
+
+
 	
 
 	
