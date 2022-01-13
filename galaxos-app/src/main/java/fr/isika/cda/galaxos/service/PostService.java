@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityNotFoundException;
 
 import fr.isika.cda.galaxos.exceptions.DAOException;
+import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.Post;
 import fr.isika.cda.galaxos.repository.PostRepository;
 import fr.isika.cda.galaxos.viewmodel.PostForm;
@@ -23,7 +24,7 @@ public class PostService implements Serializable {
 	@Inject
 	PostRepository PR;
 
-	public Post create(PostForm Pform) {
+	public Post create(PostForm Pform, Association association) {
 
 		Optional<Post> name = PR.findByNom(Pform.getNom());
 
@@ -32,7 +33,7 @@ public class PostService implements Serializable {
 			throw new EntityNotFoundException("l'annonce existe déjà");
 		}
 
-		return PR.create(Pform);
+		return PR.create(Pform, association);
 	}
 
 	// upload File
@@ -92,6 +93,8 @@ public class PostService implements Serializable {
 	public Optional<Post> findByNom(String n) {
 		return PR.findByNom(n);
 	}
+
+	
 
 }
 

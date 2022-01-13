@@ -29,87 +29,87 @@
 	<script type="text/javascript"
 		src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"></script>
 	<style>
-		.btn-primary,
-.btn-primary:hover,
-.btn-primary:active,
-.btn-primary:visited,
-.btn-primary:focus {
-    background-color: #AB52A2;
-    border-color: #706AC2;}	
-    
-    </style>	
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited,
+	.btn-primary:focus {
+	background-color: #AB52A2;
+	border-color: #706AC2;
+}
+</style>
 </h:head>
 
 <body>
 	<!--SECTION NAV-->
 	<div class="fixed-top">
 		<nav class="navbar navbar-expand-lg navbar-light navbar-white"
-			id="navbar"> <a class="navbar-brand" href="index.xhtml"> 
-			<img
-			alt="LOGO" width="70" class="logo-brand-fr"
-			src="resources/images/logo.png" />
-		</a> <a class="navbar-brand d-none" href=""> <img alt="LOGO"
+			id="navbar"> <h:link outcome="index.xhtml" class="navbar-brand">
+			<img alt="LOGO" width="70" class="logo-brand-fr"
+				src="resources/images/logo.png" />
+		</h:link> <a class="navbar-brand d-none" href=""> <img alt="LOGO"
 			width="70" class="logo-brand-fr" src="resources/images/logo.png" />
 		</a>
 		<button class="navbar-toggler" data-target="#nav_site_help"
 			data-toggle="collapse" type="button">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		GALAXOS
+		<span class="gradient-text">GALAXOS</span>
 		<div class="collapse navbar-collapse" id="nav_site_help">
 			<ul class="navbar-nav ml-auto">
-				<li class="m-1 nav-item d-flex align-items-center"><a
-					class="p-3 nav-link main-button" href="" style="color: white">
-						Besoin d'un service ? </a></li>
+				<li class="m-1 nav-item d-flex align-items-center"><h:form>
+						<h:commandLink class="p-3 nav-link main-button"
+							style="color: white"
+							action="#{CatalogueAssociationBean.afficherPageCatalogue()}"
+							value="Besoin d'un service ?">
+							<f:param id="categName" name="categName" value="all" />
+						</h:commandLink>
+					</h:form></li>
 				<li class="m-1 nav-item d-flex align-items-center"><h:link
-						outcome="creationAssociation.xhtml"
-						class="nav-link nav-link-hover-black button-tertiaire">Créer son association</h:link>
-				</li>
-				<li class=" m-1 nav-item d-flex align-items-center"><a
-					class="nav-link nav-link-hover-black button-secondaire" href="">Mon
-						compte</a></li>
+						class="p-3 nav-link button-tertiaire" value="Mon compte"
+						outcome="dashboardAdherent">
+					</h:link></li>
+				<li class="m-1 nav-item d-flex align-items-center"><h:form>
+						<h:commandLink class="p-3 nav-link button-tertiaire"
+							action="#{loginBean.doLogout()}" value="Se déconnecter">
+						</h:commandLink>
+					</h:form></li>
 			</ul>
 		</div>
 		</nav>
 	</div>
 
 
+	<div class="container d-flex mt-5 pt-5 mb-5 justify-content-center align-item-center" style="min-height: 90vh">
+		<div class="col-6 mt-3 mb-5">
 
-	<!-- End Navbar -->
+			<div class="card z-index-0 shadow-lg mx-auto">
+				<div class="card-header  text-justify pt-4">
+					<h5>Postez une annonce et demandez un service</h5>
 
-    <div class="container mt-5 pt-5 mb-5" style="min-height: 60vh">
-    <div class="col-6  ">
+				</div>
+				<div class="card-body">
+					<h:form id="createp" enctype="multipart/form-data">
+						<fieldset>
 
-            <div class="card z-index-0 shadow-lg mx-auto">
-                <div class="card-header  text-justify pt-4" >
-                    <h5>Postez une annonce et demandez un service </h5>
-                    
-              </div>  
-            <div class="card-body">
-        <h:form id="createp" enctype="multipart/form-data">
-            <fieldset>
-                
-                
-               <div class="mb-4">	
-               <div class = "row" >
-                <h:inputText id="name" class="form-control PHname"
-				aria-label="name" pt:placeholder="Titre de l'annonce "
-				aria-describedby="name-addon"
-                value="#{postBean.nom}"/>
-                <h:message id="nameMessage" for="name" errorClass="erreur" />
-                </div>
-                </div>
-                <div class="mb-4">	
-               <div class = "row" >
-                 
-                <h:inputTextarea id="description"  class="form-control PHname"
-				aria-label="name" pt:placeholder="Description "
-				aria-describedby="description" value="#{postBean.description}"/>
-                <h:message id="descriptionMessage" for="description" errorClass="erreur" />
-                </div>
-                </div>
-                <div class="mb-4">
-                <div class = "row" >	
+
+							<div class="mb-4">
+								<div class="row">
+									<h:inputText id="name" class="form-control PHname"
+										aria-label="name" pt:placeholder="Titre de l'annonce "
+										aria-describedby="name-addon" value="#{postBean.nom}" />
+									<h:message id="nameMessage" for="name" errorClass="erreur" />
+								</div>
+							</div>
+							<div class="mb-4">
+								<div class="row">
+
+									<h:inputTextarea id="description" class="form-control PHname"
+										aria-label="name" pt:placeholder="Description "
+										aria-describedby="description" value="#{postBean.description}" />
+									<h:message id="descriptionMessage" for="description"
+										errorClass="erreur" />
+								</div>
+							</div>
+							<div class="mb-4">
+								<div class="row">
 
 
 									<h:selectOneMenu value="#{postBean.selectedDomaine}"
@@ -119,74 +119,72 @@
 											itemValue="#{domaines}" itemLabel="#{domaines.label}" />
 									</h:selectOneMenu>
 
-								</div>	
-				</div>		
-                 
-								
-                
-                <div class="mb-4">	
-                <div class = "row" >
-                <h:inputText id="startD" class="form-control PHname"
-				aria-label="startD" pt:placeholder="La date de debut 
+								</div>
+							</div>
+
+
+
+							<div class="mb-4">
+								<div class="row">
+									<h:inputText id="startD" class="form-control PHname"
+										aria-label="startD"
+										pt:placeholder="La date de debut 
 			    dd-MM-yyyy HH:mm"
-				aria-describedby="startD-addon"
-                value="#{postBean.startDate}">
-                <f:convertDateTime pattern="dd-MM-yyyy HH:mm" timeZone="GMT+1" />
-                </h:inputText>
-                <h:message id="startDMessage" for="startD" errorClass="erreur" />
-                </div>
-                </div>
-                
-                 
-               
-                <div class="mb-4">	
-                <div class = "row" >
-                <h:inputText id="endD" class="form-control PHname"
-                pt:placeholder="La date de fin     dd-MM-yyyy HH:mm" 
-				aria-describedby="enD-addon"
-				value="#{postBean.endDate}" >				
-                <f:convertDateTime pattern="dd-MM-yyyy HH:mm" timeZone="GMT+1" />
-             	</h:inputText>
-                <h:message id="endDMessage" for="endD" errorClass="erreur" />
-                </div>
-                </div>
-                
-                  
-              
-                 <div class="mb-4">	
-                 <div class = "row" >
-                 
-                <h:inputText id="price" class="form-control PHname"
-				aria-label="price" pt:placeholder="Le prix souhaité "
-				aria-describedby="price-addon" value="#{postBean.price}"/>
-                <h:message id="priceMessage" for="price" errorClass="erreur" />
-                </div>
-                </div>
-                
-               <div class="mb-4">	
-               <div class = "row" >
-                <div class="form-group">
-				<label for="image">Emplacement d'image</label>
-				<h:inputFile
-				value="#{postBean.photo}" 
-				class="form-control" id="file"></h:inputFile>
-               <h:messages globalOnly="true" infoClass="info" />
-               </div>
-               </div>
-               </div>
-               
-             <div class="mb-4">	
-               <div class = "row" >
-                  <h:commandButton value="Envoyer" action="#{postBean.create()}" class="btn main-button w-100 "/> 
-                </div>
-                </div>
-             </fieldset>
-        </h:form>
-        </div>
-         </div>
-          </div>
-        </div>
-        <!-- Footer-->
+										aria-describedby="startD-addon" value="#{postBean.startDate}">
+										<f:convertDateTime pattern="dd-MM-yyyy HH:mm" timeZone="GMT+1" />
+									</h:inputText>
+
+
+									<h:message id="startDMessage" for="startD" errorClass="erreur" />
+								</div>
+							</div>
+
+							<div class="mb-4">
+								<div class="row">
+									<h:inputText id="endD" class="form-control PHname"
+										pt:placeholder="La date de fin     dd-MM-yyyy HH:mm"
+										aria-describedby="enD-addon" value="#{postBean.endDate}">
+										<f:convertDateTime pattern="dd-MM-yyyy HH:mm" timeZone="GMT+1" />
+									</h:inputText>
+									<h:message id="endDMessage" for="endD" errorClass="erreur" />
+								</div>
+							</div>
+
+							<div class="mb-4">
+								<div class="row">
+
+									<h:inputText id="price" class="form-control PHname"
+										aria-label="price" pt:placeholder="Le prix souhaité "
+										aria-describedby="price-addon" value="#{postBean.price}" />
+									<h:message id="priceMessage" for="price" errorClass="erreur" />
+								</div>
+							</div>
+
+							<div class="mb-4">
+								<div class="row">
+									<div class="form-group">
+										<label for="image">Emplacement d'image</label>
+										<h:inputFile value="#{postBean.photo}" class="form-control"
+											id="file"></h:inputFile>
+										<h:messages globalOnly="true" infoClass="info" />
+									</div>
+								</div>
+							</div>
+
+							<div class="mb-4">
+								<div class="row">
+									<h:commandButton value="Envoyer" action="#{postBean.create()}"
+										class="btn main-button w-100 " />
+								</div>
+							</div>
+						</fieldset>
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="min-height: 10vh "></div>
+	<!-- Footer-->
 	<div class="footer">
 		<div class="site-section">
 			<div class="container">
@@ -294,6 +292,5 @@
         );
       </script>
 	</link>
-    </body> 
+</body>
 </html>
-		

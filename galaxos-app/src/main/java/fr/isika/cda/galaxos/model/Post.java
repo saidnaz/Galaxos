@@ -19,32 +19,34 @@ public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idPost;
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private String nom;
-	
-	@Column(nullable=false)
-    private String Description;
-	
-    private LocalDate DateStart;
-	
-    private LocalDate DateEnd;
-    
-    @Column(nullable=false)
-    private Double price;
-    
-	@Column(nullable=false)
+
+	@Column(nullable = false)
+	private String Description;
+
+	private LocalDate DateStart;
+
+	private LocalDate DateEnd;
+
+	@Column(nullable = false)
+	private Double price;
+
+	@Column(nullable = false)
 	private String photo;
-	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Adherent adherent;
-	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Domain domain;
-	
-	
+
+	@ManyToOne()
+	private Association association;
+
 	public Post() {
 		super();
-		
+
 	}
 
 	public String getNom() {
@@ -115,7 +117,12 @@ public class Post {
 		this.price = price;
 	}
 
-	
-	
+	public Association getAssociation() {
+		return association;
+	}
+
+	public void setAssociation(Association association) {
+		this.association = association;
+	}
 
 }

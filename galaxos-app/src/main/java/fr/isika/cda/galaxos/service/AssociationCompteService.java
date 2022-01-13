@@ -16,6 +16,7 @@ import fr.isika.cda.galaxos.model.FicheAssoCompta;
 import fr.isika.cda.galaxos.model.FicheAssoDescriptif;
 import fr.isika.cda.galaxos.model.FicheAssoGestionnaire;
 import fr.isika.cda.galaxos.model.FicheAssociation;
+import fr.isika.cda.galaxos.model.Post;
 import fr.isika.cda.galaxos.model.roles.Consumer;
 import fr.isika.cda.galaxos.model.roles.GestionnaireAssociation;
 import fr.isika.cda.galaxos.model.roles.Provider;
@@ -117,6 +118,10 @@ public class AssociationCompteService {
 
 	public List<Adherent> findConsumerParAssociation(Long idAsso) {
 		return associationRepository.findConsumerParAssociation(idAsso);
+	}
+	
+	public List<Post> findPostParAsso(Long idAsso) {
+		return associationRepository.findPostParAsso(idAsso);
 	}
 
 }

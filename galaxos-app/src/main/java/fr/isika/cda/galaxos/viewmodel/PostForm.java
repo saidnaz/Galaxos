@@ -2,6 +2,8 @@ package fr.isika.cda.galaxos.viewmodel;
 
 import java.time.LocalDate;
 
+import fr.isika.cda.galaxos.model.Adherent;
+import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.Domain;
 
 public class PostForm {
@@ -9,7 +11,7 @@ public class PostForm {
 	private String nom;
 
 	private Long idAdherent;
-	
+
 	private String Description;
 
 	private LocalDate startDate;
@@ -20,13 +22,16 @@ public class PostForm {
 
 	private String photo;
 
+	private Association association;
+
 	public Long getIdAdherent() {
 		return idAdherent;
 	}
+
 	public void setIdAdherent(Long idAdherent) {
 		this.idAdherent = idAdherent;
 	}
-	
+
 	public String getNom() {
 		return nom;
 	}
@@ -88,5 +93,13 @@ public class PostForm {
 	}
 
 	private Domain domain;
+
+	public Association getAssociation() {
+		return association;
+	}
+
+	public void setAssociation(Association association) {
+		this.association = association;
+	}
 
 }
