@@ -39,7 +39,7 @@ public class PostRepository implements Serializable {
 		Optional<Adherent> optional = AS.findAdherentById(PF.getIdAdherent());
 		
 		Post post = new Post();
-		Domain domain = new Domain();
+//		Domain domain = new Domain();
 		
 		post.setNom(PF.getNom());
 		post.setDescription(PF.getDescription());
@@ -49,7 +49,7 @@ public class PostRepository implements Serializable {
 		post.setPhoto(PF.getPhoto());
 		post.setPrice(PF.getPrice());
 		post.setAdherent(optional.get());
-		post.setDomain(domain);
+		post.setDomain(PF.getDomain());
 			
 		entityManager.persist(post);
 		return post;

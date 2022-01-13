@@ -34,11 +34,10 @@
 	<!--SECTION NAV-->
 	<div class="fixed-top">
 		<nav class="navbar navbar-expand-lg navbar-light navbar-white"
-			id="navbar"> <a class="navbar-brand" href="index.xhtml"> 
-			<img
-			alt="LOGO" width="70" class="logo-brand-fr"
-			src="resources/images/logo.png" />
-		</a> <a class="navbar-brand d-none" href=""> <img alt="LOGO"
+			id="navbar"> <h:link outcome="index.xhtml" class="navbar-brand">
+			<img alt="LOGO" width="70" class="logo-brand-fr"
+				src="resources/images/logo.png" />
+		</h:link> <a class="navbar-brand d-none" href=""> <img alt="LOGO"
 			width="70" class="logo-brand-fr" src="resources/images/logo.png" />
 		</a>
 		<button class="navbar-toggler" data-target="#nav_site_help"
@@ -48,16 +47,21 @@
 		<span class="gradient-text">GALAXOS</span>
 		<div class="collapse navbar-collapse" id="nav_site_help">
 			<ul class="navbar-nav ml-auto">
-				<li class="m-1 nav-item d-flex align-items-center"><a
-					class="p-3 nav-link main-button" href="" style="color: white">
-						Besoin d'un service ? </a></li>
+				<li class="m-1 nav-item d-flex align-items-center"><h:form>
+						<h:commandLink class="p-3 nav-link main-button"
+							style="color: white"
+							action="#{CatalogueAssociationBean.afficherPageCatalogue()}"
+							value="Besoin d'un service ?">
+							<f:param id="categName" name="categName" value="all" />
+						</h:commandLink>
+					</h:form></li>
 				<li class="m-1 nav-item d-flex align-items-center"><h:link
-						outcome="creationAssociation.xhtml"
-						class="nav-link nav-link-hover-black button-tertiaire">Créer son association</h:link>
-				</li>
+						outcome="login.xhtml"
+						class="nav-link nav-link-hover-black button-tertiaire">Se connecter
+					</h:link></li>
 				<li class=" m-1 nav-item d-flex align-items-center"><a
-					class="nav-link nav-link-hover-black button-secondaire" href="">Mon
-						compte</a></li>
+					class="nav-link nav-link-hover-black button-tertiaire"
+					href="createAccount.xhtml">S'inscrire</a></li>
 			</ul>
 		</div>
 		</nav>
@@ -74,6 +78,7 @@
 	
 	
 	<div class="container">
+
 		<div class="row mt-lg-10 mt-md-10 mt-10">
 			<div class="col-xl-4 col-lg-5 col-md-7 shadow-lg mx-auto">
 			
@@ -86,71 +91,75 @@
 					</div>
 					<div class="card-body">
 
-						<h:form id="createAccountForm" role="form text-left">
 
-							<div class="mb-4">
+
+					<h:form id="createAccountForm" role="form text-left">
+
+						<div class="mb-4">
 							<i class="bi bi-person-plus-fill text-white"></i>
-								<h:inputText id="NomInput" class="form-control "
-									pt:placeholder="Nom" aria-label="Nom"
-									value="#{CreateAccountBean.accountForm.nom}" />
-								<h:messages for="NomInput" errorClass="erreurInputForm" />
-							</div>
-							
-							<div class="mb-4">
+							<h:inputText id="NomInput" class="form-control "
+								pt:placeholder="Nom" aria-label="Nom"
+								value="#{CreateAccountBean.accountForm.nom}" />
+							<h:messages for="NomInput" errorClass="erreurInputForm" />
+						</div>
+
+						<div class="mb-4">
 							<i class="bi bi-person-plus-fill text-white"></i>
-								<h:inputText id="PrenomInput" class="form-control "
-									pt:placeholder="Prénom" aria-label="Prenom"
-									value="#{CreateAccountBean.accountForm.prenom}" />
-								<h:messages for="PrenomInput" errorClass="erreurInputForm" />
-							</div>
-							
-							<div class="mb-4">
+							<h:inputText id="PrenomInput" class="form-control "
+								pt:placeholder="Prénom" aria-label="Prenom"
+								value="#{CreateAccountBean.accountForm.prenom}" />
+							<h:messages for="PrenomInput" errorClass="erreurInputForm" />
+						</div>
+
+						<div class="mb-4">
 							<h:inputText id="emailInput" class="form-control PHname"
-									aria-label="Nom" pt:placeholder="Email"
-									aria-describedby="email-addon"
-									value="#{CreateAccountBean.accountForm.email}" />
-								<h:messages for="emailInput" errorClass="erreurInputForm" />
-							</div>
+								aria-label="Nom" pt:placeholder="Email"
+								aria-describedby="email-addon"
+								value="#{CreateAccountBean.accountForm.email}" />
+							<h:messages for="emailInput" errorClass="erreurInputForm" />
+						</div>
 
-							<div class="mb-4">
+						<div class="mb-4">
 
 
 							<h:inputSecret id="passwordInput" class="form-control"
+								pt:placeholder="Mot de passe" aria-label="password"
+								aria-describedby="password-addon"
+								value="#{CreateAccountBean.accountForm.password}" />
+							<h:messages for="passwordInput" errorClass="erreurInputForm" />
+						</div>
 
-									pt:placeholder="Mot de passe" aria-label="password"
-									aria-describedby="password-addon"
-									value="#{CreateAccountBean.accountForm.password}" />
-								<h:messages for="passwordInput" errorClass="erreurInputForm"  />
-							</div>
-												
-							<!-- confirmation du mot de passe -->
-							<div class="mb-4">
+						<!-- confirmation du mot de passe -->
+						<div class="mb-4">
 							<h:inputSecret id="confirmPasswordInput" class="form-control"
-									pt:placeholder="Confirmer mot de passe" aria-label="confirmPassword"
-									aria-describedby="password-addon"
-									value="#{CreateAccountBean.accountForm.confirmPassword}" />
-								<h:messages for="confirmPasswordInput" errorClass="erreurInputForm"  />
-							</div>
-							
-							<div class="text-center">
-								<h:commandButton value="S'inscrire"
-									class="btn main-button w-100 my-4 mb-2"
-									action="#{CreateAccountBean.create()}" />
-							</div>
-						</h:form>
+								pt:placeholder="Confirmer mot de passe"
+								aria-label="confirmPassword" aria-describedby="password-addon"
+								value="#{CreateAccountBean.accountForm.confirmPassword}" />
+							<h:messages for="confirmPasswordInput"
+								errorClass="erreurInputForm" />
+						</div>
+
+						<div class="text-center">
+							<h:commandButton value="S'inscrire"
+								class="btn main-button w-100 my-4 mb-2"
+								action="#{CreateAccountBean.create()}" />
+						</div>
+					</h:form>
 
 
-						<p class="text-sm mt-3 mb-0">
-							Vous avez déjà un compte ? 	
-							<h:link outcome="login.xhtml"><span class="text-dark font-weight-bolder">Se connecter</span></h:link>
-						</p>
-					
-					</div>
+					<p class="text-sm mt-3 mb-0">
+						Vous avez déjà un compte ?
+						<h:link outcome="login.xhtml">
+							<span class="text-dark font-weight-bolder">Se connecter</span>
+						</h:link>
+					</p>
+
 				</div>
 			</div>
 		</div>
 	</div>
 	</div>
+
 
 	</section>
 

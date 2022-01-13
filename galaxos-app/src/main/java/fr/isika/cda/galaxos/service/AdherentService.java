@@ -29,10 +29,11 @@ public AdherentService() {
 public Adherent create(AdherentForm adherentform) {
 	
 
-	Optional<Adherent> optional = adherentRepository.findByEmail(adherentform.getEmail());//	
+	Optional<Adherent> optional = adherentRepository.findByEmail(adherentform.getEmail());	
 	
 	if( optional.isPresent() ) {
 		throw new EntityNotFoundException("le compte adhérent existe déjà");
+		// ici il faut return ?
 	}
 	
 	return adherentRepository.create(adherentform);

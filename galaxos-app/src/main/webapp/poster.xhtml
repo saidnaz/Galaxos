@@ -110,13 +110,16 @@
                 </div>
                 <div class="mb-4">
                 <div class = "row" >	
-                <select class="form-select" aria-label="Default select example">
-									<option>Choisir un domaine</option>
-									<option value="1">Animaux</option>
-									<option value="2">Nature</option>
-									<option value="3">Sport</option>
-				</select>
-				</div>	
+
+
+									<h:selectOneMenu value="#{postBean.selectedDomaine}"
+										class="form-select" aria-label="Default select example">
+										<f:selectItem itemValue="" itemLabel="Choisir un domaine" />
+										<f:selectItems value="#{postBean.domaines}" var="domaines"
+											itemValue="#{domaines}" itemLabel="#{domaines.label}" />
+									</h:selectOneMenu>
+
+								</div>	
 				</div>		
                  
 								

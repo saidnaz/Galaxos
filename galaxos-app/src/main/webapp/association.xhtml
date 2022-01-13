@@ -33,37 +33,44 @@
 
 
 
-	<!--SECTION NAV-->
+<!--SECTION NAV-->
 	<div class="fixed-top">
 		<nav class="navbar navbar-expand-lg navbar-light navbar-white"
-			id="navbar"> <a class="navbar-brand" href=""> <img
-			alt="LOGO" width="70" class="logo-brand-fr"
-			src="resources/images/logo.png" />
-		</a> <a class="navbar-brand d-none" href=""> <img alt="LOGO"
+			id="navbar"> <h:link outcome="index.xhtml" class="navbar-brand">
+			<img alt="LOGO" width="70" class="logo-brand-fr"
+				src="resources/images/logo.png" />
+		</h:link> <a class="navbar-brand d-none" href=""> <img alt="LOGO"
 			width="70" class="logo-brand-fr" src="resources/images/logo.png" />
 		</a>
 		<button class="navbar-toggler" data-target="#nav_site_help"
 			data-toggle="collapse" type="button">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		GALAXOS
+		<span class="gradient-text">GALAXOS</span>
 		<div class="collapse navbar-collapse" id="nav_site_help">
 			<ul class="navbar-nav ml-auto">
-				<li class="m-1 nav-item d-flex align-items-center"><a
-					class="p-3 nav-link main-button" href="" style="color: white">
-						Besoin d'un service ? </a></li>
+				<li class="m-1 nav-item d-flex align-items-center"><h:form>
+						<h:commandLink class="p-3 nav-link main-button"
+							style="color: white"
+							action="#{CatalogueAssociationBean.afficherPageCatalogue()}"
+							value="Besoin d'un service ?">
+							<f:param id="categName" name="categName" value="all" />
+						</h:commandLink>
+					</h:form></li>
 				<li class="m-1 nav-item d-flex align-items-center"><h:link
-						outcome="creationAssociation.xhtml"
-						class="nav-link nav-link-hover-black button-tertiaire">Créer son association</h:link>
-				</li>
-				<li class=" m-1 nav-item d-flex align-items-center"><a
-					class="nav-link nav-link-hover-black button-secondaire" href="">Mon
-						compte</a></li>
+						class="p-3 nav-link button-tertiaire" value="Mon compte"
+						outcome="dashboardAdherent">
+					</h:link></li>
+				<li class="m-1 nav-item d-flex align-items-center"><h:form>
+						<h:commandLink class="p-3 nav-link button-tertiaire"
+							action="#{loginBean.doLogout()}" value="Se déconnecter">
+						</h:commandLink>
+					</h:form></li>
 			</ul>
 		</div>
 		</nav>
 	</div>
-	<!--SECTION NAV-->
+
 
 	<div class="container-fluid mt-5 pt-5">
 		<div
@@ -276,11 +283,11 @@
 												<th
 													class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom</th>
 												<th
-													class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
+													class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Avis</th>
 											</tr>
 										</thead>
 										<tbody>
-											<ui:repeat var="adh" value="#{associationBean.listAdherents}">
+											<ui:repeat var="adh" value="#{associationBean.listProviders}">
 												<tr>
 													<td>
 														<div class="d-flex px-2 py-1">
@@ -295,10 +302,7 @@
 															</div>
 														</div>
 													</td>
-													<td class="align-middle"><a href="javascript:;"
-														class="text-secondary font-weight-bold text-xs"
-														data-toggle="tooltip" data-original-title="Edit user">
-															Voir </a></td>
+													<td class="align-middle"></td>
 												</tr>
 
 											</ui:repeat>

@@ -306,6 +306,14 @@ public class AssociationRepository {
 				Association.class).setParameter("idAdherentConnecte", idAdherentConnecte).getResultList();
 	}
 
+	public List<Association> findAssociationsAdherentParAdherent(Long idAdherentConnecte) {
+		List<Association> associations = null;
+		return associations = entityManager.createNativeQuery(
+				"SELECT * FROM Association INNER JOIN Client ON Client.association_id = Association.id INNER JOIN Role ON Client.id = Role.id INNER JOIN consumers ON Role.id = consumers.id WHERE Role.adherent_id = :idAdherentConnecte",
+				Association.class).setParameter("idAdherentConnecte", idAdherentConnecte).getResultList();
+
+	}
+
 	public List<Adherent> findProviderParAssociation(Long idAsso) {
 		List<Adherent> adherents = null;
 
@@ -333,14 +341,14 @@ public class AssociationRepository {
 		consum.setAdherent(adherentConnecte);
 		consum.setAssociation(asso);
 		entityManager.persist(consum);
-		
+
 		/*
 		 * List<Role> roles = adherentConnecte.getRoles(); roles.add(consum);
 		 * adherentConnecte.setRoles(roles); entityManager.merge(adherentConnecte);
 		 */
 		return consum;
 	}
-	
+
 	public List<Adherent> findConsumerParAssociation(Long idAsso) {
 		List<Adherent> adherents = null;
 
@@ -348,4 +356,5 @@ public class AssociationRepository {
 				"SELECT * FROM Adherent INNER JOIN Role ON Role.adherent_id = Adherent.id INNER JOIN Client ON Client.id = Role.id INNER JOIN Association ON Client.association_id = Association.id INNER JOIN consumers ON Role.id = consumers.id WHERE Association.id = :idAsso",
 				Adherent.class).setParameter("idAsso", idAsso).getResultList();
 	}
+
 }
