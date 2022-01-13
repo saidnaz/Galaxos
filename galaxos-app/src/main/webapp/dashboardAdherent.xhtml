@@ -89,10 +89,22 @@
 
             <ul class="navbar-nav justify-content-end">
               <li class="nav-item d-flex align-items-center">
-                <a href="javascript:;" class="nav-link text-dark font-weight-bold px-0">
-                  <i class="fa fa-sign-out me-sm-1"></i>
-                  <span class="d-sm-inline d-none">Déconnexion</span>
-                </a>
+               	<h:form>
+							<div class="nav-link text-dark font-weight-bold px-0">
+								<i class="fa fa-sign-out me-sm-1"></i>
+								<h:commandButton value="Déconnexion" class="d-sm-inline d-none"
+									action="#{loginBean.doLogout()}"
+									style="background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;">
+								</h:commandButton>
+
+							</div>
+						</h:form>
               </li>
             </ul>
           </div>
