@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 
 import javax.persistence.*;
 
+import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.roles.Provider;
 
 @Entity
@@ -38,6 +39,10 @@ public abstract class Resource{
 	
 	@Column(nullable=false)
 	private LocalDateTime datePublication;
+	
+	private String description;
+	
+	private Association association;
 	 
 	//private List<String> photos = new ArrayList<String>(); 
 
@@ -82,6 +87,22 @@ public abstract class Resource{
 
 	public void setDatePublication(LocalDateTime datePublication) {
 		this.datePublication = datePublication;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Association getAssociation() {
+		return association;
+	}
+
+	public void setAssociation(Association association) {
+		this.association = association;
 	}
 
 	@Override

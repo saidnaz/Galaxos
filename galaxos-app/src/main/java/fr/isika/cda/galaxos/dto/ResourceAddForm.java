@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.roles.Provider;
 
 public abstract class ResourceAddForm{
@@ -22,6 +23,10 @@ public abstract class ResourceAddForm{
 	
 	@NotEmpty
 	private Provider provider;
+	
+	private String description;
+	
+	private Association association;
 	
 	public ResourceAddForm() {}
 
@@ -64,6 +69,21 @@ public abstract class ResourceAddForm{
 	public void setProvider(Provider provider) {
 		this.provider = provider;
 	}
-	
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Association getAssociation() {
+		return association;
+	}
+
+	public void setAssociation(Association association) {
+		this.association = association;
+	}
 	
 }
