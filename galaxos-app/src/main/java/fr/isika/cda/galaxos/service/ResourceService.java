@@ -26,4 +26,12 @@ public class ResourceService {
 	public List<Provider> findProviderByAdh(Long id) {
 		return resRepo.findProviderByAdh(id);
 	}
+	
+	public List<Resource> findAll(){
+		return resRepo.findAll();
+	}
+	
+	public List<Resource> findByAssociation(Long idAsso){
+		return resRepo.findByAssociation(idAsso);
+	}
 }
