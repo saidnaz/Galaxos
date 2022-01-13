@@ -81,7 +81,8 @@
 					<h5>Modification de vos données</h5>
 				</div>
 				<div class="card-body">
-					<h:form id="loginForm" role="form text-left">
+					<h:form id="loginForm" role="form text-left"
+						enctype="multipart/form-data">
 						<div class="mb-4">
 							<h:inputText id="numeroInput" class="form-control"
 								pt:placeholder="Numéro ex : 14" aria-label="Numero"
@@ -123,6 +124,13 @@
 								aria-label="Description" aria-describeby="description"
 								value="#{dashboardProfil.form.description}" />
 							<h:messages for="telephoneInput" errorClass="erreurInputForm" />
+						</div>
+
+						<div class="mb-4">
+							<h:inputFile
+								value="#{dashboardProfil.form.photo}"
+								class="form-control" id="file"></h:inputFile>
+
 						</div>
 
 
