@@ -31,11 +31,11 @@ public class Message {
 	private Long id;
 
 	
-	@Column(name = "Date", nullable = false)
-	private LocalDateTime date;
+	@Column(name = "Date")
+	private LocalDateTime dateType;
 	
-//	@Column(name = "DateString", nullable = false)
-//	private LocalDateTime dateString;
+	@Column(name = "DateString")
+	private String date;
 
 	@Column(name = "Texte", nullable = false)
 	private String texte;
@@ -49,11 +49,11 @@ public class Message {
 	private Adherent expediteur;
 	
 	public LocalDateTime getDate() {
-		return date;
+		return dateType;
 	}
 
-	public void setDate(LocalDateTime date) {
-		this.date = date;
+	public void setDate(LocalDateTime datetype) {
+		this.dateType = datetype;
 	}
 
 	public String getTexte() {
@@ -83,15 +83,27 @@ public class Message {
 	public void setExpediteur(Adherent expediteur) {
 		this.expediteur = expediteur;
 	}
-	
-//	public LocalDateTime getDateString() {
-//		return dateString;
-//	}
-//
-//	public void setDateString(LocalDateTime dateString) {
-//		this.dateString = dateString;
-//	}
 
+	public String getDateString() {
+		return date;
+	}
+
+	public void setDateString(String dateString) {
+		this.date = dateString;
+	}
+
+	public void addDate()
+	{
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm");
+		
+		LocalDateTime dateNow = LocalDateTime.now();
+		String str = dateNow.format(formatter);
+		
+		this.dateType = dateNow;
+		this.date = str.replace(":","h");
+		
+	//	LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
+	}
 
 	@Override
 	public String toString() {
@@ -129,25 +141,24 @@ public class Message {
 	}
 
 	public Message() {
+		
+		addDate();
+		
 	}
 
-	public Message(LocalDateTime date, String texte, Adherent expediteur,  Adherent destinataire) {
+	
+	public Message(String texte, Adherent expediteur,Adherent destinataire, String dateDisplay) {
 		super();
-		this.date = date;
 		this.texte = texte;
 		this.expediteur = expediteur;
 		this.destinataire = destinataire;
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm");
-		String str = LocalDateTime.now().format(formatter);
-		LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
-	}
-	
-	public Message(String texte, Adherent expediteur,Adherent destinataire) {
-		super();
-		this.texte = texte;
-		this.expediteur = expediteur;
-		this.destinataire = destinataire;
+		LocalDateTime dateType = LocalDateTime.parse(dateDisplay, formatter);
+		
+		this.dateType = dateType;
+		this.date = dateDisplay.replace(":", "h");
+		
 	}
 
 
