@@ -16,7 +16,9 @@ import fr.isika.cda.galaxos.model.roles.Provider;
 		  discriminatorType=DiscriminatorType.STRING 
 		)
 @NamedQueries({
-	@NamedQuery(name = "Resource.findById", query = "SELECT r FROM Resource r WHERE r.idRessource = :id")
+	@NamedQuery(name = "Resource.findAll", query = "SELECT r FROM Resource r"),
+	@NamedQuery(name = "Resource.findById", query = "SELECT r FROM Resource r WHERE r.idRessource = :id"),
+	@NamedQuery(name = "Resource.findByProv", query = "SELECT r FROM Resource r WHERE r.provider.id = :id")
 })
 public abstract class Resource{ 
 	
