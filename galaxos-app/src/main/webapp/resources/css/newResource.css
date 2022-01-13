@@ -35,10 +35,10 @@
 	 left: 0;
 }
  .btn-radio input.btn-left:not(:checked) ~ label.btn-left {
-	 color: #757575;
+	 color: white;
 }
  .btn-radio input.btn-left:checked ~ label.btn-left {
-	 background-color: #c2c2c2;
+	 background-color: #706AC2;
 }
  .btn-radio input.btn-right {
 	 right: 0;
@@ -48,13 +48,13 @@
 }
  .btn-radio input.btn-right:checked ~ label.btn-right {
 	 color: white;
-	 background-color: black;
+	 background-color: #0087B6;
 }
  .btn-radio-animated {
 	 position: relative;
 	 display: flex;
 	 background-color: white;
-	 border: 1px solid black;
+	 border: 1px solid #706AC2;
 	 max-width: 320px;
 }
  .btn-radio-animated .background {
