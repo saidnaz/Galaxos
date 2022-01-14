@@ -77,7 +77,9 @@
 	</div>
 
 
-	<div class="container d-flex mt-5 pt-5 mb-5 justify-content-center align-item-center" style="min-height: 90vh">
+	<div
+		class="container d-flex mt-5 pt-5 mb-5 justify-content-center align-item-center"
+		style="min-height: 90vh">
 		<div class="col-6 mt-3 mb-5">
 
 			<div class="card z-index-0 shadow-lg mx-auto">
@@ -175,15 +177,29 @@
 								<div class="row">
 									<h:commandButton value="Envoyer" action="#{postBean.create()}"
 										class="btn main-button w-100 " />
+
 								</div>
 							</div>
 						</fieldset>
 					</h:form>
+					<button class="btn main-button w-100 my-4 mb-2" value="Demo"
+						onclick="myDemo()">Demo</button>
+					<script>
+									function myDemo()
+									{
+										document.getElementById("createp:name").value = 'Tailler ma haie';
+										document.getElementById("createp:description").value = 'J\'ai besoin de tailler ma haie de thuyas de 10m de long ';
+										document.getElementById("createp:startD").value = '17-01-22 18:30';
+										document.getElementById("createp:endD").value = '17-01-22 20:30';
+										document.getElementById("createp:price").value = '120';
+										
+									};
+									</script>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div style="min-height: 10vh "></div>
+	<div style="min-height: 10vh"></div>
 	<!-- Footer-->
 	<div class="footer">
 		<div class="site-section">
