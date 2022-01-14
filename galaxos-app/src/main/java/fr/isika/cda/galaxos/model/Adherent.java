@@ -188,6 +188,8 @@ public class Adherent implements Serializable {
 
 		return builder.toString();
 	}
+	
+	
 
 }
 

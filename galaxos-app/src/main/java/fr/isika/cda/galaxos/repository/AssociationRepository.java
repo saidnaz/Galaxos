@@ -21,10 +21,10 @@ import fr.isika.cda.galaxos.model.FicheAssoCompta;
 import fr.isika.cda.galaxos.model.FicheAssoDescriptif;
 import fr.isika.cda.galaxos.model.FicheAssoGestionnaire;
 import fr.isika.cda.galaxos.model.FicheAssociation;
+import fr.isika.cda.galaxos.model.Post;
 import fr.isika.cda.galaxos.model.roles.Consumer;
 import fr.isika.cda.galaxos.model.roles.GestionnaireAssociation;
 import fr.isika.cda.galaxos.model.roles.Provider;
-import fr.isika.cda.galaxos.model.roles.Role;
 import fr.isika.cda.galaxos.viewmodel.AssociationCreationForm;
 import fr.isika.cda.galaxos.viewmodel.AssociationFinalisationForm;
 
@@ -355,6 +355,14 @@ public class AssociationRepository {
 		return adherents = entityManager.createNativeQuery(
 				"SELECT * FROM Adherent INNER JOIN Role ON Role.adherent_id = Adherent.id INNER JOIN Client ON Client.id = Role.id INNER JOIN Association ON Client.association_id = Association.id INNER JOIN consumers ON Role.id = consumers.id WHERE Association.id = :idAsso",
 				Adherent.class).setParameter("idAsso", idAsso).getResultList();
+	}
+	
+	public List<Post> findPostParAsso(Long idAsso) {
+		List<Post> posts = null;
+
+		return posts = entityManager.createNativeQuery(
+				"SELECT * FROM Post WHERE association_id = :idAsso",
+				Post.class).setParameter("idAsso", idAsso).getResultList();
 	}
 
 }
