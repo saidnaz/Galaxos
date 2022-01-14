@@ -42,6 +42,7 @@ public abstract class Resource{
 	
 	private String description;
 	
+	@ManyToOne()
 	private Association association;
 	 
 	//private List<String> photos = new ArrayList<String>(); 

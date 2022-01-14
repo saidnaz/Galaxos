@@ -9,6 +9,7 @@ import javax.persistence.*;
 
 import fr.isika.cda.galaxos.dto.LocationAddForm;
 import fr.isika.cda.galaxos.dto.ResourceAddForm;
+import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.resources.Location;
 import fr.isika.cda.galaxos.model.resources.Resource;
 import fr.isika.cda.galaxos.model.resources.Vente;
@@ -53,7 +54,8 @@ public class ResourceRepo {
 		resource.setTarif(prix);
 		resource.setProvider(form.getProvider());
         resource.setDatePublication(form.getDate());
-		
+		resource.setAssociation(form.getAssociation());
+		resource.setDescription(form.getDescription());
 		System.out.println(resource.toString());
 		
 		entityManager.persist(resource);
@@ -88,6 +90,14 @@ public class ResourceRepo {
 			if(providers.size() != 0)System.out.println(providers.get(0).getId());
 			else System.out.println("Non ya person!");
 			return providers;
+	}
+	
+	public List<Association> findAssociationsAdherentParAdherent(Long idAdherentConnecte) {
+		List<Association> associations = null;
+		return associations = entityManager.createNativeQuery(
+				"SELECT * FROM Association INNER JOIN Client ON Client.association_id = Association.id INNER JOIN Role ON Client.id = Role.id WHERE Role.adherent_id = :idAdherentConnecte",
+				Association.class).setParameter("idAdherentConnecte", idAdherentConnecte).getResultList();
+
 	}
 		
 }

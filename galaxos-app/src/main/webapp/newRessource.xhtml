@@ -103,18 +103,17 @@
 
 						</div>
 						<div class="card-body">
-						
+
 							<div class="btn-radio-animated mb-3 nav nav-pills mx-auto">
 								<input class="btn-left nav-link " type="radio" value="vente"
 									id="radio-vente" name="typeRes" checked="true"
 									onClick="afficherCacher()" /> <input
 									class="btn-right nav-link" type="radio" value="location"
 									id="radio-location" name="typeRes" onClick="afficherCacher()" />
-								<label class="btn-left">Vente</label> 
-								<label class="btn-right">Location</label>
+								<label class="btn-left">Vente</label> <label class="btn-right">Location</label>
 								<span class="background rounded-3"></span>
 							</div>
-							
+
 							<div style="display: block;" id="venteForm">
 								<div class="card-body">
 									<h:form id="addVenteForm" role="form"
@@ -125,7 +124,12 @@
 												pt:placeholder="Nom" aria-label="Nom"
 												aria-describedby="ajout-nom"
 												value="#{resourceBean.venteForm.name}" />
-
+										</div>
+										<label for="descriptionRes">Description</label>
+										<div class="mb-3">
+											<h:inputTextarea id="descriptionRes" rows="3"
+												class="form-control"
+												value="#{resourceBean.venteForm.description}" />
 										</div>
 										<label for="formFileMultiple">Photos</label>
 										<div class="mb-3">
@@ -141,6 +145,8 @@
 												value="#{resourceBean.venteForm.tarif}" />
 											<span class="input-group-text">€</span>
 										</div>
+
+										
 
 										<div class="text-center">
 											<h:commandButton action="#{resourceBean.create('vente')}"
@@ -182,12 +188,11 @@
 													a:type="date"
 													value="#{resourceBean.locationForm.dateDebut}"
 													class="form-control mb-2" />
-											</label> 
-											</div>
+											</label>
+										</div>
 										<div class="input-group mb-3">
 											<label>Date de fin d'indisponibilité <h:inputText
-													a:type="date" 
-													value="#{resourceBean.locationForm.dateFin}"
+													a:type="date" value="#{resourceBean.locationForm.dateFin}"
 													class="form-control mb-2 ml-1" />
 											</label>
 										</div>

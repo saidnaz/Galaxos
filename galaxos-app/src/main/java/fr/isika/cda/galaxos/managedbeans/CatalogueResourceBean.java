@@ -32,8 +32,14 @@ public class CatalogueResourceBean {
 			String id = req.getParameter("id");
 			if (id.equals("all")) {
 				resources = resRepo.findAll();
+				for(Resource r : resources) {
+					System.out.println(r.getName());
+				}
 			} else {
 				resources = resRepo.findByAssociation(Long.parseLong(id));
+				for(Resource r : resources) {
+					System.out.println(r.getName());
+				}
 			}
 			return "catalogueResources";
 		}

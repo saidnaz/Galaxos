@@ -2,7 +2,9 @@ package fr.isika.cda.galaxos.managedbeans;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import fr.isika.cda.galaxos.dto.LocationAddForm;
 import fr.isika.cda.galaxos.dto.VenteAddForm;
+import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.resources.Resource;
 import fr.isika.cda.galaxos.model.roles.Provider;
 import fr.isika.cda.galaxos.service.ResourceService;
@@ -29,6 +32,16 @@ public class ResourceBean implements Serializable {
 	
 	private LocationAddForm locationForm = new LocationAddForm();
 	
+	private List<Association> associations;
+	
+	@PostConstruct
+	public void init() {
+		associations = getAssociations();
+		for(Association asso : associations) {
+			System.out.println(asso.getId());
+		}
+	}
+	
 	public String create(String type) {
 		System.out.println("hello there! Type is :" + type);
 		UIComponent formu;
@@ -44,6 +57,7 @@ public class ResourceBean implements Serializable {
 			formu = FacesContext.getCurrentInstance().getViewRoot().findComponent("addVenteForm");
 			venteForm.setDate(now);
 			venteForm.setProvider(crtUsr);
+			venteForm.setAssociation(getAssociations().get(0));
 			resource = service.create(venteForm);
 		}
 		else if(type.equals("location")) {
@@ -83,7 +97,15 @@ public class ResourceBean implements Serializable {
 		this.locationForm = locationForm;
 	}
 	
-	
+	public List<Association> getAssociations(){
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		Long idAdherentConnecte = (Long) session.getAttribute("connectedAdherentId");
+		List<Association> assos = service.findAssociationByAdherent(idAdherentConnecte);
+		for(Association asso : assos) {
+			System.out.println(asso.getId());
+		}
+		return assos;
+	}
 	
 	
 	

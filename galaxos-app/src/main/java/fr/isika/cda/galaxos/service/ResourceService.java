@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import fr.isika.cda.galaxos.dto.ResourceAddForm;
+import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.resources.Resource;
 import fr.isika.cda.galaxos.model.roles.Provider;
 import fr.isika.cda.galaxos.repository.ResourceRepo;
@@ -33,5 +34,9 @@ public class ResourceService {
 	
 	public List<Resource> findByAssociation(Long idAsso){
 		return resRepo.findByAssociation(idAsso);
+	}
+	
+	public List<Association> findAssociationByAdherent(Long idAdh){
+		return resRepo.findAssociationsAdherentParAdherent(idAdh);
 	}
 }
