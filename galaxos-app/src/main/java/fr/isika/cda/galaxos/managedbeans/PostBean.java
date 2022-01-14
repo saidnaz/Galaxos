@@ -135,7 +135,7 @@ public class PostBean {
 	PostForm pform = new PostForm();
 
 	private Post p;
-	
+
 	@Inject
 	private AdherentService AS;
 
@@ -146,15 +146,21 @@ public class PostBean {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
 		String idString = params.get("idAsso");
-		Long idAsso = Long.parseLong(idString);
+		System.out.println("idstring" + idString);
+		if (idString != null) {
+			Long idAsso = Long.parseLong(idString);
 
-		Optional<Association> optional = service.findById(idAsso);
-		if (optional.isPresent()) {
-			asso = optional.get();
+			Optional<Association> optional = service.findById(idAsso);
+			if (optional.isPresent()) {
+				asso = optional.get();
+			}
 		}
+
 	}
 
 	public String create() {
+		
+		
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		Long id = (Long) session.getAttribute("connectedAdherentId");
 		Optional<Adherent> optional = AS.findAdherentById(id);
@@ -185,7 +191,7 @@ public class PostBean {
 				pform.setEndDate(endDateLocal);
 				pform.setPhoto(photoFile);
 				pform.setPrice(price);
-				//pform.setAssociation(asso);
+				// pform.setAssociation(asso);
 				pform.setIdAdherent(id);
 				p = PS.create(pform, asso);
 

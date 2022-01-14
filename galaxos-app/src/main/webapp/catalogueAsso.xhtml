@@ -63,12 +63,14 @@
 						</h:commandLink>
 					</h:form></li>
 				<li class="m-1 nav-item d-flex align-items-center"><h:link
-						outcome="creationAssociation.xhtml"
-						class="nav-link nav-link-hover-black button-tertiaire">Créer son association
+						class="p-3 nav-link button-tertiaire" value="Mon compte"
+						outcome="dashboardAdherent">
 					</h:link></li>
-				<li class=" m-1 nav-item d-flex align-items-center"><a
-					class="nav-link nav-link-hover-black button-secondaire" href="login.xhtml">Mon
-						compte</a></li>
+				<li class="m-1 nav-item d-flex align-items-center"><h:form>
+						<h:commandLink class="p-3 nav-link button-tertiaire"
+							action="#{loginBean.doLogout()}" value="Se déconnecter">
+						</h:commandLink>
+					</h:form></li>
 			</ul>
 		</div>
 		</nav>

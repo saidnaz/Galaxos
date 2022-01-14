@@ -63,7 +63,6 @@
 						class="nav-link nav-link-hover-black button-tertiaire">Se connecter
 					</h:link></li>
 				<li class=" m-1 nav-item d-flex align-items-center"><a
-
 					class="nav-link nav-link-hover-black button-tertiaire"
 					href="createAccount.xhtml">S'inscrire</a></li>
 
@@ -80,41 +79,40 @@
 		class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg"
 		style="background: rgb(46, 47, 94); background: linear-gradient(274deg, rgba(46, 47, 94, 1) 23%, rgba(0, 135, 182, 1) 93%);">
 		<span class="mask bg-gradient-dark opacity-6"></span>
-	
-	<div class="container">
-		<div class="row mt-lg-10 mt-md-10 mt-10">
-			<div class="col-xl-4 col-lg-5 col-md-7 shadow-lg mx-auto">
-			
-				<div class="card z-index-0">
-					<div class="card-header text-center pt-4">
-				<img alt="LOGO" width="50" class="logo-brand-fr"
+
+		<div class="container">
+			<div class="row mt-lg-10 mt-md-10 mt-10">
+				<div class="col-xl-4 col-lg-5 col-md-7 shadow-lg mx-auto">
+
+					<div class="card z-index-0">
+						<div class="card-header text-center pt-4">
+							<img alt="LOGO" width="50" class="logo-brand-fr"
 								src="resources/images/logo.png" />
-						<h5>Connexion Galaxos</h5>	
-					</div>
-					<div class="card-body">
-						<h:form id="loginForm" role="form text-left">
-							<div class="mb-4">
-								<h:inputText id="emailInput" class="form-control PHname"
-									aria-label="Nom" pt:placeholder="Email"
-									aria-describedby="email-addon"
-									value="#{loginBean.email}" />
-								<h:messages for="emailInput" errorClass="erreurInputForm" />
-							</div>
-							<div class="mb-4">
-								<h:inputSecret id="passwordInput" class="form-control"
-									pt:placeholder="Mot de passe" aria-label="password"
-									aria-describedby="password-addon"
-									value="#{loginBean.password}" />
-								<h:messages for="passwordInput" errorClass="erreurInputForm"  />
-							</div>				
-							
-							<div class="text-center">
-								<h:commandButton value="Accèder à mon compte"
-									class="btn main-button w-100 my-4 mb-2"
-									action="#{loginBean.doLogin()}" />
-							</div>
-						</h:form>
-<button class="btn main-button w-100 my-4 mb-2" value="Demo"
+							<h5>Connexion Galaxos</h5>
+						</div>
+						<div class="card-body">
+							<h:form id="loginForm" role="form text-left">
+								<div class="mb-4">
+									<h:inputText id="emailInput" class="form-control PHname"
+										aria-label="Nom" pt:placeholder="Email"
+										aria-describedby="email-addon" value="#{loginBean.email}" />
+									<h:messages for="emailInput" errorClass="erreurInputForm" />
+								</div>
+								<div class="mb-4">
+									<h:inputSecret id="passwordInput" class="form-control"
+										pt:placeholder="Mot de passe" aria-label="password"
+										aria-describedby="password-addon"
+										value="#{loginBean.password}" />
+									<h:messages for="passwordInput" errorClass="erreurInputForm" />
+								</div>
+
+								<div class="text-center">
+									<h:commandButton value="Accèder à mon compte"
+										class="btn main-button w-100 my-4 mb-2"
+										action="#{loginBean.doLogin()}" />
+								</div>
+							</h:form>
+							<button class="btn main-button w-100 my-4 mb-2" value="Demo"
 								onclick="myDemo()">Demo</button>
 							<script>
 									function myDemo()
@@ -124,15 +122,27 @@
 									
 									};
 									</script>
-						<p class="text-sm mt-3 mb-0">
-							Vous n’avez pas encore de compte? 	
-							<h:link outcome="createAccount.xhtml"><span class="text-dark font-weight-bolder">Inscrivez vous</span></h:link>
-						</p>
+							<button class="btn main-button w-100 my-4 mb-2" value="Demo 2"
+								onclick="myDemo2()">Demo 2</button>
+							<script>
+									function myDemo2()
+									{
+										document.getElementById("loginForm:emailInput").value = 'jcameron@gmail.com';
+										document.getElementById("loginForm:passwordInput").value = 'tatata';
+									};
+									</script>
+							<p class="text-sm mt-3 mb-0">
+								Vous n’avez pas encore de compte?
+								<h:link outcome="createAccount.xhtml">
+									<span class="text-dark font-weight-bolder">Inscrivez
+										vous</span>
+								</h:link>
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 
 	</section>
@@ -227,4 +237,3 @@
 </body>
 </html>
 
-											
