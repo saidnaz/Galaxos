@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -113,12 +114,20 @@
 									action="#{loginBean.doLogin()}" />
 							</div>
 						</h:form>
-
+<button class="btn main-button w-100 my-4 mb-2" value="Demo"
+								onclick="myDemo()">Demo</button>
+							<script>
+									function myDemo()
+									{
+										document.getElementById("loginForm:emailInput").value = 'antonio_rovel@gmail.com';
+										document.getElementById("loginForm:passwordInput").value = 'tototo';
+									
+									};
+									</script>
 						<p class="text-sm mt-3 mb-0">
 							Vous n’avez pas encore de compte? 	
 							<h:link outcome="createAccount.xhtml"><span class="text-dark font-weight-bolder">Inscrivez vous</span></h:link>
 						</p>
-					
 					</div>
 				</div>
 			</div>
@@ -133,7 +142,7 @@
 	<div class="footer ">
 		<div class="site-section">
 			<div class="container">
-				<div class="join_footer d-block d-md-flex align-items-center px-5 rounded">
+				<div class="join_footer d-block d-md-flex align-items-center px-5">
 					<div>
 						<h2 class="text-white">Vous souhaitez nous rejoindre ?</h2>
 						<h5>Laissez-vous embarquer</h5>
@@ -145,7 +154,7 @@
 				<div class="row">
 					<div class="col-sm">
 						<div class="d-flex align-items-center">
-							<img src="resources/images/logo.png" alt="" style="max-width: 50px;" />
+							<img src="assets/img/logo.png" alt="" style="max-width: 50px;" />
 							<p class="text-white"
 								style="font-weight: 700; display: block; padding-top: 15px">GALAXOS</p>
 						</div>
@@ -217,4 +226,5 @@
 
 </body>
 </html>
+
 											

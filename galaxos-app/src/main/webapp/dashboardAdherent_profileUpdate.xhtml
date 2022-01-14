@@ -127,8 +127,7 @@
 						</div>
 
 						<div class="mb-4">
-							<h:inputFile
-								value="#{dashboardProfil.form.photo}"
+							<h:inputFile value="#{dashboardProfil.form.photo}"
 								class="form-control" id="file"></h:inputFile>
 
 						</div>
@@ -146,6 +145,19 @@
 
 						</div>
 					</h:form>
+					<button class="btn main-button w-100 my-4 mb-2" value="Demo"
+						onclick="myDemo()">Demo</button>
+					<script>
+									function myDemo()
+									{
+										document.getElementById("loginForm:numeroInput").value = '460';
+										document.getElementById("loginForm:libelleInput").value = 'avenue du Général de Gaulle';
+										document.getElementById("loginForm:codePostalInput").value = '78770';
+										document.getElementById("loginForm:villeInput").value = 'Thoiry';
+										document.getElementById("loginForm:telephoneInput").value = '0600030768';
+										document.getElementById("loginForm:descriptionInput").value = 'Personne très serieuse et disponible';
+									};
+									</script>
 
 
 

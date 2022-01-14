@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -246,6 +247,16 @@
 													<h:commandButton value="Soumettre"
 														class="btn main-button my-4 mb-2"
 														action="#{finalisationCompteAssociationBean.creationDescriptifAsso()}" />
+														<button class="btn main-button my-4 mb-2"  value="Demo" style="margin-left:10px;"
+							onclick="myDemoDescription()">Demo</button>
+						<script>
+									function myDemoDescription()
+									{
+										document.getElementById("createAssoDescriptifForm:sloganInput").value = 'Le jardin malin';
+										document.getElementById("createAssoDescriptifForm:descriptionAsso").value = 'Allojardin.com est le spécialiste de l\'entretien et de l\'aménagement de jardin';
+										
+									};
+									</script>
 												</div>
 											</div>
 										</h:form>
@@ -317,6 +328,7 @@
 														class="btn main-button my-4 mb-2"
 														action="#{finalisationCompteAssociationBean.creationGestionnaireAsso()}"
 														onclick="noneGestionnaire()" />
+														
 												</div>
 											</div>
 										</h:form>
@@ -394,6 +406,16 @@
 															class="btn main-button my-4 mb-2"
 															action="#{finalisationCompteAssociationBean.creationComptaAsso()}"
 															onclick="noneCompta()" />
+															<button class="btn main-button my-4 mb-2"  value="Demo" style="margin-left:10px;"
+							onclick="myDemoCompta()">Demo</button>
+						<script>
+									function myDemoCompta()
+									{
+										document.getElementById("createAssoComptaForm:sloganInput").value = '2';
+										
+										
+									};
+									</script>
 													</div>
 												</div>
 											</div>
