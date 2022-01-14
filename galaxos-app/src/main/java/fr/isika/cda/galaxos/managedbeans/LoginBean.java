@@ -191,7 +191,7 @@ public class LoginBean implements Serializable {
 				session.setAttribute("role", adherent.getRole());
 				session.setAttribute("isConnected", true);
 				session.setAttribute("compteUser", adherent.getUser());
-				
+				session.setAttribute("count", 0);
 				
 				presentRole = (String) session.getAttribute("role");
 				
