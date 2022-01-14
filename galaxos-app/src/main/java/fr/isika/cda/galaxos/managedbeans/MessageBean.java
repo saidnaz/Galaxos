@@ -9,6 +9,7 @@ import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -26,7 +27,7 @@ import fr.isika.cda.galaxos.service.AdherentService;
 import fr.isika.cda.galaxos.service.MessageService;
 
 @ManagedBean(name = "MessageBean")
-@ViewScoped
+@RequestScoped
 public class MessageBean implements Serializable {
 
 	private static final long serialVersionUID = -6491967124514940460L;
@@ -69,7 +70,7 @@ public class MessageBean implements Serializable {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		expediteur = (Adherent) session.getAttribute("connectedAdherent");
 
-		int count = (int) session.getAttribute("count");
+//		int count = (int) session.getAttribute("count");
 
 		if (expediteur.getRole().contains("User")) {
 			this.role = 1;
@@ -86,16 +87,19 @@ public class MessageBean implements Serializable {
 			messageDTO = messageDTOvide;
 		}
 
-		if (count != 0) {
 			FacesContext fc = FacesContext.getCurrentInstance();
 			Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
 			String idString = params.get("contactAdherent");
 
 			if (idString != null) {
-				Long idAsso = Long.parseLong(idString);
+				Long idContact = Long.parseLong(idString);
 
+				// Caused by: java.lang.IllegalArgumentException: Could not locate named parameter [id], expecting one of [id_param]
+				// at org.hibernate@5.3.13.Final//org.hibernate.query.internal.ParameterMetadataImpl.getNamedParameterDescriptor(ParameterMetadataImpl.java:218)
+				// at deployment.galaxos-app.war//fr.isika.cda.galaxos.repository.AdherentRepository.findById(AdherentRepository.java:131)
+				
 				// on chercher le contact en question
-				Optional<Adherent> optional = adherentService.findById(idAsso);
+				Optional<Adherent> optional = adherentService.findAdherentById(idContact);
 				if (optional.isPresent()) {
 					this.destinataire = optional.get();
 					actualiserMessages(destinataire);
@@ -103,8 +107,8 @@ public class MessageBean implements Serializable {
 			}
 
 		}
-		session.setAttribute("count", 1);
-	}
+//		session.setAttribute("count", 1);
+	
 
 	public void obtenirMessages(Adherent expediteur, Adherent destinataire) {
 		messageDTO = messageService.obtenirMessages(expediteur, destinataire);

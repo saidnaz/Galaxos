@@ -33,7 +33,6 @@ public class DashboardProfil {
 	private Profil profil;
 	private CompteUser user;
 	private ProfilForm form = new ProfilForm();
-
 	
 	@PostConstruct
 	public void init() {
@@ -48,6 +47,7 @@ public class DashboardProfil {
 		//Long idAdh = (Long) session.getAttribute("connectedAdherentId");
 		adherent = (Adherent) session.getAttribute("connectedAdherent");
 		profil = adherent.getProfil();
+//		adherent.getProfil().setPhoto("bruce.jpg");
 		service.updateAdherent(form, adherent);
 		
 		return "dashboardAdherent_profile";
@@ -110,7 +110,5 @@ public class DashboardProfil {
 	public void setForm(ProfilForm form) {
 		this.form = form;
 	}
-
-	
 
 }
