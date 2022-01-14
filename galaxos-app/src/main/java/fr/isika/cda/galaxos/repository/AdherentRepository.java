@@ -80,6 +80,7 @@ public class AdherentRepository implements Serializable{
 
 public Adherent updateAdherent(ProfilForm form, Adherent adherent) {
 		
+//	String photoChemin = adherent.getProfil().getPhoto();
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		adherent = (Adherent) session.getAttribute("connectedAdherent");
 		//Adresse adresse = new Adresse("", "", 0, "");
@@ -107,6 +108,7 @@ public Adherent updateAdherent(ProfilForm form, Adherent adherent) {
 		profil.setDescription(form.getDescription());
 		profil.setAdresse(adresse);
 		profil.setPhoto(photo);
+		profil.setPhoto("resources/images/bruce.jpg");
 		entityManager.merge(profil);
 		
 		adherent.setProfil(profil);
