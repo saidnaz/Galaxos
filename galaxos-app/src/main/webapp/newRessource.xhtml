@@ -146,7 +146,14 @@
 											<span class="input-group-text">€</span>
 										</div>
 
-										
+										<div class="mb-3">
+											<h:selectOneMenu
+												class="form-select" aria-label="Default select example">
+												<f:selectItems value="#{resourceBean.associations}"
+													var="associations" itemValue="#{associations.id}"
+													itemLabel="#{associations.ficheAssociation.nom}" />
+											</h:selectOneMenu>
+										</div>
 
 										<div class="text-center">
 											<h:commandButton action="#{resourceBean.create('vente')}"

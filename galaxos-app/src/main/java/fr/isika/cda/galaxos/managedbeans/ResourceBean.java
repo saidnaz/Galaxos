@@ -1,5 +1,6 @@
 package fr.isika.cda.galaxos.managedbeans;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -8,6 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -42,7 +44,7 @@ public class ResourceBean implements Serializable {
 		}
 	}
 	
-	public String create(String type) {
+	public void create(String type) {
 		System.out.println("hello there! Type is :" + type);
 		UIComponent formu;
 		Resource resource;
@@ -52,12 +54,12 @@ public class ResourceBean implements Serializable {
 		Long idAdherentConnecte = (Long) session.getAttribute("connectedAdherentId");
 		Provider crtUsr = service.findProviderByAdh(idAdherentConnecte).get(0);
 		LocalDateTime now = LocalDateTime.now();
-		
+		Association asso = getAssociations().get(0);
 		if(type.equals("vente")) {
 			formu = FacesContext.getCurrentInstance().getViewRoot().findComponent("addVenteForm");
 			venteForm.setDate(now);
 			venteForm.setProvider(crtUsr);
-			venteForm.setAssociation(getAssociations().get(0));
+			venteForm.setAssociation(asso);
 			resource = service.create(venteForm);
 		}
 		else if(type.equals("location")) {
@@ -68,9 +70,16 @@ public class ResourceBean implements Serializable {
 		}
 		else {
 			System.out.println("Ohno Ohno Ohnonononono!!");
-			return "Création de ressource Impossible";
+			//return "Création de ressource Impossible";
 		}
-		return "index?faces-redirect=true";
+		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+		try {
+			context.redirect(context.getRequestContextPath() + "/catalogueResources.xhtml?id=" + asso.getId());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//return "index?faces-redirect=true";
 	}
 
 	public ResourceService getService() {

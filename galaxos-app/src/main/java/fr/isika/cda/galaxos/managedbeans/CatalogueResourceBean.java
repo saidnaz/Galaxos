@@ -2,8 +2,10 @@ package fr.isika.cda.galaxos.managedbeans;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+//import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +16,7 @@ import fr.isika.cda.galaxos.repository.ResourceRepo;
 import fr.isika.cda.galaxos.viewmodel.CatalogueResForm;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class CatalogueResourceBean {
 	
 		@Inject
@@ -25,6 +27,61 @@ public class CatalogueResourceBean {
 		private List<Resource> resources;
 
 		private Association association;
+		
+		public CatalogueResourceBean() {
+			System.out.println("coucou constructor");
+			HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
+					.getRequest();
+			String id = req.getParameter("id");
+			if (id.equals("all")) {
+				this.resources = resRepo.findAll();
+				for(Resource r : resources) {
+					System.out.println(r.getName());
+				}
+			} else {
+				this.resources = resRepo.findByAssociation(Long.parseLong(id));
+				for(Resource r : resources) {
+					System.out.println(r.getName());
+				}
+			}
+		}
+		
+		@PostConstruct
+		public void init() {
+			System.out.println("coucou init");
+			HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
+					.getRequest();
+			String id = req.getParameter("id");
+			if (id.equals("all")) {
+				this.resources = resRepo.findAll();
+				for(Resource r : resources) {
+					System.out.println(r.getName());
+				}
+			} else {
+				this.resources = resRepo.findByAssociation(Long.parseLong(id));
+				for(Resource r : resources) {
+					System.out.println(r.getName());
+				}
+			}
+		}
+		
+		public void onload() {
+			System.out.println("coucou init");
+			HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
+					.getRequest();
+			String id = req.getParameter("id");
+			if (id.equals("all")) {
+				this.resources = resRepo.findAll();
+				for(Resource r : resources) {
+					System.out.println(r.getName());
+				}
+			} else {
+				this.resources = resRepo.findByAssociation(Long.parseLong(id));
+				for(Resource r : resources) {
+					System.out.println(r.getName());
+				}
+			}
+		}
 
 		public String afficherPageCatalogue() {
 			HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
