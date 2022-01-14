@@ -44,7 +44,7 @@ public class ResourceBean implements Serializable {
 		}
 	}
 	
-	public void create(String type) {
+	public String create(String type) {
 		System.out.println("hello there! Type is :" + type);
 		UIComponent formu;
 		Resource resource;
@@ -70,16 +70,16 @@ public class ResourceBean implements Serializable {
 		}
 		else {
 			System.out.println("Ohno Ohno Ohnonononono!!");
-			//return "Création de ressource Impossible";
+			return "Création de ressource Impossible";
 		}
-		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+		/*ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
 		try {
 			context.redirect(context.getRequestContextPath() + "/catalogueResources.xhtml?id=" + asso.getId());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		//return "index?faces-redirect=true";
+		}*/
+		return "index?faces-redirect=true";
 	}
 
 	public ResourceService getService() {
