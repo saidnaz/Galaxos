@@ -80,8 +80,11 @@ public class ResourceRepo {
 	}
 	
 	public List<Resource> findByAssociation(Long idAsso) {
-		List<Resource> resources = null;
-		return entityManager.createNativeQuery("SELECT * FROM Resource INNER JOIN providers ON providers.id = Resource.provider_id INNER JOIN Client ON Client.id = providers.id INNER JOIN Association ON Association.id = Client.association_id WHERE Association.id = :idAsso", Resource.class).setParameter("idAsso", idAsso).getResultList();
+		System.out.println("i'm in the repo!!" + idAsso);
+		List<Resource> resources = entityManager.createNativeQuery("SELECT * FROM Resource INNER JOIN providers ON providers.id = Resource.provider_id INNER JOIN Client ON Client.id = providers.id INNER JOIN Association ON Association.id = Client.association_id WHERE Association.id = :idAsso", Resource.class).setParameter("idAsso", idAsso).getResultList();
+		if(resources.size() != 0)System.out.println("Hello repo" + resources.get(0).getIdRessource());
+		else System.out.println("Non ya person!");
+		return resources;
 	}
 	
 	public List<Provider> findProviderByAdh(Long idAdh) {

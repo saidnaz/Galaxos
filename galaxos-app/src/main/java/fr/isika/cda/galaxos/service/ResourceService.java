@@ -33,6 +33,7 @@ public class ResourceService {
 	}
 	
 	public List<Resource> findByAssociation(Long idAsso){
+		System.out.println("je suis ds le service");
 		return resRepo.findByAssociation(idAsso);
 	}
 	

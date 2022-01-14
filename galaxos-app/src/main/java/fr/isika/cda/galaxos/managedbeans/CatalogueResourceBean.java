@@ -4,23 +4,27 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-//import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.ManagedProperty;
+//import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
+//import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.resources.Resource;
-import fr.isika.cda.galaxos.repository.ResourceRepo;
+//import fr.isika.cda.galaxos.repository.ResourceRepo;
+import fr.isika.cda.galaxos.service.ResourceService;
 import fr.isika.cda.galaxos.viewmodel.CatalogueResForm;
 
 @ManagedBean
-@ViewScoped
+@RequestScoped
 public class CatalogueResourceBean {
 	
 		@Inject
-		private ResourceRepo resRepo;
+		private ResourceService service;
 
 		private CatalogueResForm form = new CatalogueResForm();
 
@@ -30,16 +34,21 @@ public class CatalogueResourceBean {
 		
 		public CatalogueResourceBean() {
 			System.out.println("coucou constructor");
-			HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
-					.getRequest();
+			HttpServletRequest req = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+			HttpServletResponse res = (HttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
 			String id = req.getParameter("id");
+			System.out.println("id cstr" + id);
 			if (id.equals("all")) {
-				this.resources = resRepo.findAll();
+				this.resources = service.findAll();
 				for(Resource r : resources) {
 					System.out.println(r.getName());
 				}
 			} else {
-				this.resources = resRepo.findByAssociation(Long.parseLong(id));
+				System.out.println("jsui laaa" + id);
+				Long idOk = Long.parseLong(id);
+				System.out.println("vraiment ok?" + idOk);
+				this.resources = service.findByAssociation(idOk);
+				System.out.println("loop csttr" + resources.size());
 				for(Resource r : resources) {
 					System.out.println(r.getName());
 				}
@@ -53,12 +62,12 @@ public class CatalogueResourceBean {
 					.getRequest();
 			String id = req.getParameter("id");
 			if (id.equals("all")) {
-				this.resources = resRepo.findAll();
+				this.resources = service.findAll();
 				for(Resource r : resources) {
 					System.out.println(r.getName());
 				}
 			} else {
-				this.resources = resRepo.findByAssociation(Long.parseLong(id));
+				this.resources = service.findByAssociation(Long.parseLong(id));
 				for(Resource r : resources) {
 					System.out.println(r.getName());
 				}
@@ -71,12 +80,12 @@ public class CatalogueResourceBean {
 					.getRequest();
 			String id = req.getParameter("id");
 			if (id.equals("all")) {
-				this.resources = resRepo.findAll();
+				this.resources = service.findAll();
 				for(Resource r : resources) {
 					System.out.println(r.getName());
 				}
 			} else {
-				this.resources = resRepo.findByAssociation(Long.parseLong(id));
+				this.resources = service.findByAssociation(Long.parseLong(id));
 				for(Resource r : resources) {
 					System.out.println(r.getName());
 				}
@@ -88,25 +97,17 @@ public class CatalogueResourceBean {
 					.getRequest();
 			String id = req.getParameter("id");
 			if (id.equals("all")) {
-				resources = resRepo.findAll();
+				resources = service.findAll();
 				for(Resource r : resources) {
 					System.out.println(r.getName());
 				}
 			} else {
-				resources = resRepo.findByAssociation(Long.parseLong(id));
+				resources = service.findByAssociation(Long.parseLong(id));
 				for(Resource r : resources) {
 					System.out.println(r.getName());
 				}
 			}
 			return "catalogueResources";
-		}
-
-		public ResourceRepo getResRepo() {
-			return resRepo;
-		}
-
-		public void setResRepo(ResourceRepo resRepo) {
-			this.resRepo = resRepo;
 		}
 
 		public CatalogueResForm getForm() {
@@ -137,9 +138,9 @@ public class CatalogueResourceBean {
 			String domaine = (form.getDomaine() == null) ? "" : form.getDomaine().toString();
 			System.out.println(domaine);
 			if (localisation.equals("") && search.equals("") && domaine.equals("")) {
-				associations = resRepo.findAll();
+				associations = service.findAll();
 			} else {
-				associations = resRepo.search(localisation, search, domaine);
+				associations = service.search(localisation, search, domaine);
 			}
 			return "catalogueAsso";
 		}*/
