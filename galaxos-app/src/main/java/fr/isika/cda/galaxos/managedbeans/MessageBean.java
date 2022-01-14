@@ -25,9 +25,7 @@ import fr.isika.cda.galaxos.model.Profil;
 import fr.isika.cda.galaxos.service.AdherentService;
 import fr.isika.cda.galaxos.service.MessageService;
 
-
-
-@ManagedBean(name="MessageBean")
+@ManagedBean(name = "MessageBean")
 @ViewScoped
 public class MessageBean implements Serializable {
 
@@ -38,120 +36,119 @@ public class MessageBean implements Serializable {
 
 	@Inject
 	private MessageService messageService;
-	
-	private Adherent destinataire;	// Pour la liste des messages, pas la liste des contacts (messagerie)
-	
+
+	private Adherent destinataire; // Pour la liste des messages, pas la liste des contacts (messagerie)
+
 	private Adherent expediteur;
-	
-	private List<MessagerieDTO> messagerieDTO;	// Liste des contacts
-	
-	private List<Message> messageDTO;		// ViewModel est délcaré ici dans le bean
-	
+
+	private List<MessagerieDTO> messagerieDTO; // Liste des contacts
+
+	private List<Message> messageDTO; // ViewModel est délcaré ici dans le bean
+
 	private int role;
-	
+
 	@NotEmpty
 	@NotNull
 	@Size(min = 1, max = 500, message = "")
 	private String text;
-	
-	
-	public String connected()
-	{
+
+	public String connected() {
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		boolean isConnected = (boolean) session.getAttribute("isConnected");
-		if (!isConnected)
-		{
+		if (!isConnected) {
 			return "index.xhtml";
 		}
 		return "";
 	}
-	// Initialisation : Lors du lancement du serv, lance les méthodes à l'intérieur du init
+
+	// Initialisation : Lors du lancement du serv, lance les méthodes à l'intérieur
+	// du init
 	@PostConstruct
 	private void init() {
-		
+
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		expediteur = (Adherent) session.getAttribute("connectedAdherent");
-		
-		if(expediteur.getRole().contains("User"))
-		{
+
+		int count = (int) session.getAttribute("count");
+
+		if (expediteur.getRole().contains("User")) {
 			this.role = 1;
-		}
-		else this.role = 0;
-		
+		} else
+			this.role = 0;
+
 		afficherContacts(this.expediteur);
-		
-		if(!messagerieDTO.isEmpty())
-		{
+
+		if (!messagerieDTO.isEmpty()) {
 			destinataire = messagerieDTO.get(0).getContact();
 			messageDTO = messageService.obtenirMessages(expediteur, destinataire);
-		}
-		else { 
+		} else {
 			List<Message> messageDTOvide = new ArrayList<>();
 			messageDTO = messageDTOvide;
 		}
-		
-		FacesContext fc = FacesContext.getCurrentInstance();
-		Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
-		String idString = params.get("contactAdherent");
-		Long idAsso = Long.parseLong(idString);
 
-		// on chercher le contact en question
-		Optional<Adherent> optional = adherentService.findById(idAsso);
-		if (optional.isPresent()) {
-			this.destinataire = optional.get();
-			actualiserMessages(destinataire);
+		if (count != 0) {
+			FacesContext fc = FacesContext.getCurrentInstance();
+			Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
+			String idString = params.get("contactAdherent");
+
+			if (idString != null) {
+				Long idAsso = Long.parseLong(idString);
+
+				// on chercher le contact en question
+				Optional<Adherent> optional = adherentService.findById(idAsso);
+				if (optional.isPresent()) {
+					this.destinataire = optional.get();
+					actualiserMessages(destinataire);
+				}
+			}
+
 		}
-		
+		session.setAttribute("count", 1);
 	}
-	
+
 	public void obtenirMessages(Adherent expediteur, Adherent destinataire) {
 		messageDTO = messageService.obtenirMessages(expediteur, destinataire);
 	}
-	
-	public void actualiserMessages(Adherent destinaire)
-	{
-		if(destinataire!=null)
-		{
+
+	public void actualiserMessages(Adherent destinaire) {
+		if (destinataire != null) {
 			this.destinataire = destinaire;
 			obtenirMessages(expediteur, destinataire);
 		}
-		
+
 	}
-	
-	
-	public void afficherContacts(Adherent expediteur)
-	{
+
+	public void afficherContacts(Adherent expediteur) {
 		messagerieDTO = messageService.obtenirContacts(expediteur);
-		// appeler methode afficher messages pour charger la nouvelle liste à afficher, et faire un redirect sur la page
+		// appeler methode afficher messages pour charger la nouvelle liste à afficher,
+		// et faire un redirect sur la page
 	}
-	
-	public void goToMessagerie()
-	{
-		
+
+	public void goToMessagerie() {
+
 	}
-	
-	
-	public void voirProfil (Profil destinataire)
-	{
-		
+
+	public void voirProfil(Profil destinataire) {
+
 	}
-	
-	public String envoyer()
-	{		
+
+	public String envoyer() {
 		Message msg = new Message();
 		msg.setTexte(text);
 //		msg.setDate(LocalDateTime.now());
-		
+
 		msg.setExpediteur(expediteur);
 		msg.setDestinataire(destinataire);
-		
+
 		messageService.envoyer(msg);
-					
-		obtenirMessages(expediteur, destinataire);	// Actualiser la vue message après l'envoie pour voir le message envoyé apparaitre à la liste des autres messages
-		
-		// return "index?faces-redirect=true"; 	// // return "index?faces-redirect=true"; 	// remet les paramètres de la page (des classes) à zero.
-		 return "messagerie";		// rester sur la même page en vidant les infos du formulaire
-		// return "" 	// rester sur la même page (en gardant les infos du formulaire)
+
+		obtenirMessages(expediteur, destinataire); // Actualiser la vue message après l'envoie pour voir le message
+													// envoyé apparaitre à la liste des autres messages
+
+		// return "index?faces-redirect=true"; // // return "index?faces-redirect=true";
+		// // remet les paramètres de la page (des classes) à zero.
+		return "messagerie"; // rester sur la même page en vidant les infos du formulaire
+		// return "" // rester sur la même page (en gardant les infos du formulaire)
 	}
 
 	public MessageService getMessageService() {
@@ -201,23 +198,21 @@ public class MessageBean implements Serializable {
 	public void setMessageDTO(List<Message> messageDTO) {
 		this.messageDTO = messageDTO;
 	}
+
 	public int getRole() {
 		return role;
 	}
+
 	public void setRole(int role) {
 		this.role = role;
 	}
+
 	public AdherentService getAdherentService() {
 		return adherentService;
 	}
+
 	public void setAdherentService(AdherentService adherentService) {
 		this.adherentService = adherentService;
 	}
-	
-	
 
-	
-	
-	
-	
 }
