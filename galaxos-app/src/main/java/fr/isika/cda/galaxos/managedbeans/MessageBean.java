@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -17,8 +19,10 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import fr.isika.cda.galaxos.dto.MessagerieDTO;
 import fr.isika.cda.galaxos.model.Adherent;
+import fr.isika.cda.galaxos.model.Association;
 import fr.isika.cda.galaxos.model.Message;
 import fr.isika.cda.galaxos.model.Profil;
+import fr.isika.cda.galaxos.service.AdherentService;
 import fr.isika.cda.galaxos.service.MessageService;
 
 
@@ -29,6 +33,8 @@ public class MessageBean implements Serializable {
 
 	private static final long serialVersionUID = -6491967124514940460L;
 
+	@Inject
+	private AdherentService adherentService;
 
 	@Inject
 	private MessageService messageService;
@@ -83,7 +89,18 @@ public class MessageBean implements Serializable {
 			List<Message> messageDTOvide = new ArrayList<>();
 			messageDTO = messageDTOvide;
 		}
-			
+		
+		FacesContext fc = FacesContext.getCurrentInstance();
+		Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
+		String idString = params.get("contactAdherent");
+		Long idAsso = Long.parseLong(idString);
+
+		// on chercher le contact en question
+		Optional<Adherent> optional = adherentService.findById(idAsso);
+		if (optional.isPresent()) {
+			this.destinataire = optional.get();
+			actualiserMessages(destinataire);
+		}
 		
 	}
 	
@@ -189,6 +206,12 @@ public class MessageBean implements Serializable {
 	}
 	public void setRole(int role) {
 		this.role = role;
+	}
+	public AdherentService getAdherentService() {
+		return adherentService;
+	}
+	public void setAdherentService(AdherentService adherentService) {
+		this.adherentService = adherentService;
 	}
 	
 	
